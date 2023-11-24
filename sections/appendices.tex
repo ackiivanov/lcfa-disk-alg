@@ -1,0 +1,92 @@
+\documentclass[../text]{subfiles} 
+
+\begin{document}
+
+
+\section{\texorpdfstring{$\mathbb{E}_n$}{En}-algebras}\label{app:En_algebras}
+
+The operad governing $\mathbb{E}_n$-algebras was first defined in \cite{bv73} as a topological operad, and has since become ubiquitous in algebraic topology. As we saw in \cref{prop:framed_ndisk=En} one incarnation of this operad is as framed embeddings of disks into other disks. Here we follow the exposition of \cite[sec.5.1]{lurie_ha} to define the operad differently, and see how it can be given the structure of an $\infty$-operad.
+
+\begin{definition}\label{def:rect_embedding}
+    Let $n$ be an integer, and $S$ be a finite set. We will call a map $f:(-1,1)^n \times S \rightarrow (-1,1)^n$ a \emph{rectilinear embedding} if it is given by
+    %
+    \begin{equation}
+        f(x_1, \dots, x_n, s) = (a^s_1 x_1 + b^s_1, \dots, a^s_n x_n + b^s_n),
+    \end{equation}
+    %
+    where $a^s_i, b^s_i \in \mathbb{R}$ and $a^s_i > 0$ for all $s \in S$ and all $1 \leq i \leq n$. We denote the set of such rectilinear embeddings as $\mathsf{Rect}((-1,1)^n \times S \rightarrow (-1,1)^n)$.
+\end{definition}
+
+\begin{remark}
+    The set $\mathsf{Rect}((-1,1)^n \times S \rightarrow (-1,1)^n)$ has a natural topology on it given by the subspace topology, when considered as an open subset of $\mathbb{R}^{2n |S|}$, by the map
+    %
+    \begin{equation}
+        \mathsf{Rect}((-1,1)^n \times S \rightarrow (-1,1)^n) \xrightarrow{\quad} \mathbb{R}^{2n |S|},
+    \end{equation}
+    %
+    which sends a rectilinear embedding to the tuple of its coefficients as in \cref{def:rect_embedding}.
+\end{remark}
+
+Classically, the $\mathbb{E}_n$ operad was defined as a topological operad according to the following:
+
+\begin{definition}
+    Let $n$ be an integer. As a topological operad, $\mathrm{E}_n$ is defined by the collection of spaces
+    %
+    \begin{equation}
+        \left\{ \mathsf{Rect}((-1,1)^n \times \langle k \rangle^\circ \rightarrow (-1,1)^n)\right\}_{k \geq 0},
+    \end{equation}
+    %
+    where $\langle k \rangle^\circ = \{1, 2, \dots, k\}$ and where:
+    %
+    \begin{enumerate}
+        \item The symmetric group $\Sigma_k$ acts on $\mathsf{Rect}((-1,1)^n \times \langle k \rangle^\circ \rightarrow (-1,1)^n)$ by permutations in the finite set $\langle k \rangle^\circ$.
+        \item The composition maps are given induced by the maps
+        %
+        \begin{equation}
+            \langle k_1 \rangle^\circ \times \dots \langle k_m \rangle^\circ \xrightarrow{\quad} \langle k_1 + \dots + k_m \rangle^\circ.
+        \end{equation}
+        \item The unit is given by the map $\mathrm{id} : (-1,1)^n \times \langle 1 \rangle^\circ \cong (-1,1)^n \rightarrow (-1,1)^n$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    This is why the operad is sometimes known as the operad of little $n$-cubes.
+\end{remark}
+
+Towards an $\infty$-operadic definition, we can construct, now a little more categorically, a topological category $\mathbb{E}_n$.
+
+\begin{definition}[{\cite[def.5.1.0.2]{lurie_ha}}]
+    Let $n$ be an integer. Define a topological category $\mathbb{E}_n$ with the following:
+    %
+    \begin{enumerate}
+        \item The objects of $\mathbb{E}_n$ are the sets $\langle k \rangle = \{ *, 1, 2, \dots, k\} \in \mathsf{Fin}_*$.
+        \item A morphism from $\langle k \rangle$ to $\langle l \rangle$ is given by a morphism $(\alpha : \langle k \rangle \rightarrow \langle l \rangle) \in \mathsf{Fin}_*$ together with a rectilinear embedding $(-1,1)^n \times \alpha^{-1}\{j\} \xrightarrow{\quad} (-1,1)^n$ for each $j \in \langle l \rangle^\circ$, such that the topology of the morphism space is given by 
+        %
+        \begin{equation}
+            \mathsf{Hom}_{\mathbb{E}_n}(\langle k \rangle \langle l \rangle) = \coprod_{\alpha : \langle k \rangle \rightarrow \langle l \rangle} \prod_{1 \leq j \leq k} \mathsf{Rect} ((-1,1)^n \times \alpha^{-1}\{ j\}, (-1,1)^n).
+        \end{equation}
+        \item Composition of morphisms is, as usual, defined by partial concatenation.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}[{\cite[prop.5.1.0.3]{lurie_ha}, \cite[cor.1.1.5.12]{lurie_htt}}]
+    The obvious functor between (the nerves) $\mathbb{E}_n \rightarrow \mathsf{Fin}_*$ exhibits $\mathbb{E}_n$ as an $\infty$-operad.
+\end{proposition}
+
+More intuitively, we can think of the $\mathbb{E}_n$ $\infty$-operad as defining homotopy associative algebras with various levels of commutativity:
+%
+\begin{enumerate}
+    \item $\mathbb{E}_1$ is the operad that describes unital, homotopy associative algebras.
+    \item $\mathbb{E}_2$ is the operad that describes unital, homotopy associative algebras for which there exist homotopies that make the multiplication commutative, but the space of those homotopies is generically not contractible.
+    \item The higher $n$ is the more and more higher homotopies exist that make the multiplication and all its previous coherences commutative.
+    \item In the limit $n \rightarrow \infty$, we get the $\infty$-operad $\mathbb{E}_{\infty}$ that governs homotopy commutative algebras with fully coherent homotopies
+\end{enumerate}
+
+A more detailed explanation of this intuitive picture can be found in \cite{tanaka20}.
+
+\begin{remark}
+    We should also remember that having defined things operadically, means that we have the freedom to place our algebra in a wide variety of $\infty$-operads or symmetric monoidal $\infty$-categories. However, if the target is the nerve of an ordinary category then it will not be able to tell the difference between $\mathbb{E}_n$-algebras, with $n \geq 2$, they will all look fully commutative.
+\end{remark}
+
+
+\end{document}

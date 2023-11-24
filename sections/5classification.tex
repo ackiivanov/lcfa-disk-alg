@@ -1,0 +1,224 @@
+\documentclass[../text]{subfiles} 
+
+\begin{document}
+
+\section{Classifying \texorpdfstring{$\lcfa$}{FAlglc}s on Defect Manifolds}\label{ch:classif_defect_mfld}
+
+Our goal in this section is to lay out a possible roadmap for classifying locally constant factorization algebras on stratified manifolds. Specifically we will focus on the case of stratified manifolds $M_{\Sigma}$, which are described by a smooth, $n$-dimensional manifold $M$ together with a distinguished smooth, properly embedded, $d$-dimensional submanifold $\Sigma \xhookrightarrow{} M$, such that $d < n$. In other words we are considering objects $M_{\Sigma} \in \mfld(\mathsf{D}_{d \subset n})$ as discussed in \cref{def:mfld_disk_dn}. More general statements can be achieved by iterating the procedure and explicating the information of more defects, stratum by stratum, in the stratified manifold.
+
+\begin{remark}\label{rem:disk_not_enough}
+    Having already considered the classification of disk algebras with $\mathsf{D}_{d \subset n}^*$-structure in \cref{thm:classif_disk_d_under_n*_alg}, one might wonder whether the classification we are after is already done by simply using the factorization homology functor, and porting over the classification of disk algebras to the setting of locally constant factorization algebras. There are two issues with this direction of inquiry. One problem is that not all $\mathsf{D}_{d \subset n}$-manifolds are frameable since this is not even the case for smooth manifolds; framed disk algebras like in \cref{thm:classif_disk_d_under_n*_alg} can only evaluate framed stratified manifolds.
+    
+    The second problem is that having classified all $\disk(\bstr)$-algebras does not immediately give a classification of $\disk_{/M}$-algebras for a given manifold $M$. There is a functor
+    %
+    \begin{equation}
+        \alg{\disk(\bstr)}(\catC) \xrightarrow{\quad} \alg{\disk(\bstr)_{/M}} (\catC),
+    \end{equation}
+    %
+    which is induced by the forgetful functor $\disk_{/M} \rightarrow \disk(\bstr)$, but this functor will, in general, not be an equivalence. We can see this, for example, by using \cref{rem:disk_b=disk_bsc} which tells us that the left-hand side depends on $\bstr$, while the right-hand side doesn't. 
+\end{remark}
+
+
+
+\subsection{Euclidean Spaces with Defects}
+
+
+In \cref{ssec:lcfa_on_Rn} we discussed locally constant factorization algebras on Euclidean spaces of different dimension $n$, and we saw that they presented the data of $\mathbb{E}_n$-algebras. In \cref{ssec:lcfa_on_1d_man}, on the other hand we focused on 1 dimensional manifolds, but with different possible stratification structures, and we saw that the data encoded in defects was a module structure. Here, in the spirit of this section, we work to extend both of these developments to the case of Euclidean spaces with the specific kind of defect that we have limited ourselves to, namely, $\mathbb{R}^{d \subset n}$.
+
+Despite \cref{rem:disk_not_enough}, we know from \cref{lem:disk/M_to_disk} that sometimes the classification results for disk algebras can be used for factorization algebras. In particular, this is the case for $\mathbb{R}^{d \subset n}$, since it is final in the $\infty$-category of basics $\bstr = \mathsf{D}_{d \subset n}^*$. This gives us
+%
+\begin{equation}\label{eq:focus_on_disk_dn}
+    \lcfa_{\mathbb{R}^{d \subset n}} (\catC) \simeq \alg{\disk (\mathsf{D}_{d \subset n}^*)} (\catC).
+\end{equation}
+
+We will see that the case of $d=0$ is of particular importance. This is the case of pointed Euclidean spaces, which are alternatively denoted $\mathbb{R}^n_*$. To get a better grasp on this case we examine the $\infty$-operad.
+
+\begin{observation}
+    For the purposes of the observation we will shorten notation to $\mathscr{D}_* := \disk (\mathsf{D}_{0 \subset n}^*)$. Since the defect is a point there can be at most one disk that contains it per morphism. Thus, the morphism spaces to consider are
+    %
+    \begin{align}
+        &\mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n),& &\mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n_*)& &\mathrm{and}& &\mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i} \sqcup \mathbb{R}^n_*, \mathbb{R}^n_*).&
+    \end{align}
+    %
+    The first of these is equivalent to the space $\mathsf{Emb}^*((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n)$ of framed open embeddings, which makes it is obvious that restricting to non-defect disks would give the data of an $\mathbb{E}_n$-algebra. When $i=0$, the third space above is equivalent to a point, which makes it clear that restricting exclusively to pointed disks $\mathbb{R}^n_*$ we give rise to plain objects\footnote{We've omitted mentioning the fact that, because of morphisms like $\emptyset \xrightarrow{} U$, all of the above algebraic objects will be pointed. We have done this to avoid confusion with the use of pointed in the sense of a point defect of the space.} (or $\mathbb{E}_0$-algebra). The structure that connects the two algebras is encoded in the rest of the morphism spaces. 
+
+    By definition, the middle space is given by $\mathsf{Emb}^* ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n \setminus \{0\})$. For the last space when $i$ isn't necessarily 0 we can use the same observation as in the proof of \cite[prop.3.16]{francis2013}, namely that we can always translate the disks so that the defect lands at the origin. This gives an equivalence of spaces
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i} \sqcup \mathbb{R}^n_*, \mathbb{R}^n_*) \simeq \mathsf{Emb}^* ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n \setminus \{0\})
+    \end{equation}
+    %
+    to the framed embeddings that miss the origin. Comparing to the proof of \cref{univ_env_for_En} this suggests that
+\end{observation}
+
+\begin{theorem}
+    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-category of locally constant factorization algebras on $\mathbb{R}^n_*$ and the $\infty$-category of $\mathbb{E}_n$-modules
+    %
+    \begin{equation}
+        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}^n_*} (\catC).
+    \end{equation} 
+\end{theorem}
+
+%\begin{theorem}
+%    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-category of $\mathbb{E}_n$-modules and the $\infty$-category of locally constant factorization algebras on $\mathbb{R}^n_*$
+%    %
+%    \begin{equation}
+%        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}^n_*} (\catC).
+%    \end{equation}
+%\end{theorem}
+
+%\begin{proof}
+%    We immediately remark that \cite[lem.2.13]{francis2013} says that the universal enveloping algebra $U_A$ of an algebra $A \in \alg{\mathscr{O}} (\catC)$ is given as the value on $*$ of the left Kan extension of $A$ along the functor $\psi: \mathscr{O} \xrightarrow{} \mathscr{O}_*$ that adds a basepoint. Namely, this is the functor that adds a basepoint to objects and on morphism spaces it sends a map to its extension as a basepoint preserving map. We will argue that this functor is exactly the functor {\color{red} UNFINISHED}
+%\end{proof}
+
+
+The study of these was undertaken in \cite{ginot2015}. There it was shown that
+
+\begin{theorem}[{\cite[cor.8]{ginot2015}}]\label{thm:ginot_classif_Rn*}
+    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-categories of $\mathbb{E}_n$-modules and the pullback
+    %
+    \begin{equation}
+        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}^n_*} (\catC) \bigtimes_{\lcfa_{\mathbb{R}^n \setminus \{ 0\} } (\catC)} \lcfa_{\mathbb{R}^n} (\catC).
+    \end{equation}
+\end{theorem}
+
+\begin{remark}
+    In the above $\mathsf{Mod}^{\mathbb{E}_n}$ is the $\infty$-category of $\mathbb{E}_n$-modules, which is fibered over $\alg{\mathbb{E}_n}$ the $\infty$-category of $\mathbb{E}_n$-algebras. Informally speaking, the objects of $\mathsf{Mod}^{\mathbb{E}_n}$ are pairs $(A, M)$ consisting of an $\mathbb{E}_n$-algebra $A$ and an $A$-module $M$. However, to make things precise we, as always, use the definitions in \cite[ch.3]{lurie_ha}.
+\end{remark}
+
+\begin{remark}
+    The version of \cref{thm:ginot_classif_Rn*} cited above is different from the one appearing in the original reference. \cite[cor.8]{ginot2015}, as stated, requires the homotopy pullback, however examining its proof and the later \cite[cor.9]{ginot2015} implies that the correct statement that has been proven is as written above.
+\end{remark}
+
+\begin{remark}
+    The case of $n=1$ is special because the higher stratum $\mathbb{R} \setminus \{0\}$ is now disconnected. Looking back at the construction leading up to \cref{prop:hoint_gives_modules} and at \cref{rem:left_or_right_module} we can guess that a statement like the following can hold true:
+\end{remark}
+
+\begin{proposition}
+    There is an equivalence between the $\infty$-category of locally constant factorization algebras on $\mathbb{R}_*$ and the $\infty$-category consisting of two $\mathbb{E}_1$-algebras $A$ and $B$ together with a pointed, left $A \otimes B^\mathsf{op}$-module $M$
+    %
+    \begin{equation}
+        \lcfa_{\mathbb{R}_*} \simeq \mathsf{LMod} (\catC) \bigtimes_{\catC^{\mathbb{1}/}} \mathsf{RMod} (\catC),
+    \end{equation}
+    %
+    where the functors $\mathsf{LMod}(\catC) \rightarrow \catC^{\mathbb{1}/}$ and $\mathsf{RMod}(\catC) \rightarrow \catC^{\mathbb{1}/}$ are the ones giving the underlying (pointed) object of a module.
+\end{proposition}
+
+
+
+
+\subsection{The General Case of \texorpdfstring{$M_{\Sigma}$}{M Sigma}}
+
+Locally, near the defect, the locally constant factorization algebra is, of course, going to look like a locally constant factorization algebra over $\mathbb{R}^{d \subset n}$. However, it is possible that the global topology introduces some twisting of this local understanding. Due to \cref{cor:gluing_lcfas}, in any particular case, it's possible that we can find some list of collar-gluings that reduce the problem down to the local case, but this doesn't tell us anything about the general structure. Despite this, there is a particular collar-gluing that is the obvious first step if we're looking at a general manifold $M_\Sigma$. We will now describe this.
+
+The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to construct a regular neighborhood of our defect, echoing the tubular neighborhood theorem, now in the case of stratified spaces.
+%
+\begin{theorem}[{\cite[prop.8.2.3, prop.8.2.5]{aft_localstrut}}]
+    Let $\Sigma \xhookrightarrow{} M_\Sigma$ be a proper, constructible embedding of stratified manifolds. There exists a stratified map
+    %
+    \begin{equation}
+        \mathsf{C}(\pi) \rightarrow M_\Sigma
+    \end{equation}
+    %
+    under $\Sigma \xhookrightarrow{} M_\Sigma$ such that:
+    %
+    \begin{enumerate}
+        %\item the map is a refinement onto its image,
+        \item the image is open, and
+        \item $\mathsf{C}(\pi)$ is the fiberwise open cone of the constructible bundle $\mathsf{L}_{\Sigma} \xrightarrow{\pi} \Sigma$ giving the link.
+    \end{enumerate}
+    %
+    If $\Sigma$ is a stratum of $M_\Sigma$ then the map $\mathsf{C}(\pi) \rightarrow M_\Sigma$ is even an open embedding.
+\end{theorem}
+
+\begin{remark}
+    In more detail, specialized to our situation, the regular neighborhood $\mathsf{C}(\pi)$ is constructed as the pushout of stratified manifolds
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathsf{L}_{\Sigma} \times \{0\} \arrow[r, "\pi"] \arrow[d, "\mathrm{id} \times 0"', hook] & \Sigma \arrow[d] \\
+            \mathsf{L}_{\Sigma} \times \hoint \arrow[r] & \mathsf{C}(\pi) \arrow[ul, phantom, "\lrcorner", very near start],
+        \end{tikzcd}
+    \end{equation}
+    %
+    where $\mathsf{L}_{\Sigma}$ is the link of $\Sigma$ in $M_{\Sigma}$ (see \cite{aft_localstrut}). In our case of interest where the stratified manifold is $M_{\Sigma}$, the link $\mathsf{L}_{\Sigma}$ takes a simple form; it can always be constructed as the sphere bundle of the normal bundle of $\Sigma$ when embedded into $M$ as smooth manifolds.
+\end{remark}
+
+\begin{example}
+    For the case of $(\Sigma \xhookrightarrow{} M) = {S^1 \xhookrightarrow{} \mathbb{R}^3}$, i.e. a circle defect in Euclidean 3-space, the link $\mathsf{L}_{\Sigma}$ would be a torus.
+\end{example}
+
+\begin{construction}
+    The existence of $\mathsf{C}(\pi)$ allows us to define a collar-gluing for the stratified manifold $M_\Sigma$
+    %
+    \begin{equation}\label{eq:M_Sigma_decomposition}
+        M_\Sigma \cong \left( M \setminus \Sigma \right) \coprod_{\mathsf{L}_\Sigma \times \mathbb{R}} \mathsf{C}(\pi),
+    \end{equation}
+    %
+    where the map $\mathsf{L}_\Sigma \times \mathbb{R} \rightarrow M \setminus \Sigma$ is provided by $\mathsf{L}_\Sigma \times \mathbb{R} \cong \mathsf{L}_\Sigma \times \mathbb{R}_{\gneq 0} \cong \mathsf{C}(\pi) \setminus \Sigma \xhookrightarrow{} M \setminus \Sigma$. We also note that the properness of the embedding $\Sigma \xhookrightarrow{} M$ makes $M \setminus \Sigma$ an open submanifold of $M$.
+\end{construction}
+
+
+\Cref{cor:gluing_lcfas} allows us to use the collar-gluing from above to write the equivalence of $\infty$-categories
+%
+\begin{equation}
+    \lcfa_{M_\Sigma} (\catC) \simeq \lcfa_{M \setminus \Sigma} (\catC) \bigtimes_{\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}} (\catC)} \lcfa_{\mathsf{C}(\pi)} (\catC),
+\end{equation}
+%
+as a first step in the classification of locally constant factorization algebras on $M_{\Sigma}$. Since we have focused on stratified manifolds with the particular form $M_{\Sigma}$, the locally constant factorization algebras $\lcfa_{M \setminus \Sigma}$ in this decomposition already live on a smooth manifold, rather than on a stratified one. Similarly, this is the case for the locally constant factorization algebras $\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}}$. The more prescient question is about the classification of locally constant factorization algebras on the one remaining stratified space $\mathsf{C}(\pi)$. 
+
+%--------------
+
+%One hint comes from the following construction:
+
+%\begin{construction}\label{con:norm_map}
+%    Using the maps
+%    %
+%    \begin{align}
+%        &\mathsf{L}_{\Sigma} \times \hoint \xrightarrow{\pi \times \mathrm{id}} \Sigma \times \hoint &\Sigma \xrightarrow{\mathrm{id} \times 0} \Sigma \times \hoint,
+%    \end{align}
+%    %
+%    the universal property of the pushout for $\mathsf{C}(\pi)$ defines for us a map
+%    %
+%    \begin{equation}
+%        \mathsf{C}(\pi) \xrightarrow{\ \ n \ \ } \Sigma \times \hoint,
+%    \end{equation}
+%    %
+%    which we call the \emph{fiberwise norm map}. We similarly, define for ease of notation $n^\circ := \pi \times \mathrm{id}: \mathsf{L}_{\Sigma} \times \mathbb{R} \rightarrow \Sigma \times \mathbb{R}$, as the restriction of $n$ to the interior.
+%\end{construction}
+
+%\begin{remark}
+%    The reason for the name is most visible in the case of point defects, e.g. $M_{\Sigma} = \mathbb{R}^n_{*}$. In this case $\mathsf{C}(\pi) \cong \mathbb{R}^n_{*}$, $\Sigma \times \hoint \cong \hoint$, and the fiberwise norm map $n: \mathbb{R}^n_{*} \rightarrow \hoint$ from above is exactly the norm in the usual sense. When the defect is higher dimensional, the above construction takes the norm in each fiber hence the name fiberwise norm.
+%\end{remark}
+
+%\begin{lemma}\label{lem:n_is_bundle}
+%    The fiberwise norm map $n: \mathsf{C}(\pi) \rightarrow \Sigma \times \hoint$ is a constructible bundle.
+%\end{lemma}
+
+%\begin{proof}
+%    The pushout construction of $\mathsf{C}(\pi)$ and \cref{con:norm_map} make it obvious that the necessary restrictions of $\mathsf{C}(\pi)$ over the strata give bundles over $\Sigma$ and $\Sigma \times \mathbb{R}$, fulfilling the conditions.
+%\end{proof}
+
+%Using the result mentioned in %\cref{rem:hoint_times_X_conjecture} ..., about locally constant factorization algebras on $\hoint \times \Sigma$ results in:
+
+%\begin{lemma}
+%    The pushforward along the fiberwise norm map fits into a commutative diagram
+%    %
+%    \begin{equation}
+%        \begin{tikzcd}[row sep = large, column sep = large]
+%            \lcfa_{\mathsf{C}(\pi)} (\catC) \arrow[r, "n_*"] \arrow[d] & \mathsf{LMod} (\lcfa_{\Sigma} (\catC)) \arrow[d] \\
+%            \lcfa_{\mathsf{L}_{\Sigma} \times \mathbb{R}} (\catC) \arrow[r, "n^{\circ}_*"] & \alg{\mathbb{E}_1} (\lcfa_{\Sigma} (\catC)).
+%        \end{tikzcd}
+%    \end{equation}
+%\end{lemma}
+
+%\begin{proof}
+%    \Cref{lem:n_is_bundle} guarantees that the pushforward $n_*: \lcfa_{\mathsf{C}(\pi)} \rightarrow \lcfa_{\Sigma \times \hoint}$ exists at the level of locally constant factorization algebras. The mentioned \cref{rem:hoint_times_X_conjecture} together with \cref{prop:hoint_gives_modules} then provides the equivalence of the codomain of the pushforward with $\mathsf{LMod} (\lcfa_{\Sigma} (\catC))$. The vertical functors are simply restrictions away from the defect in each case, so that the commutativity if immediate.
+%\end{proof}
+
+%\begin{remark}
+%    This lemma gives us the direction that defects in general will again be related to a kind of module structure of the algebras, but it does not provide the full classification. If we are able to describe locally constant factorization algebras on the space $\mathsf{C}(\pi)$ in full detail, then we would be able to reconstruct the locally constant factorization algebras on $M_{\Sigma}$.
+%\end{remark}
+
+
+\end{document}

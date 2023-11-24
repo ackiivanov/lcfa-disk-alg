@@ -1,0 +1,183 @@
+\documentclass[../text]{subfiles} 
+
+\begin{document}
+
+
+\section{Collar-gluings and Disk Algebras}\label{ch:gluing_disk_alg}
+
+Given a stratified manifold $M$, we defined the $\infty$-category of locally constant factorization algebras on it $\lcfa_M (\catC)$. We want to examine what we can say about the behavior of this $\infty$-category under collar-gluings in the manifold variable. Our discussion will be in terms of disk algebras $\alg{\disk_{/M}} (\catC)$, but using \cref{thm:disk_alg=lcfa} there is no loss at all.
+
+\begin{theorem}\label{thm:gluing_alg_disk/M}
+    Given a collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$, the $\infty$-category of $\disk_{/M}$-algebras is equivalent to the pullback of $\infty$-categories
+    %
+    \begin{equation}
+        \alg{\disk_{/M}} (\catC) \simeq \alg{\disk_{/M_-}} (\catC) \bigtimes_{\alg{\disk_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\disk_{/M_+}} (\catC).
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    The data of a collar-gluing provides open embeddings $M_0 \times \mathbb{R} \xhookrightarrow{} M_-$ and $M_0 \times \mathbb{R} \xhookrightarrow{} M_+$, where $M_-$, $M_0$ and $M_+$ have the usual meanings as in \cref{def:collar-gluing}. This can be used to construct the cospan of restriction functors $\alg{\disk_{/M_-}} (\catC) \rightarrow \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC) \leftarrow \alg{\disk_{/M_+}} (\catC)$. Using this data we can define the pullback $\infty$-category
+    %
+    \begin{equation}
+        \mathscr{P} := \alg{\disk_{/M_-}} (\catC) \bigtimes_{\alg{\disk_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\disk_{/M_+}} (\catC).
+    \end{equation}
+    %
+    The further open embeddings of $M_-$, $M_0 \times \mathbb{R}$ and $M_+$ into $M$ again give rise to restriction functors that form a commutative square
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \alg{\disk_{/M}} (\catC) \arrow[r] \arrow[d] & \alg{\disk_{/M_+}} (\catC) \arrow[d] \\
+            \alg{\disk_{/M_-}} (\catC) \arrow[r]           & \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC),     
+        \end{tikzcd}
+    \end{equation}
+    %
+    which, by the universal property of the pullback, gives us a canonical functor $\rho: \alg{\disk_{/M}} (\catC) \rightarrow \mathscr{P}$. We also want to construct a functor that partially goes in the other direction. Namely, given the data of objects $(A_-, A_+) \in \alg{\disk_{/M_-}} (\catC) \times \alg{\disk_{/M_+}} (\catC)$ such that $A_-|_{M_0 \times \mathbb{R}} = A_+|_{M_0 \times \mathbb{R}} = : A_0$ we want to construct a functor $A: \disk_{/M} \xrightarrow{} \catC$. The construction relies on using factorization homology and the bar construction. Given $(U \xhookrightarrow{} M) \in \disk_{/M}$ we define
+    %
+    \begin{equation}\label{eq:def_of_A_in_proof}
+        A(U) := \int_{U_-} A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_0} \int_{U_+} A_+,
+    \end{equation}
+    %
+    where $U_-$, $U_0$ and $U_+$ are defined through the inherited collar-gluing $U \xhookrightarrow{} M \xrightarrow{} [-1,1]$. Well-definition of the bar construction is provided if we have the appropriate left and right module structures on $\int_{U_-} A_-$ and $\int_{U_+} A_+$ over the associative algebra $\int_{U_0 \times \mathbb{R}} A_0$. Pushforward along the restrictions $f|_{U-}: U_- \rightarrow \left[-1, 1\right)$ and $f|_{U+}: U_+ \rightarrow \left(-1, 1\right]$, together with the properties of factorization homology provides these left and right module structures. Furthermore, the associative algebra object is exactly the appropriate one since consecutive restrictions commute on the nose. The above argument is essentially the statement that there is a functor
+    %
+    \begin{align}
+        \gamma: \mathscr{P} \xrightarrow{\ \ \int \ \ } &\alg{\mfld_{/M_-}}(\catC) \bigtimes\limits_{\alg{\mfld_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\mfld_{/M_+}} (\catC)\notag\\ &\xrightarrow{\ - \circ \bar{f} \ } \mathsf{Fun}(\mfld_{/M}, \alg{\mathsf{Assoc^{RL}}} (\catC)) \xrightarrow{\ \mathsf{B} \circ - \ } \mathsf{Fun}(\mfld_{/M},\catC) \xrightarrow{\ } \mathsf{Fun}(\disk_{/M}, \catC),
+    \end{align}
+    %
+    where $\bar{f}: \mfld_{/M} \xrightarrow{} \alg{\mathsf{Assoc^{RL}}} (\mfld_{/M})$ is the functor induced by the collar-gluing, which on objects acts as $(N \xhookrightarrow{} M) \mapsto (N_-, N_0 \times \mathbb{R}, N_+)$, and $\mathsf{B}: \alg{\mathsf{Assoc^{RL}}} (\catC) \xrightarrow{} \catC$ is the bar construction functor.
+    
+    We will show that the functor $\rho$ is an equivalence by first checking that it is an equivalences on maximal $\infty$-subgroupoids and subsequently that it is an equivalence on morphism spaces. In accomplishing the first goal we can use the fact that our algebras are valued in a symmetric monoidal $\infty$-category, as opposed to the more general case of an $\infty$-operad. Leveraging the adjunction 
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \cat^{\otimes} \arrow[r, hook, yshift=-1ex] & \mathscr{O} \mathsf{p}_{\infty} \arrow[l, yshift=1ex, "\mathsf{Env}"'],
+        \end{tikzcd}
+    \end{equation}
+    %
+    together with the fact that $\mathsf{Hom}_{\mathscr{O} \mathsf{p}_{\infty}} (\mathscr{O}, \mathscr{O}') := \alg{\mathscr{O}} (\mathscr{O}')^{\simeq}$, tells us that there is an equivalence of maximal $\infty$-subgroupoids
+    %
+    \begin{equation}
+        \alg{\disk_{/M}} (\catC)^{\simeq} \simeq \alg{\mathsf{Env}(\disk_{/M})} (\catC)^{\simeq} = \mathsf{Fun}^{\otimes} (\mathsf{Env} (\disk_{/M}), C)^{\simeq}.
+    \end{equation}
+    %
+    This implies that to check that $\rho$ is an equivalence of maximal $\infty$-subgroupoids we need to show that:
+    %
+    \begin{enumerate}
+        \item $A = \gamma (A_-, A_+)$ is actually even a symmetric monoidal functor, when viewed as a functor $\mathsf{Env} (\disk_{/M}) \xrightarrow{} \catC$,
+        \item $\rho(A)$ reproduces $(A_-, A_+)$ up to equivalence, and
+        \item $\gamma (\rho (A))$ reproduces $A$ up to equivalence.
+    \end{enumerate}
+    %
+    We now check these in order. For the purposes of (1) denote $F_-(U) = \int_{U_-} A_-$, $F_0(U) = \int_{U_0 \times \mathbb{R}} A_0$, $F_+(U) = \int_{U_+} A_+$ and $\mathsf{B}_{\bullet} (R, A, L):\Delta^{\mathsf{op}} \rightarrow \catC$ for the simplicial object of the bar construction of a right module $R$, associative algebra $A$ and left module $L$. Given two objects $(U \xhookrightarrow{} M), (V \xhookrightarrow{} M) \in \mathsf{Env}(\disk_{/M})$ we have 
+    %
+    \begin{align}
+        A(U \sqcup V) &= \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U \sqcup V), F_0(U \sqcup V), F_+(U \sqcup V)))\notag\\
+        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U) \otimes F_-(V), F_0(U) \otimes F_0(V), F_+(U) \otimes F_+(V)))\notag\\
+        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U)) \otimes \mathsf{B}_{\bullet} (F_-(V), F_0(V), F_+(V)))\notag\\
+        &\simeq \mathsf{colim} (\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}} \xrightarrow{\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U)) \otimes \mathsf{B}_{*} (F_-(V), F_0(V), F_+(V))} \catC)\notag\\
+        &\simeq \mathsf{colim} (\Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}} \xrightarrow{\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U)) \otimes \mathsf{B}_{*} (F_-(V), F_0(V), F_+(V))} \catC)\notag\\
+        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U))) \otimes \mathsf{colim} (\mathsf{B}_{*} (F_-(V), F_0(V), F_+(V)))\notag\\
+        &\simeq A(U) \otimes A(V),
+    \end{align}
+    %
+    where $\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}}$ is the diagonal functor. The first equivalence comes about because factorization homology is symmetric monoidal, the second equivalence is given because $\catC$ is a symmetric monoidal $\infty$-category (and not simply monoidal). The fourth equivalence uses the finality of the diagonal functor which comes from the fact that $\Delta^{\mathsf{op}}$ is sifted. Finally, the fifth equivalence exists because the symmetric monoidal structure commutes with (sifted) colimits. This shows that $A$ is a monoidal functor; that it is symmetric too is immediately obvious from the above calculation. 
+    
+    Checking (2) amounts to evaluating disks $U$ which are contained in only one of the pieces $M_-$, $M_0 \times \mathbb{R}$ and $M_+$. For the case of $U_0 \times \mathbb{R} = \emptyset = U_+$, we have
+    %
+    \begin{equation}
+        A(U) = \int_{U} A_- \bigotimes\limits_{\mathbb{1}} \mathbb{1} \simeq A_- (U),
+    \end{equation}
+    %
+    and similarly if $U_- = \emptyset = U_0 \times \mathbb{R}$. Alternatively, for the case of $U_- = U_0 \times \mathbb{R} = U_+$ we instead have
+    %
+    \begin{equation}
+        A(U) = \int_U A_0 \bigotimes\limits_{\int_{U} A_0} \int_U A_0 \simeq A_0(U).
+    \end{equation}
+    %
+    If $U$ is such that $U_+ = \emptyset$, but $U_0 \times \mathbb{R} \neq \emptyset$ then
+    %
+    \begin{equation}
+        A(U) = \int_U A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_-} \mathbb{1} \simeq \int_U A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_-} \int_{\emptyset} A_- \simeq \int_{U} A_- = A_-(U),
+    \end{equation}
+    %
+    where the last equivalence is provided by the collar-gluing property of factorization homology. This observation is also what confirms (3).
+
+    Finally, we want to show that $\rho$ is fully faithful, i.e. we need to show that it is an equivalence of morphism spaces
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\alg{\disk_{/M}} (\catC)}(A, B) \simeq \mathsf{Hom}_{\mathscr{P}}((A_-, A_+), (B_-, B_+)),
+    \end{equation}
+    %
+    for each $A, B \in \alg{\disk_{/M}} (\catC)$. By the definition of algebras over an $\infty$-operad we have that $\alg{\disk_{/M}} (\catC)$ is a full $\infty$-subcategory of $\mathsf{Fun}(\disk_{/M}, \catC)$, which reduces the problem to showing that
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathsf{Hom}_{\mathsf{Fun}(\disk_{/M}, \catC)}(A, B) \arrow[r, bend left=4, "\rho"] & \mathsf{Hom}_{\mathscr{P}}((A_-, A_+), (B_-, B_+)) \arrow[l, bend left=4, "\gamma"]
+        \end{tikzcd}
+    \end{equation}
+    %
+    gives rise to an equivalence. Similar computations as in checking (2) and (3) above yield the necessary requirements.
+\end{proof}
+
+Together with \cref{thm:disk_alg=lcfa} we immediately have the following corollary:
+
+\begin{corollary}\label{cor:gluing_lcfas}
+    A collar-gluing of smooth manifolds $f: M \rightarrow [-1,1]$ induces an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \lcfa_M (\catC) \simeq \lcfa_{M_-} (\catC) \bigtimes_{\lcfa_{M_0 \times \mathbb{R}} (\catC)} \lcfa_{M_+}(\catC).
+    \end{equation}
+\end{corollary}
+
+\begin{remark}
+    The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
+\end{remark}
+
+\begin{example}\label{ex:reproduce_lcfas_on_S1}
+    Using results from \cite[prop.4.0.1]{cg2016}, namely inheritance from a covering space, \cite[sec.5.5]{ginot2015} characterizes locally constant factorization algebras on the circle $S^1$ as
+    %
+    \begin{equation}
+        \lcfa_{S^1} (\catC) \simeq \aut (\alg{\mathbb{E}_1} (\catC)),
+    \end{equation}
+    %
+    as $\mathbb{E}_1$-algebras together with a self-equivalence. \Cref{cor:gluing_lcfas} allows us to recover this nontrivial result. To wit, the circle can be exhibited as a collar-gluing $S^1 \cong \mathbb{R} \coprod_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod_{\mathbb{R} \sqcup \mathbb{R}} \mathbb{R}$. For locally constant factorization algebras this means that
+    %
+    \begin{equation}\label{eq:lcfas_on_S1_gluing}
+        \lcfa_{S^1} (\catC) \simeq \lcfa_{\mathbb{R}} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \alg{\mathbb{E}_1} (\catC).
+    \end{equation}
+    %
+    Since a disjoint union is a collar-gluing we also have that $\lcfa_{\mathbb{R} \sqcup \mathbb{R}} \simeq \lcfa_{\mathbb{R}} (\catC) \times \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \times \alg{\mathbb{E}_1} (\catC)$. Let's denote the restriction functors that restrict to the first and the second component of the disjoint union $\mathbb{R} \sqcup \mathbb{R}$ by $|_1$ and $|_2$ respectively. Going back to \cref{eq:lcfas_on_S1_gluing}, the data of a locally constant factorization algebra on $S^1$ is equivalent to the data of two $\mathbb{E}_1$-algebras $A$ and $B$ such that their restrictions $A|_1 = B|_1$ and $A|_2 = B|_2$ agree. Since all of these are $\mathbb{E}_1$-algebras there are equivalences with the restrictions forming
+    %
+    \begin{equation}
+        \begin{tikzcd}[row sep = small, column sep= small]
+            & A|_1 \arrow[r, phantom, "=", description] & B|_1 & \\
+            A \arrow[rd, phantom, "\simeq", sloped, description] \arrow[ru, phantom, "\simeq", sloped, description] & & & B \arrow[lu, phantom, "\simeq", sloped, description] \arrow[ld,  phantom, "\simeq", sloped, description] \\
+            & A|_2 \arrow[r, phantom, "=", description] & B|_2 &                        
+        \end{tikzcd}
+    \end{equation}
+    %
+    That is we have the data of two algebras $A$ and $B$, and two equivalences from $A$ to $B$. It is standard that this data is equivalent (in one direction by composing) to the data of an $\mathbb{E}_1$-algebra with a self-equivalence.
+\end{example}
+
+\begin{example}\label{ex:lcfas_on_S^n}
+    Just as for the circle, higher spheres can also be described as a collar-gluing $S^n \cong \mathbb{R}^n \coprod_{S^{n-1} \times \mathbb{R}} \mathbb{R^n}$. Thus, we can iterate the procedure from \cref{ex:reproduce_lcfas_on_S1} to get the locally constant factorization algebras on all higher spheres. For example, for the two-sphere $S^2$ we have
+    %
+    \begin{equation}
+        \lcfa_{\mathbb{R}^2}(\catC) \bigtimes_{\lcfa_{S^1 \times \mathbb{R}}(\catC)} \lcfa_{\mathbb{R}^2}(\catC) \simeq \alg{\mathbb{E}_2}(\catC) \bigtimes_{\alg{\mathbb{E}_1}( \aut (\alg{\mathbb{E}_1} (\catC))) } \alg{\mathbb{E}_2} (\catC),
+    \end{equation}
+    %
+    namely, a locally constant factorization algebra on $S^2$ equivalent to two $\mathbb{E}_2$-algebras, such that they restrict on the fattened equator to the same $\mathbb{E}_2$-algebra equipped with an $\mathbb{E}_1$-automorphism. It is nontrivial to describe this data in a simpler way as was possible for $S^1$. We can see, though, that for the higher spheres there are higher coherent equivalences that locally constant factorization algebras keep track of.
+\end{example}
+
+\begin{example}{\color{red} GO TO LATER CHAPTER}
+    We have an immediate simplification of the result we saw in \cref{thm:ginot_classif_Rn*}, because its right-hand side is of the exact form to be a collar-gluing. Namely, it's the collar-gluing which, somewhat trivially, exhibits $\mathbb{R}^n_*$ as $ \cong \mathbb{R}^n_* \coprod_{\mathbb{R}^n \setminus \{0\}} \mathbb{R}^n \setminus \{0\}$. The result then simplifies to
+    %
+    \begin{equation}
+        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \simeq \lcfa_{\mathbb{R}^n_*} (\catC). 
+    \end{equation}
+    %
+    This would confirm that the intuition we had from the 1 dimensional examples continues to hold in higher dimensions in a form that is easily parsable; introducing point defects on the manifold directly gives modules for the algebra.
+\end{example}
+
+
+
+\end{document}

@@ -1,0 +1,519 @@
+\documentclass[../text]{subfiles} 
+
+\begin{document}
+
+
+\section{Factorization Homology}\label{ch:fact_hom}
+
+Factorization homology (also topological chiral homology) is a construction that to the data of a smooth manifold $M$ and an algebra $A$ valued in a symmetric monoidal $\infty$-category $\catC$ assigns an object
+%
+\begin{equation}
+    \int_{M} A \in \catC.
+\end{equation}
+%
+In fact this is only the simplest variant of factorization homology. Variants that accommodate stratified manifolds instead of smooth ones and even $(\infty,n)$-categories instead of algebras have also been worked out. Fixing the algebra, the construction is functorial with respect to open embeddings in the manifold variable, which is the starting point to show that it is a chain level homology theory in a generalized sense, and giving the name. The initial chiral version was first introduced in \cite{bd2004}, and a topological version was introduced by \cite{lurie_ha}. Later, in \cref{thm:disk_alg=lcfa}, we will also see how factorization homology serves to construct factorization algebras. The theory of factorization homology has been deeply developed in \cite{af_fhtop, aft_fhstrat}, especially in the manner that we introduce it in here. A good introduction, is thus, given by \cite{af_primer}, which we will be following.
+
+
+In the following, and from now on, we let $\catC$ be a symmetric monoidal $\infty$-category that is \emph{$\otimes$-presentable} \cite{af_fhtop}, i.e. it satisfies:
+%
+\begin{enumerate}
+    \item $\catC$ is presentable: it admits colimits, and every object is a filtered colimit of compact objects\footnote{For the exact meaning of these terms we refer the reader to \cite[sec.5.3]{lurie_htt}. For us, it will suffice to give examples of $\infty$-categories that satisfy these requirements.}, and
+    \item the monoidal structure distributes over colimits: for all $c \in \catC$, the functor $c \otimes -: \catC \xrightarrow{} \catC$ takes colimit diagrams to colimit diagrams.
+\end{enumerate}
+
+\begin{remark}
+    For developing the theory of factorization homology the assumption that $\catC$ has all \emph{sifted}\footnote{Sifted colimits are colimits over a sifted indexing simplicial set $K$, which means that the diagonal functor of $K \neq \emptyset$ is final \[ \mathsf{colim}(K \xrightarrow{} K \times K \xrightarrow{} \catC) \simeq \mathsf{colim}(K \times K \xrightarrow{} \catC).\]} colimits, and the monoidal structure commutes with these, is usually enough. However, if we want the $\infty$-category of algebras valued in $\catC$ to inherit the properties of having sifted colimits that commute with the monoidal structure, then we must require that $\catC$ has \emph{all} (small) colimits. This will similarly be the case for factorization algebras. The stronger requirement also doesn't exclude any of the core examples that we are interested in. In fact, in some situations, the full requirement of presentability makes examples tractable.
+\end{remark}
+
+\begin{example}
+    The following are examples of $\otimes$-presentable categories:
+    %
+    \begin{enumerate}
+        \item chain complexes $\mathscr{C}\mathsf{h}_{\mathbb{k}}$ over a commutative ring $\mathbb{k}$, where equivalences are given by quasi-isomorphism. The symmetric monoidal structure can be both direct sum $\oplus$ or tensor product $\otimes$.
+        \item Any cocomplete, Cartesian closed $\infty$-category together with categorical product. (for example $\mathsf{Spaces}$ or $\cat$).
+    \end{enumerate}
+    %
+    In particular, $(\mathscr{C}\mathsf{h}_{\mathbb{k}}, \otimes)$ is the most useful for the purposes of mathematical physics, which is why it's the choice for the development in \cite{cg2016} and \cite{ginot2015}.
+\end{example}
+
+We also fix an $\infty$-category of basics $\bstr \xrightarrow{} \bsc$.
+
+
+
+\subsection{Disk Algebras}
+
+\begin{definition}
+    The symmetric monoidal $\infty$-category $\disk(\bstr) \subset \mfld(\bstr)$ is the smallest full symmetric monoidal $\infty$-subcategory containing $\bstr$. Namely, the objects of $\disk(\bstr)$ are disjoint unions of objects of $\bstr$.
+\end{definition}
+
+We will also need the ordinary version of this category in analogy to $\mfld$ and $\mfld[r]$.
+
+\begin{definition}
+    The symmetric monoidal category $\disk[r](\bstr) \subset \mfld[r](\bstr)$ is the smallest full symmetric monoidal $\infty$-subcategory containing 
+    %
+    \begin{equation}
+        \bstr \bigtimes\limits_{\mfld(\bstr)} \mfld[r](\bstr) \subset \mfld[r](\bstr).
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    Taking into account all categories of disks and manifolds defined up to now we have a commutative diagram in the $\infty$-category of symmetric monoidal $\infty$-categories $\cat^{\otimes}$
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \disk[r](\bstr) \arrow[r] \arrow[d] & \disk (\bstr) \arrow[d] \\
+            \mfld[r] (\bstr) \arrow[r] & \mfld (\bstr).
+        \end{tikzcd}
+    \end{equation}
+\end{remark}
+
+\begin{definition}
+    The $\infty$-category of disk algebras valued in $\catC$ is the $\infty$-category of symmetric monoidal functors
+    %
+    \begin{equation}
+        \alg{\disk(\bstr)} (\catC) := \mathsf{Fun}^{\otimes}(\disk(\bstr), \catC).
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    The exact specification of the above $\infty$-category is not immediate, but the explanations given in \cite[def.2.0.0.7]{lurie_ha}, \cite[rem.2.1.2.19]{lurie_ha} and \cite[def.2.1.3.7]{lurie_ha} clarify the matter. A succinct explanation is also given around \cite[def.1.11]{aft_fhstrat}. Informally, the objects will be symmetric monoidal functors from $\disk(\bstr)$ to $\catC$. These are given by functors $F:\disk(\bstr) \xrightarrow{} \catC$ together with maps
+    %
+    \begin{equation}\label{eq:symmon_maps}
+        F(U \sqcup V) \xrightarrow{\ \ \simeq \ \ } F(U) \otimes F(V),
+    \end{equation}
+    %
+    and such that the swap in $\disk(\bstr)$, $U \sqcup V \simeq V \sqcup U$, is sent to the swap in $\catC$, $F(U) \otimes F(V) \simeq F(V) \otimes F(U)$, in a way that is compatible with the maps in \cref{eq:symmon_maps}. A good informal explanation of this and other topics related to disk algebras can be found in the lecture notes \cite{tanaka20}.
+\end{remark}
+
+These algebras will be the algebraic input of factorization homology. To convince ourselves that this is not a huge limitation on the types of algebras that can be evaluated we have:
+%
+\begin{proposition}[{\cite[prop.2.12]{aft_fhstrat}}]\label{prop:framed_ndisk=En}
+    Let $(\bstr \xrightarrow{} \bsc) = (* \xrightarrow{\{ \mathbb{R}^n\}} \bsc)$, namely the $\infty$-category of basics describing framed smooth $n$-manifolds. There is an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \alg{\disk(\bstr)} (\catC) \simeq \alg{\mathbb{E}_n} (\catC).
+    \end{equation}
+    %
+    Furthermore, if the $\infty$-category of basics is rather $(\bstr \xrightarrow{} \bsc) = (\mathsf{BO}(n) \xrightarrow{\{ \mathbb{R}^n\}} \bsc)$, the one describing unstructured smooth manifolds, then there is an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \alg{\disk(\bstr)} (\catC) \simeq \alg{\mathbb{E}_n}(\catC)^{\mathsf{O}(n)},
+    \end{equation}
+    %
+    with the (homotopy) $\mathsf{O}(n)$-invariants, where the action of $\mathsf{O}(n)$ is given by change of framing.
+\end{proposition}
+
+\begin{remark}
+    For more details on $\mathbb{E}_n$-algebras and why these algebras encompass large portions of the examples one usually cares about see \cite[sec.5.1]{lurie_ha}. %or alternatively in appendix \cref{app:En_algebras}. 
+    Roughly speaking, $\mathbb{E}_1$-algebras are homotopy associative algebras and with increasing $n$ we get increasing levels of homotopy commutativity. Having said that, the first part of the proposition is just the classical statement that the little $n$-disks operad and the little $n$-cubes operad are equivalent.
+\end{remark}
+
+\begin{definition}
+    For $M \in \mfld(\bstr)$ a $\bstr$-manifold the slice $\infty$-category of disks over $M$ is defined by
+    %
+    \begin{equation}
+        \disk(\bstr)_{/M} := \disk(\bstr) \bigtimes\limits_{\mfld(\bstr)} \mfld(\bstr)_{/M}.
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    $\disk(\bstr)$ is a symmetric monoidal $\infty$-category, however there is no way to inherit this structure to $\disk(\bstr)_{/M}$. Intuitively, this is because disjoint union cannot serve as a monoidal structure now that the disks are equipped with an embedding into a given manifold $M$; they could be such that they intersect. However, as explained in \cite[not.1.21]{aft_fhstrat}, we \emph{can} equip $\disk(\bstr)_{/M}$ with the structure of an $\infty$-operad because the symmetric monoidal unit $\emptyset$ of $\disk(\bstr)$ and $\mfld(\bstr)$ is initial. This is also the case for $\mfld(\bstr)_{/M}$ itself.
+
+    In more details, following \cite[ex.2.5]{aft_fhstrat}, objects of $\disk(\bstr)_{/M}$ are finite sets of open embeddings of disks $(U \xhookrightarrow{} M)$. A morphism between two open embeddings $(U \xhookrightarrow{} M) \xrightarrow{} (V \xhookrightarrow{} M)$ is specified by an open embedding $U \xhookrightarrow{} V$ together with an isotopy between $U \xhookrightarrow{} M$ and $U \xhookrightarrow{} V \xhookrightarrow{} M$. A multi-morphism $((U_1 \xhookrightarrow{} M), (U_2 \xhookrightarrow{} M)) \xrightarrow{} (V \xhookrightarrow{} M)$ is given by an open embedding $U_1 \sqcup U_2 \xhookrightarrow{} V$ together with two isotopies from $U_1 \xhookrightarrow{} M$ to $U_1 \xhookrightarrow{} U_1 \sqcup U_2 \xhookrightarrow{} M$, and from $U_2 \xhookrightarrow{} M$ to $U_2 \xhookrightarrow{} U_1 \sqcup U_2 \xhookrightarrow{} M$.
+\end{remark}
+
+\begin{remark}
+    The constructions of the slice category also holds, word for word, in the case of $\disk[r](\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$. The fact that they are $\infty$-operads is also true. The key difference is what the objects and multi-morphisms are, say, in $\disk[r](\bstr)_{/M}$ as compared to $\disk(\bstr)_{/M}$. The objects are the same as before, i.e. finite sets of open embeddings into $M$. However, the multi-morphisms now contain less information. A morphism $(U \xhookrightarrow{} M) \xrightarrow{} (V \xhookrightarrow{} M)$ is specified only by open embedding $U \xhookrightarrow{} V$, such that $(U \xhookrightarrow{} M) = (U \xhookrightarrow{} V \xhookrightarrow{} M)$, and no further information. Similarly, for the multi-morphisms too.
+
+    That is, a multi-morphism in $\disk(\bstr)_{/M}$ is a diagram in $\disk (\bstr)$
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \coprod\limits_{i} U_i \arrow[rr] \arrow[rd] & & U \arrow[ld] \\
+            & M, &
+        \end{tikzcd}
+    \end{equation}
+    %
+    which is homotopy commutative, while in $\disk[r](\bstr)_{/M}$ a morphism is a diagram as above that commutes on the nose\footnote{Regarding notation, \cite{lurie_ha} introduces both $\infty$-operads $\disk(\bstr)_{/M}$ and $\disk[r](\bstr)_{/M}$, however there they are denoted by $\mathbb{E}_M^\otimes$ and $\mathrm{N}(\mathrm{Disk}(M))^\otimes$, respectively.}.
+\end{remark}
+
+
+\begin{definition}
+    We will refer to the $\infty$-category of algebras over the $\infty$-operads $\disk(\bstr)_{/M}$, $\disk[r](\bstr)_{/M}$, $\mfld(\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$ in the usual way as
+    %
+    \begin{align}
+        &\alg{\disk(\bstr)_{/M}} (\catC)& &\alg{\disk[r](\bstr)_{/M}} (\catC)& &\alg{\mfld(\bstr)_{/M}} (\catC)& &\alg{\mfld[r](\bstr)_{/M}} (\catC).&
+    \end{align}
+\end{definition}
+
+\begin{remark}
+    These algebras are defined as described in \cite{lurie_ha} for a general $\infty$-operad. For a superficial understanding what will be most important for us is that algebras $\alg{\mathscr{O}} (\mathscr{C})$, where $\mathscr{O}$ and $\mathscr{C}$ are $\infty$-operads, are described as functors $\mathscr{O} \xrightarrow{} \mathscr{C}$ that satisfy some additional requirements\footnote{Specifically, a functor $F$ between the underlying $\infty$-categories is an algebra if it lies over $\mathsf{Fin}_*$
+    %
+    \begin{equation}
+        \begin{tikzcd}[ampersand replacement=\&]
+            \mathscr{O} \arrow[rr, "F"] \arrow[rd] \& \& \mathscr{C} \arrow[ld] \\
+            \& \mathsf{Fin}_* \&
+        \end{tikzcd},
+    \end{equation}
+    %
+    and if it carries inert morphisms in $\mathscr{O}$ to inert morphisms in $\mathscr{C}$.
+    }. The following propositions from \cite{lurie_ha} gives another perspective on how to look at these algebras.
+\end{remark}
+
+\begin{proposition}[{\cite[prop.2.2.4.9]{lurie_ha}}]
+    Let $\mathscr{O}$ be an $\infty$-operad and let $\catC$ be a symmetric monoidal $\infty$-category. Then there is an equivalence
+    %
+    \begin{equation}
+        \mathsf{Fun}^\otimes (\mathsf{Env}(\mathscr{O}), \catC) \xrightarrow{\ \ \simeq \ \ } \alg{\mathscr{O}} (\catC),
+    \end{equation}
+    %
+    between the $\infty$-categories of $\mathscr{O}$-algebras in $\catC$ and symmetric monoidal functors from the symmetric monoidal envelope\footnote{A full definition of the symmetric monoidal envelope of an $\infty$-operad can be found in \cite[sec.2.2.4]{lurie_ha}. For our purposes the two important facts about $\mathsf{Env}$ are that it is a left adjoint to the forgetful functor $U: \cat^\otimes \xrightarrow{} \mathscr{O}\mathsf{p}_{\infty}$, and that the underlying $\infty$-category of $\mathsf{Env} (\mathscr{O})$ is the $\infty$-subcategory of $\mathscr{O}$ spanned by the active morphisms. Informally, the symmetric monoidal structure of $\mathsf{Env}(\mathscr{O})$ is given by concatenating these active morphisms \cite[rem.2.2.4.6]{lurie_ha}.} of $\mathscr{O}$ to $\catC$.
+\end{proposition}
+
+\begin{remark}\label{rem:disk_b=disk_bsc}
+    The $\infty$-operad $\disk(\bstr)_{/M}$, so defined, does not actually depend on the $\bstr$-structure; there is an equivalence
+    %
+    \begin{equation}
+        \disk(\bstr)_{/M} \simeq \disk(\bsc)_{/M},
+    \end{equation}
+    %
+    where $M$ on the right-hand side is the underlying stratified manifold of the $\bstr$-manifold also called $M$. This is essentially because the $\infty$-cateogry of basics $\bstr \xrightarrow{} \bsc$ is defined as a right fibration. Intuitively, those disks that have an open embedding into $M$ admit a $\bstr$-structure by restriction since $M$ admits one. From here, since over $\infty$-groupoids are contractible, there is an equivalence between the singleton space consisting of this inherited $\bstr$-structure and the space of $\bstr$-structures the disk originally had. The argument, of course, holds for $\disk(\bstr)_{/M}$ too, as well as $\mfld(\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$. This is why, when talking about these slice $\infty$-operads we will simplify the notation down to $\disk_{/M}$, $\disk[r]_{/M}$, $\mfld_{/M}$ and $\mfld[r]_{/M}$.
+\end{remark}
+
+Essentially the same argument as above, namely that over $\infty$-groupoids are contractible, also has another important consequence that we will need to make use of later:
+
+\begin{lemma}\label{lem:double_slice}
+    Every open embedding $e: N \xhookrightarrow{} M$ induces an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        (\mfld_{/M})_{/e} \simeq \mfld_{/N}.
+    \end{equation}
+    %
+    The same holds for $\mfld[r]$, as well as, $\disk$ and $\disk[r]$.
+\end{lemma}
+
+The next result is of key importance to the technical side of the theory, and will be used extensively throughout. It alone, is essentially the reason for the appearance of constructible bundles in a lot of later developments.
+
+\begin{lemma}[{\cite[lem.2.24]{aft_fhstrat}}]\label{lem:f^-1}
+    Let $f: M \xrightarrow{} N$ be a constructible bundle. There is a functor of $\infty$-operads
+    %
+    \begin{equation}
+        f^{-1}: \disk_{/N} \xrightarrow{} \mfld_{/M},
+    \end{equation}
+    %
+    which acts on objects by sending $V \xhookrightarrow{} N$ to $f^{-1}V \xhookrightarrow{} M$.
+\end{lemma}
+
+\begin{remark}
+    Because of \cref{rem:disk_b=disk_bsc}, the above construction works for manifolds with any general $\bstr$-structure, with no further requirements on the constructible bundle $f$.
+\end{remark}
+
+
+\subsection{Definition of Factorization Homology}
+
+In the previous subsection we defined and explored the algebraic input of factorization homology. We now know that disk algebras are defined at their core as a functor that evaluates disks. Thus, we now gain the appreciation that factorization homology is a way to extend the input of this functor to all stratified manifolds instead of just stratified disks. It comes as no surprise then that factorization homology is defined as a Kan extension:
+
+\begin{definition}
+    \emph{(Absolute) factorization homology} is a functor that is a left adjoint to the restriction along $\disk(\bstr) \xhookrightarrow{} \mfld(\bstr)$
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \int : \mathsf{Fun}^\otimes (\disk(\bstr), \catC) \arrow[r, bend left=8] & \mathsf{Fun}^\otimes (\mfld(\bstr), \catC) \arrow[l, bend left=8].
+        \end{tikzcd}
+    \end{equation}
+    %
+    Similarly, given a stratified manifold $M$, \emph{(relative) factorization homology} is a functor that is a left adjoint to the restriction along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \int : \alg{\disk_{/M}} (\catC) \arrow[r, bend left=10] & \alg{\mfld_{/M}} (\catC) \arrow[l, bend left=10].
+        \end{tikzcd}
+    \end{equation}
+\end{definition}
+
+The bulk of the work is then to show that such an adjoint exists and to try to find more concrete forms of factorization homology that would be easier to compute with. Being a left Kan extension one guess on the side of computation would be that we can find its values via colimits, as is usual for pointwise left Kan extensions. Determining under which assumptions factorization homology, in both its forms, exists and is given by a colimit is one of the major results of \cite{af_fhtop} (for the smooth case) and \cite{aft_fhstrat} (for the stratified case). Specifically lemmas \cite[lem.2.16]{aft_fhstrat} and \cite[lem.2.17]{aft_fhstrat} are great encapsulations of all the conditions that are needed.
+
+The upshot is that, with our setup and assumptions on $\catC$, the guess that the value of factorization homology can be calculated by a colimit is correct and given by the standard expressions for left Kan extensions
+%
+\begin{equation}
+    \int_M A \simeq \mathsf{colim} \left(\disk(\bstr)_{/M} \xrightarrow{} \disk(\bstr) \xrightarrow{A} \catC \right)
+\end{equation}
+%
+in the absolute case, and
+%
+\begin{equation}
+    \int_{N \xhookrightarrow{} M} A \simeq \mathsf{colim} \left((\disk_{/M})_{/(N \xhookrightarrow{} M)} \xrightarrow{} \disk_{/M} \xrightarrow{A} \catC \right)
+\end{equation}
+%
+in the relative case. Namely, the left Kan extension of underlying $\infty$-categories lifts to a symmetric monoidal, in the absolute case, and operadic, in the relative case, left Kan extension. In the relative case, we will almost always abuse notation and write $\int_N A$ instead of $\int_{N \xhookrightarrow{} M} A$, but because of \cref{lem:double_slice} this is not much of an abuse. Furthermore, factorization homology is also shown to be fully faithful due to this being true for the inclusion $\disk(\bstr) \xrightarrow{} \mfld(\bstr)$, as well as, the relative version with slices.
+
+\begin{remark}
+    In fact, lemmas \cite[lem.2.16]{aft_fhstrat} and \cite[lem.2.17]{aft_fhstrat} are general enough that they already encompass the alternative definitions with $\disk[r]$ and $\disk[r]_{/M}$, so factorization homology is just as easily defined in that context too.
+\end{remark}
+
+
+
+\subsection{Disk Algebras over Oriented Intervals}\label{ch:fh_on_intervals}
+
+We now focus on describing disk algebras over oriented intervals with and without boundary. Not only is this an important example for what disk algebras look like, but it's also important in defining what it means to say that factorization homology is excisive. The following constructions can be found in the originals \cite{af_fhtop,aft_fhstrat}.
+
+We want to show that disk algebras with $\mathsf{D}_1^{\partial, \mathsf{or}}$-structure, as defined in \cref{con:d_1^bor_structure}, can be described algebraically. For this we set up two $\infty$-operads $\mathsf{Assoc^{RL}}$ and $\mathsf{O^{RL}}$.
+
+\begin{construction}\label{con:assocRL}
+    Let $\mathsf{Assoc^{RL}}$ denote the multicategory\footnote{A \emph{multicategory} is like an (ordinary) category except that morphisms (now called multi-morphisms) are allowed to have multiple objects in their domain while still having only a single object in their codomain.} with three objects $R$, $A$ and $L$. To describe the multi-morphisms let $I$ be an arbitrary finite list of the objects of $\mathsf{Assoc^{RL}}$. We have:
+    %
+    \begin{enumerate}
+        \item $\mathsf{Assoc^{RL}}(I, A)$ is empty if either $R$ or $L$ appear on the list $I$; otherwise it is given by the number of total orders of $I$.
+        \item $\mathsf{Assoc^{RL}}(I, R)$ is empty if either $L$ appears on the list or $R$ appears on the list more than once; otherwise it is given by the number of total orders of $I$ such that the possible element $R$ is a minimum.
+        \item $\mathsf{Assoc^{RL}}(I, L)$ is empty if either $R$ appears on the list or $L$ appears on the list more than once; otherwise it is given by the number of total orders of $I$ such that the possible element $L$ is a minimum.
+    \end{enumerate}
+    %
+    Composition of multi-morphisms is given by concatenation. 
+\end{construction}
+
+\begin{remark}
+    More informally, what the \cref{con:assocRL} says is that the only multi-morphism domains possible are $\emptyset$, $(A,A,\dots,A)$, $(R,A,\dots,A)$ or $(A,\dots,A, L)$ and that there is one multi-morphism for each permutation of the $A$ entries. This makes it clear that algebras over this $\infty$-operad will be unital, (homotopy) associative algebras, together with a unital left and a unital right module.
+\end{remark}
+
+\begin{construction}
+    Let $\mathsf{O^{RL}}$ be the (ordinary) category whose objects are totally ordered finite sets $(I, \leq)$ with two distinguished subsets $R \subset I \supset L$, such that each element of $R$ is a minimum and each element of $L$ is a maximum (consequently, $|R| \leq 1$ and $|L| \leq 1$). The morphisms $f:(I, \leq, R, L) \xrightarrow{} (I', \leq', R', L')$ are order preserving maps $f: (I,\leq) \xrightarrow{} (I', \leq')$ which also preserve the distinguished subsets $f(R) = R'$, $f(L) = L'$. Concatenation of total orders gives $\mathsf{O^{RL}}$ a multicategory structure.
+\end{construction}
+
+\begin{remark}
+    The $\infty$-operads $\mathsf{Assoc^{RL}}$ and $\mathsf{O^{RL}}$ are clearly related, though there are differences. The major difference is that $\mathsf{O^{RL}}$ has objects that have both a distinguished maximal and distinguished minimal element, while in $\mathsf{Assoc^{RL}}$ only one of them exists at a time. In fact, we will see that their symmetric monoidal envelopes are equivalent. Therefore, considering them separately also gives some intuition for the symmetric monoidal envelope, so we choose to do this for expositional reasons. The following propositions make it geometrically clear why this is the case.
+\end{remark}
+
+\begin{proposition}\label{prop:disk1bor=assocRL}
+    There are equivalences of symmetric monoidal $\infty$-categories between $\mathsf{D}_1^{\partial, \mathsf{or}}$-structured disks and the symmetric monoidal envelope of $\mathsf{Assoc^{RL}}$
+    %
+    \begin{equation}
+        \disk[r] (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow[\simeq]{\ \ [-] \ \ } \mathsf{Env} (\mathsf{Assoc^{RL}}).
+    \end{equation}
+    %
+    The functor $[-]$ assigns $[\hoint] = R$, $[\mathbb{R}] = A$ and $[\mathbb{R}_{\leq 0}] = L$.
+\end{proposition}
+
+\begin{proof}
+    The first equivalence comes by inspection of the morphism spaces which are discrete in this particular case. Since $\mathsf{Assoc^{RL}}$ is also born of a discrete nature we only need to find a bijection of morphism spaces. By construction of $\mathsf{Assoc^{RL}}$ such a bijection is immediate.
+\end{proof}
+
+\begin{proposition}\label{prop:disk1bor_over_int=ORL}
+    There are equivalences of $\infty$-operads
+    %
+    \begin{equation}
+        \disk[r] (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]} \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]} \xrightarrow{\ \ \simeq \ \ } \mathsf{O^{RL}} \quad
+    \end{equation}
+    %
+    that descend to the equivalences of \cref{prop:disk1bor=assocRL}.
+\end{proposition}
+
+\begin{proof}
+    As in the proof of \cref{prop:disk1bor=assocRL} the first equivalence is clear. The idea to keep in mind is that since the boundary of $[-1,1]$ consists of a left point and a right point, there can only be oriented embeddings of disks into $[-1,1]$ with at most one of each of $\left[-1,1 \right)$ and $\left( -1, 1 \right]$. These are then clearly the objects that map to the respective distinguished subsets. Observing the definition of $\mathsf{O^{RL}}$ clearly offers a bijections on morphism spaces since they are by definition order preserving maps, and the embeddings are oriented. It is trivial to check that these maps lie over $\mathsf{Fin}_*$ and that they send active morphisms to active morphisms completing the proof.
+\end{proof}
+
+In fact in the simple case of intervals, that we're considering here, even more is true:
+
+\begin{proposition}\label{prop:env_ORL=env_assocRL}
+    There are equivalences of symmetric monoidal $\infty$-categories
+    %
+    \begin{equation}
+        \mathsf{Env}(\mathsf{O^{RL}}) \xrightarrow{\ \ \simeq \ \ } \mathsf{Env}(\disk (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]}) \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow{\ \ \simeq \ \ } \mathsf{Env} (\mathsf{Assoc^{RL}})
+    \end{equation}
+\end{proposition}
+
+\begin{proof}
+    The only thing to show is the middle equivalence. This follows from \cref{lem:disk/M_to_disk}, which we will introduce later. 
+\end{proof}
+
+---------------
+
+\begin{proposition}\label{prop:barconst=intinterval}
+    There is an equivalence of functors between the two-sided bar construction
+    %
+    \begin{equation}
+        \mathsf{B}: \alg{\mathsf{Assoc^{RL}}}(\catC) \xrightarrow{} \catC
+    \end{equation}
+    %
+    and factorization homology over the oriented closed interval
+    %
+    \begin{equation}
+        \int_{[-1,1]}: \alg{\mathsf{Assoc^{RL}}}(\catC)\simeq \alg{\disk_{/[-1,1]}} (\catC) \xrightarrow{\ \int \ } \alg{\mfld_{/[-1,1]}} (\catC) \xrightarrow{\ \mathsf{ev}_{[-1,1]} \ } \catC.
+    \end{equation}
+    %
+    In particular, given a unital, (homotopy) associative algebra $A$, a unital right $A$-module $R$ and a unital left $A$-module $L$, there is an equivalence of objects
+    %
+    \begin{equation}
+        \int_{[-1,1]} (R, A, L) \xrightarrow{\ \ \simeq \ \ } R \bigotimes\limits_{A} L.
+    \end{equation}
+\end{proposition}
+
+\begin{remark}
+    The two-sided bar construction here gives the left derived tensor product. We, however, do not make a notational distinction between this left derived tensor product and the standard one since we should be clear from context. The left derived version will always appear due to some two-sided bar construction. 
+\end{remark}
+
+\begin{proof}
+    The equivalence at the level of objects is exactly \cite[prop.2.34]{aft_fhstrat}, whose proof we recount here for completeness. 
+
+    For the purposes of the proof introduce the shorthand notation $\mathscr{D} := \disk(\mathsf{D}_1^{\partial, \mathsf{or}})$. There is a functor $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ from the opposite of the simplex category, whose essential image consists of those objects for which the distinguished subsets with a maximal and minimal element are non-empty. This functor is final\footnote{A functor $F: \catC \xrightarrow{} \mathscr{D}$ between $\infty$-categories is final if precomposition with it preserves colimits \[ \mathsf{colim}(G \circ F) \simeq \mathsf{colim}(G).\]} because adjoining a minimum and maximum gives a left adjoint to it. We recognize the simplicial object
+    %
+    \begin{equation}
+        \mathsf{B}_{\bullet}(R, A, L): \Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}} \simeq \mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC
+    \end{equation}
+    %
+    as the two-sided bar construction. Since $\catC$ has colimits and $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ is final, the geometric realization of the above is
+    %
+    \begin{equation}
+        R \bigotimes\limits_{A} L = |\mathsf{B}_{\bullet}(R, A, L)| \simeq \mathsf{colim} (\mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC) = \int_{[-1,1]} (R, A, L).
+    \end{equation}
+    %
+    The naturality of this construction is immediate from the above presentation.
+\end{proof}
+
+%\begin{proposition}[{\cite[prop.2.34]{aft_fhstrat}}]\label{prop:barconst=intinterval}
+%    Let $A$ be a unital, (homotopy) associative algebra in $\catC$, $R$ be a unital right $A$-module in $\catC$ and $L$ be a unital left $A$-module in $\catC$. Using \cref{prop:disk1bor=assocRL} regard this data as the data of a symmetric monoidal functor $(R, A, L): \disk (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow{} \catC$. Then there is a canonical equivalence in $\catC$ between factorization homology over the closed interval and the two-sided bar construction
+%    %
+%    \begin{equation}
+%        \int_{[-1,1]} (R, A, L) \xrightarrow{\ \ \simeq \ \ } R \bigotimes\limits_{A} L.
+%    \end{equation}
+%\end{proposition}
+
+
+
+\subsection{Pushforward}
+
+The construction of \cref{lem:f^-1} gives a functor which allows us to change the stratified manifold over which we work. This brings about the important operation of pushforward:
+
+\begin{theorem}[{\cite[thm.2.25]{aft_fhstrat}}]\label{thm:fh_pushforward}
+    Let $f: M \xrightarrow{} N$ be a constructible bundle. There is a pushforward functor
+    %
+    \begin{equation}
+        f_*: \alg{\disk_{/M}}(\catC) \xrightarrow{\quad} \alg{\disk_{/N}}(\catC),
+    \end{equation}
+    %
+    which takes a $\disk_{/M}$-algebra $A$ to
+    %
+    \begin{equation}
+        f_*A: \disk_{/N} \xrightarrow{f^{-1}} \mfld_{/M} \xrightarrow{\int_{-} A} \catC.
+    \end{equation}
+    %
+    This functor is such that there is a canonical equivalence in $\catC$
+    %
+    \begin{equation}
+        \int_{M} A \simeq \int_{N} f_* A
+    \end{equation}
+\end{theorem}
+
+
+\begin{remark}
+    In particular, the above applies to disk algebras with any $\bstr$-structure, since a $\disk(\bstr)$-algebra $A$ can be viewed as a $\disk(\bstr)_{/M}$-algebra for any $\bstr$-manifold $M$ by
+    %
+    \begin{equation}
+        \disk(\bstr)_{/M} \xrightarrow{} \disk(\bstr) \xrightarrow{A} \catC.
+    \end{equation}
+\end{remark}
+
+
+
+
+
+
+\subsection{\texorpdfstring{$\otimes$}{tensor}-excision and Homology Theories}
+
+Now that we have a pushforward operation, we can finally explicitly state what excision is in this context. This is because a collar-gluing of a stratified manifold $M$ is defined exactly as a constructible bundle $f: M \xrightarrow{} [-1,1]$.
+
+\begin{definition}
+    Let $F: \mfld(\bstr) \xrightarrow{} \catC$ be a symmetric monoidal functor. Also let $M$ be a $\bstr$-manifold and $f: M \xrightarrow{} [-1,1]$ be a collar-gluing of $M$. This data allows for the construction of a canonical morphism in $\catC$
+    %
+    \begin{equation}
+        F(M_-) \bigotimes\limits_{F(M_0 \times \mathbb{R})} F(M_+) \xrightarrow{\quad} F(M),
+    \end{equation}
+    %
+    where $M_-$, $M_0$ and $M_+$ are as usual. If this morphism is an equivalence for each collar-gluing then we say that $F$ satisfies $\otimes$-excision.
+\end{definition}
+
+\begin{proof}
+    The definition comes with a claim that the canonical morphism in $\catC$ exists. This we need to show. The data of a collar-gluing $f: M \xrightarrow{} [-1,1]$ allows us to pushforward $F$ to
+    %
+    \begin{equation}
+        f_*F: \disk (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]} \xrightarrow{f^{-1}} \mfld(\bstr)_{/M} \xrightarrow{} \mfld(\bstr) \xrightarrow{F} \catC.
+    \end{equation}
+    %
+    By \cref{prop:disk1bor=assocRL} we know that this data defines an $\mathsf{Assoc^{RL}}$-algebra in $\catC$ whose right module, algebra and left module are exactly $F(M_-)$, $F(M_0 \times \mathbb{R})$ and $F(M_+)$. Further using \cref{prop:barconst=intinterval} we have
+    %
+    \begin{equation}
+        F(M_-) \bigotimes\limits_{f(M_0 \times \mathbb{R})}  F(M_+)\simeq \int_{[-1,1]} f_* F \xrightarrow{\quad} F (f^{-1}[-1,1]) = F(M),
+    \end{equation}
+    %
+    where the morphism is given by the fact that factorization homology is a colimit.
+\end{proof}
+
+
+\begin{remark}
+    A functor $F: \mfld(\bstr) \xrightarrow{} \catC$ that satisfies $\otimes$-excision and respects sequential colimits is called a homology theory in the terminology of \cite{af_fhtop}. We will not comment on this direction of development further except as a justification for the name of factorization homology. If in the above proof $F$ was given by factorization homology, then in the final step the pushforward would provide the further necessary equivalence so that:
+\end{remark}
+
+\begin{proposition}[{\cite{aft_fhstrat}}]\label{prop:homology=disk_alg}
+    Factorization homology is a homology theory. In particular, for a collar-gluing of a $\bstr$-manifold $M$, and a $\disk(\bstr)$-algebra $A$
+    %
+    \begin{equation}
+        \int_{M_-} A  \bigotimes\limits_{\int_{M_0 \times \mathbb{R}} A} \int_{M_+} A \xrightarrow{\ \ \simeq \ \ } \int_M A.
+    \end{equation}
+\end{proposition}
+
+\begin{remark}
+    The fact that factorization homology is $\otimes$-excisive is extremely computationally useful, and is the way we evaluate factorization homology in practice.
+\end{remark}
+
+
+\begin{example}
+    Checking the definitions we can see that evaluating basics $U \in \disk(\bstr) \xhookrightarrow{} \mfld(\bstr)$ is the same as simply evaluating the disk with the disk algebra. This is simply because factorization homology is a left Kan extension.
+
+    The first nontrivial example is then the oriented circle. We know that the algebras that we will be evaluating with are $\disk (\mathsf{D}_1^{\partial, \mathsf{or}})$-algebras (or even simpler the restriction to $\disk (\mathsf{D}_1^{\mathsf{or}})$ the ones without boundary). The oriented circle can be presented as a collar-gluing
+    %
+    \begin{equation}
+        S^1 \cong \mathbb{R} \coprod\limits_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod\limits_{\bar{\mathbb{R}}\sqcup \mathbb{R}} \mathbb{R},
+    \end{equation}
+    %
+    where $\bar{\mathbb{R}}$ denotes $\mathbb{R}$ with the opposite orientation to the standard one. Factorization homology then gives
+    %
+    \begin{equation}
+        \int_{S^1} A \simeq \int_{\mathbb{R}} A \bigotimes\limits_{\int_{\mathbb{R}} A \otimes \int_{\bar{\mathbb{R}}} A} \int_{\mathbb{R}} A \simeq A \bigotimes\limits_{A \otimes A^{\mathsf{op}}} A,
+    \end{equation}
+    %
+    where the result is known in the literature as the Hochschild homology (or more properly chains) of the associative algebra $A$.
+\end{example}
+
+
+\subsection{Classification of \texorpdfstring{$\disk(\mathsf{D}_{d \subset n}^{*})$}{diskdn*}-algebras}
+
+
+All of the above statements about factorization homology and disk algebras did not rely heavily on the stratified structure which we introduced them with. Namely, had we stuck to smooth manifolds (possibly with boundary) we could have made similar statements. In this section we describe a result that clearly uses the stratified structure, and quantifies some additional information it can encode. It is a classification statement about disk algebras whose structure $\mathsf{D}_{d \subset n}^*$ is provided by \cref{def:framed_d_under_n_sructure}.
+
+\begin{theorem}[{\cite[prop.4.8]{aft_fhstrat}}]\label{thm:classif_disk_d_under_n*_alg}
+    There is a pullback diagram
+    %
+    \begin{equation}
+        \begin{tikzcd}[row sep=large, column sep = large]
+            \alg{\disk(\mathsf{D_{d+1}^*})} \left(\int_{S^{n-d-1} \times \mathbb{R}^{d+1}} A, \mathsf{Z}(B) \right) \arrow[r] \arrow[d] & \alg{\disk(\mathsf{D}_{d \subset n}^*)} \arrow[d] \\
+            * \arrow[r, "{\{(A, B)\}}"] & \alg{\disk(\mathsf{D}_{n}^*)} \times \alg{\disk(\mathsf{D}_d^*)},
+        \end{tikzcd}
+    \end{equation}
+    %
+    where we have omitted the target $\infty$-category $\catC$ for clarity. In other words, the data of a $\disk(\mathsf{D}_{d \subset n}^*)$-algebra is equivalent to giving a triple $(A, B, \alpha)$, of a $\disk(\mathsf{D}_n^*)$-algebra $A$, a $\disk(\mathsf{D}_d^*)$-algebra $B$ and a map of $\disk(\mathsf{D}_{d+1}^*)$-algebras
+    %
+    \begin{equation}
+        \alpha: \int_{S^{n-d-1} \times \mathbb{R}^{d+1}} A \xrightarrow{\ \ \quad} \mathsf{Z} (B).
+    \end{equation}
+\end{theorem}
+
+\begin{remark}
+    The above theorem is a slight generalization of, and heavily relies on, the proof of the higher Deligne conjecture on Hochschild cohomology as in \cite[sec.5.3]{lurie_ha}. Thus, from \cref{prop:framed_ndisk=En}, we know that it is very important to the theorem to work with framed disks since these are the ones that reproduce the $\mathbb{E}_n$-algebras of the higher Deligne conjecture. The proof of the proposition is not easily generalizable to other tangential structures. The associative algebra $\mathsf{Z} (B)$ is the center of $B$ as defined in \cite[def.5.3.1.6]{lurie_ha}, so that even the statement, which implies that $\mathsf{Z}(B)$ is more than associative, relies on the special structure provided by framing.  
+\end{remark}
+
+\begin{remark}
+    By definition, the center $\mathsf{Z}(B)$ is the universal object that acts on $B$, i.e. all objects that act on $B$ factor through the action of the center $\mathsf{Z}(B)$ on $B$. Keeping this in mind, we see that, informally, \cref{thm:classif_disk_d_under_n*_alg} is saying that the structure of coupling the defect algebra $B$ to the bulk algebra $A$ is by giving $B$ a suitable module structure over $A$. The complication then lies in proving what this suitable module structure is. 
+\end{remark}
+
+
+
+\end{document}

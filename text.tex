@@ -1,0 +1,256 @@
+% Run only with XeLaTeX!
+%---------------------------------------------------------------------
+%	FORMATING AND TYPESETTING
+%---------------------------------------------------------------------
+
+% Set document class
+\documentclass[12pt,a4paper]{article}
+
+% Option to change margin size
+\usepackage[margin=2cm]{geometry}
+
+% Font and encoding settings
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc} not necessary with xelatex?
+\usepackage{yfonts} % germanic fonts (fraktur...)
+%\defaultfontfeatures{Ligatures=TeX} %??
+
+% Footnotes
+\usepackage[stable]{footmisc}
+
+% Indentation and spacing
+\usepackage{indentfirst} % indentation
+\usepackage{enumitem}[leftmargin=0pt] % spacing
+\setlist{nosep}
+
+% Formating of titles
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\small\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\small\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\small\bfseries}{\thesubparagraph}{1em}{}
+\usepackage[titletoc]{appendix}
+
+% Math typesetting packages
+\usepackage{amsmath, amssymb, amsthm, mathtools, commath}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % makes \mathbb{1} work and changes font of mathbb
+\usepackage[mathscr]{euscript} % euler script font
+\usepackage{tikz-cd} % tikz commutative diagrams
+\usepackage{thmtools, thm-restate} % theorem tools, especially restatable
+
+\AtBeginDocument{\renewcommand\setminus{\smallsetminus}} % \setminus doesn't work in unicode-math 
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	GRAPHICS
+%---------------------------------------------------------------------
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{pdfpages} % for inserting pdf pages
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%---------------------------------------------------------------------
+
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\renewcommand*{\bibfont}{\small}
+\addbibresource{text.bib}
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	HYPERLINKS
+%---------------------------------------------------------------------
+
+% Define the colors
+\usepackage{xcolor}
+\definecolor{brown}{HTML}{CD853F}
+\definecolor{blue}{HTML}{4169E1}
+\definecolor{green}{HTML}{2E8B57}
+
+% Setup options for hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true, linkcolor=black, breaklinks=true,
+linktoc=all, bookmarksnumbered=true,
+urlcolor=brown, linkcolor=blue, citecolor=green, % Link colors
+}
+
+% Referencing package
+\usepackage{cleveref}
+\crefname{section}{\S\!}{\S\S\!}
+\Crefname{section}{\S\!}{\S\S\!}
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	THEOREM STYLES
+%---------------------------------------------------------------------
+
+% Define a dummy counter to keep count for all sub-environments
+\newcounter{counter} \numberwithin{counter}{section}
+
+% Define theorem styles here based on the definition style
+\theoremstyle{definition}
+\newtheorem{definition}[counter]{Definition}
+\newtheorem{construction}[counter]{Construction}
+\newtheorem{observation}[counter]{Observation}
+
+% Define theorem styles here based on the plain style
+\theoremstyle{plain} 
+\newtheorem{theorem}[counter]{Theorem}
+\newtheorem{corollary}[counter]{Corollary}
+\newtheorem{lemma}[counter]{Lemma}
+\newtheorem{proposition}[counter]{Proposition}
+\newtheorem{conjecture}[counter]{Conjecture}
+
+
+% Define theorem styles here based on the remark style
+\theoremstyle{remark}
+\newtheorem{example}[counter]{Example}
+\newtheorem{remark}[counter]{Remark}
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	NEW COMMANDS
+%---------------------------------------------------------------------
+
+% general category
+\newcommand{\catC}{\mathscr{C}}
+
+% categories of factorization algebras
+\newcommand{\falg}{\mathscr{F} \mathsf{Alg}}
+\newcommand{\lcfa}{\mathscr{F} \mathsf{Alg}^{\mathsf{lc}}}
+
+% category of manifolds
+\newcommand{\mfld}[1][s]{%
+    \ifx r#1\mathsf{Mfld}\else
+    \ifx s#1\mathscr{M} \mathsf{fld}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of disks
+\newcommand{\disk}[1][s]{%
+    \ifx r#1\mathsf{Disk}\else
+    \ifx s#1\mathscr{D} \mathsf{isk}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of opens
+\newcommand{\opens}[1][s]{%
+    \ifx r#1\mathsf{Opns}\else
+    \ifx s#1\mathscr{O} \mathsf{pns}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of cosheaves
+\newcommand{\csheaves}[1][n]{%
+    \ifx n#1 \mathsf{c} \mathscr{S} \mathsf{hv}\else
+    \mathsf{c} \mathscr{S} \mathsf{hv}^{\mathsf{#1}}
+    \fi
+}
+
+% category of infinity categories
+\newcommand{\cat}{\mathscr{C} \mathsf{at}_{\infty}}
+
+% template for category of algebras
+\newcommand{\alg}[1]{\mathscr{A} \mathsf{lg}_{#1}}
+
+% template for category of locally constant algebras
+\newcommand{\lcalg}[1]{\mathscr{A} \mathsf{lg}^{\mathsf{lc}}_{#1}}
+
+% half-open interval
+\newcommand{\hoint}{\mathbb{R}_{\geq 0}}
+
+% Cech complex
+\newcommand{\cech}{\check{\mathsf{C}}}
+
+% Automorphisms of category
+\newcommand{\aut}{\mathsf{Aut}}
+
+% Category of basics
+\newcommand{\bsc}{\mathscr{B} \mathsf{sc}}
+\newcommand{\bstr}{\mathscr{B}}
+
+
+% Category of singular spaces
+\newcommand{\snglr}{\mathscr{S} \mathsf{nglr}}
+
+
+%---------------------------------------------------------------------
+
+\usepackage{subfiles}
+
+\setcounter{section}{-1}
+
+\begin{document}
+
+% Set title, author and date
+\title{Factorization Algebras and Factorization Homology on Stratified Spaces}
+\author{Aleksandar Ivanov}
+\date{}
+\maketitle
+
+\begin{abstract}
+    ... Parts of this work were adapted from a Master's thesis dissertation submitted to ETH Z\"urich for the ... author.
+\end{abstract}
+
+\tableofcontents
+
+
+
+
+% Include sections
+\subfile{sections/0intro.tex}
+
+\subfile{sections/1stratified.tex}
+
+\subfile{sections/2homology.tex}
+
+\subfile{sections/3algebras.tex}
+
+\subfile{sections/4gluing.tex}
+
+\subfile{sections/5classification.tex}
+
+
+
+
+% Include appendices
+%\begin{appendices}
+
+%\subfile{sections/appendices.tex}
+
+%\end{appendices}
+
+
+
+% Generate bibliography
+\newpage
+\printbibliography
+
+\end{document}
