@@ -119,13 +119,13 @@ These algebras will be the algebraic input of factorization homology. To convinc
 \begin{remark}
     $\disk(\bstr)$ is a symmetric monoidal $\infty$-category, however there is no way to inherit this structure to $\disk(\bstr)_{/M}$. Intuitively, this is because disjoint union cannot serve as a monoidal structure now that the disks are equipped with an embedding into a given manifold $M$; they could be such that they intersect. However, as explained in \cite[not.1.21]{aft_fhstrat}, we \emph{can} equip $\disk(\bstr)_{/M}$ with the structure of an $\infty$-operad because the symmetric monoidal unit $\emptyset$ of $\disk(\bstr)$ and $\mfld(\bstr)$ is initial. This is also the case for $\mfld(\bstr)_{/M}$ itself.
 
-    In more details, following \cite[ex.2.5]{aft_fhstrat}, objects of $\disk(\bstr)_{/M}$ are finite sets of open embeddings of disks $(U \xhookrightarrow{} M)$. A morphism between two open embeddings $(U \xhookrightarrow{} M) \xrightarrow{} (V \xhookrightarrow{} M)$ is specified by an open embedding $U \xhookrightarrow{} V$ together with an isotopy between $U \xhookrightarrow{} M$ and $U \xhookrightarrow{} V \xhookrightarrow{} M$. A multi-morphism $((U_1 \xhookrightarrow{} M), (U_2 \xhookrightarrow{} M)) \xrightarrow{} (V \xhookrightarrow{} M)$ is given by an open embedding $U_1 \sqcup U_2 \xhookrightarrow{} V$ together with two isotopies from $U_1 \xhookrightarrow{} M$ to $U_1 \xhookrightarrow{} U_1 \sqcup U_2 \xhookrightarrow{} M$, and from $U_2 \xhookrightarrow{} M$ to $U_2 \xhookrightarrow{} U_1 \sqcup U_2 \xhookrightarrow{} M$.
+    In more details, following \cite[ex.2.5]{aft_fhstrat}, objects of $\disk(\bstr)_{/M}$ are finite sets of open embeddings of disks $(U \xhookrightarrow{} M)$. A morphism between two open embeddings $(U \xhookrightarrow{} M) \xrightarrow{} (V \xhookrightarrow{} M)$ is specified by an open embedding $U \xhookrightarrow{} V$ together with an isotopy between $U \xhookrightarrow{} M$ and $U \xhookrightarrow{} V \xhookrightarrow{} M$. A morphism $((U_1 \xhookrightarrow{} M), (U_2 \xhookrightarrow{} M)) \xrightarrow{} (V \xhookrightarrow{} M)$ is given by an open embedding $U_1 \sqcup U_2 \xhookrightarrow{} V$ together with two isotopies from $U_1 \xhookrightarrow{} M$ to $U_1 \xhookrightarrow{} U_1 \sqcup U_2 \xhookrightarrow{} M$, and from $U_2 \xhookrightarrow{} M$ to $U_2 \xhookrightarrow{} U_1 \sqcup U_2 \xhookrightarrow{} M$.
 \end{remark}
 
 \begin{remark}
-    The constructions of the slice category also holds, word for word, in the case of $\disk[r](\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$. The fact that they are $\infty$-operads is also true. The key difference is what the objects and multi-morphisms are, say, in $\disk[r](\bstr)_{/M}$ as compared to $\disk(\bstr)_{/M}$. The objects are the same as before, i.e. finite sets of open embeddings into $M$. However, the multi-morphisms now contain less information. A morphism $(U \xhookrightarrow{} M) \xrightarrow{} (V \xhookrightarrow{} M)$ is specified only by open embedding $U \xhookrightarrow{} V$, such that $(U \xhookrightarrow{} M) = (U \xhookrightarrow{} V \xhookrightarrow{} M)$, and no further information. Similarly, for the multi-morphisms too.
+    The constructions of the slice category also holds, word for word, in the case of $\disk[r](\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$. The fact that they are $\infty$-operads is also true. The key difference is what the objects and morphisms are, say, in $\disk[r](\bstr)_{/M}$ as compared to $\disk(\bstr)_{/M}$. The objects are the same as before, i.e. finite sets of open embeddings into $M$. However, the morphisms now contain less information. A morphism $(U \xhookrightarrow{} M) \xrightarrow{} (V \xhookrightarrow{} M)$ is specified only by open embedding $U \xhookrightarrow{} V$, such that $(U \xhookrightarrow{} M) = (U \xhookrightarrow{} V \xhookrightarrow{} M)$, and no further information. This also holds for higher arity morphisms too. 
 
-    That is, a multi-morphism in $\disk(\bstr)_{/M}$ is a diagram in $\disk (\bstr)$
+    That is, a morphism in $\disk(\bstr)_{/M}$ is a diagram in $\disk (\bstr)$
     %
     \begin{equation}
         \begin{tikzcd}
@@ -255,9 +255,9 @@ in the relative case. Namely, the left Kan extension of underlying $\infty$-cate
 
 \subsection{Disk Algebras over Oriented Intervals}\label{ch:fh_on_intervals}
 
-We now focus on describing disk algebras over oriented intervals with and without boundary. Not only is this an important example for what disk algebras look like, but it's also important in defining what it means to say that factorization homology is excisive. The following constructions can be found in the originals \cite{af_fhtop,aft_fhstrat}.
+We now focus on describing disk algebras over oriented intervals (or equivalently, framed intervals) with and without boundary. Not only is this an important example for what disk algebras look like, but it's also important in defining what it means to say that factorization homology is excisive. The following constructions can be found in the originals \cite{af_fhtop,aft_fhstrat}.
 
-We want to show that disk algebras with $\mathsf{D}_1^{\partial, \mathsf{or}}$-structure, as defined in \cref{con:d_1^bor_structure}, can be described algebraically. For this we set up two $\infty$-operads $\mathsf{Assoc^{RL}}$ and $\mathsf{O^{RL}}$.
+We want to show that disk algebras with $\mathsf{D}_1^{\partial, *}$-structure, as defined in \cref{con:d_1^bor_structure}, can be described algebraically. For this we set up two $\infty$-operads $\mathsf{Assoc^{RL}}$ and $\mathsf{O^{RL}}$.
 
 \begin{construction}\label{con:assocRL}
     Let $\mathsf{Assoc^{RL}}$ denote the multicategory\footnote{A \emph{multicategory} is like an (ordinary) category except that morphisms (now called multi-morphisms) are allowed to have multiple objects in their domain while still having only a single object in their codomain.} with three objects $R$, $A$ and $L$. To describe the multi-morphisms let $I$ be an arbitrary finite list of the objects of $\mathsf{Assoc^{RL}}$. We have:
@@ -284,10 +284,10 @@ We want to show that disk algebras with $\mathsf{D}_1^{\partial, \mathsf{or}}$-s
 \end{remark}
 
 \begin{proposition}\label{prop:disk1bor=assocRL}
-    There are equivalences of symmetric monoidal $\infty$-categories between $\mathsf{D}_1^{\partial, \mathsf{or}}$-structured disks and the symmetric monoidal envelope of $\mathsf{Assoc^{RL}}$
+    There are equivalences of symmetric monoidal $\infty$-categories between $\mathsf{D}_1^{\partial, *}$-structured disks and the symmetric monoidal envelope of $\mathsf{Assoc^{RL}}$
     %
     \begin{equation}
-        \disk[r] (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow[\simeq]{\ \ [-] \ \ } \mathsf{Env} (\mathsf{Assoc^{RL}}).
+        \disk[r] (\mathsf{D}_1^{\partial, *}) \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, *}) \xrightarrow[\simeq]{\ \ [-] \ \ } \mathsf{Env} (\mathsf{Assoc^{RL}}).
     \end{equation}
     %
     The functor $[-]$ assigns $[\hoint] = R$, $[\mathbb{R}] = A$ and $[\mathbb{R}_{\leq 0}] = L$.
@@ -301,14 +301,14 @@ We want to show that disk algebras with $\mathsf{D}_1^{\partial, \mathsf{or}}$-s
     There are equivalences of $\infty$-operads
     %
     \begin{equation}
-        \disk[r] (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]} \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]} \xrightarrow{\ \ \simeq \ \ } \mathsf{O^{RL}} \quad
+        \disk[r] (\mathsf{D}_1^{\partial, *})_{/[-1,1]} \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, *})_{/[-1,1]} \xrightarrow{\ \ \simeq \ \ } \mathsf{O^{RL}} \quad
     \end{equation}
     %
     that descend to the equivalences of \cref{prop:disk1bor=assocRL}.
 \end{proposition}
 
 \begin{proof}
-    As in the proof of \cref{prop:disk1bor=assocRL} the first equivalence is clear. The idea to keep in mind is that since the boundary of $[-1,1]$ consists of a left point and a right point, there can only be oriented embeddings of disks into $[-1,1]$ with at most one of each of $\left[-1,1 \right)$ and $\left( -1, 1 \right]$. These are then clearly the objects that map to the respective distinguished subsets. Observing the definition of $\mathsf{O^{RL}}$ clearly offers a bijections on morphism spaces since they are by definition order preserving maps, and the embeddings are oriented. It is trivial to check that these maps lie over $\mathsf{Fin}_*$ and that they send active morphisms to active morphisms completing the proof.
+    As in the proof of \cref{prop:disk1bor=assocRL} the first equivalence is clear. The idea to keep in mind is that since the boundary of $[-1,1]$ consists of a left point and a right point, there can only be oriented embeddings of disks into $[-1,1]$ with at most one of each of $\left[-1,1 \right)$ and $\left( -1, 1 \right]$. These are then clearly the objects that map to the respective distinguished subsets. Observing the definition of $\mathsf{O^{RL}}$ clearly offers a bijection on morphism spaces since they are by definition order preserving maps, and the embeddings are oriented. It is trivial to check that these maps lie over $\mathsf{Fin}_*$ and that they send active morphisms to active morphisms completing the proof.
 \end{proof}
 
 In fact in the simple case of intervals, that we're considering here, even more is true:
@@ -317,7 +317,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
     There are equivalences of symmetric monoidal $\infty$-categories
     %
     \begin{equation}
-        \mathsf{Env}(\mathsf{O^{RL}}) \xrightarrow{\ \ \simeq \ \ } \mathsf{Env}(\disk (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]}) \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow{\ \ \simeq \ \ } \mathsf{Env} (\mathsf{Assoc^{RL}})
+        \mathsf{Env}(\mathsf{O^{RL}}) \xrightarrow{\ \ \simeq \ \ } \mathsf{Env}(\disk (\mathsf{D}_1^{\partial, *})_{/[-1,1]}) \xrightarrow{\ \ \simeq \ \ } \disk (\mathsf{D}_1^{\partial, *}) \xrightarrow{\ \ \simeq \ \ } \mathsf{Env} (\mathsf{Assoc^{RL}})
     \end{equation}
 \end{proposition}
 
@@ -354,7 +354,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
 \begin{proof}
     The equivalence at the level of objects is exactly \cite[prop.2.34]{aft_fhstrat}, whose proof we recount here for completeness. 
 
-    For the purposes of the proof introduce the shorthand notation $\mathscr{D} := \disk(\mathsf{D}_1^{\partial, \mathsf{or}})$. There is a functor $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ from the opposite of the simplex category, whose essential image consists of those objects for which the distinguished subsets with a maximal and minimal element are non-empty. This functor is final\footnote{A functor $F: \catC \xrightarrow{} \mathscr{D}$ between $\infty$-categories is final if precomposition with it preserves colimits \[ \mathsf{colim}(G \circ F) \simeq \mathsf{colim}(G).\]} because adjoining a minimum and maximum gives a left adjoint to it. We recognize the simplicial object
+    For the purposes of the proof introduce the shorthand notation $\mathscr{D} := \disk(\mathsf{D}_1^{\partial, *})$. There is a functor $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ from the opposite of the simplex category, whose essential image consists of those objects for which the distinguished subsets with a maximal and minimal element are non-empty. This functor is final\footnote{A functor $F: \catC \xrightarrow{} \mathscr{D}$ between $\infty$-categories is final if precomposition with it preserves colimits \[ \mathsf{colim}(G \circ F) \simeq \mathsf{colim}(G).\]} because adjoining a minimum and maximum gives a left adjoint to it. We recognize the simplicial object
     %
     \begin{equation}
         \mathsf{B}_{\bullet}(R, A, L): \Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}} \simeq \mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC
@@ -363,14 +363,30 @@ In fact in the simple case of intervals, that we're considering here, even more 
     as the two-sided bar construction. Since $\catC$ has colimits and $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ is final, the geometric realization of the above is
     %
     \begin{equation}
-        R \bigotimes\limits_{A} L = |\mathsf{B}_{\bullet}(R, A, L)| \simeq \mathsf{colim} (\mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC) = \int_{[-1,1]} (R, A, L).
+        \mathsf{B} (R, A, L) \equiv R \bigotimes\limits_{A} L = |\mathsf{B}_{\bullet}(R, A, L)| \simeq \mathsf{colim} (\mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC) = \int_{[-1,1]} (R, A, L).
     \end{equation}
     %
-    The naturality of this construction is immediate from the above presentation.
+    To show the naturality of these equivalences, in the algebra variable, consider the algebra map $(F \xrightarrow{f} G) \in \mathsf{Fun}(\disk_{/[-1,1]}, \catC)$. We can consider the colimit as a functor
+    %
+    \begin{equation}
+        \mathsf{colim}: \mathscr{C} \mathsf{at}_{\infty / \catC} \xrightarrow{} \catC,
+    \end{equation}
+    %
+    such that the equivalences arise from composing with the adjoints $\Delta^{\mathsf{op}} \mathrel{\substack{\textstyle\leftarrow\\[-0.1ex]\textstyle\hookrightarrow}} \disk_{/[-1,1]}$. The naturality condition is then arranged by the functoriality of $\mathsf{colim}$, namely, by the images of the squares
+    %
+    \begin{equation}
+        \begin{tikzcd}[row sep = small]
+            \Delta^{\mathsf{op}} \arrow[r, hook, shift right] \arrow[dd, equal] & \disk_{/[-1,1]} \arrow[rd, "F"] \arrow[l, shift right] \arrow[dd, phantom, bend left = 60, "f"] \arrow[dd, equal] & \\
+            & & \catC \\
+            \Delta^{\mathsf{op}} \arrow[r, hook, shift right] & \disk_{/[-1,1]} \arrow[ru, "G"'] \arrow[l, shift right] &  
+        \end{tikzcd}
+    \end{equation}
+    %
+    over $\catC$.
 \end{proof}
 
 %\begin{proposition}[{\cite[prop.2.34]{aft_fhstrat}}]\label{prop:barconst=intinterval}
-%    Let $A$ be a unital, (homotopy) associative algebra in $\catC$, $R$ be a unital right $A$-module in $\catC$ and $L$ be a unital left $A$-module in $\catC$. Using \cref{prop:disk1bor=assocRL} regard this data as the data of a symmetric monoidal functor $(R, A, L): \disk (\mathsf{D}_1^{\partial, \mathsf{or}}) \xrightarrow{} \catC$. Then there is a canonical equivalence in $\catC$ between factorization homology over the closed interval and the two-sided bar construction
+%    Let $A$ be a unital, (homotopy) associative algebra in $\catC$, $R$ be a unital right $A$-module in $\catC$ and $L$ be a unital left $A$-module in $\catC$. Using \cref{prop:disk1bor=assocRL} regard this data as the data of a symmetric monoidal functor $(R, A, L): \disk (\mathsf{D}_1^{\partial, *}) \xrightarrow{} \catC$. Then there is a canonical equivalence in $\catC$ between factorization homology over the closed interval and the two-sided bar construction
 %    %
 %    \begin{equation}
 %        \int_{[-1,1]} (R, A, L) \xrightarrow{\ \ \simeq \ \ } R \bigotimes\limits_{A} L.
@@ -435,7 +451,7 @@ Now that we have a pushforward operation, we can finally explicitly state what e
     The definition comes with a claim that the canonical morphism in $\catC$ exists. This we need to show. The data of a collar-gluing $f: M \xrightarrow{} [-1,1]$ allows us to pushforward $F$ to
     %
     \begin{equation}
-        f_*F: \disk (\mathsf{D}_1^{\partial, \mathsf{or}})_{/[-1,1]} \xrightarrow{f^{-1}} \mfld(\bstr)_{/M} \xrightarrow{} \mfld(\bstr) \xrightarrow{F} \catC.
+        f_*F: \disk (\mathsf{D}_1^{\partial, *})_{/[-1,1]} \xrightarrow{f^{-1}} \mfld(\bstr)_{/M} \xrightarrow{} \mfld(\bstr) \xrightarrow{F} \catC.
     \end{equation}
     %
     By \cref{prop:disk1bor=assocRL} we know that this data defines an $\mathsf{Assoc^{RL}}$-algebra in $\catC$ whose right module, algebra and left module are exactly $F(M_-)$, $F(M_0 \times \mathbb{R})$ and $F(M_+)$. Further using \cref{prop:barconst=intinterval} we have
@@ -468,7 +484,7 @@ Now that we have a pushforward operation, we can finally explicitly state what e
 \begin{example}
     Checking the definitions we can see that evaluating basics $U \in \disk(\bstr) \xhookrightarrow{} \mfld(\bstr)$ is the same as simply evaluating the disk with the disk algebra. This is simply because factorization homology is a left Kan extension.
 
-    The first nontrivial example is then the oriented circle. We know that the algebras that we will be evaluating with are $\disk (\mathsf{D}_1^{\partial, \mathsf{or}})$-algebras (or even simpler the restriction to $\disk (\mathsf{D}_1^{\mathsf{or}})$ the ones without boundary). The oriented circle can be presented as a collar-gluing
+    The first nontrivial example is then the oriented circle. We know that the algebras that we will be evaluating with are $\disk (\mathsf{D}_1^{\partial, *})$-algebras (or even simpler the restriction to $\disk (\mathsf{D}_1^{*})$ the ones without boundary). The oriented circle can be presented as a collar-gluing
     %
     \begin{equation}
         S^1 \cong \mathbb{R} \coprod\limits_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod\limits_{\bar{\mathbb{R}}\sqcup \mathbb{R}} \mathbb{R},
@@ -484,10 +500,10 @@ Now that we have a pushforward operation, we can finally explicitly state what e
 \end{example}
 
 
+
 \subsection{Classification of \texorpdfstring{$\disk(\mathsf{D}_{d \subset n}^{*})$}{diskdn*}-algebras}
 
-
-All of the above statements about factorization homology and disk algebras did not rely heavily on the stratified structure which we introduced them with. Namely, had we stuck to smooth manifolds (possibly with boundary) we could have made similar statements. In this section we describe a result that clearly uses the stratified structure, and quantifies some additional information it can encode. It is a classification statement about disk algebras whose structure $\mathsf{D}_{d \subset n}^*$ is provided by \cref{def:framed_d_under_n_sructure}.
+All of the above statements about factorization homology and disk algebras are quite general, and they do not say anything specific about a stratified structure, if there is one. Namely, had we stuck to smooth manifolds (possibly with boundary) we could have made similar statements. In this section we describe a result that clearly uses the stratified structure, and quantifies some additional information it can encode. It is a classification statement about disk algebras whose structure $\mathsf{D}_{d \subset n}^*$ is provided by \cref{def:framed_d_under_n_structure}. We will, in a roundabout way, recover this result in \cref{ch:classif_defect_mfld}, but here we state it in the original form.
 
 \begin{theorem}[{\cite[prop.4.8]{aft_fhstrat}}]\label{thm:classif_disk_d_under_n*_alg}
     There is a pullback diagram

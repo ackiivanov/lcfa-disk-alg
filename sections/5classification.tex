@@ -31,7 +31,13 @@ Despite \cref{rem:disk_not_enough}, we know from \cref{lem:disk/M_to_disk} that 
     \lcfa_{\mathbb{R}^{d \subset n}} (\catC) \simeq \alg{\disk (\mathsf{D}_{d \subset n}^*)} (\catC).
 \end{equation}
 
-We will see that the case of $d=0$ is of particular importance. This is the case of pointed Euclidean spaces, which are alternatively denoted $\mathbb{R}^n_*$. To get a better grasp on this case we examine the $\infty$-operad.
+In fact, technically, the only case we need to consider is when $d=0$. This is the case of pointed Euclidean spaces, which are alternatively denoted $\mathbb{R}^n_*$. This is because of the isomorphism
+%
+\begin{equation}
+    \mathbb{R}^{d \subset n} \cong \mathbb{R}^{n-d}_* \times \mathbb{R}^d,
+\end{equation}
+%
+together with \cref{prop:exp_of_products_lc}, which describes locally constant factorization algebras on product spaces. To get a better grasp on $\mathbb{R}^n_*$ case we examine the $\infty$-operad.
 
 \begin{observation}
     For the purposes of the observation we will shorten notation to $\mathscr{D}_* := \disk (\mathsf{D}_{0 \subset n}^*)$. Since the defect is a point there can be at most one disk that contains it per morphism. Thus, the morphism spaces to consider are
@@ -71,6 +77,7 @@ We will see that the case of $d=0$ is of particular importance. This is the case
 %    We immediately remark that \cite[lem.2.13]{francis2013} says that the universal enveloping algebra $U_A$ of an algebra $A \in \alg{\mathscr{O}} (\catC)$ is given as the value on $*$ of the left Kan extension of $A$ along the functor $\psi: \mathscr{O} \xrightarrow{} \mathscr{O}_*$ that adds a basepoint. Namely, this is the functor that adds a basepoint to objects and on morphism spaces it sends a map to its extension as a basepoint preserving map. We will argue that this functor is exactly the functor {\color{red} UNFINISHED}
 %\end{proof}
 
+.....
 
 The study of these was undertaken in \cite{ginot2015}. There it was shown that
 
@@ -166,6 +173,34 @@ The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to const
 \end{equation}
 %
 as a first step in the classification of locally constant factorization algebras on $M_{\Sigma}$. Since we have focused on stratified manifolds with the particular form $M_{\Sigma}$, the locally constant factorization algebras $\lcfa_{M \setminus \Sigma}$ in this decomposition already live on a smooth manifold, rather than on a stratified one. Similarly, this is the case for the locally constant factorization algebras $\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}}$. The more prescient question is about the classification of locally constant factorization algebras on the one remaining stratified space $\mathsf{C}(\pi)$. 
+
+By .... $\mathsf{C}(\pi)$ is always a bundle over $\Sigma$, fibered over basics. In the special case that $\Sigma$ is a stratum, $\mathsf{C}(\pi)$ is even a fiber bundle with fiber $\mathbb{R}^{n-d}_*$. Thus, the classification comes down to the classification of locally constant factorization algebras on stratified fiber bundles.
+
+There is a special case that we can already tackle, which is the case of framed manifolds. This is because, as discussed in \cref{def:framed_d_under_n_structure}, $\mathsf{D}_{d \subset n}^*$-manifolds come with a trivialization of the normal bundle of the distinguished submanifold $\Sigma$. This, in turn implies a trivialization for $\mathsf{C}(\pi)$ as a bundle over $\Sigma$ with typical fiber $\mathbb{R}^{n-d}_*$, i.e. there is an isomorphism
+%
+\begin{equation}
+    \mathsf{C}(\pi) \cong \Sigma \times \mathbb{R}^{n-d}_*.
+\end{equation}
+
+However, \cref{prop:exp_of_products_lc} already gives us a way to classify locally constant factorization algebras on product spaces, if we know them on the product components. Having classified locally constant factorization algebras on the pointed Euclidean space in \cref{thm:ginot_classif_Rn*}, we already have the result that
+%
+\begin{equation}
+    \lcfa_{\mathsf{C}(\pi)} (\catC) \simeq \mathsf{Mod}^{\mathbb{E}_{n-d}} (\lcfa_{\Sigma} (\catC)).
+\end{equation}
+
+Going from $\mathsf{C}(\pi)$ to $M_{\Sigma}$ we use the fact that the link is also trivialized, as already mentioned above, which tells us that
+%
+\begin{equation}
+    \lcfa_{\mathsf{L}_{\Sigma} \times \mathbb{R}} (\catC) \simeq \lcfa_{\Sigma \times (\mathbb{R} \setminus \{0\})} (\catC),
+\end{equation}
+%
+and finally, that
+% 
+\begin{equation}
+    \lcfa_{M_\Sigma} (\catC) \simeq \lcfa_{M \setminus \Sigma} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \setminus \{0\}} (\lcfa_{\Sigma} (\catC))} \mathsf{Mod}^{\mathbb{E}_{n-d}} (\lcfa_{\Sigma} (\catC)).
+\end{equation}
+
+Apart from confirming our previous observations that what is encoded is an algebra away from the defect, and algebra on the defect and a module structure relating them, this now exactly specifies what that module structure should be given by.
 
 %--------------
 

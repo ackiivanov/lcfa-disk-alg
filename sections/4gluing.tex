@@ -168,15 +168,37 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
     namely, a locally constant factorization algebra on $S^2$ equivalent to two $\mathbb{E}_2$-algebras, such that they restrict on the fattened equator to the same $\mathbb{E}_2$-algebra equipped with an $\mathbb{E}_1$-automorphism. It is nontrivial to describe this data in a simpler way as was possible for $S^1$. We can see, though, that for the higher spheres there are higher coherent equivalences that locally constant factorization algebras keep track of.
 \end{example}
 
-\begin{example}{\color{red} GO TO LATER CHAPTER}
-    We have an immediate simplification of the result we saw in \cref{thm:ginot_classif_Rn*}, because its right-hand side is of the exact form to be a collar-gluing. Namely, it's the collar-gluing which, somewhat trivially, exhibits $\mathbb{R}^n_*$ as $ \cong \mathbb{R}^n_* \coprod_{\mathbb{R}^n \setminus \{0\}} \mathbb{R}^n \setminus \{0\}$. The result then simplifies to
+\begin{example}
+    In \cref{ch:classif_defect_mfld} we will see that fiber bundles are important for the classification of some stratified manifolds. Here we will look at line bundles over the circle as a toy example, namely, the cylinder $C$ and M\"obius band $M$. The cylinder, as a trivial fiber bundle, is isomorphic to the product space $S^1 \times \mathbb{R}$. By \cref{prop:exp_of_products_lc} together with the results of \cref{ex:reproduce_lcfas_on_S1}, locally constant factorization algebras on it are given by $\mathbb{E}_2$-algebras together with an $\mathbb{E}_1$-self-equivalence
+    %
+    \begin{align}
+        \lcfa_C (\catC) \simeq \aut_{\mathbb{E}_1} (\alg{\mathbb{E}_2} (\catC)).
+    \end{align}
+
+    Switching our attention to the M\"obius band $M$, we can use a similar logic as in \cref{ex:reproduce_lcfas_on_S1} to find a collar gluing of $M$. The pieces are the same as they would be for the cylinder, namely $M_- \cong M_+ \cong \mathbb{R}^2$, and $M_0 \times \mathbb{R} \cong \mathbb{R}^2 \sqcup \mathbb{R}^2$, but they are glued differently because of the twist. Using the notation from \cref{ex:reproduce_lcfas_on_S1} the diagram becomes
     %
     \begin{equation}
-        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \simeq \lcfa_{\mathbb{R}^n_*} (\catC). 
+        \begin{tikzcd}[row sep = small, column sep= small]
+            & A|_1 \arrow[r, phantom, "=", description] & B|_1^{\mathsf{op_f}} \arrow[r, phantom, "\simeq", description] & B^{\mathsf{op_f}} \\
+            A \arrow[ru, phantom, "\simeq", sloped, description] \arrow[rd, phantom, "\simeq", sloped, description] & & & \\
+            & A|_2 \arrow[r, phantom, "=", description] & B|_2 \arrow[r, phantom, "\simeq", description] & B,
+        \end{tikzcd}
     \end{equation}
     %
-    This would confirm that the intuition we had from the 1 dimensional examples continues to hold in higher dimensions in a form that is easily parsable; introducing point defects on the manifold directly gives modules for the algebra.
+    where $^{\mathsf{op_f}}$ is the opposite functor in the fiber direction. Thus, instead of an $\mathbb{E}_1$-\emph{self}-equivalence we have an equivalence with the opposite algebra.
+
+    We should remark that the fact that we can take the opposite algebra in one direction only is a consequence of Dunn additivity \cref{prop:dunn_additivity}. Without it, we wouldn't be able to combine the opposite algebra in one direction with the original algebra in the other direction into a well-defined algebra in two dimensions.
 \end{example}
+
+%\begin{example}{\color{red} GO TO LATER CHAPTER}
+%    We have an immediate simplification of the result we saw in \cref{thm:ginot_classif_Rn*}, because its right-hand side is of the exact form to be a collar-gluing. Namely, it's the collar-gluing which, somewhat trivially, exhibits $\mathbb{R}^n_*$ as $ \cong \mathbb{R}^n_* \coprod_{\mathbb{R}^n \setminus \{0\}} \mathbb{R}^n \setminus \{0\}$. The result then simplifies to
+%    %
+%    \begin{equation}
+%        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \simeq \lcfa_{\mathbb{R}^n_*} (\catC). 
+%    \end{equation}
+%    %
+%    This would confirm that the intuition we had from the 1 dimensional examples continues to hold in higher dimensions in a form that is easily parsable; introducing point defects on the manifold directly gives modules for the algebra.
+%\end{example}
 
 
 

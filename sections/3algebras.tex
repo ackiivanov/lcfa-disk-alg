@@ -148,15 +148,13 @@ There is a general definition of locally constant algebra objects in the context
         \csheaves[W, lc]_M (\catC) \subset \csheaves[W]_M (\catC),
     \end{equation}
     %
-    of those Weiss sheaves whose underlying functor $F: \bsc_{/M} \xrightarrow{} \catC$ satisfies the following condition:
+    of those Weiss sheaves whose underlying functor $F: \bsc_{/M} \xrightarrow{} \catC$ satisfies
     %
-    \begin{enumerate}
-        \item Denote by $f: \bsc_{/M} \xrightarrow{} \bsc$ the forgetful functor. For all $U, V \in \bsc_{/M}$
-        %
-        \begin{equation}
-            f(U) \simeq f(V) \Rightarrow F(U) \simeq F(V).
-        \end{equation}
-    \end{enumerate} 
+    \begin{equation}
+        f(U) \simeq f(V) \Rightarrow F(U) \simeq F(V),
+    \end{equation}
+    %
+    for all $U, V \in \bsc_{/M}$, where $f: \bsc_{/M} \xrightarrow{} \bsc$ denotes the forgetful functor.
 \end{definition}
 
 \begin{remark}
@@ -748,7 +746,7 @@ It's not hard to extend \cref{con:lcfas_on_R} and \cref{con:lcfas_on_hoint} to t
 
 
 
-\subsection{Factorization Algebras on Euclidean spaces}\label{ssec:lcfa_on_Rn}
+\subsection{Factorization Algebras on Euclidean Spaces}\label{ssec:lcfa_on_Rn}
 
 In this section we want to describe locally constant factorization algebras on Euclidean spaces $\mathbb{R}^n$. By \cref{lem:disk/M_to_disk} we can hope for an $\infty$-category of basics such that we simplify the situation down to $\disk (\bstr)$-algebras. In fact, since $\mathbb{R}^n$ is frameable an $\infty$-category of basics that we can choose is $\mathsf{D}_n^* \simeq * \xrightarrow{\{ \mathbb{R}^n\}} \bsc$. Specifically, this makes us focus on framed $n$-dimensional disk algebras
 %
@@ -799,7 +797,7 @@ In this section we want to describe locally constant factorization algebras on E
 
 Specializing \cref{prop:exp_of_products_lc} to the case of Euclidean spaces gives the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}.
 
-\begin{proposition}
+\begin{proposition}\label{prop:dunn_additivity}
     There is an equivalence of $\infty$-categories
     %
     \begin{equation}
