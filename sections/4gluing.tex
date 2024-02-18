@@ -99,7 +99,13 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
         A(U) = \int_U A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_-} \mathbb{1} \simeq \int_U A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_-} \int_{\emptyset} A_- \simeq \int_{U} A_- = A_-(U),
     \end{equation}
     %
-    where the last equivalence is provided by the collar-gluing property of factorization homology. This observation is also what confirms (3).
+    where the last equivalence is provided by the collar-gluing property of factorization homology. This observation is also what confirms (3). Namely,
+    %
+    \begin{equation}
+        \int_U A \simeq \int_{U_-} A \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A} \int_{U_+} A \simeq \int_{U_-} A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_0} \int_{U_+} A_+,
+    \end{equation}
+    %
+    where the first equivalence comes from collar-gluing, while the second is a rewriting using the fact that restricting the algebra doesn't change the value of factorization homology it just changes what we can evaluate with it.
 
     Finally, we want to show that $\rho$ is fully faithful, i.e. we need to show that it is an equivalence of morphism spaces
     %
@@ -107,7 +113,7 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
         \mathsf{Hom}_{\alg{\disk_{/M}} (\catC)}(A, B) \simeq \mathsf{Hom}_{\mathscr{P}}((A_-, A_+), (B_-, B_+)),
     \end{equation}
     %
-    for each $A, B \in \alg{\disk_{/M}} (\catC)$. By the definition of algebras over an $\infty$-operad we have that $\alg{\disk_{/M}} (\catC)$ is a full $\infty$-subcategory of $\mathsf{Fun}(\disk_{/M}, \catC)$, which reduces the problem to showing that
+    for each $A, B \in \alg{\disk_{/M}} (\catC)$. By the definition of algebras over an $\infty$-operad we have that $\alg{\disk_{/M}} (\catC)$ is a full $\infty$-subcategory of $\mathsf{Fun}(\disk_{/M}, \catC)$, and since we already expressed the construction functorially with $\rho$ and $\gamma$, all that remains to be checked is that the already defined maps
     %
     \begin{equation}
         \begin{tikzcd}
@@ -115,13 +121,13 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
         \end{tikzcd}
     \end{equation}
     %
-    gives rise to an equivalence. Similar computations as in checking (2) and (3) above yield the necessary requirements.
+    gives rise to an equivalence. That is, we have to do similar computations as (2) and (3) above, but now on the level of morphisms. Nothing new happens in the case of (2) since its logic essentially only depends on the properties of the bar construction when restricting. In the case of (3) we crucially used the collar-gluing property of factorization homology. That this property continues to hold at the morphism level is a consequence of the fact that \cref{prop:barconst=intinterval} is an equivalence not only at the level of objects, but also at the level of functors, together with the pushforward property which also holds functorially à la \cref{rem:fh_pushforward_functorial}.
 \end{proof}
 
 Together with \cref{thm:disk_alg=lcfa} we immediately have the following corollary:
 
 \begin{corollary}\label{cor:gluing_lcfas}
-    A collar-gluing of smooth manifolds $f: M \rightarrow [-1,1]$ induces an equivalence of $\infty$-categories
+    A collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$ induces an equivalence of $\infty$-categories
     %
     \begin{equation}
         \lcfa_M (\catC) \simeq \lcfa_{M_-} (\catC) \bigtimes_{\lcfa_{M_0 \times \mathbb{R}} (\catC)} \lcfa_{M_+}(\catC).
@@ -139,7 +145,7 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
         \lcfa_{S^1} (\catC) \simeq \aut (\alg{\mathbb{E}_1} (\catC)),
     \end{equation}
     %
-    as $\mathbb{E}_1$-algebras together with a self-equivalence. \Cref{cor:gluing_lcfas} allows us to recover this nontrivial result. To wit, the circle can be exhibited as a collar-gluing $S^1 \cong \mathbb{R} \coprod_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod_{\mathbb{R} \sqcup \mathbb{R}} \mathbb{R}$. For locally constant factorization algebras this means that
+    i.e. $\mathbb{E}_1$-algebras together with a self-equivalence. \Cref{cor:gluing_lcfas} allows us to recover this nontrivial result. To wit, the circle can be exhibited as a collar-gluing $S^1 \cong \mathbb{R} \coprod_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod_{\mathbb{R} \sqcup \mathbb{R}} \mathbb{R}$. For locally constant factorization algebras this means that
     %
     \begin{equation}\label{eq:lcfas_on_S1_gluing}
         \lcfa_{S^1} (\catC) \simeq \lcfa_{\mathbb{R}} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \alg{\mathbb{E}_1} (\catC).
@@ -165,7 +171,9 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
         \lcfa_{\mathbb{R}^2}(\catC) \bigtimes_{\lcfa_{S^1 \times \mathbb{R}}(\catC)} \lcfa_{\mathbb{R}^2}(\catC) \simeq \alg{\mathbb{E}_2}(\catC) \bigtimes_{\alg{\mathbb{E}_1}( \aut (\alg{\mathbb{E}_1} (\catC))) } \alg{\mathbb{E}_2} (\catC),
     \end{equation}
     %
-    namely, a locally constant factorization algebra on $S^2$ equivalent to two $\mathbb{E}_2$-algebras, such that they restrict on the fattened equator to the same $\mathbb{E}_2$-algebra equipped with an $\mathbb{E}_1$-automorphism. It is nontrivial to describe this data in a simpler way as was possible for $S^1$. We can see, though, that for the higher spheres there are higher coherent equivalences that locally constant factorization algebras keep track of.
+    namely, a locally constant factorization algebra on $S^2$ is equivalent to two $\mathbb{E}_2$-algebras, such that they restrict on the fattened equator to the same $\mathbb{E}_2$-algebra equipped with an $\mathbb{E}_1$-automorphism. It is nontrivial to describe this data in a simpler way as was possible for $S^1$.
+    
+    From this example we can easily see that beyond the dimensionality $n$ of the space, which is locally kept track of as an $\mathbb{E}_n$-algebra, locally constant factorization algebras for the higher spheres also keep track of higher coherent (self-)equivalences.
 \end{example}
 
 \begin{example}

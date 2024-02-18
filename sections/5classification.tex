@@ -25,19 +25,19 @@ Our goal in this section is to lay out a possible roadmap for classifying locall
 
 In \cref{ssec:lcfa_on_Rn} we discussed locally constant factorization algebras on Euclidean spaces of different dimension $n$, and we saw that they presented the data of $\mathbb{E}_n$-algebras. In \cref{ssec:lcfa_on_1d_man}, on the other hand we focused on 1 dimensional manifolds, but with different possible stratification structures, and we saw that the data encoded in defects was a module structure. Here, in the spirit of this section, we work to extend both of these developments to the case of Euclidean spaces with the specific kind of defect that we have limited ourselves to, namely, $\mathbb{R}^{d \subset n}$.
 
-Despite \cref{rem:disk_not_enough}, we know from \cref{lem:disk/M_to_disk} that sometimes the classification results for disk algebras can be used for factorization algebras. In particular, this is the case for $\mathbb{R}^{d \subset n}$, since it is final in the $\infty$-category of basics $\bstr = \mathsf{D}_{d \subset n}^*$. This gives us
+Despite \cref{rem:disk_not_enough}, we know from \cref{lem:disk/M_to_disk} that sometimes the classification results for disk algebras can be used for factorization algebras. In particular, this is the case for $\mathbb{R}^{d \subset n}$, since it is final in the $\infty$-category of basics $\bstr = \mathsf{D}_{d \subset n}^*$, as long as $d < n - 1$. This gives us
 %
 \begin{equation}\label{eq:focus_on_disk_dn}
     \lcfa_{\mathbb{R}^{d \subset n}} (\catC) \simeq \alg{\disk (\mathsf{D}_{d \subset n}^*)} (\catC).
 \end{equation}
 
-In fact, technically, the only case we need to consider is when $d=0$. This is the case of pointed Euclidean spaces, which are alternatively denoted $\mathbb{R}^n_*$. This is because of the isomorphism
+In fact, technically, the only cases we need to consider are when $d=0$ --- the case of pointed Euclidean spaces, which are alternatively denoted $\mathbb{R}^n_*$. This is because of the isomorphism
 %
 \begin{equation}
     \mathbb{R}^{d \subset n} \cong \mathbb{R}^{n-d}_* \times \mathbb{R}^d,
 \end{equation}
 %
-together with \cref{prop:exp_of_products_lc}, which describes locally constant factorization algebras on product spaces. To get a better grasp on $\mathbb{R}^n_*$ case we examine the $\infty$-operad.
+together with \cref{prop:exp_of_products_lc}, which describes locally constant factorization algebras on product spaces. Since $\mathbb{R}^n_*$ is a basic the collar-gluing property \cref{cor:gluing_lcfas} can't help us to analyze the situation. We are left with two cases: $n=1$ and $n > 1$. To get a better grasp on the data, we first explore the more complicated case of $n > 1$ by examining the $\infty$-operad $\disk(\mathsf{D}_{0 \subset n}^*)$, when $n > 1$. 
 
 \begin{observation}
     For the purposes of the observation we will shorten notation to $\mathscr{D}_* := \disk (\mathsf{D}_{0 \subset n}^*)$. Since the defect is a point there can be at most one disk that contains it per morphism. Thus, the morphism spaces to consider are
@@ -46,24 +46,38 @@ together with \cref{prop:exp_of_products_lc}, which describes locally constant f
         &\mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n),& &\mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n_*)& &\mathrm{and}& &\mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i} \sqcup \mathbb{R}^n_*, \mathbb{R}^n_*).&
     \end{align}
     %
-    The first of these is equivalent to the space $\mathsf{Emb}^*((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n)$ of framed open embeddings, which makes it is obvious that restricting to non-defect disks would give the data of an $\mathbb{E}_n$-algebra. When $i=0$, the third space above is equivalent to a point, which makes it clear that restricting exclusively to pointed disks $\mathbb{R}^n_*$ we give rise to plain objects\footnote{We've omitted mentioning the fact that, because of morphisms like $\emptyset \xrightarrow{} U$, all of the above algebraic objects will be pointed. We have done this to avoid confusion with the use of pointed in the sense of a point defect of the space.} (or $\mathbb{E}_0$-algebra). The structure that connects the two algebras is encoded in the rest of the morphism spaces. 
-
-    By definition, the middle space is given by $\mathsf{Emb}^* ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n \setminus \{0\})$. For the last space when $i$ isn't necessarily 0 we can use the same observation as in the proof of \cite[prop.3.16]{francis2013}, namely that we can always translate the disks so that the defect lands at the origin. This gives an equivalence of spaces
+    The first of these is equivalent to the space $\mathsf{Emb}^*((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n)$ of framed open embeddings, which makes it is obvious that restricting to non-defect disks would give the data of an $\mathbb{E}_n$-algebra. This is related to \cref{lem:ff_functor_to_refinement}, which says that forgetting the stratification results in obtaining a full $\infty$-subcategory of locally constant factorization algebras. When $i=0$, the third space above is equivalent to a point, which makes it clear that restricting exclusively to pointed disks $\mathbb{R}^n_*$ would give rise to plain objects\footnote{We've omitted mentioning the fact that, because of morphisms like $\emptyset \xrightarrow{} U$, all of the above algebraic objects will be pointed. We have done this to avoid confusion with the use of pointed in the sense of a point defect of the space.} (or $\mathbb{E}_0$-algebras). 
+    
+    The structure that connects these two algebras is encoded in the rest of the morphism spaces. In fact the second and third space above are equivalent,
     %
     \begin{equation}
-        \mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i} \sqcup \mathbb{R}^n_*, \mathbb{R}^n_*) \simeq \mathsf{Emb}^* ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n \setminus \{0\})
+        \mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n_*) \simeq \mathsf{Hom}_{\mathscr{D}_*} ((\mathbb{R}^n)^{\sqcup i} \sqcup \mathbb{R}^n_*, \mathbb{R}^n_*) \simeq \mathsf{Emb}^* ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n \setminus \{0\}),
     \end{equation}
     %
-    to the framed embeddings that miss the origin. Comparing to the proof of \cref{univ_env_for_En} this suggests that
+    for all $i \in \mathbb{N}$, where $\mathsf{Emb}^* ((\mathbb{R}^n)^{\sqcup i}, \mathbb{R}^n \setminus \{0\})$ is the space of framed embeddings of $i$ $n$-dimensional disks into the punctured $\mathbb{R}^n$.
+
+    The isomorphism $\mathbb{R}^n \setminus \{ 0 \} \cong S^{n-1} \times \mathbb{R}$ together with an examination of \cite[prop.3.16]{francis2013}, which we recalled in \cref{univ_env_for_En}, and its proof leads us to suggest that the $\mathbb{E}_n$-algebra $A$ and the $\mathbb{E}_0$-algebra $B$ are further such that $B$ is a module over the universal enveloping algebra $U_A \simeq \int_{S^{n-1}} A$ as an $\mathbb{E}_1$-algebra. Remembering that we limited the whole discussion to the case when $n>1$, we propose:
 \end{observation}
 
 \begin{theorem}
-    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-category of locally constant factorization algebras on $\mathbb{R}^n_*$ and the $\infty$-category of $\mathbb{E}_n$-modules
+    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-category of locally constant factorization algebras on $\mathbb{R}^n_*$ and the $\infty$-category of $\mathbb{E}_n$-modules that fits into the commutative diagram
     %
     \begin{equation}
-        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}^n_*} (\catC).
-    \end{equation} 
+        \begin{tikzcd}
+            \mathsf{Mod}^{\mathbb{E}_n} (\catC) \arrow[r, "\simeq"] \arrow[d] & \lcfa_{\mathbb{R}^n_*} (\catC) \arrow[d, "\cref{lem:ff_functor_to_refinement}"] \\
+            \alg{\mathbb{E}_n} (\catC) \arrow[r, "\simeq"] & \lcfa_{\mathbb{R}^n} (\catC).
+        \end{tikzcd}
+    \end{equation}
 \end{theorem}
+
+\begin{remark}
+    In the above $\mathsf{Mod}^{\mathbb{E}_n}$ is the $\infty$-category of $\mathbb{E}_n$-modules, which is fibered over $\alg{\mathbb{E}_n}$ the $\infty$-category of $\mathbb{E}_n$-algebras. Informally speaking, the objects of $\mathsf{Mod}^{\mathbb{E}_n}$ are pairs $(A, M)$ consisting of an $\mathbb{E}_n$-algebra $A$ and an $A$-module $M$. However, to make things precise we, as always, use the definitions in \cite[ch.3]{lurie_ha}.
+\end{remark}
+
+
+\begin{proof}
+    Since $\mathsf{Mod}^{\mathbb{E}_n}$ is fibered over $\alg{\mathbb{E}_n}$, with fibers $\mathsf{Mod}^{\mathbb{E}_n}_A$ for $A$ an $\mathbb{E}_n$-algebra
+\end{proof}
 
 %\begin{theorem}
 %    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-category of $\mathbb{E}_n$-modules and the $\infty$-category of locally constant factorization algebras on $\mathbb{R}^n_*$
@@ -77,38 +91,34 @@ together with \cref{prop:exp_of_products_lc}, which describes locally constant f
 %    We immediately remark that \cite[lem.2.13]{francis2013} says that the universal enveloping algebra $U_A$ of an algebra $A \in \alg{\mathscr{O}} (\catC)$ is given as the value on $*$ of the left Kan extension of $A$ along the functor $\psi: \mathscr{O} \xrightarrow{} \mathscr{O}_*$ that adds a basepoint. Namely, this is the functor that adds a basepoint to objects and on morphism spaces it sends a map to its extension as a basepoint preserving map. We will argue that this functor is exactly the functor {\color{red} UNFINISHED}
 %\end{proof}
 
-.....
+%The study of these was undertaken in \cite{ginot2015}. There it was shown that
 
-The study of these was undertaken in \cite{ginot2015}. There it was shown that
+%\begin{theorem}[{\cite[cor.8]{ginot2015}}]\label{thm:ginot_classif_Rn*}
+%    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-categories of $\mathbb{E}_n$-modules and the pullback
+%    %
+%    \begin{equation}
+%        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}^n_*} (\catC) \bigtimes_{\lcfa_{\mathbb{R}^n \setminus \{ 0\} } (\catC)} \lcfa_{\mathbb{R}^n} (\catC).
+%    \end{equation}
+%\end{theorem}
 
-\begin{theorem}[{\cite[cor.8]{ginot2015}}]\label{thm:ginot_classif_Rn*}
-    Let $n$ be bigger than 1. There is an equivalence between the $\infty$-categories of $\mathbb{E}_n$-modules and the pullback
-    %
-    \begin{equation}
-        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}^n_*} (\catC) \bigtimes_{\lcfa_{\mathbb{R}^n \setminus \{ 0\} } (\catC)} \lcfa_{\mathbb{R}^n} (\catC).
-    \end{equation}
-\end{theorem}
 
-\begin{remark}
-    In the above $\mathsf{Mod}^{\mathbb{E}_n}$ is the $\infty$-category of $\mathbb{E}_n$-modules, which is fibered over $\alg{\mathbb{E}_n}$ the $\infty$-category of $\mathbb{E}_n$-algebras. Informally speaking, the objects of $\mathsf{Mod}^{\mathbb{E}_n}$ are pairs $(A, M)$ consisting of an $\mathbb{E}_n$-algebra $A$ and an $A$-module $M$. However, to make things precise we, as always, use the definitions in \cite[ch.3]{lurie_ha}.
-\end{remark}
 
-\begin{remark}
-    The version of \cref{thm:ginot_classif_Rn*} cited above is different from the one appearing in the original reference. \cite[cor.8]{ginot2015}, as stated, requires the homotopy pullback, however examining its proof and the later \cite[cor.9]{ginot2015} implies that the correct statement that has been proven is as written above.
-\end{remark}
+%\begin{remark}
+%    The version of \cref{thm:ginot_classif_Rn*} cited above is different from the one appearing in the original reference. \cite[cor.8]{ginot2015}, as stated, requires the homotopy pullback, however examining its proof and the later \cite[cor.9]{ginot2015} implies that the correct statement that has been proven is as written above.
+%\end{remark}
 
 \begin{remark}
-    The case of $n=1$ is special because the higher stratum $\mathbb{R} \setminus \{0\}$ is now disconnected. Looking back at the construction leading up to \cref{prop:hoint_gives_modules} and at \cref{rem:left_or_right_module} we can guess that a statement like the following can hold true:
+    The case $n=1$ is special because the higher stratum $\mathbb{R} \setminus \{0\}$ is now disconnected. Looking back at the construction leading up to \cref{prop:hoint_gives_modules} and at \cref{rem:left_or_right_module} we can guess that a statement like the following can hold true:
 \end{remark}
 
 \begin{proposition}
     There is an equivalence between the $\infty$-category of locally constant factorization algebras on $\mathbb{R}_*$ and the $\infty$-category consisting of two $\mathbb{E}_1$-algebras $A$ and $B$ together with a pointed, left $A \otimes B^\mathsf{op}$-module $M$
     %
     \begin{equation}
-        \lcfa_{\mathbb{R}_*} \simeq \mathsf{LMod} (\catC) \bigtimes_{\catC^{\mathbb{1}/}} \mathsf{RMod} (\catC),
+        \lcfa_{\mathbb{R}_*} \simeq \mathsf{LMod} (\catC) \bigtimes_{\catC_{\mathbb{1}/}} \mathsf{RMod} (\catC),
     \end{equation}
     %
-    where the functors $\mathsf{LMod}(\catC) \rightarrow \catC^{\mathbb{1}/}$ and $\mathsf{RMod}(\catC) \rightarrow \catC^{\mathbb{1}/}$ are the ones giving the underlying (pointed) object of a module.
+    where the functors $\mathsf{LMod}(\catC) \rightarrow \catC_{\mathbb{1}/}$ and $\mathsf{RMod}(\catC) \rightarrow \catC_{\mathbb{1}/}$ are the ones giving the underlying (pointed) object of a module.
 \end{proposition}
 
 

@@ -37,7 +37,7 @@ Factorization algebras are a rigorous way to capture the idea of assigning an ob
         \begin{tikzcd}
             \bigotimes\limits_{(i,j)} F(V_{i,j}) \arrow[rd, shorten <=-2ex, "\bigotimes\limits_{i} F(\{V_{i, j}\} {,} U_i)"'] \arrow[rr, "F( \{V_{i, j}\} {,} U)"] &   & F(U) \\
             & \bigotimes\limits_{i} F(U_i) \arrow[ru, "F( \{U_i \} {,} U)"'] &,          
-            \end{tikzcd}
+        \end{tikzcd}
     \end{equation}
     %
     where the $(i,j)$ tensor product runs over all possible pairs $i \in I$ and $j \in J_i$. Finally, the operadic unitarity condition actually tells us that we don't need to provide the morphisms $F(\{U\}, U)$, because they are equivalent to the identity morphism.
@@ -195,7 +195,7 @@ There is a general definition of locally constant algebra objects in the context
 Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for factorization algebras. In the case of stratified manifolds, we will show that the $\infty$-operad that governs locally constant factorization algebras can be taken to be $\disk_{/M}$, and the one that governs ordinary factorization algebras can be taken to be $\disk[r]_{/M}$. This result is immensely helpful in relating factorization algebras to results in the area of disk algebras. We will see one such example in \cref{ch:gluing_disk_alg}.
 
 \begin{proposition}\label{prop:fh_disk_to_lcfa}
-    Given $M$ a stratified manifold factorization homology provides a functor between the $\infty$-categories of $\disk_M$-algebras and locally constant factorization algebras $\lcfa_M$
+    Given $M$ a stratified manifold factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
     %
     \begin{equation}
         \int : \alg{\disk_M} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
@@ -274,7 +274,7 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
     Denoting the functor $\mfld[r]_{/N} \simeq (\mfld[r]_{/M})_{/e} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC$ by $K_F$ and comparing with \cref{eq:cosheaf_colim_relative} we need to show
     %
     \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{K_F} C) \simeq \mathsf{colim} (\disk[r]_{N} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{K_F} C),
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{K_F} C) \simeq \mathsf{colim} (\disk[r]_{/N} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{K_F} C),
     \end{equation}
     %
     but this already follows from part 2 of the proof of \cite[prop.2.22]{af_primer}, and is equivalent to the statement that the functor
@@ -536,7 +536,7 @@ The case of locally constant factorization algebras is different when it comes t
     The one point manifold is a very simple space, which makes the concepts of prefactorization algebras, factorization algebras and locally constant factorization algebras coincide. All of them are in fact given by a pointed object of the target category. Evaluation at $*$ simply returns the underlying object. Thus, in a sense evaluating factorization homology on a space $M$ is the same procedure as pushing-forward by the map $\mathsf{p}$. Versions of factorization homology that can evaluate lower dimensional manifolds (as compared to the structure of the disk algebra), for example as in \cite[cor.2.29]{aft_fhstrat}, can then be seen as relaxing this pushforward from $*$ to a manifold with more structure.
 \end{remark} 
 
-\begin{lemma}
+\begin{lemma}\label{lem:ff_functor_to_refinement}
     Let $u: X \rightarrow \hat{X}$ be the morphism of \cref{ex:forget_strat} that forgets the stratification.
     The functor $u_*: \lcfa_{X} (\catC) \rightarrow \lcfa_{\hat{X}} (\catC)$ has a fully faithful left adjoint.
 \end{lemma}
@@ -594,13 +594,13 @@ In the special case of product spaces $X \times Y$, we now know that the project
 \end{proposition}
 
 \begin{remark}
-    The above proposition also appears as \cite[prop.18]{ginot2015}. The equivalence proven there is for the case of smooth manifolds and relies on the local proof of \cite{lurie_ha} for $\mathbb{R}^n$. Using \cref{thm:disk_alg=lcfa}, the statement is equivalent to the fact that there is an equivalence of $\infty$-operads
+    The above proposition also appears as \cite[prop.18]{ginot2015}. The equivalence proven there is for the case of smooth manifolds and relies on the local proof of \cite{lurie_ha} for $\mathbb{R}^n$. Using \cref{thm:disk_alg=lcfa}, the statement is implied by the fact that there is an equivalence of $\infty$-operads
     %
     \begin{equation}
         \disk_{/M} \otimes \disk_{/N} \xrightarrow{\ \ \simeq \ \ } \disk_{/M \times N},
     \end{equation}
     %
-    with the tensor product of $\infty$-opeards. Again for smooth manifolds this is found in \cite[ex.5.4.5.5]{lurie_ha}. In fact, this version is the one that easily generalizes to the stratified case.
+    with the tensor product of $\infty$-opeards. Again for smooth manifolds this is found in \cite[ex.5.4.5.5]{lurie_ha}.
 \end{remark}
 
 \begin{proof}
@@ -616,51 +616,14 @@ In the special case of product spaces $X \times Y$, we now know that the project
         \bar{\pi}: \lcfa_{X \times Y}(\catC) \xrightarrow{\ \ \ \ } \lcfa_{X}(\lcfa_{Y}(\catC)).
     \end{equation}
 
-    For the equivalence, we adapt \cite[ex.5.4.5.5]{lurie_ha}, as mentioned above. Namely, using that technology, the only thing we need to prove is that there is an equivalence between $\infty$-categories induced by the functor
+    One way to show the equivalence is to use factorization homology, as in \cref{thm:disk_alg=lcfa}, to write a locally constant factorization algebra as $\int_{-} A \in \lcfa_{X \times Y} (\catC)$. Then using the Fubini theorem \cite[cor.2.29]{aft_fhstrat}\footnote{The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold.} for factorization homology we get essential surjectivity because there are equivalences
     %
-    \begin{align}
-        \bsc_{/M} \times \bsc_{/N} &\xrightarrow[\simeq]{\ \ \times \ \ } \bsc_{/M \times N} \notag\\
-        ((U \xhookrightarrow{} M), (V \xhookrightarrow{} N)) &\mapsto (U \times V \xhookrightarrow{} M \times N).
-    \end{align}
+    \begin{equation}
+        \int_{U \times V} A \xrightarrow{\ \ \simeq \ \ } \int_U \int_V \bar{\pi} A
+    \end{equation}
     %
-    ......
+    between objects of $\catC$. As argued in the proof of \cref{thm:disk_alg=lcfa}, these equivalences are natural in the open set variables, which means that they rise to equivalences at the level of locally constant factorization algebras. In fact, looking at the proof of \cite[thm.2.25]{aft_fhstrat}, which is what underlies the construction of the above equivalences, we see that they arise from an argument about a final functor. By \cref{rem:fin_equiv_natural} this means that the equivalences are actually natural in the algebra variable, so it is immediate that the equivalences of individual locally constant factorization algebras lift to a full equivalence of $\infty$-categories.
 \end{proof}
-
-\begin{remark}
-    The discussion at \cref{rem:fh_is_pushingforward} implies that one way to see the above proposition is as related to the Fubini theorem for factorization homology \cite[cor.2.29]{aft_fhstrat}.
-\end{remark}
-
-
-%\subsection{Inheritance from a Covering Space}
-
-%{\color{red} SHOULD THIS STAY? OR JUST CITE SPHERE RESULT FROM SOMEWHERE}
-
-%We can also induce factorization algebras on a space $X$ if we know how to describe them on a covering space of $X$. The proofs of the statements below require the full machinery regarding pullbacks of factorization algebras, so we will omit them. They can be found in \cite[ch.7.2]{cg2016}. For the extension to the stratified case, see \cite{ginot2015}.
-
-%\begin{definition}
-%    Let $G$ be a discrete group that acts on a topological space $X$. A $G$-equivariant factorization algebra on $X$ is a factorization algebra $F \in \falg_X (\catC)$ together with a family of equivalences
-%    %
-%    \begin{equation}
-%        \{ \theta_g : g^*F \xrightarrow{\ \ \simeq \ \ } F \}_{g \in G},
-%    \end{equation}
-%    %
-%    such that $\theta_e = \mathrm{id}$ and $\theta_{g h} = \theta_h \circ h^*(\theta_g): h^* g^* F \xrightarrow{\simeq} F$. We write $(\falg_X (\catC))^G$ for the full $\infty$-subcategory spanned by the $G$-equivariant factorization algebras.
-%\end{definition}
-
-%\begin{theorem}[{\cite[prop.4.0.1]{cg2016}}]\label{thm:quotient_fas}
-%    Let $X$ be a Hausdorff topological space, and $G$ be a discrete group that has a covering space action on $X$. The pullback along the open immersion $q: X \rightarrow X / G$ is an equivalence of $\infty$-categories
-%    %
-%    \begin{equation}
-%        q^* : \falg_{X / G} (\catC) \xrightarrow{\ \ \simeq \ \ } (\falg_{X} (\catC))^G,
-%    \end{equation}
-%    %
-%    between factorization algebras on the quotient space and $G$-equivariant factorization algebras on the covering space. If $X$ is further a stratified manifold the equivalence restricts to an equivalence of the $\infty$-categories of locally constant factorization algebras
-%    %
-%    \begin{equation}
-%        q^* : \lcfa_{X / G} (\catC) \xrightarrow{\ \ \simeq \ \ } (\lcfa_{X}(\catC))^G.
-%    \end{equation} 
-%\end{theorem}
-
 
 
 
@@ -755,7 +718,7 @@ In this section we want to describe locally constant factorization algebras on E
 \end{equation}
 %
 
-\begin{theorem}[{\cite{lurie_ha}...}]
+\begin{theorem}[{\cite[thm.5.5.4.10]{lurie_ha}}]
     There is an equivalence of $\infty$-categories between the $\infty$-categories of locally constant factorization algebras on $\mathbb{R}^n$ and $\mathbb{E}_n$-algebras
     %
     \begin{equation}
@@ -795,7 +758,7 @@ In this section we want to describe locally constant factorization algebras on E
     \end{equation}
 \end{proposition}
 
-Specializing \cref{prop:exp_of_products_lc} to the case of Euclidean spaces gives the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}.
+We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^m \times \mathbb{R}^n$, in which case \cref{prop:exp_of_products_lc} specializes to give the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}:
 
 \begin{proposition}\label{prop:dunn_additivity}
     There is an equivalence of $\infty$-categories
@@ -806,7 +769,7 @@ Specializing \cref{prop:exp_of_products_lc} to the case of Euclidean spaces give
 \end{proposition}
 
 \begin{remark}
-    The proof of \cref{prop:exp_of_products_lc} given in \cite{ginot2015} actually depends on Dunn additivity to work, instead of the other way around, however the proof presented in \cite{lurie_ha} is independent and thus gives rise to both statements. 
+    The proof of \cref{prop:exp_of_products_lc}, when specialized to ordinary manifolds, as given in \cite{ginot2015} actually depends on Dunn additivity to work, however the proof presented in \cite{lurie_ha} is independent. 
 \end{remark}
 
 

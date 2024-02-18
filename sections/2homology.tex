@@ -325,7 +325,33 @@ In fact in the simple case of intervals, that we're considering here, even more 
     The only thing to show is the middle equivalence. This follows from \cref{lem:disk/M_to_disk}, which we will introduce later. 
 \end{proof}
 
----------------
+\begin{remark}\label{rem:fin_equiv_natural}
+    A few times in this work we will encounter the fact that a final functor $F: \mathscr{A} \xrightarrow{} \mathscr{B}$ between $\infty$-categories induces an equivalence
+    %
+    \begin{equation}\label{eq:fin_equivs_obj}
+        \mathsf{colim}(G) \xrightarrow{\ \ \simeq \ \ } \mathsf{colim}(G \circ F),
+    \end{equation}
+    %
+    for each functor $G: \mathscr{B} \xrightarrow{} \mathscr{C}$, whenever both colimits exist. We remark here that these equivalences are actually even natural in $G$. To explain this, we first notice that the equivalences in \cref{eq:fin_equivs_obj} actually arise from equivalences between $\infty$-categories
+    %
+    \begin{equation}\label{eq:fin_equivs_cat}
+        \mathscr{C}_{G/} \xrightarrow{\ \ \simeq \ \ } \mathscr{C}_{G \circ F /},
+    \end{equation}
+    %
+    as discussed in \cite[prop.4.1.1.8]{lurie_htt}, where the functor is the obvious one. Furthermore, \cite[\href{https://kerodon.net/tag/016H}{016H}]{lurie_kerodon} tells us that the coslice construction is functorial, which for our purposes defines the functors
+    %
+    \begin{align}
+        &S: \mathsf{Fun}(\mathscr{B}, \mathscr{C}) \xrightarrow{\ \ \ } \cat& \mathrm{and}& &S': \mathsf{Fun}(\mathscr{A}, \mathscr{C}) \xrightarrow{\ \ \ } \cat,&
+    \end{align}
+    %
+    whose value on objects is given by $G \mapsto \mathscr{C}_{G/}$. We can now state that by naturality in $G$ we mean that the functors \cref{eq:fin_equivs_cat} assemble into an equivalence of functors   
+    %
+    \begin{equation}
+        S \xrightarrow{\ \ \simeq \ \ } S' \circ F^*
+    \end{equation}
+    %
+    in $\mathsf{Fun}(\mathsf{Fun(\mathscr{B}, \mathscr{C})}, \cat)$. But this is obviously the case, given the description of the maps in \cref{eq:fin_equivs_cat}.
+\end{remark}
 
 \begin{proposition}\label{prop:barconst=intinterval}
     There is an equivalence of functors between the two-sided bar construction
@@ -354,7 +380,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
 \begin{proof}
     The equivalence at the level of objects is exactly \cite[prop.2.34]{aft_fhstrat}, whose proof we recount here for completeness. 
 
-    For the purposes of the proof introduce the shorthand notation $\mathscr{D} := \disk(\mathsf{D}_1^{\partial, *})$. There is a functor $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ from the opposite of the simplex category, whose essential image consists of those objects for which the distinguished subsets with a maximal and minimal element are non-empty. This functor is final\footnote{A functor $F: \catC \xrightarrow{} \mathscr{D}$ between $\infty$-categories is final if precomposition with it preserves colimits \[ \mathsf{colim}(G \circ F) \simeq \mathsf{colim}(G).\]} because adjoining a minimum and maximum gives a left adjoint to it. We recognize the simplicial object
+    For the purposes of the proof introduce the shorthand notation $\mathscr{D} := \disk(\mathsf{D}_1^{\partial, *})$. There is a functor $\Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}}$ from the opposite of the simplex category, whose essential image consists of those objects for which the distinguished subsets with a maximal and minimal element are non-empty. This functor is final because adjoining a minimum and maximum gives a left adjoint to it. We recognize the simplicial object
     %
     \begin{equation}
         \mathsf{B}_{\bullet}(R, A, L): \Delta^{\mathsf{op}} \xhookrightarrow{} \mathsf{O^{RL}} \simeq \mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC
@@ -365,34 +391,9 @@ In fact in the simple case of intervals, that we're considering here, even more 
     \begin{equation}
         \mathsf{B} (R, A, L) \equiv R \bigotimes\limits_{A} L = |\mathsf{B}_{\bullet}(R, A, L)| \simeq \mathsf{colim} (\mathscr{D}_{/[-1,1]} \xrightarrow{} \mathscr{D} \xrightarrow{(R, A, L)} \catC) = \int_{[-1,1]} (R, A, L).
     \end{equation}
-    %
-    To show the naturality of these equivalences, in the algebra variable, consider the algebra map $(F \xrightarrow{f} G) \in \mathsf{Fun}(\disk_{/[-1,1]}, \catC)$. We can consider the colimit as a functor
-    %
-    \begin{equation}
-        \mathsf{colim}: \mathscr{C} \mathsf{at}_{\infty / \catC} \xrightarrow{} \catC,
-    \end{equation}
-    %
-    such that the equivalences arise from composing with the adjoints $\Delta^{\mathsf{op}} \mathrel{\substack{\textstyle\leftarrow\\[-0.1ex]\textstyle\hookrightarrow}} \disk_{/[-1,1]}$. The naturality condition is then arranged by the functoriality of $\mathsf{colim}$, namely, by the images of the squares
-    %
-    \begin{equation}
-        \begin{tikzcd}[row sep = small]
-            \Delta^{\mathsf{op}} \arrow[r, hook, shift right] \arrow[dd, equal] & \disk_{/[-1,1]} \arrow[rd, "F"] \arrow[l, shift right] \arrow[dd, phantom, bend left = 60, "f"] \arrow[dd, equal] & \\
-            & & \catC \\
-            \Delta^{\mathsf{op}} \arrow[r, hook, shift right] & \disk_{/[-1,1]} \arrow[ru, "G"'] \arrow[l, shift right] &  
-        \end{tikzcd}
-    \end{equation}
-    %
-    over $\catC$.
+
+    Since the equivalences above come from an argument about finality, \cref{rem:fin_equiv_natural} tells us that they are actually even natural in the algebra variable $(R, A, L)$, so that the equivalence lifts to the level of functors.
 \end{proof}
-
-%\begin{proposition}[{\cite[prop.2.34]{aft_fhstrat}}]\label{prop:barconst=intinterval}
-%    Let $A$ be a unital, (homotopy) associative algebra in $\catC$, $R$ be a unital right $A$-module in $\catC$ and $L$ be a unital left $A$-module in $\catC$. Using \cref{prop:disk1bor=assocRL} regard this data as the data of a symmetric monoidal functor $(R, A, L): \disk (\mathsf{D}_1^{\partial, *}) \xrightarrow{} \catC$. Then there is a canonical equivalence in $\catC$ between factorization homology over the closed interval and the two-sided bar construction
-%    %
-%    \begin{equation}
-%        \int_{[-1,1]} (R, A, L) \xrightarrow{\ \ \simeq \ \ } R \bigotimes\limits_{A} L.
-%    \end{equation}
-%\end{proposition}
-
 
 
 \subsection{Pushforward}
@@ -428,7 +429,13 @@ The construction of \cref{lem:f^-1} gives a functor which allows us to change th
     \end{equation}
 \end{remark}
 
-
+\begin{remark}\label{rem:fh_pushforward_functorial}
+    As was the case with the bar construction the equivalence of \cref{thm:fh_pushforward}, comes about through an argument about a final functor, this means that, through \cref{rem:fin_equiv_natural} there is even an equivalence between functors
+    %
+    \begin{equation}
+        \int_M -, \int_N f_* - : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \catC.
+    \end{equation}
+\end{remark}
 
 
 
