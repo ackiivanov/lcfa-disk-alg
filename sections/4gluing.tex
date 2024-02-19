@@ -7,6 +7,8 @@
 
 Given a stratified manifold $M$, we defined the $\infty$-category of locally constant factorization algebras on it $\lcfa_M (\catC)$. We want to examine what we can say about the behavior of this $\infty$-category under collar-gluings in the manifold variable. Our discussion will be in terms of disk algebras $\alg{\disk_{/M}} (\catC)$, but using \cref{thm:disk_alg=lcfa} there is no loss at all.
 
+\subsection{The Gluing Theorem}
+
 \begin{theorem}\label{thm:gluing_alg_disk/M}
     Given a collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$, the $\infty$-category of $\disk_{/M}$-algebras is equivalent to the pullback of $\infty$-categories
     %
@@ -138,6 +140,9 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
     The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
 \end{remark}
 
+
+\subsection{Some Examples of Gluing}
+
 \begin{example}\label{ex:reproduce_lcfas_on_S1}
     Using results from \cite[prop.4.0.1]{cg2016}, namely inheritance from a covering space, \cite[sec.5.5]{ginot2015} characterizes locally constant factorization algebras on the circle $S^1$ as
     %
@@ -176,7 +181,7 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
     From this example we can easily see that beyond the dimensionality $n$ of the space, which is locally kept track of as an $\mathbb{E}_n$-algebra, locally constant factorization algebras for the higher spheres also keep track of higher coherent (self-)equivalences.
 \end{example}
 
-\begin{example}
+\begin{example}\label{ex:cylinder_mobius_band}
     In \cref{ch:classif_defect_mfld} we will see that fiber bundles are important for the classification of some stratified manifolds. Here we will look at line bundles over the circle as a toy example, namely, the cylinder $C$ and M\"obius band $M$. The cylinder, as a trivial fiber bundle, is isomorphic to the product space $S^1 \times \mathbb{R}$. By \cref{prop:exp_of_products_lc} together with the results of \cref{ex:reproduce_lcfas_on_S1}, locally constant factorization algebras on it are given by $\mathbb{E}_2$-algebras together with an $\mathbb{E}_1$-self-equivalence
     %
     \begin{align}
@@ -197,17 +202,5 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
 
     We should remark that the fact that we can take the opposite algebra in one direction only is a consequence of Dunn additivity \cref{prop:dunn_additivity}. Without it, we wouldn't be able to combine the opposite algebra in one direction with the original algebra in the other direction into a well-defined algebra in two dimensions.
 \end{example}
-
-%\begin{example}{\color{red} GO TO LATER CHAPTER}
-%    We have an immediate simplification of the result we saw in \cref{thm:ginot_classif_Rn*}, because its right-hand side is of the exact form to be a collar-gluing. Namely, it's the collar-gluing which, somewhat trivially, exhibits $\mathbb{R}^n_*$ as $ \cong \mathbb{R}^n_* \coprod_{\mathbb{R}^n \setminus \{0\}} \mathbb{R}^n \setminus \{0\}$. The result then simplifies to
-%    %
-%    \begin{equation}
-%        \mathsf{Mod}^{\mathbb{E}_n} (\catC) \simeq \lcfa_{\mathbb{R}^n_*} (\catC). 
-%    \end{equation}
-%    %
-%    This would confirm that the intuition we had from the 1 dimensional examples continues to hold in higher dimensions in a form that is easily parsable; introducing point defects on the manifold directly gives modules for the algebra.
-%\end{example}
-
-
 
 \end{document}
