@@ -134,7 +134,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
         \end{tikzcd}
     \end{equation}
     %
-    which is homotopy commutative, while in $\disk[r](\bstr)_{/M}$ a morphism is a diagram as above that commutes on the nose\footnote{Regarding notation, \cite{lurie_ha} introduces both $\infty$-operads $\disk(\bstr)_{/M}$ and $\disk[r](\bstr)_{/M}$, however there they are denoted by $\mathbb{E}_M^\otimes$ and $\mathrm{N}(\mathrm{Disk}(M))^\otimes$, respectively.}.
+    which is homotopy commutative, while in $\disk[r](\bstr)_{/M}$ a morphism is a diagram as above that commutes on the nose\footnote{Regarding notation, \cite{lurie_ha} introduces both the $\infty$-operad $\disk(\bstr)_{/M}$ and $\disk[r](\bstr)_{/M}$, however there they are denoted by $\mathbb{E}_M^\otimes$ and $\mathrm{N}(\mathrm{Disk}(M))^\otimes$, respectively.}.
 \end{remark}
 
 
@@ -231,7 +231,7 @@ In the previous subsection we defined and explored the algebraic input of factor
     \end{equation}
 \end{definition}
 
-The bulk of the work is then to show that such an adjoint exists and to try to find more concrete forms of factorization homology that would be easier to compute with. Being a left Kan extension one guess on the side of computation would be that we can find its values via colimits, as is usual for pointwise left Kan extensions. Determining under which assumptions factorization homology, in both its forms, exists and is given by a colimit is one of the major results of \cite{af_fhtop} (for the smooth case) and \cite{aft_fhstrat} (for the stratified case). Specifically lemmas \cite[lem.2.16]{aft_fhstrat} and \cite[lem.2.17]{aft_fhstrat} are great encapsulations of all the conditions that are needed.
+The bulk of the task is then to show that such an adjoint exists and to try to find more concrete forms of factorization homology that would be easier to compute with. Being a left Kan extension one guess on the side of computation would be that we can find its values via colimits, as is usual for pointwise left Kan extensions. Determining under which assumptions factorization homology, in both its forms, exists and is given by a colimit is one of the major results of \cite{af_fhtop} (for the smooth case) and \cite{aft_fhstrat} (for the stratified case). Specifically lemmas \cite[lem.2.16]{aft_fhstrat} and \cite[lem.2.17]{aft_fhstrat} are great encapsulations of all the conditions that are needed.
 
 The upshot is that, with our setup and assumptions on $\catC$, the guess that the value of factorization homology can be calculated by a colimit is correct and given by the standard expressions for left Kan extensions
 %
@@ -294,7 +294,7 @@ We want to show that disk algebras with $\mathsf{D}_1^{\partial, *}$-structure, 
 \end{proposition}
 
 \begin{proof}
-    The first equivalence comes by inspection of the morphism spaces which are discrete in this particular case. Since $\mathsf{Assoc^{RL}}$ is also born of a discrete nature we only need to find a bijection of morphism spaces. By construction of $\mathsf{Assoc^{RL}}$ such a bijection is immediate.
+    The first equivalence comes by inspection of the morphism spaces which are discrete in this particular case. Since $\mathsf{Assoc^{RL}}$ is also born of a discrete nature we only need to find a bijection of morphism spaces. By the construction of $\mathsf{Assoc^{RL}}$ such a bijection is immediate.
 \end{proof}
 
 \begin{proposition}\label{prop:disk1bor_over_int=ORL}
@@ -338,7 +338,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
         \mathscr{C}_{G/} \xrightarrow{\ \ \simeq \ \ } \mathscr{C}_{G \circ F /},
     \end{equation}
     %
-    as discussed in \cite[prop.4.1.1.8]{lurie_htt}, where the functor is the obvious one. Furthermore, \cite[\href{https://kerodon.net/tag/016H}{016H}]{lurie_kerodon} tells us that the coslice construction is functorial, which for our purposes defines the functors
+    as discussed in \cite[prop.4.1.1.8]{lurie_htt}, where the functor is the obvious one. Furthermore, \cite[\href{https://kerodon.net/tag/016H}{016H}]{lurie_kerodon} tells us that the coslice construction is functorial, which, after restricting, defines the functors
     %
     \begin{align}
         &S: \mathsf{Fun}(\mathscr{B}, \mathscr{C}) \xrightarrow{\ \ \ } \cat& \mathrm{and}& &S': \mathsf{Fun}(\mathscr{A}, \mathscr{C}) \xrightarrow{\ \ \ } \cat,&
@@ -350,7 +350,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
         S \xrightarrow{\ \ \simeq \ \ } S' \circ F^*
     \end{equation}
     %
-    in $\mathsf{Fun}(\mathsf{Fun(\mathscr{B}, \mathscr{C})}, \cat)$. But this is obviously the case, given the description of the maps in \cref{eq:fin_equivs_cat}.
+    in $\mathsf{Fun}(\mathsf{Fun(\mathscr{B}, \mathscr{C})}, \cat)$. But this is obviously the case, given the description of the maps in \cref{eq:fin_equivs_cat}, and amounts to nothing more than bookkeeping.
 \end{remark}
 
 \begin{proposition}\label{prop:barconst=intinterval}
@@ -374,7 +374,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
 \end{proposition}
 
 \begin{remark}
-    The two-sided bar construction here gives the left derived tensor product. We, however, do not make a notational distinction between this left derived tensor product and the standard one since we should be clear from context. The left derived version will always appear due to some two-sided bar construction. 
+    The two-sided bar construction here gives the left derived tensor product. We, however, do not make a notational distinction between this left derived tensor product and the standard one since it should be clear from context. The left derived version will always appear due to some two-sided bar construction. 
 \end{remark}
 
 \begin{proof}
@@ -489,7 +489,7 @@ Now that we have a pushforward operation, we can finally explicitly state what e
 
 
 \begin{example}
-    Checking the definitions we can see that evaluating basics $U \in \disk(\bstr) \xhookrightarrow{} \mfld(\bstr)$ is the same as simply evaluating the disk with the disk algebra. This is simply because factorization homology is a left Kan extension.
+    Checking the definitions we can see that evaluating basics $U \in \disk(\bstr) \xhookrightarrow{} \mfld(\bstr)$ with factorization homology is the same as simply evaluating the disk with the disk algebra. This is simply because factorization homology is a left Kan extension.
 
     The first nontrivial example is then the oriented circle. We know that the algebras that we will be evaluating with are $\disk (\mathsf{D}_1^{\partial, *})$-algebras (or even simpler the restriction to $\disk (\mathsf{D}_1^{*})$ the ones without boundary). The oriented circle can be presented as a collar-gluing
     %
@@ -510,7 +510,7 @@ Now that we have a pushforward operation, we can finally explicitly state what e
 
 \subsection{Classification of \texorpdfstring{$\disk(\mathsf{D}_{d \subset n}^{*})$}{diskdn*}-algebras}
 
-All of the above statements about factorization homology and disk algebras are quite general, and they do not say anything specific about a stratified structure, if there is one. Namely, had we stuck to smooth manifolds (possibly with boundary) we could have made similar statements. In this section we describe a result that clearly uses the stratified structure, and quantifies some additional information it can encode. It is a classification statement about disk algebras whose structure $\mathsf{D}_{d \subset n}^*$ is provided by \cref{def:framed_d_under_n_structure}. We will, in a roundabout way, recover this result in \cref{ch:classif_defect_mfld}, but here we state it in the original form.
+All of the above statements about factorization homology and disk algebras are quite general, and they do not say anything specific about a stratified structure, if there is one. Namely, had we stuck to smooth manifolds (possibly with boundary) we could have made similar statements. In this section we describe a result that clearly uses the stratified structure, and quantifies some additional information it can encode. It is a classification statement about disk algebras whose structure $\mathsf{D}_{d \subset n}^*$ is provided by \cref{def:framed_d_under_n_structure}. %We will, in a roundabout way, recover this result in \cref{ch:classif_defect_mfld}, but here we state it in the original form.
 
 \begin{theorem}[{\cite[prop.4.8]{aft_fhstrat}}]\label{thm:classif_disk_d_under_n*_alg}
     There is a pullback diagram

@@ -17,7 +17,94 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
     \end{equation}
 \end{theorem}
 
+Before me move on to the proof we show a few useful lemmas.
+
+\begin{lemma}\label{lem:fbar_func}
+    A collar-gluing $f:M \xrightarrow{} [-1,1]$ of a stratified manifold $M$ induces a functor
+    %
+    \begin{equation}
+        \bar{f}: \mfld_{/M} \xrightarrow{\ \ \ \ } \alg{\mathsf{Assoc^{RL}}} (\mfld_{/M}),
+    \end{equation}
+    %
+    which on objects acts as $(N \xhookrightarrow{} M) \mapsto (N_- \xhookrightarrow{} M, N_0 \times \mathbb{R} \xhookrightarrow{} M, N_+ \xhookrightarrow{} M)$. Moreover, this functor is even an algebra.
+\end{lemma}
+
 \begin{proof}
+    Let us first look at the case of $\mfld[r]_{/M}$ instead of $\mfld_{/M}$. In this case the underlying $\infty$-category is actually (the nerve of) an ordinary category. In particular, morphisms are given by the data of an embedding $N \xhookrightarrow{} N'$ such that $N \xhookrightarrow{} N' \xhookrightarrow{} M = N \xhookrightarrow{} M$ on the nose.
+    
+    A collar-gluing of $M$ restricts to a collar-gluing of any $N$ that has an embedding into $M$ like the objects of our category. On the right-hand side, at the level of objects, the associative algebra structure is provided by embeddings that differ in the $\mathbb{R}$ factor and the module maps are provided by embeddings of the middle $N_0 \times \mathbb{R}$ into $N_-$ and $N_+$. At the level of morphisms we send the morphism $e: N \xhookrightarrow{} N'$ to
+    %
+    \begin{equation}
+        (e_-: N_- \xhookrightarrow{} N'_-, \ e_0: N_0 \times \mathbb{R} \xhookrightarrow{} N'_0 \times \mathbb{R}, \ e_+: N_+ \xhookrightarrow{} N'_+).
+    \end{equation}
+    %
+    The existence of these maps can be stated as the existence of a unique factorization, as in e.g.
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            N_- \arrow[r, hook] \arrow[rd, dashed, hook, "e_-"'] & N \arrow[r, hook, "e"] & N', \\
+            & N'_- \arrow[ru, hook] &
+            \end{tikzcd}
+    \end{equation}
+    %
+    where the diagram commutes on the nose. This also points out the difficulties that we will have to deal with in the case of $\mfld_{/M}$ concerning the higher morphisms.
+
+    Sticking to $\mfld[r]_{/M}$ though, the assignment clearly plays well with the algebra structure of the right-hand side, through the existence of (on the nose) commutative diagrams like e.g.
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            N_0 \times \mathbb{R} \arrow[r, hook, "e_0"] \arrow[d, hook] & N'_0 \times \mathbb{R} \arrow[d, hook]\\
+            N_- \arrow[r, hook, "e_-"] & N'_-,
+            \end{tikzcd}
+    \end{equation}
+    %
+    so that we clearly get a functor
+    %
+    \begin{equation}
+        \bar{f}: \mfld[r]_{/M} \xrightarrow{\ \ \ \ } \alg{\mathsf{Assoc^{RL}}} (\mfld[r]_{/M}).
+    \end{equation}
+
+    Need to be extended to $\mfld_{/M}$ by dealing with the homotopies.
+
+    %Formally, the relevant definition is \cite[def.2.1.2.7]{lurie_ha}, which says that we have to check two things: that the constructed functor $\gamma(A_-, A_+)$ lies over $\mathsf{Fin}_*$ and that it sends inert morphisms to inert morphisms. Factorization homology, $\int_- A_{0,\pm}$, satisfies this almost by definition, while \cref{lem:B_sym_mon} tells us that the bar construction similarly does so. All that is left to show is that $\bar{f}$ is a map of $\infty$-operads. But this is obviously the case since all it is doing is splitting the input into pieces while keeping track of how they relate to each other.
+\end{proof}
+
+\begin{lemma}\label{lem:B_sym_mon}
+    The bar construction $\mathsf{B}: \alg{\mathsf{Assoc^{RL}}} (\catC) \xrightarrow{\ \ } \catC$ is a symmetric monoidal functor.
+\end{lemma}
+
+\begin{proof}
+    The symmetric monoidal structure of $\alg{\mathsf{Assoc^{RL}}} (\catC)$ is inherited from $\catC$ pointwise. We denote the objects of $\alg{\mathsf{Assoc^{RL}}} (\catC)$ as $(R,A,L)$, and use $\mathsf{B}_{\bullet} (R, A, L):\Delta^{\mathsf{op}} \rightarrow \catC$ for the simplicial object of the bar construction. Using the language of \cite[def.2.1.2.7]{lurie_ha}, to prove that $\mathsf{B}$ is symmetric monoidal amounts to showing that for each basepoint-preserving map of based finite sets $f: I_* \xrightarrow{} J_*$ there is a commutative diagram of $\infty$-categories
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \alg{\mathsf{Assoc^{RL}}} (\catC)^I \arrow[r, "\mathsf{B}^I"] \arrow[d, "f_*"] & \catC^I \arrow[d, "f_*"] \\
+            \alg{\mathsf{Assoc^{RL}}} (\catC)^J \arrow[r, "\mathsf{B}^J"] & \catC^J.
+        \end{tikzcd}
+    \end{equation}
+    
+    Following \cite[rem.2.1.2.2]{lurie_ha}, each $f$ admits a unique factorization as a composition of an active and an inert map. We can also further uniquely decompose the active maps into surjective active maps and injective active maps. So we will examine the above for each type of map separately. The case of inert maps is trivial as always, because of the simplicity of $f_*$. The case of injective active maps is essentially guaranteeing that $\mathsf{B}$ maps the monoidal unit to the monoidal unit. In this case the existence of the commutative diagram is provided by
+    %
+    \begin{equation}
+        \mathsf{B} (\mathbb{1}_{\alg{\mathsf{Assoc^{RL}}} (\catC)}) = \mathsf{colim} (\mathsf{B}_{\bullet} (\mathbb{1},\mathbb{1},\mathbb{1})) \simeq \mathsf{colim} (\Delta^{\mathsf{op}} \xrightarrow{\{ \mathbb{1}\}} \catC) \simeq \mathbb{1}.
+    \end{equation}
+    %
+    Finally, the case of surjective active morphisms describes what happens when we use the monoidal product to multiply. In this case we will look at the model calculation for the active map $f: \langle 2 \rangle \xrightarrow{} \langle 1 \rangle$. All other possibilities go along similar lines. Given two objects $H = (R,A,L)$ and $H' = (R',A',L')$ we have 
+    %
+    \begin{align}
+        \mathsf{B}(H \otimes H') &= \mathsf{colim} (\mathsf{B}_{\bullet} ((R,A,L) \otimes (R',A',L')))\notag\\
+        &= \mathsf{colim} (\mathsf{B}_{\bullet} (R \otimes R', A \otimes A', L \otimes L'))\notag\\
+        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (R, A, L) \otimes \mathsf{B}_{\bullet} (R', A', L'))\notag\\
+        &= \mathsf{colim} (\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}} \xrightarrow{\mathsf{B}_{\bullet} (R, A, L) \otimes \mathsf{B}_{*} (R', A', L')} \catC)\notag\\
+        &\simeq \mathsf{colim} (\Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}} \xrightarrow{\mathsf{B}_{\bullet} (R, A, L) \otimes \mathsf{B}_{*} (R', A', L')} \catC)\notag\\
+        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (R, A, L)) \otimes \mathsf{colim} (\mathsf{B}_{*} (R', A', L'))\notag\\
+        &= \mathsf{B}(H) \otimes \mathsf{B}(H'),
+    \end{align}
+    %
+    where $\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}}$ is the diagonal functor. The first equivalence comes from the symmetric monoidal structure of $\catC$ dues to reshuffling in the simplicial object. The second equivalence uses the finality of the diagonal functor which comes from the fact that $\Delta^{\mathsf{op}}$ is sifted. Finally, the third equivalence exists because the symmetric monoidal structure of $\catC$ commutes with (sifted) colimits.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:gluing_alg_disk/M}]
     The data of a collar-gluing provides open embeddings $M_0 \times \mathbb{R} \xhookrightarrow{} M_-$ and $M_0 \times \mathbb{R} \xhookrightarrow{} M_+$, where $M_-$, $M_0$ and $M_+$ have the usual meanings as in \cref{def:collar-gluing}. This can be used to construct the cospan of restriction functors $\alg{\disk_{/M_-}} (\catC) \rightarrow \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC) \leftarrow \alg{\disk_{/M_+}} (\catC)$. Using this data we can define the pullback $\infty$-category
     %
     \begin{equation}
@@ -29,61 +116,40 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
     \begin{equation}
         \begin{tikzcd}
             \alg{\disk_{/M}} (\catC) \arrow[r] \arrow[d] & \alg{\disk_{/M_+}} (\catC) \arrow[d] \\
-            \alg{\disk_{/M_-}} (\catC) \arrow[r]           & \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC),     
+            \alg{\disk_{/M_-}} (\catC) \arrow[r] & \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC),
         \end{tikzcd}
     \end{equation}
     %
-    which, by the universal property of the pullback, gives us a canonical functor $\rho: \alg{\disk_{/M}} (\catC) \rightarrow \mathscr{P}$. We also want to construct a functor that partially goes in the other direction. Namely, given the data of objects $(A_-, A_+) \in \alg{\disk_{/M_-}} (\catC) \times \alg{\disk_{/M_+}} (\catC)$ such that $A_-|_{M_0 \times \mathbb{R}} = A_+|_{M_0 \times \mathbb{R}} = : A_0$ we want to construct a functor $A: \disk_{/M} \xrightarrow{} \catC$. The construction relies on using factorization homology and the bar construction. Given $(U \xhookrightarrow{} M) \in \disk_{/M}$ we define
+    which, by the universal property of the pullback, gives us a canonical functor $\rho: \alg{\disk_{/M}} (\catC) \rightarrow \mathscr{P}$. Our job is to find an inverse to this functor.
+    
+    Consider the following construction. Given the data of an object $(A_-, A_+) \in \alg{\disk_{/M_-}} (\catC) \times \alg{\disk_{/M_+}} (\catC)$ such that $A_-|_{M_0 \times \mathbb{R}} = A_+|_{M_0 \times \mathbb{R}} = : A_0$ we want to construct a functor $A: \disk_{/M} \xrightarrow{} \catC$. We do this by relying on factorization homology and the bar construction. Given $(U \xhookrightarrow{} M) \in \disk_{/M}$ we define
     %
     \begin{equation}\label{eq:def_of_A_in_proof}
         A(U) := \int_{U_-} A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_0} \int_{U_+} A_+,
     \end{equation}
     %
-    where $U_-$, $U_0$ and $U_+$ are defined through the inherited collar-gluing $U \xhookrightarrow{} M \xrightarrow{} [-1,1]$. Well-definition of the bar construction is provided if we have the appropriate left and right module structures on $\int_{U_-} A_-$ and $\int_{U_+} A_+$ over the associative algebra $\int_{U_0 \times \mathbb{R}} A_0$. Pushforward along the restrictions $f|_{U-}: U_- \rightarrow \left[-1, 1\right)$ and $f|_{U+}: U_+ \rightarrow \left(-1, 1\right]$, together with the properties of factorization homology provides these left and right module structures. Furthermore, the associative algebra object is exactly the appropriate one since consecutive restrictions commute on the nose. The above argument is essentially the statement that there is a functor
+    where $U_-$, $U_0$ and $U_+$ are defined through the inherited collar-gluing $U \xhookrightarrow{} M \xrightarrow{} [-1,1]$. Well-definition of the bar construction is provided if we have the appropriate left and right module structures on $\int_{U_-} A_-$ and $\int_{U_+} A_+$ over the associative algebra $\int_{U_0 \times \mathbb{R}} A_0$. Pushforward along the restrictions $f|_{U_-}: U_- \rightarrow \left[-1, 1\right)$ and $f|_{U_+}: U_+ \rightarrow \left(-1, 1\right]$, together with the properties of factorization homology provides these left and right module structures. Furthermore, the associative algebra object is exactly the appropriate one since consecutive restrictions commute on the nose. The above argument is essentially the statement that there is a functor
     %
     \begin{align}
         \gamma: \mathscr{P} \xrightarrow{\ \ \int \ \ } &\alg{\mfld_{/M_-}}(\catC) \bigtimes\limits_{\alg{\mfld_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\mfld_{/M_+}} (\catC)\notag\\ &\xrightarrow{\ - \circ \bar{f} \ } \mathsf{Fun}(\mfld_{/M}, \alg{\mathsf{Assoc^{RL}}} (\catC)) \xrightarrow{\ \mathsf{B} \circ - \ } \mathsf{Fun}(\mfld_{/M},\catC) \xrightarrow{\ } \mathsf{Fun}(\disk_{/M}, \catC),
     \end{align}
     %
-    where $\bar{f}: \mfld_{/M} \xrightarrow{} \alg{\mathsf{Assoc^{RL}}} (\mfld_{/M})$ is the functor induced by the collar-gluing, which on objects acts as $(N \xhookrightarrow{} M) \mapsto (N_-, N_0 \times \mathbb{R}, N_+)$, and $\mathsf{B}: \alg{\mathsf{Assoc^{RL}}} (\catC) \xrightarrow{} \catC$ is the bar construction functor.
+    where $\bar{f}$ is the functor from \cref{lem:fbar_func}.
+
+    Our first order of business is to show that $\gamma$ actually even lands in $\alg{\disk_{/M}} (\catC)$, and not just $\mathsf{Fun}(\disk_{/M}, \catC)$. Since we have expressed the construction $A = \gamma(A_-, A_+)$ functorially, we can see that $A$ will inherit the structure of an algebra from the fact that factorization homology and the bar construction are symmetric monoidal functors (see \cref{lem:B_sym_mon} for the latter), together with \cref{lem:fbar_func} that lends this property to $\bar{f}$. With that we have constructed a functor
+    %
+    \begin{equation}
+        \gamma : \mathscr{P} \xrightarrow{\ \ \ \ } \alg{\disk_{/M}} (\catC).
+    \end{equation}
     
-    We will show that the functor $\rho$ is an equivalence by first checking that it is an equivalences on maximal $\infty$-subgroupoids and subsequently that it is an equivalence on morphism spaces. In accomplishing the first goal we can use the fact that our algebras are valued in a symmetric monoidal $\infty$-category, as opposed to the more general case of an $\infty$-operad. Leveraging the adjunction 
-    %
-    \begin{equation}
-        \begin{tikzcd}
-            \cat^{\otimes} \arrow[r, hook, yshift=-1ex] & \mathscr{O} \mathsf{p}_{\infty} \arrow[l, yshift=1ex, "\mathsf{Env}"'],
-        \end{tikzcd}
-    \end{equation}
-    %
-    together with the fact that $\mathsf{Hom}_{\mathscr{O} \mathsf{p}_{\infty}} (\mathscr{O}, \mathscr{O}') := \alg{\mathscr{O}} (\mathscr{O}')^{\simeq}$, tells us that there is an equivalence of maximal $\infty$-subgroupoids
-    %
-    \begin{equation}
-        \alg{\disk_{/M}} (\catC)^{\simeq} \simeq \alg{\mathsf{Env}(\disk_{/M})} (\catC)^{\simeq} = \mathsf{Fun}^{\otimes} (\mathsf{Env} (\disk_{/M}), C)^{\simeq}.
-    \end{equation}
-    %
-    This implies that to check that $\rho$ is an equivalence of maximal $\infty$-subgroupoids we need to show that:
+    Or strategy will be to show that the pair of functors $\rho$ and $\gamma$ give rise to an equivalence by first checking that this is the case on maximal $\infty$-subgroupoids and subsequently that it is also so on morphism spaces. Towards the first goal we need to show that:
     %
     \begin{enumerate}
-        \item $A = \gamma (A_-, A_+)$ is actually even a symmetric monoidal functor, when viewed as a functor $\mathsf{Env} (\disk_{/M}) \xrightarrow{} \catC$,
-        \item $\rho(A)$ reproduces $(A_-, A_+)$ up to equivalence, and
+        \item $\rho( \gamma (A_-, A_+))$ reproduces $(A_-, A_+)$ up to equivalence, and
         \item $\gamma (\rho (A))$ reproduces $A$ up to equivalence.
     \end{enumerate}
     %
-    We now check these in order. For the purposes of (1) denote $F_-(U) = \int_{U_-} A_-$, $F_0(U) = \int_{U_0 \times \mathbb{R}} A_0$, $F_+(U) = \int_{U_+} A_+$ and $\mathsf{B}_{\bullet} (R, A, L):\Delta^{\mathsf{op}} \rightarrow \catC$ for the simplicial object of the bar construction of a right module $R$, associative algebra $A$ and left module $L$. Given two objects $(U \xhookrightarrow{} M), (V \xhookrightarrow{} M) \in \mathsf{Env}(\disk_{/M})$ we have 
-    %
-    \begin{align}
-        A(U \sqcup V) &= \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U \sqcup V), F_0(U \sqcup V), F_+(U \sqcup V)))\notag\\
-        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U) \otimes F_-(V), F_0(U) \otimes F_0(V), F_+(U) \otimes F_+(V)))\notag\\
-        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U)) \otimes \mathsf{B}_{\bullet} (F_-(V), F_0(V), F_+(V)))\notag\\
-        &\simeq \mathsf{colim} (\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}} \xrightarrow{\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U)) \otimes \mathsf{B}_{*} (F_-(V), F_0(V), F_+(V))} \catC)\notag\\
-        &\simeq \mathsf{colim} (\Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}} \xrightarrow{\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U)) \otimes \mathsf{B}_{*} (F_-(V), F_0(V), F_+(V))} \catC)\notag\\
-        &\simeq \mathsf{colim} (\mathsf{B}_{\bullet} (F_-(U), F_0(U), F_+(U))) \otimes \mathsf{colim} (\mathsf{B}_{*} (F_-(V), F_0(V), F_+(V)))\notag\\
-        &\simeq A(U) \otimes A(V),
-    \end{align}
-    %
-    where $\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}}$ is the diagonal functor. The first equivalence comes about because factorization homology is symmetric monoidal, the second equivalence is given because $\catC$ is a symmetric monoidal $\infty$-category (and not simply monoidal). The fourth equivalence uses the finality of the diagonal functor which comes from the fact that $\Delta^{\mathsf{op}}$ is sifted. Finally, the fifth equivalence exists because the symmetric monoidal structure commutes with (sifted) colimits. This shows that $A$ is a monoidal functor; that it is symmetric too is immediately obvious from the above calculation. 
-    
-    Checking (2) amounts to evaluating disks $U$ which are contained in only one of the pieces $M_-$, $M_0 \times \mathbb{R}$ and $M_+$. For the case of $U_0 \times \mathbb{R} = \emptyset = U_+$, we have
+    We now check these in order. Checking (1) amounts to evaluating disks $U$ which are contained in only one of the pieces $M_-$, $M_0 \times \mathbb{R}$ and $M_+$. For the case of $U_0 \times \mathbb{R} = \emptyset = U_+$, we have
     %
     \begin{equation}
         A(U) = \int_{U} A_- \bigotimes\limits_{\mathbb{1}} \mathbb{1} \simeq A_- (U),
@@ -101,7 +167,7 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
         A(U) = \int_U A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_-} \mathbb{1} \simeq \int_U A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_-} \int_{\emptyset} A_- \simeq \int_{U} A_- = A_-(U),
     \end{equation}
     %
-    where the last equivalence is provided by the collar-gluing property of factorization homology. This observation is also what confirms (3). Namely,
+    where the last equivalence is provided by the collar-gluing property of factorization homology. This observation is also what confirms (2). Namely,
     %
     \begin{equation}
         \int_U A \simeq \int_{U_-} A \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A} \int_{U_+} A \simeq \int_{U_-} A_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} A_0} \int_{U_+} A_+,
@@ -109,21 +175,21 @@ Given a stratified manifold $M$, we defined the $\infty$-category of locally con
     %
     where the first equivalence comes from collar-gluing, while the second is a rewriting using the fact that restricting the algebra doesn't change the value of factorization homology it just changes what we can evaluate with it.
 
-    Finally, we want to show that $\rho$ is fully faithful, i.e. we need to show that it is an equivalence of morphism spaces
-    %
-    \begin{equation}
-        \mathsf{Hom}_{\alg{\disk_{/M}} (\catC)}(A, B) \simeq \mathsf{Hom}_{\mathscr{P}}((A_-, A_+), (B_-, B_+)),
-    \end{equation}
-    %
-    for each $A, B \in \alg{\disk_{/M}} (\catC)$. By the definition of algebras over an $\infty$-operad we have that $\alg{\disk_{/M}} (\catC)$ is a full $\infty$-subcategory of $\mathsf{Fun}(\disk_{/M}, \catC)$, and since we already expressed the construction functorially with $\rho$ and $\gamma$, all that remains to be checked is that the already defined maps
+    Finally, we want to show that $\rho$ is fully faithful, i.e. we want to show that
     %
     \begin{equation}
         \begin{tikzcd}
-            \mathsf{Hom}_{\mathsf{Fun}(\disk_{/M}, \catC)}(A, B) \arrow[r, bend left=4, "\rho"] & \mathsf{Hom}_{\mathscr{P}}((A_-, A_+), (B_-, B_+)) \arrow[l, bend left=4, "\gamma"]
+            \mathsf{Hom}_{\alg{\disk_{/M}} (\catC)}(A, B) \arrow[r, bend left=4, "\rho"] & \mathsf{Hom}_{\mathscr{P}}((A_-, A_+), (B_-, B_+)) \arrow[l, bend left=4, "\gamma"]
         \end{tikzcd}
     \end{equation}
     %
-    gives rise to an equivalence. That is, we have to do similar computations as (2) and (3) above, but now on the level of morphisms. Nothing new happens in the case of (2) since its logic essentially only depends on the properties of the bar construction when restricting. In the case of (3) we crucially used the collar-gluing property of factorization homology. That this property continues to hold at the morphism level is a consequence of the fact that \cref{prop:barconst=intinterval} is an equivalence not only at the level of objects, but also at the level of functors, together with the pushforward property which also holds functorially à la \cref{rem:fh_pushforward_functorial}.
+    represents an equivalence of spaces for each $A, B \in \alg{\disk_{/M}} (\catC)$. That is, we have to do similar computations as (1) and (2) above, but now on the level of morphisms. Nothing new happens in the calculations involving restrictions that don't involve multiple pieces, since their logic essentially only depends on the properties of the bar construction when restricting. In the rest of the calculations we crucially used the collar-gluing property of factorization homology. That this property continues to hold at the morphism level is a consequence of the fact that we made sure to elevate the statement of \cref{prop:barconst=intinterval} to the level of functors, together with the pushforward property which also holds functorially à la \cref{rem:fh_pushforward_functorial}. Namely, these provide equivalences of functors
+    %
+    \begin{equation}
+        \int_U - \simeq \int_{[-1,1]} (f|_U)_* - \simeq \mathsf{B} \circ (f|_U)_* = \int_{U_-} (-)_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} (-)_0} \int_{U_+} (-)_+,
+    \end{equation}
+    %
+    which is exactly the collar-gluing property at the level of morphisms.
 \end{proof}
 
 Together with \cref{thm:disk_alg=lcfa} we immediately have the following corollary:

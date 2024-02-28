@@ -40,7 +40,7 @@ Factorization algebras are a rigorous way to capture the idea of assigning an ob
         \end{tikzcd}
     \end{equation}
     %
-    where the $(i,j)$ tensor product runs over all possible pairs $i \in I$ and $j \in J_i$. Finally, the operadic unitarity condition actually tells us that we don't need to provide the morphisms $F(\{U\}, U)$, because they are equivalent to the identity morphism.
+    where the $(i,j)$ tensor product runs over all possible pairs $i \in I$ and $j \in J_i$. Finally, the operadic unitarity condition actually tells us that the morphisms $F(\{U\}, U)$ are equivalent to the identity morphism.
 
     We also get out that an algebra morphism $\phi: F \rightarrow G$ is simply a family of maps $\phi(U): F(U) \rightarrow G(U)$ for each open set $U$, such that it respects the operations of the algebra. Namely, for each multi-morphism $\{ U_i \}_{i \in I} \rightarrow U$ there is a commuting square
     %
@@ -195,7 +195,7 @@ There is a general definition of locally constant algebra objects in the context
 Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for factorization algebras. In the case of stratified manifolds, we will show that the $\infty$-operad that governs locally constant factorization algebras can be taken to be $\disk_{/M}$, and the one that governs ordinary factorization algebras can be taken to be $\disk[r]_{/M}$. This result is immensely helpful in relating factorization algebras to results in the area of disk algebras. We will see one such example in \cref{ch:gluing_disk_alg}.
 
 \begin{proposition}\label{prop:fh_disk_to_lcfa}
-    Given $M$ a stratified manifold factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
+    Given a stratified manifold $M$ factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
     %
     \begin{equation}
         \int : \alg{\disk_M} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
@@ -205,7 +205,7 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
 \begin{proof}
     We adopt a proof strategy similar to \cite[prop.3.14]{af_primer}. Unlike there, we work in the relative case of $\disk_{/M}$ instead of $\disk(\bstr)$. Since the $\infty$-category of factorization algebras is defined as a pullback, we will look for a commutative diagram involving $\alg{\disk_{/M}}$, so that, by the universal property of the pullback, we get the stated functor.
     
-    We first observe that by definition the $\infty$-operad $\opens(M) := \mfld[r]_{/M}$. There are clear functors of $\infty$-operads
+    We first observe that, by definition, the $\infty$-operad $\opens(M) := \mfld[r]_{/M}$. There are clear functors of $\infty$-operads
     %
     \begin{equation}
         \disk_{/M} \xhookrightarrow{\ \ \ } \mfld_{/M} \xleftarrow{\ \ \ } \mfld[r]_{/M}.
@@ -287,7 +287,7 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
 \end{proof}
 
 \begin{remark}
-    The key idea for the proof is that $\disk[r]_{/N}$ is a basis for the Weiss Grothendieck topology on manifolds. This is essentially because for each finite set of points $S \subset N$, and each Weiss cover of it $U_S$, we can take small enough disks $\{ D_s \}_{s \in S}$ around each point, by virtue of $N$ being a manifold, and their disjoint union will cover $S$, as well as satisfy $\sqcup_{s \in S} D_s \subset U_S$.
+    Intuitively, the key idea for the statement and proof is that $\disk[r]_{/N}$ is a basis for the Weiss Grothendieck topology on manifolds. This is essentially because for each finite set of points $S \subset N$, and each Weiss cover of it $U_S$, we can take small enough disks $\{ D_s \}_{s \in S}$ around each point, by virtue of $N$ being a manifold, and their disjoint union will cover $S$, as well as satisfy $\sqcup_{s \in S} D_s \subset U_S$. The proof of \cite[prop.2.22]{af_primer} makes this precise, and the above proof transports that idea to the relative case.
 \end{remark}
 
 From the proof of \cref{prop:fh_disk_to_lcfa} it is easy to see that we can make a similar statement for ordinary factorization algebras too:
@@ -546,7 +546,7 @@ The case of locally constant factorization algebras is different when it comes t
 \end{proof}
 
 \begin{remark}
-    In fact, the above proof is true more generally for any map of stratified spaces that is a homeomorphism of the underlying topological spaces. This means that locally constant factorization algebras record the data of coarser stratified structures as $\infty$-subcategories. Forgetting local constancy, the proof, of course, applies to factorization algebras of all flavors, however only locally constant factorization algebras can detect the stratified structure, so in all other cases that we have considered the above functor is even an equivalence, and not just fully-faithful.
+    In fact, the above proof is true more generally for any map of stratified spaces that is a homeomorphism of the underlying topological spaces (so, in particular, any refinement). This means that locally constant factorization algebras record the data of coarser stratified structures as $\infty$-subcategories. Forgetting local constancy, the proof, of course, applies to factorization algebras of all flavors, however only locally constant factorization algebras can detect the stratified structure, so in all other cases that we have considered the above functor is even an equivalence, and not just fully-faithful.
 \end{remark}
 
 
@@ -616,7 +616,7 @@ In the special case of product spaces $X \times Y$, we now know that the project
         \bar{\pi}: \lcfa_{X \times Y}(\catC) \xrightarrow{\ \ \ \ } \lcfa_{X}(\lcfa_{Y}(\catC)).
     \end{equation}
 
-    One way to show the equivalence is to use factorization homology, as in \cref{thm:disk_alg=lcfa}, to write a locally constant factorization algebra as $\int_{-} A \in \lcfa_{X \times Y} (\catC)$. Then using the Fubini theorem \cite[cor.2.29]{aft_fhstrat}\footnote{The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold.} for factorization homology we get essential surjectivity because there are equivalences
+    One way to show the equivalence is to use factorization homology, as in \cref{thm:disk_alg=lcfa}, to write a locally constant factorization algebra as $\int_{-} A \in \lcfa_{X \times Y} (\catC)$. Then using the Fubini theorem \cite[cor.2.29]{aft_fhstrat}\footnote{The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold (see \cref{rem:fh_is_pushingforward}).} for factorization homology we get essential surjectivity because there are equivalences
     %
     \begin{equation}
         \int_{U \times V} A \xrightarrow{\ \ \simeq \ \ } \int_U \int_V \bar{\pi} A
@@ -650,12 +650,12 @@ As was the case with factorization homology, so too with factorization algebras 
     There is an equivalence of $\infty$-categories
     %
     \begin{equation}
-        \alg{\mathbb{E}_1}(\catC) \xrightarrow{\simeq} \lcfa_{\mathbb{R}} (\catC).
+        \alg{\mathbb{E}_1}(\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\mathbb{R}} (\catC).
     \end{equation}
 \end{proposition}
 
 \begin{proof}
-    What is left to show is the essential surjectivity of the functor. This holds because every disk in $\mathbb{R}$ is diffeomorphic to $\mathbb{R}$ itself. So, given $F \in \lcfa_{\mathbb{R}}$, we can get an underlying object for our $\mathbb{E}_1$ algebra as $A = F(\mathbb{R})$. The previous observation and the local constancy then force the value on each disk to be equivalent to this. The space of embeddings of two disks $\mathbb{R} \sqcup \mathbb{R} \xhookrightarrow{} \mathbb{R}$ is, up to homotopy, equivalent to two points, which provide exactly the multiplication map $ A \otimes A \rightarrow A$ of the algebra and its opposite multiplication.  Associativity, up to homotopy, comes about exactly because all embeddings of any number of disks can, up to homotopy, be factorized through the embedding of two disks at a time. As before, the unit comes from the map $F(\emptyset \xhookrightarrow{} \mathbb{R}) = (\mathbb{1} \rightarrow A)$. Thus, we have constructed an $\mathbb{E}_1$-algebra from the given data, and the proposition holds.
+    What is left to show is the essential surjectivity of the functor. This holds because every disk in $\mathbb{R}$ is diffeomorphic to $\mathbb{R}$ itself. So, given $F \in \lcfa_{\mathbb{R}}$, we can get an underlying object for our $\mathbb{E}_1$-algebra as $A = F(\mathbb{R})$. The previous observation and the local constancy then force the value on each disk to be equivalent to this. The space of embeddings of two disks $\mathbb{R} \sqcup \mathbb{R} \xhookrightarrow{} \mathbb{R}$ is, up to homotopy, equivalent to two points, which provide exactly the multiplication map $ A \otimes A \rightarrow A$ of the algebra and its opposite multiplication.  Associativity, up to homotopy, comes about exactly because all embeddings of any number of disks can, up to homotopy, be factorized through the embedding of two disks at a time. As before, the unit comes from the map $F(\emptyset \xhookrightarrow{} \mathbb{R}) = (\mathbb{1} \rightarrow A)$. Thus, we have constructed an $\mathbb{E}_1$-algebra from the given data, and the proposition holds.
 \end{proof}
 
 \begin{construction}\label{con:lcfas_on_hoint}
@@ -672,12 +672,12 @@ As was the case with factorization homology, so too with factorization algebras 
     There is an equivalence of $\infty$-categories between the $\infty$-categories of $\mathbb{E}_1$-algebras together with a right module and locally constant factorization algebras on the half-open interval
     %
     \begin{equation}
-        \mathsf{RMod}(\catC) \xrightarrow{\simeq} \lcfa_{\hoint} (\catC).
+        \mathsf{RMod}(\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{\hoint} (\catC).
     \end{equation}
 \end{proposition}
 
 \begin{proof}
-    The proof goes along the same lines as the proof of \cref{prop:R_gives_E1}. We can find the module by evaluating on $\hoint$, and we can find the algebra by evaluating on $\hoint \setminus \{ 0 \} \cong \mathbb{R}$.
+    The proof goes along the same lines as the proof of \cref{prop:R_gives_E1}. We can find the module by evaluating on $\hoint$, and we can find the algebra by evaluating on $\hoint \setminus \{ 0 \} \cong \mathbb{R}$, as a specified stratum of $\hoint$.
 \end{proof}
 
 \begin{remark}\label{rem:left_or_right_module}
@@ -741,22 +741,24 @@ In this section we want to describe locally constant factorization algebras on E
 \end{remark}
 
 \begin{remark}[{\cite[prop.3.16]{francis2013}, \cite[ex.5.5.4.16]{lurie_ha}}]
-    In the case of Euclidean spaces like $\mathbb{R}^n$, essentially because of translation invariance, a special thing happens when we restrict away from the origin. That is, we know that given a locally constant factorization algebra $F$ on $\mathbb{R}^n$ we can restrict it to any open subset like, for example, $\mathbb{R}^n \setminus \{ 0 \} \cong S^{n-1} \times \mathbb{R}$ to get another locally constant factorization algebra $F|_{S^{n-1} \times \mathbb{R}}$. By \cref{prop:exp_of_products_lc} we know that $F|_{S^{n-1} \times \mathbb{R}} \in \lcfa_{\mathbb{R}} (\lcfa_{S^{n-1}} (\catC))$, so that in particular it is an $\mathbb{E}_1$-algebra. If we pushforward to $\mathbb{R}$, by the discussion at \cref{rem:fh_is_pushingforward} we could denote the resulting $\mathbb{E}_1$-algebra by
+    In the case of Euclidean spaces like $\mathbb{R}^n$, essentially because of translation invariance, a special thing happens when we restrict away from the origin. That is, we know that given a locally constant factorization algebra $F$ on $\mathbb{R}^n$ we can restrict it to any open subset like, for example, $\mathbb{R}^n \setminus \{ 0 \} \cong S^{n-1} \times \mathbb{R}$ to get another locally constant factorization algebra $F|_{S^{n-1} \times \mathbb{R}}$. By \cref{prop:exp_of_products_lc} we know that $F|_{S^{n-1} \times \mathbb{R}} \in \lcfa_{\mathbb{R}} (\lcfa_{S^{n-1}} (\catC))$, so that in particular it is an $\mathbb{E}_1$-algebra. If we pushforward to $\mathbb{R}$, by the discussion at \cref{rem:fh_is_pushingforward} we could denote the resulting $\mathbb{E}_1$-algebra by \footnote{We again refer the reader to \cref{rem:fh_is_pushingforward} for a reason why this notation is good.}
     %
     \begin{equation}
         \int_{S^{n-1}} F.
     \end{equation}
     %
     What \cite[prop.3.16]{francis2013} shows is then:
-\end{remark}
 
-\begin{proposition}\label{univ_env_for_En}
-    Given a locally constant factorization algebra $F$ on $\mathbb{R}^n$, its universal enveloping algebra is given by $\int_{S^{n-1}} F$, i.e. there is an equivalence of $\infty$-categories
+    \begin{proposition}\label{univ_env_for_En}
+        Given a locally constant factorization algebra $F$ on $\mathbb{R}^n$, its universal enveloping algebra is given by $\int_{S^{n-1}} F$, i.e. there is an equivalence of $\infty$-categories
+        %
+        \begin{equation}
+            \mathsf{Mod}^{\mathbb{E}_n}_{F} (\catC) \xrightarrow{\ \ \simeq \ \ } \mathsf{LMod}_{\int_{S^{n-1}} F} (\catC).
+        \end{equation}
+    \end{proposition}
     %
-    \begin{equation}
-        \mathsf{Mod}^{\mathbb{E}_n}_{F} (\catC) \xrightarrow{\ \ \simeq \ \ } \mathsf{LMod}_{\int_{S^{n-1}} F} (\catC).
-    \end{equation}
-\end{proposition}
+    This result goes towards an explanation of the appearance of factorization homology over higher spheres in the classification statement of \cref{thm:classif_disk_d_under_n*_alg}.
+\end{remark}
 
 We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^m \times \mathbb{R}^n$, in which case \cref{prop:exp_of_products_lc} specializes to give the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}:
 
