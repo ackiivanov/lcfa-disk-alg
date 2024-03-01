@@ -1,0 +1,25 @@
+\contentsline {section}{\numberline {0}Introduction}{2}{section.0}%
+\contentsline {subsection}{\numberline {0.1}Conventions on $\infty $-categories}{4}{subsection.0.1}%
+\contentsline {section}{\numberline {1}Stratified Spaces}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Fundamentals of Stratified Spaces}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Stratified Manifolds with Tangential Structure}{7}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Useful $\infty $-categories of Basics}{10}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Factorization Homology}{11}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Disk Algebras}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Definition of Factorization Homology}{15}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Disk Algebras over Oriented Intervals}{16}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Pushforward}{19}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}$\otimes $-excision and Homology Theories}{20}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Classification of $\disk (\mathsf {D}_{d \subset n}^{*})$-algebras}{21}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Factorization Algebras}{21}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Definition of Factorization Algebras}{21}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The $\infty $-operad of Factorization Algebras}{25}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Operations on Factorization Algebras}{30}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Factorization Algebras on Intervals}{33}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Factorization Algebras on Euclidean Spaces}{35}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Collar-gluings and Disk Algebras}{37}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Gluing Theorem}{37}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Some Examples of Gluing}{41}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Towards Classifying $\EuScript {F} \mathsf {Alg}^{\mathsf {lc}}$ on Defect Manifolds}{42}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Euclidean Spaces with Defects}{42}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The General Case of $M_{\mitSigma }$}{44}{subsection.5.2}%

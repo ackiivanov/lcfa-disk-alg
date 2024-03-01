@@ -1,0 +1,19 @@
+# Fdb version 3
+["xdvipdfmx"] 0 "0intro.xdv" "0intro.pdf" "0intro" 0
+  "0intro.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "0intro.pdf"
+["xelatex"] 1709299484 "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/sections/0intro.tex" "0intro.xdv" "0intro" 1709299484
+  "../text.tex" 0 -1 0 ""
+  "/etc/texmf/web2c/texmf.cnf" 1709217863 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/sections/0intro.tex" 1709299480 9829 e57a5ab696ac0be77bcf5da46bdf3be0 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/import/import.sty" 1586645574 6201 0ad8b5da8e12f60a88d546b2198a56f2 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls" 1605478891 1507 57de335d88fde4e5c924dfed577fdb74 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
+  "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1709217907 5131644 7c34fae56bdc7125bcfe6b643fa8ba1f ""
+  "0intro.aux" 1709299483 32 3985256e7290058c681f74d7a3565a19 ""
+  "sections/0intro.tex" 1709299480 9829 e57a5ab696ac0be77bcf5da46bdf3be0 ""
+  (generated)
+  "0intro.log"
+  "0intro.xdv"
