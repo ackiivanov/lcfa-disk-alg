@@ -54,7 +54,7 @@ Factorization algebras are a rigorous way to capture the idea of assigning an ob
 \end{remark}
 
 \begin{remark}\label{rem:op_to_op}
-    There is an obvious embedding functor from the poset $\opens[r](X)$ of open subsets of $X$, ordered by inclusion, to the multicategory $\opens[s](X)$, namely, the one which hits only those multi-morphisms $\{U_i\}_{i \in I} \rightarrow U$, where the cardinality of the finite set $I$ is 1.
+    There is an obvious inclusion functor from the poset $\opens[r](X)$ of open subsets of $X$, ordered by inclusion, to the multicategory $\opens[s](X)$, namely, the one which hits only those multi-morphisms $\{U_i\}_{i \in I} \rightarrow U$, where the cardinality of the finite set $I$ is 1.
 \end{remark}
 
 
@@ -148,7 +148,7 @@ There is a general definition of locally constant algebra objects in the context
         \csheaves[W, lc]_M (\catC) \subset \csheaves[W]_M (\catC),
     \end{equation}
     %
-    of those Weiss sheaves whose underlying functor $F: \bsc_{/M} \xrightarrow{} \catC$ satisfies
+    of those Weiss cosheaves whose underlying functor $F: \bsc_{/M} \xrightarrow{} \catC$ satisfies
     %
     \begin{equation}
         f(U) \simeq f(V) \Rightarrow F(U) \simeq F(V),
@@ -695,12 +695,12 @@ It's not hard to extend \cref{con:lcfas_on_R} and \cref{con:lcfas_on_hoint} to t
 \end{corollary}
 
 \begin{remark}
-    Another perspective on why all of these constructions look the way they do is provided by \cref{lem:disk/M_to_disk}. It applies in all of the above cases:
+    Another perspective on why all of these constructions look the way they do is provided by \cref{lem:disk/M_to_disk}. It applies in all of the above cases, namely:
     %
     \begin{enumerate}
         \item For $\mathbb{R}$, the convenient $\infty$-category of basics is $\bstr = \mathsf{D}_1^*$,
-        \item For $\hoint$, the convenient $\infty$-category of basics is $\bstr = \mathsf{D}_1^{\partial, *}$ and
-        \item Similarly, for $[-1,1]$ the convenient $\infty$-category of basics is again $\bstr = \mathsf{D}_1^{\partial, *}$.
+        \item For $[-1,1]$ the convenient $\infty$-category of basics is $\bstr = \mathsf{D}_1^{\partial, *}$.
+        \item For $\hoint$, we could define a convenient $\infty$-category of basics which describes framed 1-dimensional manifolds which only have a right boundary (a concept that we can state because of the framing).
     \end{enumerate}
     %
     We can see that even though factorization algebras, as we have defined them here, don't detect the tangential structure of the manifold, it is usually favorable, if possible, to give the manifold some structure anyway. In particular, the rigid structure of framing is very useful because it massively reduces the spaces of allowed open embeddings.
@@ -771,7 +771,7 @@ We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^
 \end{proposition}
 
 \begin{remark}
-    The proof of \cref{prop:exp_of_products_lc}, when specialized to ordinary manifolds, as given in \cite{ginot2015} actually depends on Dunn additivity to work, however the proof presented in \cite{lurie_ha} is independent. 
+    The proof of \cref{prop:exp_of_products_lc}, when specialized to ordinary manifolds, as given in \cite{ginot2015} actually depends on Dunn additivity to work, however the proof presented above and the one in \cite{lurie_ha} are independent. 
 \end{remark}
 
 

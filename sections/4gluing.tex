@@ -69,6 +69,16 @@ Before me move on to the proof we show a few useful lemmas.
     %Formally, the relevant definition is \cite[def.2.1.2.7]{lurie_ha}, which says that we have to check two things: that the constructed functor $\gamma(A_-, A_+)$ lies over $\mathsf{Fin}_*$ and that it sends inert morphisms to inert morphisms. Factorization homology, $\int_- A_{0,\pm}$, satisfies this almost by definition, while \cref{lem:B_sym_mon} tells us that the bar construction similarly does so. All that is left to show is that $\bar{f}$ is a map of $\infty$-operads. But this is obviously the case since all it is doing is splitting the input into pieces while keeping track of how they relate to each other.
 \end{proof}
 
+\begin{corollary}\label{cor:fbar_func_discrete}
+    Taking only the first part of the proof of \cref{lem:fbar_func} it is immediate that in the setting of $\mfld[r]_{/M}$ there is also a functor
+    %
+    \begin{equation}
+        \bar{f}: \mfld[r]_{/M} \xrightarrow{\ \ \ \ } \alg{\mathsf{Assoc^{RL}}} (\mfld[r]_{/M}),
+    \end{equation}
+    %
+    that is an algebra.
+\end{corollary}
+
 \begin{lemma}\label{lem:B_sym_mon}
     The bar construction $\mathsf{B}: \alg{\mathsf{Assoc^{RL}}} (\catC) \xrightarrow{\ \ } \catC$ is a symmetric monoidal functor.
 \end{lemma}
@@ -189,7 +199,7 @@ Before me move on to the proof we show a few useful lemmas.
         \int_U - \simeq \int_{[-1,1]} (f|_U)_* - \simeq \mathsf{B} \circ (f|_U)_* = \int_{U_-} (-)_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} (-)_0} \int_{U_+} (-)_+,
     \end{equation}
     %
-    which is exactly the collar-gluing property at the level of morphisms.
+    which is exactly the collar-gluing property extended to the level of morphisms.
 \end{proof}
 
 Together with \cref{thm:disk_alg=lcfa} we immediately have the following corollary:
@@ -205,6 +215,16 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
 \begin{remark}
     The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
 \end{remark}
+
+Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_discrete}, as well as the definition of factorization homology in the setting of the category $\disk[r]_{/M}$, the proof of \cref{thm:gluing_alg_disk/M} can be seen to clearly hold even in case of ordinary factorization algebras.
+
+\begin{corollary}\label{cor:gluing_falgs}
+    A collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$ induces an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \falg_M (\catC) \simeq \falg_{M_-} (\catC) \bigtimes_{\falg_{M_0 \times \mathbb{R}} (\catC)} \falg_{M_+}(\catC).
+    \end{equation}
+\end{corollary}
 
 
 \subsection{Some Examples of Gluing}
@@ -266,7 +286,7 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
     %
     where $^{\mathsf{op_f}}$ is the opposite functor in the fiber direction. Thus, instead of an $\mathbb{E}_1$-\emph{self}-equivalence we have an equivalence with the opposite algebra.
 
-    We should remark that the fact that we can take the opposite algebra in one direction only is a consequence of Dunn additivity \cref{prop:dunn_additivity}. Without it, we wouldn't be able to combine the opposite algebra in one direction with the original algebra in the other direction into a well-defined algebra in two dimensions.
+    We should remark that the fact that we can take the opposite algebra in one direction only is a consequence of the Dunn additivity of \cref{prop:dunn_additivity}. Without it, we wouldn't be able to combine the opposite algebra in one direction with the original algebra in the other direction into a well-defined algebra in two dimensions.
 \end{example}
 
 \end{document}

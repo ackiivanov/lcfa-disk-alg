@@ -11,7 +11,7 @@ Factorization homology (also topological chiral homology) is a construction that
     \int_{M} A \in \catC.
 \end{equation}
 %
-In fact this is only the simplest variant of factorization homology. Variants that accommodate stratified manifolds instead of smooth ones and even $(\infty,n)$-categories instead of algebras have also been worked out. Fixing the algebra, the construction is functorial with respect to open embeddings in the manifold variable, which is the starting point to show that it is a chain level homology theory in a generalized sense, and giving the name. The initial chiral version was first introduced in \cite{bd2004}, and a topological version was introduced by \cite{lurie_ha}. Later, in \cref{thm:disk_alg=lcfa}, we will also see how factorization homology serves to construct factorization algebras. The theory of factorization homology has been deeply developed in \cite{af_fhtop, aft_fhstrat}, especially in the manner that we introduce it in here. A good introduction, is thus, given by \cite{af_primer}, which we will be following.
+In fact this is only the simplest variant of factorization homology. Variants that accommodate stratified manifolds instead of smooth ones and even $(\infty,n)$-categories instead of algebras have also been worked out. Given the focus of the present work, we will be concerned with the variant that can evaluate stratified manifolds. We will not be interested, however, in generalizing the algebraic input beyond disk algebras to the realm of $(\infty,n)$-categories. Fixing the algebra, the construction is functorial with respect to open embeddings in the manifold variable, which is the starting point to show that it is a chain level homology theory in a generalized sense, and giving the name. The initial chiral version was first introduced in \cite{bd2004}, and a topological version was introduced by \cite{lurie_ha}. Later, in \cref{thm:disk_alg=lcfa}, we will also see how factorization homology serves to construct factorization algebras. The theory of factorization homology has been deeply developed in \cite{af_fhtop, aft_fhstrat}, especially in the manner that we introduce it in here. A good introduction, is thus, given by \cite{af_primer}, which we will be following.
 
 
 In the following, and from now on, we let $\catC$ be a symmetric monoidal $\infty$-category that is \emph{$\otimes$-presentable} \cite{af_fhtop}, i.e. it satisfies:
@@ -105,7 +105,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
 
 \begin{remark}
     For more details on $\mathbb{E}_n$-algebras and why these algebras encompass large portions of the examples one usually cares about see \cite[sec.5.1]{lurie_ha}. %or alternatively in appendix \cref{app:En_algebras}. 
-    Roughly speaking, $\mathbb{E}_1$-algebras are homotopy associative algebras and with increasing $n$ we get increasing levels of homotopy commutativity. Having said that, the first part of the proposition is just the classical statement that the little $n$-disks operad and the little $n$-cubes operad are equivalent.
+    Roughly speaking, $\mathbb{E}_1$-algebras are homotopy associative algebras and with increasing $n$ we get increasing levels of homotopy commutativity. Having said that, the first part of the proposition is just the classical statement that the little $n$-disks operad and the little $n$-cubes operad are equivalent. Through the work of \cite{lurie_tqft} and \cite{scheimbauer2014}, $\mathbb{E}_n$-algebras also serve as input for constructing fully extended TQFTs by using factorization homology.
 \end{remark}
 
 \begin{definition}
@@ -338,13 +338,13 @@ In fact in the simple case of intervals, that we're considering here, even more 
         \mathscr{C}_{G/} \xrightarrow{\ \ \simeq \ \ } \mathscr{C}_{G \circ F /},
     \end{equation}
     %
-    as discussed in \cite[prop.4.1.1.8]{lurie_htt}, where the functor is the obvious one. Furthermore, \cite[\href{https://kerodon.net/tag/016H}{016H}]{lurie_kerodon} tells us that the coslice construction is functorial, which, after restricting, defines the functors
+    as discussed in \cite[prop.4.1.1.8]{lurie_htt}, where the functor is the obvious one. Furthermore, \cite[\href{https://kerodon.net/tag/016H}{016H}]{lurie_kerodon} tells us that the slice construction is functorial, which, after restricting, defines the functors
     %
     \begin{align}
         &S: \mathsf{Fun}(\mathscr{B}, \mathscr{C}) \xrightarrow{\ \ \ } \cat& \mathrm{and}& &S': \mathsf{Fun}(\mathscr{A}, \mathscr{C}) \xrightarrow{\ \ \ } \cat,&
     \end{align}
     %
-    whose value on objects is given by $G \mapsto \mathscr{C}_{G/}$. We can now state that by naturality in $G$ we mean that the functors \cref{eq:fin_equivs_cat} assemble into an equivalence of functors   
+    whose value on objects is given by $G \mapsto \mathscr{C}_{G/}$. We can now state that by naturality in $G$ we mean that the functors of \cref{eq:fin_equivs_cat} assemble into an equivalence of functors   
     %
     \begin{equation}
         S \xrightarrow{\ \ \simeq \ \ } S' \circ F^*
