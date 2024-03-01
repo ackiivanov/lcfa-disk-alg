@@ -16,10 +16,10 @@
 \contentsline {subsection}{\numberline {3.2}The $\infty $-operad of Factorization Algebras}{25}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Operations on Factorization Algebras}{30}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Factorization Algebras on Intervals}{33}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Factorization Algebras on Euclidean Spaces}{35}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.5}Factorization Algebras on Euclidean Spaces}{36}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Collar-gluings and Disk Algebras}{37}{section.4}%
 \contentsline {subsection}{\numberline {4.1}The Gluing Theorem}{37}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Some Examples of Gluing}{41}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Towards Classifying $\EuScript {F} \mathsf {Alg}^{\mathsf {lc}}$ on Defect Manifolds}{42}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Euclidean Spaces with Defects}{42}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}The General Case of $M_{\mitSigma }$}{44}{subsection.5.2}%
+\contentsline {section}{\numberline {5}Towards Classifying $\EuScript {F} \mathsf {Alg}^{\mathsf {lc}}$ on Defect Manifolds}{43}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Euclidean Spaces with Defects}{43}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The General Case of $M_{\mitSigma }$}{45}{subsection.5.2}%

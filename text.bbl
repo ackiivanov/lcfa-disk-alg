@@ -605,6 +605,7 @@
       \field{labelalpha}{Lur09}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extraalpha}{1}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{number}{170}
@@ -613,6 +614,35 @@
       \field{year}{2009}
       \field{pages}{xviii+925}
       \range{pages}{-1}
+    \endentry
+    \entry{lurie_tqft}{article}{}
+      \name{author}{1}{}{%
+        {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
+           family={{Lurie}},
+           familyi={L\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{fullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{bibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \field{extraname}{3}
+      \field{labelalpha}{Lur09}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extraalpha}{2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv e-prints}
+      \field{month}{5}
+      \field{title}{{On the Classification of Topological Field Theories}}
+      \field{year}{2009}
+      \verb{doi}
+      \verb 10.48550/arXiv.0905.0465
+      \endverb
     \endentry
     \entry{lurie_kerodon}{misc}{}
       \name{author}{1}{}{%
@@ -628,7 +658,7 @@
       \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \field{extraname}{3}
+      \field{extraname}{4}
       \field{labelalpha}{Lur18}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
@@ -637,6 +667,39 @@
       \field{howpublished}{\url{https://kerodon.net}}
       \field{title}{Kerodon}
       \field{year}{2018}
+    \endentry
+    \entry{murray2020}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=b81ef9ff3e8b9ad27a092ef5d0fbec5f}{%
+           family={Murray},
+           familyi={M\bibinitperiod},
+           given={Laura\bibnamedelimb Josephine\bibnamedelima Wells},
+           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b81ef9ff3e8b9ad27a092ef5d0fbec5f}
+      \strng{fullhash}{b81ef9ff3e8b9ad27a092ef5d0fbec5f}
+      \strng{bibnamehash}{b81ef9ff3e8b9ad27a092ef5d0fbec5f}
+      \strng{authorbibnamehash}{b81ef9ff3e8b9ad27a092ef5d0fbec5f}
+      \strng{authornamehash}{b81ef9ff3e8b9ad27a092ef5d0fbec5f}
+      \strng{authorfullhash}{b81ef9ff3e8b9ad27a092ef5d0fbec5f}
+      \field{labelalpha}{Mur20}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{{Equivariant Factorization Algebras: An $\infty$-Operadic Approach}}
+      \field{type}{phdthesis}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.7274/kh04dn4375v
+      \endverb
+      \verb{urlraw}
+      \verb https://curate.nd.edu/articles/thesis/Equivariant_Factorization_Algebras_An_Infinity-Operadic_Approach/24821814
+      \endverb
+      \verb{url}
+      \verb https://curate.nd.edu/articles/thesis/Equivariant_Factorization_Algebras_An_Infinity-Operadic_Approach/24821814
+      \endverb
     \endentry
     \entry{nlab}{misc}{}
       \name{author}{1}{}{%
@@ -666,31 +729,60 @@
       \verb https://ncatlab.org/nlab/show/%28infinity%2C1%29-sheaf
       \endverb
     \endentry
-    \entry{pena2022geometric}{thesis}{}
+    \entry{pena2022}{thesis}{}
       \name{author}{1}{}{%
-        {{hash=e95303fd77e22e74efeab95c5e07c8f3}{%
-           family={Peña},
+        {{hash=9c06157ebc839fd5f2d0f71333dab047}{%
+           family={Pena},
            familyi={P\bibinitperiod},
-           given={Stephen},
-           giveni={S\bibinitperiod}}}%
+           given={Stephen\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Texas Tech University}%
+        {Texas Tech.}%
       }
-      \strng{namehash}{e95303fd77e22e74efeab95c5e07c8f3}
-      \strng{fullhash}{e95303fd77e22e74efeab95c5e07c8f3}
-      \strng{bibnamehash}{e95303fd77e22e74efeab95c5e07c8f3}
-      \strng{authorbibnamehash}{e95303fd77e22e74efeab95c5e07c8f3}
-      \strng{authornamehash}{e95303fd77e22e74efeab95c5e07c8f3}
-      \strng{authorfullhash}{e95303fd77e22e74efeab95c5e07c8f3}
-      \field{labelalpha}{Peñ22}
+      \strng{namehash}{9c06157ebc839fd5f2d0f71333dab047}
+      \strng{fullhash}{9c06157ebc839fd5f2d0f71333dab047}
+      \strng{bibnamehash}{9c06157ebc839fd5f2d0f71333dab047}
+      \strng{authorbibnamehash}{9c06157ebc839fd5f2d0f71333dab047}
+      \strng{authornamehash}{9c06157ebc839fd5f2d0f71333dab047}
+      \strng{authorfullhash}{9c06157ebc839fd5f2d0f71333dab047}
+      \field{labelalpha}{Pen22}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Geometric Factorization Algebras}
+      \field{title}{{Geometric Factorization Algebras}}
       \field{type}{phdthesis}
       \field{year}{2022}
+    \endentry
+    \entry{scheimbauer2014}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=2c6f7c801d7d918224de19c5d0b28ee2}{%
+           family={Scheimbauer},
+           familyi={S\bibinitperiod},
+           given={Claudia\bibnamedelima I.},
+           giveni={C\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \strng{namehash}{2c6f7c801d7d918224de19c5d0b28ee2}
+      \strng{fullhash}{2c6f7c801d7d918224de19c5d0b28ee2}
+      \strng{bibnamehash}{2c6f7c801d7d918224de19c5d0b28ee2}
+      \strng{authorbibnamehash}{2c6f7c801d7d918224de19c5d0b28ee2}
+      \strng{authornamehash}{2c6f7c801d7d918224de19c5d0b28ee2}
+      \strng{authorfullhash}{2c6f7c801d7d918224de19c5d0b28ee2}
+      \field{labelalpha}{Sch14}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Factorization Homology as a Fully Extended Topological Field Theory}
+      \field{type}{phdthesis}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:119853896
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:119853896
+      \endverb
     \endentry
     \entry{tanaka20}{book}{}
       \name{author}{1}{}{%

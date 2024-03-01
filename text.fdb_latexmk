@@ -1,17 +1,17 @@
 # Fdb version 3
-["biber text"] 1709300974 "text.bcf" "text.bbl" "text" 1709301194
-  "text.bcf" 1709301193 114863 aa12711aef389e49dfdbfdd06c0e6954 "xelatex"
-  "text.bib" 1709300850 6547 d000e1d83d59cfc83d93029f9a61134a ""
+["biber text"] 1709303926 "text.bcf" "text.bbl" "text" 1709304035
+  "text.bcf" 1709304032 115234 e35a14de15f2763867b79a9b436e7c21 "xelatex"
+  "text.bib" 1709303361 7301 03cb3b260d798216ce34c50dc62097cd ""
   (generated)
   "text.bbl"
   "text.blg"
-["xdvipdfmx"] 1709301193 "text.xdv" "text.pdf" "text" 1709301194
-  "text.xdv" 1709301193 1718136 4fb3a21a573011fd64bbd1394705cece "xelatex"
+["xdvipdfmx"] 1709304033 "text.xdv" "text.pdf" "text" 1709304035
+  "text.xdv" 1709304032 1742220 23c2badfb16af172d8a39a1ebe85e666 "xelatex"
   (generated)
   "text.pdf"
-["xelatex"] 1709301189 "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" "text.xdv" "text" 1709301194
+["xelatex"] 1709303999 "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" "text.xdv" "text" 1709304035
   "/etc/texmf/web2c/texmf.cnf" 1709217863 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" 1709299352 7271 e1d877e92a92c1349f2dbfafbfe10475 ""
+  "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" 1709303185 7293 f824f38d4c222990c48603f49e132ffe ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/euler/eusm10.tfm" 1246382020 896 1783287efa3eab95c325db36ffb6426d ""
@@ -217,18 +217,18 @@
   "/usr/share/texmf/tex/latex/lm/t1lmr.fd" 1256929440 1865 afbfccbe7fda9c2dc5078ad7c486bbed ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1709217907 5131644 7c34fae56bdc7125bcfe6b643fa8ba1f ""
-  "sections/0intro.tex" 1709301187 10257 59d67cb1ac58e6642a9cd375a303973d ""
+  "sections/0intro.tex" 1709303592 10358 ba8a8c6baf136067af89f0ae166c4ec4 ""
   "sections/1stratified.tex" 1709293709 29057 35a54e3c98a5a1eccd4f6ef387691230 ""
-  "sections/2homology.tex" 1709293709 40057 496c7cf4887ce1e23cfd23ff8dd6b7ea ""
-  "sections/3algebras.tex" 1709293709 61318 ab6b1b16b9bbdb087a33613bc9f1d43b ""
-  "sections/4gluing.tex" 1709293709 22611 a31a7e813b279551f5a9b28bc3f227ad ""
+  "sections/2homology.tex" 1709303185 40488 de5e9a2d3242a42a5973d4a51526a76a ""
+  "sections/3algebras.tex" 1709303185 61434 64bcaeee19526f41a91e31b89af48b35 ""
+  "sections/4gluing.tex" 1709303185 23664 213b2c2aca157cb2b80efaf40bf07e38 ""
   "sections/5classification.tex" 1709293709 18853 3060a6341327ff1e2f9486b2edd4281c ""
-  "text.aux" 1709301193 51979 b14c81a676d743bd2771b7e51d60fb89 "xelatex"
-  "text.bbl" 1709300975 30636 beafea3193465d34bd4fb4bf27ae7f3a "biber text"
-  "text.out" 1709301193 5868 5f7849091c0817024298dd1a7e4d30f3 "xelatex"
-  "text.run.xml" 1709301193 2340 134e25496a91d8d1eaf29805b55b07f4 "xelatex"
-  "text.tex" 1709299352 7271 e1d877e92a92c1349f2dbfafbfe10475 ""
-  "text.toc" 1709301193 2455 6958ca7e3b0962ff6168d3b7a1fb7cb5 "xelatex"
+  "text.aux" 1709304031 53000 b5f78973dad1d3615c1e245f98cefe6e "xelatex"
+  "text.bbl" 1709303932 34501 ba4dfd727883086a25e8508eb411be0c "biber text"
+  "text.out" 1709304032 5868 5f7849091c0817024298dd1a7e4d30f3 "xelatex"
+  "text.run.xml" 1709304032 2340 134e25496a91d8d1eaf29805b55b07f4 "xelatex"
+  "text.tex" 1709303185 7293 f824f38d4c222990c48603f49e132ffe ""
+  "text.toc" 1709304032 2455 acd1401a32f188486787c246da992d70 "xelatex"
   (generated)
   "text.aux"
   "text.bcf"
