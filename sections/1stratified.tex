@@ -5,7 +5,7 @@
 
 \section{Stratified Spaces}\label{ch:strat_spaces}
 
-The spaces that this work will be set in will very often be stratified spaces. Thus, we first need to define what we mean by this concept. There are multiple definitions of stratified spaces in the literature, all of which have their advantages and disadvantages. For our purposes, we will follow the account of \cite{aft_localstrut}. The majority of the work on factorization homology has so far been elaborated using this particular set of definitions, and similarly the stratified spaces used in the literature on factorization algebras are usually subsumed too. Here we will only recap the results that will be of use to us. Further details are, of course, discussed in \cite{aft_localstrut}, where one can find a great explanation of the definitions that are needed, and detailed proofs of the theorems that can be proven.
+The spaces that this work will be set in will very often be stratified spaces. Thus, we first need to define what we mean by this concept. There are multiple definitions of stratified spaces in the literature, all of which have their advantages and disadvantages. For our purposes, we will follow the account of \cite{aft_localstrut}. A compatible source is also \cite[sec.A.5]{lurie_ha}. The majority of the work on factorization homology has so far been elaborated using this particular set of definitions, and similarly the stratified spaces used in the literature on factorization algebras are usually subsumed too. Here we will only recap the results that will be of use to us. Further details are, of course, discussed in \cite{aft_localstrut}, where one can find a great explanation of the definitions that are needed, and detailed proofs of the theorems that can be proven.
 
 \subsection{Fundamentals of Stratified Spaces}
 
@@ -17,8 +17,8 @@ The spaces that this work will be set in will very often be stratified spaces. T
     \end{equation} 
 \end{definition}
 
-\begin{definition}[\cite{lurie_ha}]
-    Let $P$ be a poset. A \emph{$P$-stratified space} is a topological space $X$ together with a map $X \rightarrow P$, which we call the stratification of $X$. We will sometimes refer to $X$ as the underlying topological space of a stratified space. Furthermore, we denote the preimage of $p \in P$ as $X_p$ and call it the $p$th stratum of $X$.
+\begin{definition}
+    Let $P$ be a poset. A \emph{$P$-stratified space} is a topological space $X$ together with a map $X \rightarrow P$, which we call the stratification of $X$. We will sometimes refer to $X$ as the underlying topological space of a stratified space. Furthermore, we denote the preimage of $p \in P$ as $X_p$ and call it the $p$th stratum of $X$\footnote{Sometimes the name stratum is reserved for the connected components of $X_p$ if strata are required to be connected.}.
 \end{definition}
 
 \begin{example}
@@ -60,7 +60,7 @@ The spaces that this work will be set in will very often be stratified spaces. T
     The above definitions give us a natural notion of an open cover $\{ (U_i \rightarrow P_i) \xhookrightarrow{} (X \rightarrow P)\}_{i \in I}$ of a stratified space $(X \rightarrow P)$, namely, whenever both $\{ U_i \xhookrightarrow{} X\}_{i \in I}$ and $\{ P_i \xhookrightarrow{} P \}_{i \in I}$ are open covers.
 \end{remark}
 
-Next, we construct the cone of a stratified space. This plays a very important role in the theory of stratified manifolds, since the neighborhoods of these spaces will always look like a cone over some space with a possible further thickening by some $\mathbb{R}^k$. That is, the cones will be the model space for singularities.
+Next, we construct the cone of a stratified space. This plays a very important role in the theory of conically smooth manifolds, because it provides the prototypical departure from smoothness. In other words, the local structure of these will always look like a cone over some space with a possible further thickening by some $\mathbb{R}^k$, just as the local structure of smooth manifolds is given by $\mathbb{R}^k$; the cones will be the model spaces for singularities.
 
 \begin{definition}
     Let $X \rightarrow P$ be a stratified space. The cone $\mathsf{C}(X \rightarrow P)$ is the stratified space constructed as follows. At the level of topological spaces we define the pushout in $\mathsf{Top}$
@@ -72,7 +72,7 @@ Next, we construct the cone of a stratified space. This plays a very important r
     At the level of posets we define the pushout in $\mathsf{Poset}$
     %
     \begin{equation}
-        \mathsf{C}(P) := * \coprod_{P \times \{ 0\}} P \times [1].
+        \mathsf{C}(P) := * \coprod_{P \times \{ 0\}} P \times [1] \cong P^{\vartriangleleft}.
     \end{equation}
     %
     The standard stratification of $\hoint$ together with the obvious map $* \rightarrow *$ induce a stratification $\mathsf{C}(X) \rightarrow \mathsf{C}(P)$ as a map between pushouts. 
@@ -98,12 +98,19 @@ The equivalent of a topological manifold in the stratified setting is a \emph{$C
     Let $X \rightarrow P$ be a $C^0$ stratified space. For any $p \in P$, the stratified spaces $X_{\leq p}$, $X_{p}$ and $X_{\nless p}$, defined as the relevant preimages, are $C^0$ stratified spaces. Furthermore, $X_p$ is even a topological manifold.
 \end{theorem}
 
-\begin{remark}
-    Because of the above theorem, $C^0$ stratified spaces $X \rightarrow P$ have a natural filtration by dimension since there is a map $P \rightarrow \mathbb{N}$, which sends $p \mapsto \mathsf{dim}(X_p)$. In our examples of interest we will always choose dimension as the stratification.
-\end{remark}
+For topological spaces we have the concept of covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces, especially on the technical side\footnote{For example, we said that \cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \mathsf{C}(Z)) = \mathsf{dpt} (\mathsf{C}(Z)) = \mathsf{dpt} (Z) + 1$}. As the name suggests, it conveys information about how deep the stratification is.
 
+\begin{definition}
+    Given a $C^0$ stratified space $(X \xrightarrow{s} P)$ the \emph{depth at $x$} is
+    %
+    \begin{equation}
+        \mathsf{dpt}_x (X) := \mathsf{dim}_x (X) - \mathsf{dim}_x (X_{s(x)}).
+    \end{equation}
+    %
+    The depth of $X$, $\mathsf{dpt} (X)$, in general is the supremum of the depths over all points. Just as with dimension, the convention is that $\mathsf{dpt}(\emptyset) = -1$.
+\end{definition}
 
-The smooth version of the above concepts also exists and will be the one that is of main interest. As was the case for $C^0$ stratified spaces, we will not give the precise definition of a \emph{conically smooth stratified space} (or \emph{stratified manifold} for short), since the exact definition is involved. The idea, though, is the same as for smooth manifolds.
+The `smooth' version of the above concepts also exists and will be the one that is of main interest to us. As was the case for $C^0$ stratified spaces, we will not give the precise definition of a \emph{conically smooth stratified space} (or \emph{stratified manifold} for short), since the exact definition is involved. The idea, though, is the same as for smooth manifolds.
 
 A stratified manifold is a $C^0$ stratified space $M$ equipped with an atlas
 %
@@ -113,22 +120,22 @@ A stratified manifold is a $C^0$ stratified space $M$ equipped with an atlas
 %
 whose elements we call basics. This atlas has to be a basis for the topology of $X$, and the transitions maps, open embeddings among basics, have to be conically smooth. General maps of stratified manifolds will then be conically smooth if their representatives in basics are conically smooth.
 
-The reason why the definition is involved is, because unlike in the smooth case the presence of the compact spaces $Z_\alpha$ means that we have to use induction to define conical smoothness.
+The reason why the definition is involved is, because unlike in the smooth case the presence of the compact spaces $Z_\alpha$ means that we have to use induction on depth to define conical smoothness.
 
 In lieu of a definition we give the following illuminating example:
 %
-\begin{example}
-    Smooth manifolds fall under the definition of stratified manifolds as those that only have one stratum. A smooth map $f$ between compact smooth manifolds gives rise to a conically smooth map $\mathsf{f}$ between the cones of these manifolds. If we also have a smooth map between Euclidean spaces $g$ then the map $h \times \mathsf{C}(f)$ is also conically smooth. This already allows us to describe stratified manifolds with two strata.
+\begin{example}[{\cite[ex.1.2]{aft_fhstrat}}]
+    Smooth manifolds fall under the definition of stratified manifolds as those that only have one stratum. A smooth map $f: Z \xrightarrow{} Z'$ between compact smooth manifolds gives rise to a conically smooth map $\mathsf{C}(f)$ between the cones of these manifolds. If we also have a smooth map between Euclidean spaces $g: \mathbb{R}^{n} \xrightarrow{} \mathbb{R}^{n'}$ then the map $g \times \mathsf{C}(f): \mathbb{R}^{n} \times \mathsf{C} (Z) \xrightarrow{} \mathbb{R}^{n'} \times \mathsf{C} (Z')$ is conically smooth. This already allows us to describe stratified manifolds of depth 1.
 \end{example}
 
-The next    classes of conically smooth maps will be present throughout this work.
+The next classes of conically smooth maps will be present throughout this work.
 
 \begin{definition}
     Let $f: M \rightarrow N$ be a conically smooth map.
     %
     \begin{enumerate}
         \item $f$ is an \emph{open embedding} if it is an open map that is conically diffeomorphic onto its image.
-        \item $f$ is a \emph{refinement} if it's a homeomorphism of underlying topological spaces, and it's restriction to each stratum of $M$ is an embedding.
+        \item $f$ is a \emph{refinement} if it's a homeomorphism of underlying topological spaces, and its restriction to each stratum of $M$ is an embedding.
         \item Let $P_N$ be the stratifying poset of $N$. $f$ is a \emph{constructible bundle} if, for each $p \in P_N$, the restriction $f|_p: M|_{f^{-1} N_p} \rightarrow N_p$ is a fiber bundle of stratified spaces.
     \end{enumerate}
 \end{definition}
