@@ -9,7 +9,7 @@ In this work we will explore the concepts of factorization algebras and factoriz
 
 \textbf{\Cref{ch:strat_spaces} Stratified Spaces:} The first section deals with setting up the theory of stratified spaces that we will use. It is essentially a recap of the necessary results from the work of Ayala, Francis and Tanaka \cite{aft_localstrut}, which is one of our main sources. The idea and fundamentals of stratified spaces have existed for a long time in different incarnation beginning with the work of Whitney \cite{whitney92}. The reason why we choose to work with this particular version of stratified spaces is due to them supporting a notion of conical smoothness that is a generalization of smoothness of manifolds. Furthermore, the theory of factorization homology has been developed with these spaces in mind, which eases the process of extending certain results to the stratified case much easier. We will not go into the full details that this incarnation of the theory has to offer, but instead we will only mention results that we will make use of later on. Beyond, conical smoothness, this will include tangential structure and its stratified generalization, together with the packaging of both of these data into the concept of an $\infty$-category of basic singularity types. For the proofs of these statements the reader is encouraged to check \cite{aft_localstrut}.
 
-\textbf{\Cref{ch:fact_hom} Factorization Homology:} The second section will present the theory of factorization homology. Similar to the first section this will mostly be a recap of useful results developed by Ayala, Francis and Tanaka. Specifically, the stratified space results can be found in \cite{aft_fhstrat}, while the results for topological manifolds can be found in \cite{af_fhtop}. For the purposes of the theory we will need the concept of (structured) disk algebras, since this will be the algebraic input. Factorization homology will then return an invariant of a manifold. We will explore the key example of factorization homology over the closed, oriented interval $[-1,1]$, and see how this gives rise to the algebraic concept of the two-sided bar construction. More generally, this underpins the theory because it codifies the property of $\otimes$-excision. Finally, we will also state a classification result about a certain type of disk algebras with stratified structure.
+\textbf{\Cref{ch:fact_hom} Factorization Homology:} The second section will present the theory of factorization homology. Similar to the first section this will mostly be a recap of useful results developed by Ayala, Francis and Tanaka. Specifically, the stratified space results can be found in \cite{aft_fhstrat}, while the results for topological manifolds can be found in \cite{af_fhtop}. For the purposes of the theory we will need the concept of (structured) disk algebras, since this will be the algebraic input. Factorization homology will then combine this with the data of a specific kind of (possibly stratified) manifold into an object that can be viewed either as an invariant of the manifold or an invariant of the algebra. We will explore the key example of factorization homology over the closed, oriented interval $[-1,1]$, and see how this gives rise to the algebraic concept of the two-sided bar construction. More generally, this underpins the theory because it codifies the property of $\otimes$-excision. Finally, we will also state a classification result \cite[prop.4.8]{aft_fhstrat} about a certain type of disk algebras with stratified structure.
 
 \textbf{\Cref{ch:fact_alg} Factorization Algebras:} The third section introduces the concept of factorization algebras, together with its different variations, like prefactorization algebras and locally constant factorization algebras. Of these, the locally constant factorization algebras will be the ones that capture the different possible stratified structure that a manifold can have, and they will be a large focus of the work. The definitions of these will not be novel. They can be found in the works \cite{cg2016}, \cite{ginot2015} and even \cite{af_primer}. In fact, in the slightly different context of vertex algebras the idea can be traced back to \cite{bd2004}. However, all of the above works take a slightly different perspective in their presentation of the definitions, which we hope to unite in this work. The key result of this section is \cref{thm:disk_alg=lcfa}:
 %
@@ -23,7 +23,17 @@ In this work we will explore the concepts of factorization algebras and factoriz
     given by factorization homology,
 \end{theorem}
 %
-as well as its \cref{cor:disk_alg=falg} for the case of ordinary factorization algebras. These show that the $\infty$-operad governing factorization algebras can be taken to be the slice $\infty$-operad $\disk_{/M}$ (or $\disk[r]_{/M}$ for the ordinary case). We then introduce some operations that we can do with factorization algebras like the pushforward and restriction, as well as state a result for locally constant factorization algebras on product spaces. Finally, we will examine some examples of factorization algebras whose construction is known, specifically, locally constant factorization algebras on the intervals $(-1,1)$, $[-1,1)$ and $[-1,1]$ as well as Euclidean spaces $\mathbb{R}^n$ more generally.
+as well as its \cref{cor:disk_alg=falg} for the case of ordinary factorization algebras. These show that the $\infty$-operad governing factorization algebras can be taken to be the slice $\infty$-operad $\disk_{/M}$ (or $\disk[r]_{/M}$ for the ordinary case). We then introduce some operations that we can do with factorization algebras like the pushforward and restriction, as well as state a result for locally constant factorization algebras on product spaces, which confirms a conjecture of \cite{ginot2015}:
+%
+\begin{proposition}
+    Let $M$ and $N$ be stratified manifolds. There is an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \bar{\pi}: \lcfa_{M \times N}(\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{M}(\lcfa_{N}(\catC)).
+    \end{equation}
+\end{proposition}
+%
+Finally, we will examine some examples of factorization algebras whose construction is known, specifically, locally constant factorization algebras on the intervals $(-1,1)$, $[-1,1)$ and $[-1,1]$ as well as Euclidean spaces $\mathbb{R}^n$ more generally.
 
 \textbf{\Cref{ch:gluing_disk_alg} Collar-gluings and Disk Algebras:} The fourth section presents a novel result about the behavior of certain types of disk algebras under the operation of collar-gluing in the manifold variable. It essentially shows that one can reproduce a disk algebra on a stratified manifold if we know it on some particular pieces of it together with the data of how to glue them. Formally, we have
 %
@@ -42,15 +52,16 @@ Together with the results of the previous section this gluing holds for locally 
 \textbf{Further Questions:} The exploration below naturally leads to questions that are beyond the scope of this work. As we will see, factorization algebras only need a topological space to be defined, but locally constant factorization algebras also capture information about the stratified structure. Neither of these, however, capture information about the tangential structure of the manifold, so the question arises:
 %
 \begin{itemize}
-    \item Does there exist a version of factorization algebras that capture information both about the stratified structure of a manifold and about its tangential structure?
+    \item Does there exist a version of factorization algebras that usefully capture information both about the stratified structure of a manifold and about its tangential structure?
 \end{itemize}
 %
-In a similar vein, \cite{cg2016} explain why it's important to have the concept of a $G$-equivariant factorization algebra, where $G$ is a Lie group. In particular, according to them, this asks for some definition of a smooth action of $G$ on factorization algebras.
+The recent thesis \cite{pena2022} could provide a fruitful direction of exploration of the former concept. In a similar vein, \cite{cg2016} explain why it's important to have the concept of a $G$-equivariant factorization algebra, where $G$ is a Lie group. In particular, according to them, this asks for some definition of a smooth action of $G$ on factorization algebras.
 %
 \begin{itemize}
     \item Is there a suitable way to encompass this notion in the formalism presented here?
 \end{itemize}
-
+%
+The beginnings of examining this idea can already be found in the thesis \cite{murray2020}, however the development there, while important, is still preliminary.
 
 
 
@@ -64,7 +75,7 @@ It is also important to note that we will not be making a notational distinction
     \{ \mathsf{Top}\mathrm{-categories}\} \xrightarrow{\mathsf{Sing}} \{ \mathsf{Kan}\mathrm{-categories}\} \xrightarrow{\mathsf{N}} \cat,
 \end{equation}
 %
-which are both equivalences in appropriate ways. In particular, we will not distinguish notationally the nerve of an ordinary category from the ordinary category itself. Similarly, we will not distinguish between multicategories and their $\infty$-operadic nerve.
+which are both Quillen-equivalences in appropriate ways. The interested reader can find accounts of these matters in e.g. ..... In particular, we will not distinguish notationally the nerve of an ordinary category from the ordinary category itself. Similarly, we will not distinguish between (topological) multicategories and their $\infty$-operadic nerve.
 
 
 
