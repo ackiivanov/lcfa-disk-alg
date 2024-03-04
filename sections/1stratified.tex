@@ -18,10 +18,10 @@ The spaces that this work will be set in will very often be stratified spaces. T
 \end{definition}
 
 \begin{definition}
-    Let $P$ be a poset. A \emph{$P$-stratified space} is a topological space $X$ together with a map $X \rightarrow P$, which we call the stratification of $X$. We will sometimes refer to $X$ as the underlying topological space of a stratified space. Furthermore, we denote the preimage of $p \in P$ as $X_p$ and call it the $p$th stratum of $X$\footnote{Sometimes the name stratum is reserved for the connected components of $X_p$ if strata are required to be connected.}.
+    Let $P$ be a poset. A \emph{$P$-stratified space} is a topological space $X$ together with a continuous map $X \rightarrow P$, which we call the \emph{stratification} of $X$. The poset $P$ is called the \emph{stratifying poset}. We will sometimes refer to $X$ as the underlying topological space of a stratified space. Furthermore, we denote the preimage of $p \in P$ as $X_p$ and call it the $p$'th stratum of $X$\footnote{Sometimes the name stratum is reserved for the connected components of $X_p$ if strata are required to be connected.}.
 \end{definition}
 
-\begin{example}
+\begin{example}\label{54HC9DC}
     Any CW complex $X$ can be made into a stratified space $X \rightarrow \mathbb{N}$, which sends all points in $X_{\leq k} \setminus {X_{\leq k-1}}$ to $k$, where $X_{\leq k}$ is the $k$-skeleton of $X$.
 \end{example}
 
@@ -29,16 +29,22 @@ The spaces that this work will be set in will very often be stratified spaces. T
     Inspired by the previous example, any topological space $X$ with a filtration by closed subsets $\emptyset \subset X_{\leq 0} \subset \dots \subset X_{\leq n} = X$, is a stratified space, because the filtration induces a map $X \rightarrow \mathbb{N}$, which sends $X_{\leq i} \setminus X_{\leq i-1}$ to $i$.
 \end{example}
 
-\begin{remark}
-    Given two stratified spaces $X \xrightarrow{s} P$ and $X' \xrightarrow{s'} P'$, we can form the product stratified space $X \times X' \xlongrightarrow{s \times s'} P \times P'$, where the partial order on the product poset is given by $(p,p') \leq (q, q') \iff (p \leq q) \land (p' \leq q')$.
-\end{remark}
-
 \begin{example}
     Consider the poset $[1] = \{0 < 1\}$, and the topological space $\hoint$. The standard stratification that we will give to this space is given by $\hoint \rightarrow [1]$, that sends $0 \mapsto 0$ and $0 \neq x \mapsto 1$. This space will play an important role for factorization algebras later on.
 \end{example}
 
+\begin{example}
+    Any topological space $X$ can be stratified by its connected components, with $P$ discrete and $|P|=\pi_0(X)$.
+\end{example}
+
+\begin{remark}
+    Given two stratified spaces $X \xrightarrow{s} P$ and $X' \xrightarrow{s'} P'$, we can form the product stratified space $X \times X' \xlongrightarrow{s \times s'} P \times P'$, where the partial order on the product poset is given by $(p,p') \leq (q, q') \iff (p \leq q) \land (p' \leq q')$.
+\end{remark}
+
+
+
 \begin{definition}
-    Let $X \rightarrow P$ and $X' \rightarrow P'$ be two stratified spaces. A \emph{continuous stratified map} (or \emph{map of stratified spaces}) is a commutative diagram in $\mathsf{Top}$
+    Let $X \rightarrow P$ and $X' \rightarrow P'$ be two stratified spaces. A \emph{continuous stratified map} (or \emph{map of stratified spaces}) is a commutative diagram in $\mathsf{Top}$ of type
     %
     \begin{equation}
         \begin{tikzcd}
@@ -60,10 +66,10 @@ The spaces that this work will be set in will very often be stratified spaces. T
     The above definitions give us a natural notion of an open cover $\{ (U_i \rightarrow P_i) \xhookrightarrow{} (X \rightarrow P)\}_{i \in I}$ of a stratified space $(X \rightarrow P)$, namely, whenever both $\{ U_i \xhookrightarrow{} X\}_{i \in I}$ and $\{ P_i \xhookrightarrow{} P \}_{i \in I}$ are open covers.
 \end{remark}
 
-Next, we construct the cone of a stratified space. This plays a very important role in the theory of conically smooth manifolds, because it provides the prototypical departure from smoothness. In other words, the local structure of these will always look like a cone over some space with a possible further thickening by some $\mathbb{R}^k$, just as the local structure of smooth manifolds is given by $\mathbb{R}^k$; the cones will be the model spaces for singularities.
+Next, we construct the cone of a stratified space. This plays a very important role in the theory of conically smooth manifolds, because it provides the prototypical departure from smoothness. In other words, the local structure of these will always look like a cone over some space with a possible further thickening by a factor $\mathbb{R}^k$, just as the local structure of smooth manifolds is given by $\mathbb{R}^k$. The cones will be the model spaces for singularities.
 
 \begin{definition}
-    Let $X \rightarrow P$ be a stratified space. The cone $\mathsf{C}(X \rightarrow P)$ is the stratified space constructed as follows. At the level of topological spaces we define the pushout in $\mathsf{Top}$
+    Let $X \rightarrow P$ be a stratified space. Its (\emph{open}) \emph{cone} $\mathsf{C}(X \rightarrow P)$ is the stratified space constructed as follows. At the level of topological spaces we define the pushout in $\mathsf{Top}$
     %
     \begin{equation}
         \mathsf{C}(X) := * \coprod_{X \times \{0\}} X \times \hoint.
@@ -78,13 +84,19 @@ Next, we construct the cone of a stratified space. This plays a very important r
     The standard stratification of $\hoint$ together with the obvious map $* \rightarrow *$ induce a stratification $\mathsf{C}(X) \rightarrow \mathsf{C}(P)$ as a map between pushouts. 
 \end{definition}
 
-The equivalent of a topological manifold in the stratified setting is a \emph{$C^0$ stratified space}. We will not be fully precise in the definition of these, since this would stray us from our main goal. We will however cite theorems that show that the spaces we consider in this work are $C^0$ stratified spaces. The reason why the below cannot be the actual definition is because it would partially be a cyclic statement. We cite it because it provides good intuition for the structure of $C^0$ stratified spaces.
+The following will be used in the definition of the $\infty$-category $\mfld$ of stratified manifolds.
+
+\begin{definition}
+    Let $X\to P$ be a stratified space. Its \emph{closed cone} is the stratified space $\overline{C}(X)\to P^{\vartriangleleft}$ with $\overline{C}(X)=\ast\amalg_{X\times\{0\}}X\times[0,1]$ and the obvious stratification.
+\end{definition}
+
+The equivalent of a topological manifold in the stratified setting is a \emph{$C^0$ stratified space}. We will not be fully precise in the definition of these, since this would stray us from our main goal. We will however cite theorems that show that the spaces we consider in this work are $C^0$ stratified spaces. The following definition is partly cyclic, but we cite it because it provides good intuition for the structure of $C^0$ stratified spaces.
 
 \begin{definition}
     A \emph{$C^0$ basic}, which we will also often call a \emph{disk}, is a $C^0$ stratified space of the form $\mathbb{R}^k \times \mathsf{C}(Z)$, where $k \geq 0$, $\mathbb{R}^k$ has the trivial stratification, and $Z$ is a compact $C^0$ stratified space.
 \end{definition}
 
-\begin{theorem}[{\cite[lem.2.2.2]{aft_localstrut}}]\label{thm:basics_give_basis}
+\begin{theorem}[{\cite[Lemma 2.2.2]{aft_localstrut}}]\label{thm:basics_give_basis}
     Let $X$ be a stratified, second countable, Hausdorff space, and consider the collection of open embeddings
     %
     \begin{equation}
@@ -94,11 +106,11 @@ The equivalent of a topological manifold in the stratified setting is a \emph{$C
     where $U$ ranges over the $C^0$ basics. Then this collection forms a basis for the topology of $X$ if and only if $X$ is a $C^0$ stratified space.
 \end{theorem}
 
-\begin{theorem}[{\cite[cor.2.3.5]{aft_localstrut}}]
+\begin{theorem}[{\cite[Corollary 2.3.5]{aft_localstrut}}]
     Let $X \rightarrow P$ be a $C^0$ stratified space. For any $p \in P$, the stratified spaces $X_{\leq p}$, $X_{p}$ and $X_{\nless p}$, defined as the relevant preimages, are $C^0$ stratified spaces. Furthermore, $X_p$ is even a topological manifold.
 \end{theorem}
 
-For topological spaces we have the concept of covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces, especially on the technical side\footnote{For example, we said that \cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \mathsf{C}(Z)) = \mathsf{dpt} (\mathsf{C}(Z)) = \mathsf{dpt} (Z) + 1$}. As the name suggests, it conveys information about how deep the stratification is.
+For topological spaces we have the concept of (\v{C}ech--Lebesgue) covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces.\footnote{For example, we said that \cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \mathsf{C}(Z)) = \mathsf{dpt} (\mathsf{C}(Z)) = \mathsf{dpt} (Z) + 1$} As the name suggests, it conveys information about how deep the stratification is. For instance, if the stratification is given by a filtration as in \Cref{54HC9DC}, then it coincides with the length of the filtration, or equivalently, with the length of the longest non-trivial chain of arrives in the stratifying poset. Similarly to $\mathsf{dim}$ it has a pointwise and a global version.
 
 \begin{definition}
     Given a $C^0$ stratified space $(X \xrightarrow{s} P)$ the \emph{depth at $x$} is
@@ -119,12 +131,11 @@ A stratified manifold is a $C^0$ stratified space $M$ equipped with an atlas
 \end{equation}
 %
 whose elements we call basics. This atlas has to be a basis for the topology of $X$, and the transitions maps, open embeddings among basics, have to be conically smooth. General maps of stratified manifolds will then be conically smooth if their representatives in basics are conically smooth.
-
 The reason why the definition is involved is, because unlike in the smooth case the presence of the compact spaces $Z_\alpha$ means that we have to use induction on depth to define conical smoothness.
 
 In lieu of a definition we give the following illuminating example:
 %
-\begin{example}[{\cite[ex.1.2]{aft_fhstrat}}]
+\begin{example}[{\cite[Example 1.2]{aft_fhstrat}}]
     Smooth manifolds fall under the definition of stratified manifolds as those that only have one stratum. A smooth map $f: Z \xrightarrow{} Z'$ between compact smooth manifolds gives rise to a conically smooth map $\mathsf{C}(f)$ between the cones of these manifolds. If we also have a smooth map between Euclidean spaces $g: \mathbb{R}^{n} \xrightarrow{} \mathbb{R}^{n'}$ then the map $g \times \mathsf{C}(f): \mathbb{R}^{n} \times \mathsf{C} (Z) \xrightarrow{} \mathbb{R}^{n'} \times \mathsf{C} (Z')$ is conically smooth. This already allows us to describe stratified manifolds of depth 1.
 \end{example}
 
@@ -136,12 +147,12 @@ The next classes of conically smooth maps will be present throughout this work.
     \begin{enumerate}
         \item $f$ is an \emph{open embedding} if it is an open map that is conically diffeomorphic onto its image.
         \item $f$ is a \emph{refinement} if it's a homeomorphism of underlying topological spaces, and its restriction to each stratum of $M$ is an embedding.
-        \item Let $P_N$ be the stratifying poset of $N$. $f$ is a \emph{constructible bundle} if, for each $p \in P_N$, the restriction $f|_p: M|_{f^{-1} N_p} \rightarrow N_p$ is a fiber bundle of stratified spaces.
+        \item Let $P_N$ be the stratifying poset of $N$. Then $f$ is a \emph{constructible bundle} if, for each $p \in P_N$, the restriction $f|_p: M|_{f^{-1} N_p} \rightarrow N_p$ is a fiber bundle of stratified spaces. The map $f$ is a \emph{fiber bundle} if there exists a cover $\{U\hookrightarrow N\}$ of $N$ consisting of open embeddings such that the restriction of $f$ along $U$ is of type $\mathsf{pr}\colon F_U\times U\to U$ for a stratified manifold $F_U$.
     \end{enumerate}
 \end{definition}
 
 \begin{remark}
-    We will also on occasion use the concept of \emph{weakly constructible bundle}, which is a continuous stratified map $f: M \rightarrow N$ which is a constructible bundle out of a refinement of $M$, i.e. there is a diagram $M \xleftarrow{r} M' \xrightarrow{s} N$, where there is an equality $f = s \circ r$ of the underlying continuous maps. Constructible bundles are obviously also weakly constructible.
+    We will also on occasion use the concept of \emph{weakly constructible bundle}, which is a continuous stratified map $f: M \rightarrow N$ which is a constructible bundle out of a refinement of $M$, i.e. there is a diagram $M \xleftarrow{r} M' \xrightarrow{s} N$, where there is an equality $f = s \circ r$ of the underlying continuous maps. Constructible bundles are obviously also weakly constructible. Their use owes to the Pushforward Theorem \cite[Theorem 2.25]{aft_fhstrat}, which states in particular that algebras may be pushed forward along weakly constructible bundles. 
 \end{remark}
 
 We will now introduce two versions of the category of stratified manifolds that will be ubiquitous throughout this work.
@@ -150,16 +161,16 @@ We will now introduce two versions of the category of stratified manifolds that 
     The ordinary category of stratified manifolds $\mfld[r]$ is the category whose objects are stratified manifolds and whose morphisms are open embeddings between them.
 \end{definition}
 
-For the next definition we notice that all standard simplices are stratified manifolds.
+For the next definition we notice that all standard simplices are stratified manifolds, obtained as $\Delta^n\cong\overline{C}^n(\ast)\to\overline{C}(\{0\})\cong[n]$.
 
 \begin{definition}
-    $\mfld$ is the $\infty$-category whose objects are stratified manifolds and whose morphisms are open embeddings among them. To get the higher categorical structure we consider a simplicial enrichment over $\mathsf{Set}$-valued presheaves on the unenriched category, so that given two objects $M$ and $N$
+    $\mfld$ is the $\infty$-category whose objects are stratified manifolds and whose morphisms are open embeddings among them. It is presented as the $\mathsf{Kan}$-enriched category of stratified manifolds by taking the Kan complex of morphisms between two objects $M$ and $N$ to be defined by
     %
     \begin{equation}
-        \mathsf{Hom}_{\mfld} (M, N): [p] \mapsto \mathsf{Map}_{/\Delta^p} (M \times \Delta^p, N \times \Delta^p),
+        \mathsf{Hom}_{\mfld} (M, N): [p] \mapsto \mathsf{Mfld}_{/\Delta^p} (M \times \Delta^p, N \times \Delta^p).
     \end{equation}
     %
-    where $\Delta^p$ is the standard $p$-simplex and $\mathsf{Map}_{/\Delta^p}$ denotes those stratified maps that commute with projecting to $\Delta^p$. It can be shown that this enrichment factors through a $\mathsf{Kan}$-enrichment, which gives the appropriate structure.
+    Here, $\mathsf{Mfld}_{/\Delta^p}$ takes the morphism set in the over-category over $\Delta^p$.
 \end{definition}
 
 \begin{remark}

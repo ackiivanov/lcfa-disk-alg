@@ -1,3 +1,4 @@
+*.pdf
 *.aux
 *.ps
 *.log
@@ -13,4 +14,3 @@
 *.run.xml
 *.synctex.gz
 *.xdv
-*.pdf
