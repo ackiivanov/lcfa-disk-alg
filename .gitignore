@@ -1,1 +1,16 @@
-text.pdf
+*.aux
+*.ps
+*.log
+*.dvi
+*.tex~
+*.bbl
+*.blg
+*.toc
+*.out
+*.bcf
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.synctex.gz
+*.xdv
+*.pdf
