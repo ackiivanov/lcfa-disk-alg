@@ -1,15 +1,15 @@
 # Fdb version 3
-["biber text"] 1709303926 "text.bcf" "text.bbl" "text" 1709304035
-  "text.bcf" 1709304032 115234 e35a14de15f2763867b79a9b436e7c21 "xelatex"
-  "text.bib" 1709303361 7301 03cb3b260d798216ce34c50dc62097cd ""
+["biber text"] 1709547411 "text.bcf" "text.bbl" "text" 1709547425
+  "text.bcf" 1709547425 115234 e35a14de15f2763867b79a9b436e7c21 "xelatex"
+  "text.bib" 1709304090 7311 fe25608d3cba4875fcefe33b8a1edb2d ""
   (generated)
   "text.bbl"
   "text.blg"
-["xdvipdfmx"] 1709304033 "text.xdv" "text.pdf" "text" 1709304035
-  "text.xdv" 1709304032 1742220 23c2badfb16af172d8a39a1ebe85e666 "xelatex"
+["xdvipdfmx"] 1709547425 "text.xdv" "text.pdf" "text" 1709547425
+  "text.xdv" 1709547425 1742336 96aa45cd1f259d210aac1ad6e0b2fa5b "xelatex"
   (generated)
   "text.pdf"
-["xelatex"] 1709303999 "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" "text.xdv" "text" 1709304035
+["xelatex"] 1709547419 "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" "text.xdv" "text" 1709547425
   "/etc/texmf/web2c/texmf.cnf" 1709217863 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/tetik/Documents/github-aleksandar-lcfa-disk-alg/lcfa-disk-alg/text.tex" 1709303185 7293 f824f38d4c222990c48603f49e132ffe ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -223,12 +223,12 @@
   "sections/3algebras.tex" 1709303185 61434 64bcaeee19526f41a91e31b89af48b35 ""
   "sections/4gluing.tex" 1709303185 23664 213b2c2aca157cb2b80efaf40bf07e38 ""
   "sections/5classification.tex" 1709293709 18853 3060a6341327ff1e2f9486b2edd4281c ""
-  "text.aux" 1709304031 53000 b5f78973dad1d3615c1e245f98cefe6e "xelatex"
-  "text.bbl" 1709303932 34501 ba4dfd727883086a25e8508eb411be0c "biber text"
-  "text.out" 1709304032 5868 5f7849091c0817024298dd1a7e4d30f3 "xelatex"
-  "text.run.xml" 1709304032 2340 134e25496a91d8d1eaf29805b55b07f4 "xelatex"
+  "text.aux" 1709547425 53000 9fb75c2211ac5b7dcd18f3905bd29bc9 "xelatex"
+  "text.bbl" 1709547412 34511 2b0737ce6d87ec6de01723a59e654e23 "biber text"
+  "text.out" 1709547425 5868 5f7849091c0817024298dd1a7e4d30f3 "xelatex"
+  "text.run.xml" 1709547425 2340 134e25496a91d8d1eaf29805b55b07f4 "xelatex"
   "text.tex" 1709303185 7293 f824f38d4c222990c48603f49e132ffe ""
-  "text.toc" 1709304032 2455 acd1401a32f188486787c246da992d70 "xelatex"
+  "text.toc" 1709547425 2455 acd1401a32f188486787c246da992d70 "xelatex"
   (generated)
   "text.aux"
   "text.bcf"
