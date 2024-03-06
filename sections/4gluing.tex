@@ -26,7 +26,7 @@ Before me move on to the proof we show a few useful lemmas.
         \bar{f}: \mfld_{/M} \xrightarrow{\ \ \ \ } \alg{\mathsf{Assoc^{RL}}} (\mfld_{/M}),
     \end{equation}
     %
-    which on objects acts as $(N \xhookrightarrow{} M) \mapsto (N_- \xhookrightarrow{} M, N_0 \times \mathbb{R} \xhookrightarrow{} M, N_+ \xhookrightarrow{} M)$. Moreover, this functor is even an algebra.
+    which on objects acts as $(N \xhookrightarrow{} M) \mapsto (N_- \xhookrightarrow{} M, N_0 \times \mathbb{R} \xhookrightarrow{} M, N_+ \xhookrightarrow{} M)$. Moreover, this functor is even a map of $\infty$-operads.
 \end{lemma}
 
 \begin{proof}
@@ -63,10 +63,10 @@ Before me move on to the proof we show a few useful lemmas.
     \begin{equation}
         \bar{f}: \mfld[r]_{/M} \xrightarrow{\ \ \ \ } \alg{\mathsf{Assoc^{RL}}} (\mfld[r]_{/M}).
     \end{equation}
+    %
+    That the functor is a map of $\infty$-operads is clear from the fact that the key role on both sides is played by disjoint union. 
 
-    Need to be extended to $\mfld_{/M}$ by dealing with the homotopies.
-
-    %Formally, the relevant definition is \cite[def.2.1.2.7]{lurie_ha}, which says that we have to check two things: that the constructed functor $\gamma(A_-, A_+)$ lies over $\mathsf{Fin}_*$ and that it sends inert morphisms to inert morphisms. Factorization homology, $\int_- A_{0,\pm}$, satisfies this almost by definition, while \cref{lem:B_sym_mon} tells us that the bar construction similarly does so. All that is left to show is that $\bar{f}$ is a map of $\infty$-operads. But this is obviously the case since all it is doing is splitting the input into pieces while keeping track of how they relate to each other.
+    {\color{red}Needs to be extended to $\mfld_{/M}$ by dealing with the homotopies. Alternatively, we can prove the theorem for $\disk[r]_{/M}$-algebras first and then argue at the factorization algebra level that the glued algebra has to inherit local constancy.}
 \end{proof}
 
 \begin{corollary}\label{cor:fbar_func_discrete}
@@ -229,14 +229,25 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
 
 \subsection{Some Examples of Gluing}
 
+
+\begin{example}\label{ex:reproduce_lcfas_on_interval}
+    With the ingredients we have introduced up to now, specifically in \cref{ssec:lcfa_on_ints}, we can do a nontrivial check of the gluing theorem. This is because we can write a collar-gluing of the closed interval $[-1,1] \cong \left[-1,1\right) \coprod_{(-1,1)} \left(-1,1\right] \cong \mathbb{R}_{\geq 0} \coprod_{\mathbb{R}} \mathbb{R}_{\leq 0}$. We note here that we have written $\mathbb{R}_{\leq 0}$ and $\mathbb{R}_{\geq 0}$ to emphasize the maps forming the decomposition. At the level of unstructured objects these two are isomorphic (see also \cref{rem:left_or_right_module}). For this example, the theorem says that locally constant factorization algebras on the closed interval should be given by
+    %
+    \begin{equation}
+        \lcfa_{[-1,1]} (\catC) \simeq \lcfa_{\mathbb{R}_{\geq 0}} (\catC) \bigtimes_{\lcfa_{\mathbb{R}} (\catC)} \lcfa_{\mathbb{R}_{\leq 0}} (\catC) \simeq \mathsf{RMod} (\catC) \bigtimes_{\alg{\mathbb{E}_1} (\catC)} \mathsf{LMod} (\catC),
+    \end{equation}
+    %
+    where the functors are the ones that forget the module. At the level of objects, this is the data of an algebra with a right module $(A, R) \in \mathsf{RMod} (\catC)$ and an algebra with a left module $(B, L) \in \mathsf{LMod} (\catC)$, such that the algebras are equal $A = B$. But this is exactly the same as the description we gave in terms of an algebra with a left and a right module, i.e. an algebra over $\mathsf{Assoc^{RL}}$, in \cref{cor:lcfas_on_closed_int}.
+\end{example}
+
 \begin{example}\label{ex:reproduce_lcfas_on_S1}
-    Using results from \cite[prop.4.0.1]{cg2016}, namely inheritance from a covering space, \cite[sec.5.5]{ginot2015} characterizes locally constant factorization algebras on the circle $S^1$ as
+    A highly nontrivial check of the gluing theorem is given by the circle $S^1$. Using results from \cite[prop.4.0.1]{cg2016}, namely inheritance from a covering space, \cite[sec.5.5]{ginot2015} characterizes locally constant factorization algebras on the circle $S^1$ as
     %
     \begin{equation}
         \lcfa_{S^1} (\catC) \simeq \aut (\alg{\mathbb{E}_1} (\catC)),
     \end{equation}
     %
-    i.e. $\mathbb{E}_1$-algebras together with a self-equivalence. \Cref{cor:gluing_lcfas} allows us to recover this nontrivial result. To wit, the circle can be exhibited as a collar-gluing $S^1 \cong \mathbb{R} \coprod_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod_{\mathbb{R} \sqcup \mathbb{R}} \mathbb{R}$. For locally constant factorization algebras this means that
+    i.e. $\mathbb{E}_1$-algebras together with a self-equivalence. This result is not generalizable to higher spheres because it uses the technology of covering spaces. \Cref{cor:gluing_lcfas} allows us to recover this nontrivial result. To wit, the circle can be exhibited as a collar-gluing $S^1 \cong \mathbb{R} \coprod_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod_{\mathbb{R} \sqcup \mathbb{R}} \mathbb{R}$. For locally constant factorization algebras this means that
     %
     \begin{equation}\label{eq:lcfas_on_S1_gluing}
         \lcfa_{S^1} (\catC) \simeq \lcfa_{\mathbb{R}} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \alg{\mathbb{E}_1} (\catC).
@@ -256,7 +267,7 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
 \end{example}
 
 \begin{example}\label{ex:lcfas_on_S^n}
-    Just as for the circle, higher spheres can also be described as a collar-gluing $S^n \cong \mathbb{R}^n \coprod_{S^{n-1} \times \mathbb{R}} \mathbb{R^n}$. Thus, we can iterate the procedure from \cref{ex:reproduce_lcfas_on_S1} to get the locally constant factorization algebras on all higher spheres. For example, for the two-sphere $S^2$ we have
+    Unlike the covering space result for the circle \cite[sec.5.5]{ginot2015} which doesn't generalize to higher spheres, the gluing theorem has no such restriction. Just as for the circle, higher spheres can also be described as a collar-gluing $S^n \cong \mathbb{R}^n \coprod_{S^{n-1} \times \mathbb{R}} \mathbb{R^n}$. Thus, we can iterate the procedure from \cref{ex:reproduce_lcfas_on_S1} to get the locally constant factorization algebras on all higher spheres. For example, for the two-sphere $S^2$ we have
     %
     \begin{equation}
         \lcfa_{\mathbb{R}^2}(\catC) \bigtimes_{\lcfa_{S^1 \times \mathbb{R}}(\catC)} \lcfa_{\mathbb{R}^2}(\catC) \simeq \alg{\mathbb{E}_2}(\catC) \bigtimes_{\alg{\mathbb{E}_1}( \aut (\alg{\mathbb{E}_1} (\catC))) } \alg{\mathbb{E}_2} (\catC),
@@ -264,7 +275,7 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
     %
     namely, a locally constant factorization algebra on $S^2$ is equivalent to two $\mathbb{E}_2$-algebras, such that they restrict on the fattened equator to the same $\mathbb{E}_2$-algebra equipped with an $\mathbb{E}_1$-automorphism. It is nontrivial to describe this data in a simpler way as was possible for $S^1$.
     
-    From this example we can easily see that beyond the dimensionality $n$ of the space, which is locally kept track of as an $\mathbb{E}_n$-algebra, locally constant factorization algebras for the higher spheres also keep track of higher coherent (self-)equivalences.
+    From this example we can easily see that beyond the dimensionality $n$ of the space, which is locally kept track of as an $\mathbb{E}_n$-algebra, locally constant factorization algebras for the higher spheres also keep track of higher coherent (self-)equivalences, which imitate traingulations of the spheres.
 \end{example}
 
 \begin{example}\label{ex:cylinder_mobius_band}
