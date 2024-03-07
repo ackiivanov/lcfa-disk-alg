@@ -191,19 +191,18 @@ For the next definition we notice that all standard simplices are stratified man
 
 \subsection{Stratified Manifolds with Tangential Structure}
 
-In a lot of cases we will want to add to our stratified manifold the data of tangential structure. This, for example, will be the geometric input for factorization homology. Thus, we introduce the concept of tangential structure here, first starting with smooth manifolds and then continuing to the stratified case.
+Tangential structure can be part of the input for factorization homology. Thus, in this section, we will recall the concept of tangential structure, first starting with smooth manifolds and then continuing to the stratified case.
 
 \begin{definition}
-    Let $\mfld_n$ be the $\infty$-category defined as a topological category, whose objects are smooth, $n$-dimensional manifolds and whose morphisms are embeddings between them, where the morphism spaces have the compact-open topology. This category can be endowed with a symmetric monoidal structure given by disjoint union.
+    Let $\mfld_n$ be the $\infty$-category given by the topological category whose objects are smooth $n$-dimensional manifolds and whose morphisms are embeddings between them, where the morphism spaces have the compact-open topology. It is endowed with the symmetric monoidal structure given by disjoint union.
 \end{definition}
 
-Given a smooth, $n$-dimensional manifold $M$, its tangent bundle is a rank-$n$ vector bundle on the manifold, which also makes it a principal $\mathsf{GL}(n)$-bundle. Because of the classification of principal bundles, the tangent bundle of a manifold $M$ can be classified, up to homotopy, by a map called the \emph{tangent classifier}
+Given a smooth, $n$-dimensional manifold $M$, (the frame bundle of) its tangent bundle is a principal $\mathsf{GL}(n)$-bundle whose bundle isomorphism class corresponds to the homotopy class of its classifying map
 %
 \begin{equation}
     M \xrightarrow{\ \ \tau_M \ \ } \mathsf{BO}(n) \xrightarrow[\simeq]{\mathrm{Gram-Schmidt}} \mathsf{BGL}(n),
 \end{equation}
-%
-where $\mathsf{BO}(n)$ is the classifying space of $\mathsf{O}(n)$. Giving the manifold a $G$-structure, where $G$ is a Lie group with a group homomorphism to $\mathsf{GL}(n)$, is then equivalent to a factorization, up to homotopy, of the tangent classifier through $\mathsf{B}G$, in other words it is a lift $\phi$ of the tangent classifier such that the following diagram is homotopy commutative
+called the \emph{tangent classifier}. Here, $\mathsf{B}G$ is the classifying space of the (topological) group $G$. Giving the manifold a $G$-structure, where $G$ is a Lie group with a group homomorphism to $\mathsf{GL}(n)$ (or to $\mathsf{O}(n)$), is to find a lift $\phi$ of $\tau_M$ and a homotopy that commutes
 %
 \begin{equation}
     \begin{tikzcd}[column sep = large]
@@ -212,15 +211,14 @@ where $\mathsf{BO}(n)$ is the classifying space of $\mathsf{O}(n)$. Giving the m
     \end{tikzcd}
 \end{equation}
 
-It is, in fact, this picture that will generalize to give us tangential structure in the more general case. As a first step, \cite[cor.2.13]{af_fhtop} shows that the tangent classifier can be understood as a functor
+A similar picture applies in the stratified case. As a first step, \cite[Corollary 2.13]{af_fhtop} shows that $M\mapsto\tau_M$ can be presented as the symmetric monoidal functor
 %
 \begin{equation}
     \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\mathbb{R}^n \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Spaces}_{/\mathsf{BO}(n)},
 \end{equation}
-%
-and in fact a symmetric monoidal one, where the codomain's symmetric monoidal structure is given by coproduct. Namely, given a smooth manifold $M$, the functor returns the map of spaces $\tau_M:M \rightarrow \mathsf{BO}(n)$.
+where the codomain's symmetric monoidal structure is given by coproduct. As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening-unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Preasheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{ayala2020primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}.
 
-By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of which was previously played by $\mathsf{B}G$), we can define:
+By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of which was previously played by $\mathsf{B}G$), one has
 %
 \begin{definition}
     The symmetric monoidal $\infty$-category $\mfld_n^B$ of $n$-manifolds with $B$-structure is the pullback of $\infty$-categories
