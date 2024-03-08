@@ -216,7 +216,7 @@ A similar picture applies in the stratified case. As a first step, \cite[Corolla
 \begin{equation}
     \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\mathbb{R}^n \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Spaces}_{/\mathsf{BO}(n)},
 \end{equation}
-where the codomain's symmetric monoidal structure is given by coproduct. As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening-unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Preasheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{ayala2020primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}.
+where the codomain's symmetric monoidal structure is given by coproduct. As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening-unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full sub-$\infty$-category at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
 
 By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of which was previously played by $\mathsf{B}G$), one has
 %
@@ -234,30 +234,30 @@ By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of whi
 \end{definition}
 
 \begin{remark}
-    Since the tangent classifier $\tau$ is symmetric monoidal, and since the right vertical map is canonically symmetric monoidal with the coproduct on both $\mathsf{Spaces}_{/B}$ and $\mathsf{Spaces}_{/\mathsf{BO}(n)}$, the newly defined $\infty$-category does indeed come with a canonical symmetric monoidal structure.
+    Since the tangent classifier $\tau$ is symmetric monoidal, and since the right vertical map is canonically symmetric monoidal with respect to disjoint union on both $\mathsf{Spaces}_{/B}$ and $\mathsf{Spaces}_{/\mathsf{BO}(n)}$, the newly defined $\infty$-category does indeed come with a canonical symmetric monoidal structure.
 \end{remark}
 
 \begin{example}
     Classical examples for tangential structure come from principal $G$-bundles as discussed before. Namely, given a Lie group $G$ together with a smooth homomorphism $G \rightarrow \mathsf{GL}(n) \simeq \mathsf{O}(n)$, we have an induced map of spaces $\mathsf{B}G \rightarrow \mathsf{BO}(n)$, which gives rise to the following examples:
     %
     \begin{enumerate}
-        \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{O}(n) \xrightarrow{\mathrm{id}} \mathsf{O}(n))$ reproduces the case of no tangential structure,
+        \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{O}(n) \xrightarrow{\mathrm{id}} \mathsf{O}(n))$ reproduces the case of no tangential structure,\footnote{or the contractible choice of a riemannian metric}
         \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{SO}(n) \xhookrightarrow{} \mathsf{O}(n))$ is the case of oriented smooth manifolds,
-        \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{Spin}(n) \rightarrow \mathsf{SO}(n) \xhookrightarrow{} \mathsf{O}(n))$ is the case of spin structure,
+        \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{Spin}(n) \rightarrow \mathsf{SO}(n) \xhookrightarrow{} \mathsf{O}(n))$ is the case of spin manifolds,
         \item $(G \rightarrow \mathsf{O}(n)) = (* \rightarrow \mathsf{O}(n))$ is the case of framed smooth manifolds.
     \end{enumerate}
 \end{example}
 
-Moving on to the stratified setting, we note that the stratified version of the full $\infty$-subcategory $\mathbb{R}^n \subset \mfld_n$ is the $\infty$-category of basic singularity types $\bsc$. We can thus generalize the tangent classifier to this setting as the functor
+Moving on to the stratified setting, we note that the stratified version of the full $\infty$-subcategory $\mathbb{R}^n \subset \mfld_n$ is the $\infty$-category $\bsc$ of basic singularity types, obtaining
 %
 \begin{equation}
     \tau: \mfld \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld) \xrightarrow{-|_{\bsc \subset \mfld}} \mathsf{PShv}(\bsc).
 \end{equation}
 %
-In this case, as in the previous, given a stratified manifold $M$, $\tau(M)$ is the functor that for each basic $U \in \bsc$, assigns the space of stratified smooth open embeddings of $U$ into $M$.
+In this case, as in the previous one, given a stratified manifold $M$, $\tau(M)$ is the functor that to each basic $U \in \bsc$ assigns the space of conically-smooth open embeddings of $U$ into $M$.
 
 \begin{remark}\label{rem:grothendieck_construction}
-    We can say something more about this situation if we use the unstraightening construction \cite[sec.2.2]{lurie_htt} which provides an equivalence between $\mathsf{Spaces}$-valued presheaves on a general $\infty$-category $\catC$ and right fibrations \footnote{More details can be found in the cited references, but for completeness we include the definition of right fibration. A \emph{right fibration} (over $\catC$) is a functor $f:\mathscr{E} \rightarrow \catC$ such that the diagram
+    The straightening-unstraightening construction of \cite[§2.2]{lurie_htt} provides an equivalence between $\mathsf{Spaces}$-valued presheaves on an $\infty$-category $\catC$ and right fibrations\footnote{A \emph{right fibration} (over $\catC$) is a functor $f:\mathscr{E} \rightarrow \catC$ such that whenever a square of type
     %
     \begin{equation}
         \begin{tikzcd}[ampersand replacement=\&]
@@ -266,26 +266,25 @@ In this case, as in the previous, given a stratified manifold $M$, $\tau(M)$ is 
         \end{tikzcd}
     \end{equation}
     %
-    can be filled for any $0 < i \leq n$.} over this $\infty$-category
+    is given, there is a lift as depicted if $0 < i \leq n$.} thereon:
     %
     \begin{equation}
         \mathsf{PShv}(\catC) \simeq \mathsf{RFib}_{\catC}.
     \end{equation}
     %
-    More details on this equivalence in our context can be found in \cite[sec.4.2]{aft_localstrut}
-    Appending this equivalence to the definition of the tangent classifier would say that the value of the tangent classifier on a stratified manifold $M$ is given by the right fibration
+    More details on this equivalence in our context can be found in \cite[§4.2]{aft_localstrut}. Appending this equivalence to the definition of the tangent classifier would say that the value of the tangent classifier on a stratified manifold $M$ is given by the right fibration
     %
     \begin{equation}
         \tau_M: \mathsf{Entr}(M) := \bsc_{/M} \rightarrow \bsc,
     \end{equation}
     %
-    i.e. the forgetful functor from the slice $\infty$-category. The $\infty$-category $\mathsf{Entr}(M)$ defined here is called the enter-path $\infty$-category of the stratified manifold $M$\footnote{A different version of this $\infty$-cateogry is defined in \cite[app.A.6]{lurie_ha} called the exit-path $\infty$-category of the stratified space $M$. It is shown in the work \cite{afr_homhyp} that this exit-path $\infty$-category is equivalent to the opposite of the enter-path $\infty$-category as defined above.}. In fact the statements that we will make next will take on this perspective for the tangent classifier.
+    i.e. the forgetful functor from the over-$\infty$-category over $M$.\footnote{The notation is slightly misleading since $M$ need not be in $\bsc$.} The $\infty$-category $\mathsf{Entr}(M)$ defined here is called the enter-path $\infty$-category of the stratified manifold $M$.\footnote{A different version of this $\infty$-cateogry is defined in  called the exit-path $\infty$-category of the stratified space $M$. It is shown in \cite{afr_homhyp} that the exit-path $\infty$-category of \cite[§A.6]{lurie_ha} is equivalent to the opposite of the enter-path $\infty$-category mentioned above.} In fact the statements that we will make next will take on this perspective for the tangent classifier.
 \end{remark}
 
-Having generalized the tangent classifier to stratified manifolds we can now think about adding structure to them. The key realization is that the data which the map of spaces $B \rightarrow \mathsf{BO}(n)$ provided before was the data of a presheaf on $\mathsf{BO}(n)$, standing in as the $\infty$-category of basics with only one object $\mathbb{R}^n$. The analogous construction in the stratified case is to provide a presheaf on $\bsc$, which by \cref{rem:grothendieck_construction} is given by a right fibration over $\bsc$. 
+Having generalized the tangent classifier to stratified manifolds we can now think about adding structure to them. The key realization is that the data which the map of spaces $B \rightarrow \mathsf{BO}(n)$ provided before was the data of a presheaf on $\mathsf{BO}(n)$, standing in as the $\infty$-category of basics with only one object $\mathbb{R}^n$. The analogous construction in the stratified case is to provide a presheaf on $\bsc$, which by \Cref{rem:grothendieck_construction} is given by a right fibration over $\bsc$. 
 
 \begin{definition}
-    An $\infty$-category of basics is a right fibration $\bstr \rightarrow \bsc$
+    An $\infty$-category of basics, or a tangential structure, is a right fibration $\bstr \rightarrow \bsc$.
 \end{definition}
 
 \begin{definition}
@@ -294,24 +293,14 @@ Having generalized the tangent classifier to stratified manifolds we can now thi
     \begin{equation}
         \begin{tikzcd}
             \mfld(\bstr) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & (\mathsf{RFib}_{\bsc})_{/\bstr} \arrow[d] \\
-            \mfld \arrow[r, "\tau"] & \mathsf{RFib}_{\bsc}.
+            \mfld \arrow[r, "\tau"] & \mathsf{RFib}_{\bsc}
         \end{tikzcd}
     \end{equation}
-\end{definition}
-
-\begin{definition}
-    Given an $\infty$-category of basics $\bstr \rightarrow \bsc$, the ordinary category of $\bstr$-manifolds is the further pullback
-    %
-    \begin{equation}
-        \begin{tikzcd}
-            \mfld[r](\bstr) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \mfld(\bstr) \arrow[d] \\
-            \mfld[r] \arrow[r] & \mfld.
-        \end{tikzcd}
-    \end{equation}
+    where we abbreviated $(\bstr\to\bsc)\in\mathsf{RFib}_{\bsc}$ to $\bstr$. Similarly the ordinary category $\mfld[r](\bstr)$ of $\bstr$-manifolds is the further pullback along the inclusion $\mfld[r]\to\mfld$.
 \end{definition}
 
 \begin{remark}
-    Specifying to the objects of $\mfld(\bstr)$ (which are also the objects of $\mfld[r](\bstr)$), we have that a $\bstr$-manifold is a stratified manifold $M$ together with a lift $\phi$
+    A $\bstr$-manifold is a stratified manifold $M$ together with a homotopy-lift $\phi$
     %
     \begin{equation}
         \begin{tikzcd}[column sep = large]
@@ -320,14 +309,14 @@ Having generalized the tangent classifier to stratified manifolds we can now thi
         \end{tikzcd}
     \end{equation}
     %
-    i.e. such that the triangle above is homotopy commutative in the $\infty$-category of $\infty$-categories $\cat$. This is how we can encode the stratification information while keeping the basic idea of a lift the same.
+    i.e., a filler of the $2$-horn in the $\infty$-category $\cat$ of $\infty$-categories  given by $\tau_M$ and $\bstr\to\bsc$.
 \end{remark}
 
 \begin{remark}
     There is an obvious, fully faithful inclusion $\bstr \xhookrightarrow{} \mfld(\bstr)$, just as there was in the case without tangential structure.
 \end{remark}
 
-In the case of smooth manifolds we argued that $\mfld_n^B$ was defined in a way that allowed it to inherit disjoint union as a symmetric monoidal structure. A similar argument, found in \cite{aft_fhstrat}, can be made for the stratified case too 
+In the case of smooth manifolds we argued that $\mfld_n^B$ was defined in a way that allowed it to inherit disjoint union as a symmetric monoidal structure. A similar argument, found in \cite{aft_fhstrat}, can be made for the stratified case too: 
 
 \begin{proposition}
     Disjoint union endows $\mfld(\bstr)$ and $\mfld[r](\bstr)$ with a symmetric monoidal structure.
@@ -343,7 +332,7 @@ In the case of smooth manifolds we argued that $\mfld_n^B$ was defined in a way 
 \end{definition}
 
 \begin{remark}
-    One should think of collar-gluings as analogous to the case of gluing two manifolds with boundary along their boundaries after choosing collars. This is exactly the special thing about them, the overlap region is collared, i.e. looks like a product with $\mathbb{R}$. We also note that the disjoint union is an example of a collar-gluing.
+    One should think of collar-gluings as analogous to the case of gluing two manifolds with boundary along their boundaries after choosing collars. This is exactly the special thing about them, the overlap region is collared, i.e., looks like a product with $\mathbb{R}$. We also note that the disjoint union is an example of a collar-gluing.
 \end{remark}
 
 \begin{theorem}[\cite{aft_localstrut}]\label{thm:decom_strat_man}
