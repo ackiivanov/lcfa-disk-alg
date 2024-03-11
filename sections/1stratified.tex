@@ -25,7 +25,7 @@ The spaces that this work will be set in will very often be stratified spaces. T
     Any CW complex $X$ can be made into a stratified space $X \rightarrow \mathbb{N}$, which sends all points in $X_{\leq k} \setminus {X_{\leq k-1}}$ to $k$, where $X_{\leq k}$ is the $k$-skeleton of $X$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{7UEDP24}
     Inspired by the previous example, any topological space $X$ with a filtration by closed subsets $\emptyset \subset X_{\leq 0} \subset \dots \subset X_{\leq n} = X$, is a stratified space, because the filtration induces a map $X \rightarrow \mathbb{N}$, which sends $X_{\leq i} \setminus X_{\leq i-1}$ to $i$.
 \end{example}
 
@@ -83,6 +83,10 @@ Next, we construct the cone of a stratified space. This plays a very important r
     %
     The standard stratification of $\hoint$ together with the obvious map $* \rightarrow *$ induce a stratification $\mathsf{C}(X) \rightarrow \mathsf{C}(P)$ as a map between pushouts. 
 \end{definition}
+
+\begin{example}
+    The open cone $C(S^k)$ on the $k$-sphere is canonically identified with $\mathbb{R}^k$ with stratification given by the filtration $\{0\}\subset\mathbb{R}^k$ as in \Cref{7UEDP24}.
+\end{example}
 
 The following will be used in the definition of the $\infty$-category $\mfld$ of stratified manifolds.
 
@@ -216,7 +220,11 @@ A similar picture applies in the stratified case. As a first step, \cite[Corolla
 \begin{equation}
     \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\mathbb{R}^n \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Spaces}_{/\mathsf{BO}(n)},
 \end{equation}
-where the codomain's symmetric monoidal structure is given by coproduct. As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening-unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full sub-$\infty$-category at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
+where the codomain's symmetric monoidal structure is given by coproduct. 
+
+\begin{remark}\label{9EFM44H}
+    As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening-unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full sub-$\infty$-category at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
+\end{remark}
 
 By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of which was previously played by $\mathsf{B}G$), one has
 %
@@ -340,7 +348,7 @@ In the case of smooth manifolds we argued that $\mfld_n^B$ was defined in a way 
 \end{theorem}
 
 \begin{remark}
-    \Cref{thm:decom_strat_man} is the analogous theorem to handle decompositions of smooth manifolds. Namely, any compact, smooth manifold can be obtained by handle decomposition, and non-compact smooth manifolds are obtained by sequential colimits of finitary (including compact) smooth manifolds.
+    \Cref{thm:decom_strat_man} is the analogue of handle decompositions for smooth manifolds. Namely, any compact, smooth manifold can be obtained by handle decomposition, and non-compact smooth manifolds are obtained by sequential colimits of finitary (including compact) smooth manifolds.
 \end{remark}
 
 
@@ -348,22 +356,32 @@ In the case of smooth manifolds we argued that $\mfld_n^B$ was defined in a way 
 
 \subsection{Useful \texorpdfstring{$\infty$}{infinite}-categories of Basics}
 
-Along with the already familiar $\infty$-categories of basics $\mathsf{D}_n^{G} := \mathsf{B}G \xrightarrow{\{ \mathbb{R}^n\}} \bsc$, which govern smooth $n$-manifolds with $G$-structure, we introduce a few more $\infty$-categories of basics that will be useful for us. An $\infty$-category of basics that will play a big role for the development of factorization homology to come, is the particularly simple one describing oriented $1$-manifolds with boundary.
+Along with the already familiar $\infty$-categories of basics $\mathsf{D}_n^{G} := \mathsf{B}G \xrightarrow{\{ \mathbb{R}^n\}} \bsc$, which govern smooth $n$-manifolds with $G$-structure, we recall a few more $\infty$-categories of basics that will be of interest to us. 
+
+\begin{example}[{\cite[Example 5.2.5]{aft_localstrut}}]
+    We denote by $\mathsf{D}_n\hookrightarrow \bsc$ or simply $\mathsf{D}_n$ the tangential structure given by the full sub-$\infty$-category inclusion of $\bsc_{0,n}$, the basics of depth $0$ and pure dimension $n$.\footnote{A stratified space $X\to P$ has \emph{pure dimension $n$} (\cite[Definition 2.4.1]{aft_localstrut}) if its local (\v{C}ech--Lebesgue) dimension $\mathsf{dim}_x(X)$ at every $x\in X$ is $n$. Connected topological manifolds are of this type.} Accordingly, $\mathsf{D}_n$-manifolds are topological $n$-manifolds. As in \Cref{9EFM44H}, we have an equivalence $\mathsf{D}_n\simeq \mathsf{BGL}(n)\simeq \mathsf{BO}(n)$ of $\infty$-groupoids.
+\end{example}
+
+An $\infty$-category of basics that will play a major role for the development of factorization homology to come is the particularly simple one describing oriented $1$-manifolds with boundary.
 
 \begin{construction}\label{con:d_1^bor_structure}
-    Consider the $\infty$-subcategory $\mathsf{D}_1^{\partial} \subset \bsc$ whose objects are $\mathbb{R}$ and $\hoint$. There is a unique right fibration $\mathsf{D}_1^{\partial, \mathsf{or}} \rightarrow \mathsf{D}_1^{\partial}$, whose fiber over $\mathbb{R}$ is a point $\{ \mathbb{R}\}$, and whose fiber over $\hoint$ is two points $\{ \hoint, {\mathbb{R}_{\leq 0}} \}$. In other words, $\mathsf{D}_1^{\partial, \mathsf{or}}$ has objects $\mathbb{R}$, $\hoint$ and $\mathbb{R}_{\leq 0}$ with their canonical orientations, and the morphisms are orientation preserving embeddings between them. In this way, $\mathsf{D}_1^{\partial, \mathsf{or}}$ is the $\infty$-category of basics that describes oriented (or, equivalently in this case, framed), smooth 1-manifolds with boundary.
+    Consider the $\infty$-subcategory $\mathsf{D}_1^{\partial} \subset \bsc$ whose objects are $\mathbb{R}$ and $\hoint=C(\ast)$. There is a unique right fibration $\mathsf{D}_1^{\partial, \mathsf{or}} \rightarrow \mathsf{D}_1^{\partial}$, whose fiber over $\mathbb{R}$ is a point $\{ \mathbb{R}\}$, and whose fiber over $\hoint$ is two points $\{ \hoint, {\mathbb{R}_{\leq 0}} \}$. In other words, $\mathsf{D}_1^{\partial, \mathsf{or}}$ has objects $\mathbb{R}$, $\hoint$ and $\mathbb{R}_{\leq 0}$ with their canonical orientations, and the morphisms are orientation preserving embeddings between them. In this way, $\mathsf{D}_1^{\partial, \mathsf{or}}$ is the $\infty$-category of basics that describes oriented (or, equivalently in this case, framed), smooth 1-manifolds with boundary.
 \end{construction}
+
+\begin{remark}
+    Insisting that tangential structures be \emph{right fibrations} over $\bsc$, as opposed to simply $\infty$-categories over it as, e.g., in \cite{ayala2020factorization}, leads to technical issues that lead to our over-simplified notation due to the property of being a right fibration not being invariant under equivalence. For instance, when $G=\ast$, so that $\mathsf{D}^\ast_n$ constrols framed $n$-manifolds, the map $BG=\ast\to \mathsf{BO}(n)\simeq\mathsf{D}_n$ is not a right fibration, owing to the observation that right fibrations of Kan complexes are Kan fibrations, and these, when surjective on objects, are epimorphisms. On the other hand, $B\ast=\ast\simeq (\mathsf{D}_n)_{/\mathbb{R}^n}$ since over-$\infty$-groupoids are contractible (\cite[018Y]{lurie_kerodon}), but $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \mathsf{D}_n$ \emph{is} a right fibration since it is a projection from an over-$\infty$-category (\cite[Proposition 018F]{lurie_kerodon}, \cite{joyal}). Moreover, $\mathsf{D}_n\hookrightarrow \bsc$ is a right fibration since this full sub-$\infty$-category is trivially a sieve, so the composition $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \bsc$ is a right fibration as well. In general, the map $\mathsf{B}G\to \mathsf{BO}(n)$ is not a right fibration unless $G\to\mathsf{O}(n)$ is an epimorphism. However, given the latter, we can consider the presheaf $\mathsf{D}_n^{\text{op}}\to\mathsf{Spaces}$ given by mapping $\mathbb{R}^n$ to the space of $G$-structures on it, and sending an embedding to the induced pullback map on the respective spaces of $G$-structures. By unstraightening, this determines a right fibration for which, by abuse, we write $\mathsf{D}^G_n=\mathsf{B}G\to \mathsf{D}_n\hookrightarrow\bsc$.
+\end{remark}
 
 Another type of stratified manifold that we will focus on heavily in this work is the case of a smooth manifold with a distinguished, properly embedded, smooth submanifold, which we alternatively call a \emph{defect}. Even though there is a clear picture of what this means we will now formally describe the $\infty$-category of basics that will give rise to these kinds of manifolds.
 
-\begin{construction}[{\cite[ex.5.2.10]{aft_localstrut}}]
-    Let $\mathsf{D}_{d \subset n} \subset \bsc$ be the full $\infty$-subcategory whose objects are $\mathbb{R}^n$ and $\mathbb{R}^{d \subset n} := \mathbb{R}^{n-d} \times \mathsf{C}(S^{n-d-1})$, where $d < n$. We elaborate that the morphism spaces are given as follows:
+\begin{construction}[{\cite[Example 5.2.10]{aft_localstrut}}]
+    Let $\mathsf{D}_{d \subset n} \subset \bsc$ be the full $\infty$-subcategory whose objects are $\mathbb{R}^n$ and $\mathbb{R}^{d \subset n} := \mathbb{R}^{d} \times \mathsf{C}(S^{n-d-1})$, where $d < n$. We elaborate that the morphism spaces are given as follows:
     %
     \begin{enumerate}
         \item $\mathsf{Hom}_{\mathsf{D}_{d \subset n}} (\mathbb{R}^n, \mathbb{R}^n) = \mathsf{Emb}(\mathbb{R}^n, \mathbb{R}^n)$, the space of smooth embeddings of $\mathbb{R}^n$.
         \item $\mathsf{Hom}_{\mathsf{D}_{d \subset n}} (\mathbb{R}^{d \subset n}, \mathbb{R}^n) = \emptyset$
         \item $\mathsf{Hom}_{\mathsf{D}_{d \subset n}} (\mathbb{R}^n, \mathbb{R}^{d \subset n}) = \mathsf{Emb}(\mathbb{R}^n, \mathbb{R}^n \setminus \mathbb{R}^d)$, the space of embeddings that miss the defect.
-        \item $\mathsf{Hom}_{\mathsf{D}_{d \subset n}} (\mathbb{R}^{d \subset n}, \mathbb{R}^{d \subset n}) \simeq \mathsf{O}(d) \times \mathsf{O}(n-d)$. This final morphism space is given differently compared to the other ones because of intricacies related to smoothness around the defect. For more details on the matter there is a discussion in \cite[ex.5.1.7]{aft_localstrut}.
+        \item $\mathsf{Hom}_{\mathsf{D}_{d \subset n}} (\mathbb{R}^{d \subset n}, \mathbb{R}^{d \subset n}) \simeq \mathsf{O}(d) \times \mathsf{O}(n-d)$. This final morphism space is given differently compared to the other ones because of intricacies related to smoothness around the defect. For more details on the matter there is a discussion in \cite[Example 5.1.7]{aft_localstrut}.
     \end{enumerate}
     %
     That $\mathsf{D}_{d \subset n} \rightarrow \bsc$ is a right fibration is immediate from the fact that the objects of $\mathsf{D}_{d \subset n}$ have at most one defect, which means that they don't receive maps from basics that are not in $\mathsf{D}_{d \subset n}$ already.
@@ -389,7 +407,7 @@ For later purposes we will also need to define a framed version of these manifol
 \begin{remark}
     To explain what the bottom horizontal functor fully is would initially take us into the realm of piecewise linear manifolds, and away from our goal. To not get into those details we note that in fact one can show that $\mathsf{D}_{d \subset n}^* \simeq \Delta^1$ by sending $\mathbb{R}^n \mapsto 0$ and $\mathbb{R}^{d \subset n} \mapsto 1$, which is an extension of the fact that in the case of no defects framings are governed by $ \mathsf{D}_n^* \simeq \Delta^0 \simeq *$.
 
-    Explaining what exactly we mean by a framed stratified manifold is done in \cite[ex.5.2.12]{aft_localstrut}. According to that example, $\mathsf{D}_{d \subset n}^*$-manifolds are described by the data of a framed smooth $n$-manifold $M$, a properly embedded smooth $d$-submanifold $\Sigma$ together with a null-homotopy of the Gauss map $\Sigma \rightarrow \mathsf{Gr}_d(\mathbb{R}^n)$. In more detail, for a general embedded submanifold $\Sigma \xhookrightarrow{} M$ the Gauss map gives the tangent (or equivalently normal) subspace to $\Sigma$ at every point. That is encoded as a map $\Sigma \rightarrow \mathsf{Gr}_d(\mathsf{T}M)$ to the Grassmann bundle of the tangent bundle of $M$. In our case, the framing of $M$ provides a preferred trivialization of the tangent bundle to $\mathbb{R}^n$. A null-homotopy of this map is a trivialization of the tangent (and subsequently also the normal) bundle of $\Sigma$ in a way that is compatible with the trivialization of $\mathsf{T}M$.
+    Explaining what exactly we mean by a framed stratified manifold is done in \cite[Example 5.2.12]{aft_localstrut}. According to that example, $\mathsf{D}_{d \subset n}^*$-manifolds are described by the data of a framed smooth $n$-manifold $M$, a properly embedded smooth $d$-submanifold $\Sigma$ together with a null-homotopy of the Gauss map $\Sigma \rightarrow \mathsf{Gr}_d(\mathbb{R}^n)$. In more detail, for a general embedded submanifold $\Sigma \xhookrightarrow{} M$ the Gauss map gives the tangent (or equivalently normal) subspace to $\Sigma$ at every point. That is encoded as a map $\Sigma \rightarrow \mathsf{Gr}_d(\mathsf{T}M)$ to the Grassmann bundle of the tangent bundle of $M$. The framing of $M$ is a diffeomorphism of type $\mathsf{T}M\cong M\times\mathbb{R}^n$ over, reducing said map to the Gauss map. A null-homotopy of this map is a trivialization of the tangent as well as the normal bundles of $\Sigma$ in a way that is compatible with the trivialization of the restriction of $\mathsf{T}M$ to $\Sigma$.
 \end{remark}
 
 
