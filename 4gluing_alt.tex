@@ -207,10 +207,37 @@ Before me move on to the proof of the above two results we pause to record a few
     Since we know that restriction does not destroy local constancy, extending the result to the case of locally constant factorization algebras simply requires us to show that the gluing $\gamma$ also preserves this property. Let $U \xhookrightarrow{} V$ be two disks of $M$. What we have to check is that there is an equivalence
     %
     \begin{equation}
-        \int_U \gamma(A_-, A_+) \xrightarrow{\ \ \simeq \ \ } \int_U \gamma(A_-, A_+)
+        \int_U \gamma(A_-, A_+) \xrightarrow{\ \ \simeq \ \ } \int_V \gamma(A_-, A_+)
     \end{equation}
     %
-    in $\catC$. We will achieve this if we find compatible equivalences on each of the pieces $U_- \xhookrightarrow{} V_-, U_0 \times \mathbb{R} \xhookleftarrow{} V_0 \times \mathbb{R}, U_+ \xhookrightarrow{} V_+$ and combine them using the bar construction. Generically though, these pieces will not be disks again, so we  can't simply inherit the local constancy property immediately. However, using \cref{thm:decom_strat_man} we know that we can iterate the cutting and gluing process so that eventually the pieces will be disks. At this point we can inherit the local constancy from $\int A_-'$, $\int A_0'$ and $\int A_+'$ and we can propagate this inheritance through the chain of collar-gluing to the original $\int \gamma (A_-, A_+)$.
+    in $\catC$. We will achieve this if we find compatible equivalences,
+    %
+    \begin{align}
+        &\int_{U_-} A_- \simeq \int_{V_-} A_-& &\int_{U_0 \times \mathbb{R}} A_0 \simeq \int_{V_0 \times \mathbb{R}} A_0& &\int_{U_+} A_+ \simeq \int_{V_+} A_+,&
+    \end{align}
+    %
+    on each of the pieces $(U_- \xhookrightarrow{} V_-), (U_0 \times \mathbb{R} \xhookrightarrow{} V_0 \times \mathbb{R}), (U_+ \xhookrightarrow{} V_+)$, and combine them using the bar construction. If these pieces were disks then the above equivalences would be given by the local constancy of the constituent locally constant factorization algebras.
+    
+    Generically though, these pieces will not be disks again, so we can't simply inherit the local constancy property immediately. To alleviate this issue we make use of \cref{thm:decom_strat_man} which assures us that every manifold can be obtained by collar-gluings and sequential colimits if we start with disks. In fact, since our largest manifold of interest is a disk, which is finitary, we only need collar-gluings, and not sequential colimits. Thus, we can work inductively and iterate the cutting and gluing process until the pieces become disks. The only thing that we need to check is that through one inductive step the equivalences remain compatible. Specifically, by compatibility here we mean that there is a commutative diagram
+    %
+    \begin{equation}\label{cd:equivs_from_lc}
+        \begin{tikzcd}
+            \int_{U_-} A_- \arrow[d, "\simeq"] & \int_{U_0 \times \mathbb{R}} A_0 \arrow[d, "\simeq"] \arrow[l] \arrow[r] & \int_{U_+} A_+ \arrow[d, "\simeq"] \\
+            \int_{V_-} A_- & \int_{V_0 \times \mathbb{R}} A_0 \arrow[l] \arrow[r] & \int_{V_+} A_+,
+        \end{tikzcd}
+    \end{equation}
+    %
+    where the horizontal arrows are induced by the relevant embeddings. A sufficient condition to guarantee compatibility is that all collar-gluings are defined as collar-gluings of $M$ and then inherited to every open submanifold through its embedding in $M$. Focusing on the final two consecutive collar-gluings we get a commutative diagram, which we schematically denote
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            -+ & 0+ \arrow[l] \arrow[r] & ++\\
+            -0 \arrow[u] \arrow[d] & 00 \arrow[u] \arrow[l] \arrow[r] \arrow[d] & +0 \arrow[d] \arrow[u] \\
+            -- & 0- \arrow[l] \arrow[r] & +-,
+        \end{tikzcd}
+    \end{equation}
+    %
+    one for each of $U$ and $V$. Stacking these two with the equivalence as connecting arrows is again a commutative diagram. This is enough information to guarantee that after acting with the bar construction in one direction we again get compatible equivalences. The key point being that we consider the collar-gluings on all pieces in both orders to get all the necessary arrows.
 \end{proof}
 
 
