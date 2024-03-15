@@ -196,9 +196,13 @@ urlcolor=brown, linkcolor=blue, citecolor=green, % Link colors
 \newcommand{\bsc}{\mathscr{B} \mathsf{sc}}
 \newcommand{\bstr}{\mathscr{B}}
 
-
-% Category of singular spaces
-\newcommand{\snglr}{\mathscr{S} \mathsf{nglr}}
+% Open cone
+\newcommand{\cone}[1][n]{%
+    \ifx b#1\overline{\mathsf{C}}\else
+    \ifx n#1\mathsf{C}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
 
 
 %---------------------------------------------------------------------

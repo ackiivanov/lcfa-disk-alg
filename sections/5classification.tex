@@ -122,7 +122,7 @@ The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to const
     Let $\Sigma \xhookrightarrow{} M_\Sigma$ be a proper, constructible embedding of stratified manifolds. There exists a stratified map
     %
     \begin{equation}
-        \mathsf{C}(\pi) \rightarrow M_\Sigma
+        \cone(\pi) \rightarrow M_\Sigma
     \end{equation}
     %
     under $\Sigma \xhookrightarrow{} M_\Sigma$ such that:
@@ -130,19 +130,19 @@ The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to const
     \begin{enumerate}
         %\item the map is a refinement onto its image,
         \item the image is open, and
-        \item $\mathsf{C}(\pi)$ is the fiberwise open cone of the constructible bundle $\mathsf{L}_{\Sigma} \xrightarrow{\pi} \Sigma$ giving the link.
+        \item $\cone(\pi)$ is the fiberwise open cone of the constructible bundle $\mathsf{L}_{\Sigma} \xrightarrow{\pi} \Sigma$ giving the link.
     \end{enumerate}
     %
-    If $\Sigma$ is a stratum of $M_\Sigma$ then the map $\mathsf{C}(\pi) \rightarrow M_\Sigma$ is even an open embedding.
+    If $\Sigma$ is a stratum of $M_\Sigma$ then the map $\cone(\pi) \rightarrow M_\Sigma$ is even an open embedding.
 \end{theorem}
 
 \begin{remark}
-    In more detail, specialized to our situation, the regular neighborhood $\mathsf{C}(\pi)$ is constructed as the pushout of stratified manifolds
+    In more detail, specialized to our situation, the regular neighborhood $\cone(\pi)$ is constructed as the pushout of stratified manifolds
     %
     \begin{equation}
         \begin{tikzcd}
             \mathsf{L}_{\Sigma} \times \{0\} \arrow[r, "\pi"] \arrow[d, "\mathrm{id} \times 0"', hook] & \Sigma \arrow[d] \\
-            \mathsf{L}_{\Sigma} \times \hoint \arrow[r] & \mathsf{C}(\pi) \arrow[ul, phantom, "\lrcorner", very near start],
+            \mathsf{L}_{\Sigma} \times \hoint \arrow[r] & \cone(\pi) \arrow[ul, phantom, "\lrcorner", very near start],
         \end{tikzcd}
     \end{equation}
     %
@@ -154,36 +154,36 @@ The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to const
 \end{example}
 
 \begin{construction}
-    The existence of $\mathsf{C}(\pi)$ allows us to define a collar-gluing for the stratified manifold $M_\Sigma$
+    The existence of $\cone(\pi)$ allows us to define a collar-gluing for the stratified manifold $M_\Sigma$
     %
     \begin{equation}\label{eq:M_Sigma_decomposition}
-        M_\Sigma \cong \left( M \setminus \Sigma \right) \coprod_{\mathsf{L}_\Sigma \times \mathbb{R}} \mathsf{C}(\pi),
+        M_\Sigma \cong \left( M \setminus \Sigma \right) \coprod_{\mathsf{L}_\Sigma \times \mathbb{R}} \cone(\pi),
     \end{equation}
     %
-    where the map $\mathsf{L}_\Sigma \times \mathbb{R} \rightarrow M \setminus \Sigma$ is provided by $\mathsf{L}_\Sigma \times \mathbb{R} \cong \mathsf{L}_\Sigma \times \mathbb{R}_{\gneq 0} \cong \mathsf{C}(\pi) \setminus \Sigma \xhookrightarrow{} M \setminus \Sigma$. We also note that the properness of the embedding $\Sigma \xhookrightarrow{} M$ makes $M \setminus \Sigma$ an open submanifold of $M$.
+    where the map $\mathsf{L}_\Sigma \times \mathbb{R} \rightarrow M \setminus \Sigma$ is provided by $\mathsf{L}_\Sigma \times \mathbb{R} \cong \mathsf{L}_\Sigma \times \mathbb{R}_{\gneq 0} \cong \cone(\pi) \setminus \Sigma \xhookrightarrow{} M \setminus \Sigma$. We also note that the properness of the embedding $\Sigma \xhookrightarrow{} M$ makes $M \setminus \Sigma$ an open submanifold of $M$.
 \end{construction}
 
 
 \Cref{cor:gluing_lcfas} allows us to use the collar-gluing from above to write the equivalence of $\infty$-categories
 %
 \begin{equation}
-    \lcfa_{M_\Sigma} (\catC) \simeq \lcfa_{M \setminus \Sigma} (\catC) \bigtimes_{\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}} (\catC)} \lcfa_{\mathsf{C}(\pi)} (\catC),
+    \lcfa_{M_\Sigma} (\catC) \simeq \lcfa_{M \setminus \Sigma} (\catC) \bigtimes_{\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}} (\catC)} \lcfa_{\cone(\pi)} (\catC),
 \end{equation}
 %
-as a first step in the classification of locally constant factorization algebras on $M_{\Sigma}$. Since we have focused on stratified manifolds with the particular form $M_{\Sigma}$, the locally constant factorization algebras $\lcfa_{M \setminus \Sigma}$ in this decomposition already live on a smooth manifold, rather than on a stratified one. Similarly, this is the case for the locally constant factorization algebras $\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}}$. The more prescient question is about the classification of locally constant factorization algebras on the one remaining stratified space $\mathsf{C}(\pi)$. 
+as a first step in the classification of locally constant factorization algebras on $M_{\Sigma}$. Since we have focused on stratified manifolds with the particular form $M_{\Sigma}$, the locally constant factorization algebras $\lcfa_{M \setminus \Sigma}$ in this decomposition already live on a smooth manifold, rather than on a stratified one. Similarly, this is the case for the locally constant factorization algebras $\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}}$. The more prescient question is about the classification of locally constant factorization algebras on the one remaining stratified space $\cone(\pi)$. 
 
-By \cite[ex.3.6.6]{aft_localstrut} $\mathsf{C}(\pi)$ is always a bundle over $\Sigma$, fibered over basics. For our particular setup this means that $\mathsf{C}(\pi)$ a fiber bundle over $\Sigma$ with typical fiber $\mathbb{R}^{n-d}_*$. Thus, the classification comes down to the classification of locally constant factorization algebras on stratified fiber bundles.
+By \cite[ex.3.6.6]{aft_localstrut} $\cone(\pi)$ is always a bundle over $\Sigma$, fibered over basics. For our particular setup this means that $\cone(\pi)$ a fiber bundle over $\Sigma$ with typical fiber $\mathbb{R}^{n-d}_*$. Thus, the classification comes down to the classification of locally constant factorization algebras on stratified fiber bundles.
 
-It is outside the scope of this work to finish the classification as outlined above. However, there is a special case that we can already tackle, which is the case of framed stratified manifolds. This is because, as discussed in \cref{def:framed_d_under_n_structure}, $\mathsf{D}_{d \subset n}^*$-manifolds come with a trivialization of the normal bundle of the distinguished submanifold $\Sigma$. This, in turn implies trivializations for $\mathsf{C}(\pi)$ and $\mathsf{L}_{\Sigma} \times \mathbb{R}$ as bundles over $\Sigma$ with typical fibers $\mathbb{R}^{n-d}_*$ and $S^{n-d-1} \times \mathbb{R}$, respectively. In other words, there are isomorphisms
+It is outside the scope of this work to finish the classification as outlined above. However, there is a special case that we can already tackle, which is the case of framed stratified manifolds. This is because, as discussed in \cref{def:framed_d_under_n_structure}, $\mathsf{D}_{d \subset n}^*$-manifolds come with a trivialization of the normal bundle of the distinguished submanifold $\Sigma$. This, in turn implies trivializations for $\cone(\pi)$ and $\mathsf{L}_{\Sigma} \times \mathbb{R}$ as bundles over $\Sigma$ with typical fibers $\mathbb{R}^{n-d}_*$ and $S^{n-d-1} \times \mathbb{R}$, respectively. In other words, there are isomorphisms
 %
 \begin{align}
-    &\mathsf{C}(\pi) \cong \Sigma \times \mathbb{R}^{n-d}_*& &\mathrm{and}& &\mathsf{L}_{\Sigma} \times \mathbb{R} \cong \Sigma \times S^{n-d-1} \times \mathbb{R}.&
+    &\cone(\pi) \cong \Sigma \times \mathbb{R}^{n-d}_*& &\mathrm{and}& &\mathsf{L}_{\Sigma} \times \mathbb{R} \cong \Sigma \times S^{n-d-1} \times \mathbb{R}.&
 \end{align}
 
 However, \cref{prop:exp_of_products_lc} already gives us a way to classify locally constant factorization algebras on product spaces, if we know them on the product components. Having classified locally constant factorization algebras on the pointed Euclidean space in \cref{thm:classif_Rn*}, we already have the result that
 %
 \begin{equation}
-    \lcfa_{\mathsf{C}(\pi)} (\catC) \simeq \mathsf{Mod}^{\mathbb{E}_{n-d}} (\lcfa_{\Sigma} (\catC)).
+    \lcfa_{\cone(\pi)} (\catC) \simeq \mathsf{Mod}^{\mathbb{E}_{n-d}} (\lcfa_{\Sigma} (\catC)).
 \end{equation}
 %
 Similarly, we also know that for the link we have

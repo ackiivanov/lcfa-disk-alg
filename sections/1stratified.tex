@@ -21,11 +21,11 @@ The spaces that this work will be set in will very often be stratified spaces. T
     Let $P$ be a poset. A \emph{$P$-stratified space} is a topological space $X$ together with a continuous map $X \rightarrow P$, which we call the \emph{stratification} of $X$. The poset $P$ is called the \emph{stratifying poset}. We will sometimes refer to $X$ as the underlying topological space of a stratified space. Furthermore, we denote the preimage of $p \in P$ as $X_p$ and call it the $p$'th stratum of $X$\footnote{Sometimes the name stratum is reserved for the connected components of $X_p$ if strata are required to be connected.}.
 \end{definition}
 
-\begin{example}\label{54HC9DC}
+\begin{example}\label{ex:strat_from_CW}
     Any CW complex $X$ can be made into a stratified space $X \rightarrow \mathbb{N}$, which sends all points in $X_{\leq k} \setminus {X_{\leq k-1}}$ to $k$, where $X_{\leq k}$ is the $k$-skeleton of $X$.
 \end{example}
 
-\begin{example}\label{7UEDP24}
+\begin{example}\label{ex:strat_from_filtration}
     Inspired by the previous example, any topological space $X$ with a filtration by closed subsets $\emptyset \subset X_{\leq 0} \subset \dots \subset X_{\leq n} = X$, is a stratified space, because the filtration induces a map $X \rightarrow \mathbb{N}$, which sends $X_{\leq i} \setminus X_{\leq i-1}$ to $i$.
 \end{example}
 
@@ -69,35 +69,35 @@ The spaces that this work will be set in will very often be stratified spaces. T
 Next, we construct the cone of a stratified space. This plays a very important role in the theory of conically smooth manifolds, because it provides the prototypical departure from smoothness. In other words, the local structure of these will always look like a cone over some space with a possible further thickening by a factor $\mathbb{R}^k$, just as the local structure of smooth manifolds is given by $\mathbb{R}^k$. The cones will be the model spaces for singularities.
 
 \begin{definition}
-    Let $X \rightarrow P$ be a stratified space. Its (\emph{open}) \emph{cone} $\mathsf{C}(X \rightarrow P)$ is the stratified space constructed as follows. At the level of topological spaces we define the pushout in $\mathsf{Top}$
+    Let $X \rightarrow P$ be a stratified space. Its (\emph{open}) \emph{cone} $\cone(X \rightarrow P)$ is the stratified space constructed as follows. At the level of topological spaces we define the pushout in $\mathsf{Top}$
     %
     \begin{equation}
-        \mathsf{C}(X) := * \coprod_{X \times \{0\}} X \times \hoint.
+        \cone(X) := * \coprod_{X \times \{0\}} X \times \hoint.
     \end{equation}
     %
     At the level of posets we define the pushout in $\mathsf{Poset}$
     %
     \begin{equation}
-        \mathsf{C}(P) := * \coprod_{P \times \{ 0\}} P \times [1] \cong P^{\vartriangleleft}.
+        \cone(P) := * \coprod_{P \times \{ 0\}} P \times [1] \cong P^{\vartriangleleft}.
     \end{equation}
     %
-    The standard stratification of $\hoint$ together with the obvious map $* \rightarrow *$ induce a stratification $\mathsf{C}(X) \rightarrow \mathsf{C}(P)$ as a map between pushouts. 
+    The standard stratification of $\hoint$ together with the obvious map $* \rightarrow *$ induce a stratification $\cone(X) \rightarrow \cone(P)$ as a map between pushouts. 
 \end{definition}
 
 \begin{example}
-    The open cone $C(S^k)$ on the $k$-sphere is canonically identified with $\mathbb{R}^k$ with stratification given by the filtration $\{0\}\subset\mathbb{R}^k$ as in \Cref{7UEDP24}.
+    The open cone $\cone(S^k)$ on the $k$-sphere is canonically identified with $\mathbb{R}^{k+1}_*$, which is the stratified space with stratification given by the filtration $\{0\}\subset\mathbb{R}^{k+1}$ as in \cref{ex:strat_from_filtration}.
 \end{example}
 
 The following will be used in the definition of the $\infty$-category $\mfld$ of stratified manifolds.
 
 \begin{definition}
-    Let $X\to P$ be a stratified space. Its \emph{closed cone} is the stratified space $\overline{C}(X)\to P^{\vartriangleleft}$ with $\overline{C}(X)=\ast\amalg_{X\times\{0\}}X\times[0,1]$ and the obvious stratification.
+    Let $X \to P$ be a stratified space. Its \emph{closed cone} is the stratified space $\cone[b](X) \to P^{\vartriangleleft}$ with $\cone[b](X) = \ast\amalg_{X \times \{0\}} X \times [0,1]$ and the obvious stratification.
 \end{definition}
 
 The equivalent of a topological manifold in the stratified setting is a \emph{$C^0$ stratified space}. We will not be fully precise in the definition of these, since this would stray us from our main goal. We will however cite theorems that show that the spaces we consider in this work are $C^0$ stratified spaces. The following definition is partly cyclic, but we cite it because it provides good intuition for the structure of $C^0$ stratified spaces.
 
 \begin{definition}
-    A \emph{$C^0$ basic}, which we will also often call a \emph{disk}, is a $C^0$ stratified space of the form $\mathbb{R}^k \times \mathsf{C}(Z)$, where $k \geq 0$, $\mathbb{R}^k$ has the trivial stratification, and $Z$ is a compact $C^0$ stratified space.
+    A \emph{$C^0$ basic}, which we will also often call a \emph{disk}, is a $C^0$ stratified space of the form $\mathbb{R}^k \times \cone(Z)$, where $k \geq 0$, $\mathbb{R}^k$ has the trivial stratification, and $Z$ is a compact $C^0$ stratified space.
 \end{definition}
 
 \begin{theorem}[{\cite[Lemma 2.2.2]{aft_localstrut}}]\label{thm:basics_give_basis}
@@ -114,7 +114,7 @@ The equivalent of a topological manifold in the stratified setting is a \emph{$C
     Let $X \rightarrow P$ be a $C^0$ stratified space. For any $p \in P$, the stratified spaces $X_{\leq p}$, $X_{p}$ and $X_{\nless p}$, defined as the relevant preimages, are $C^0$ stratified spaces. Furthermore, $X_p$ is even a topological manifold.
 \end{theorem}
 
-For topological spaces we have the concept of (\v{C}ech--Lebesgue) covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces.\footnote{For example, we said that \cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \mathsf{C}(Z)) = \mathsf{dpt} (\mathsf{C}(Z)) = \mathsf{dpt} (Z) + 1$} As the name suggests, it conveys information about how deep the stratification is. For instance, if the stratification is given by a filtration as in \Cref{54HC9DC}, then it coincides with the length of the filtration, or equivalently, with the length of the longest non-trivial chain of arrives in the stratifying poset. Similarly to $\mathsf{dim}$ it has a pointwise and a global version.
+For topological spaces we have the concept of (\v{C}ech--Lebesgue) covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces.\footnote{For example, we said that \cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \cone(Z)) = \mathsf{dpt} (\cone(Z)) = \mathsf{dpt} (Z) + 1$} As the name suggests, it conveys information about how deep the stratification is. For instance, if the stratification is given by a filtration as in \Cref{ex:strat_from_CW}, then it coincides with the length of the filtration, or equivalently, with the length of the longest non-trivial chain of arrives in the stratifying poset. Similarly to $\mathsf{dim}$ it has a pointwise and a global version.
 
 \begin{definition}
     Given a $C^0$ stratified space $(X \xrightarrow{s} P)$ the \emph{depth at $x$} is
@@ -131,7 +131,7 @@ The `smooth' version of the above concepts also exists and will be the one that 
 A stratified manifold is a $C^0$ stratified space $M$ equipped with an atlas
 %
 \begin{equation}
-    \{\mathbb{R}^{k_\alpha} \times \mathsf{C}(Z_\alpha) \hookrightarrow M\}_\alpha,
+    \{\mathbb{R}^{k_\alpha} \times \cone(Z_\alpha) \hookrightarrow M\}_\alpha,
 \end{equation}
 %
 whose elements we call basics. This atlas has to be a basis for the topology of $X$, and the transitions maps, open embeddings among basics, have to be conically smooth. General maps of stratified manifolds will then be conically smooth if their representatives in basics are conically smooth.
@@ -140,7 +140,7 @@ The reason why the definition is involved is, because unlike in the smooth case 
 In lieu of a definition we give the following illuminating example:
 %
 \begin{example}[{\cite[Example 1.2]{aft_fhstrat}}]
-    Smooth manifolds fall under the definition of stratified manifolds as those that only have one stratum. A smooth map $f: Z \xrightarrow{} Z'$ between compact smooth manifolds gives rise to a conically smooth map $\mathsf{C}(f)$ between the cones of these manifolds. If we also have a smooth map between Euclidean spaces $g: \mathbb{R}^{n} \xrightarrow{} \mathbb{R}^{n'}$ then the map $g \times \mathsf{C}(f): \mathbb{R}^{n} \times \mathsf{C} (Z) \xrightarrow{} \mathbb{R}^{n'} \times \mathsf{C} (Z')$ is conically smooth. This already allows us to describe stratified manifolds of depth 1.
+    Smooth manifolds fall under the definition of stratified manifolds as those that only have one stratum. A smooth map $f: Z \xrightarrow{} Z'$ between compact smooth manifolds gives rise to a conically smooth map $\cone(f)$ between the cones of these manifolds. If we also have a smooth map between Euclidean spaces $g: \mathbb{R}^{n} \xrightarrow{} \mathbb{R}^{n'}$ then the map $g \times \cone(f): \mathbb{R}^{n} \times \cone (Z) \xrightarrow{} \mathbb{R}^{n'} \times \cone (Z')$ is conically smooth. This already allows us to describe stratified manifolds of depth 1.
 \end{example}
 
 The next classes of conically smooth maps will be present throughout this work.
@@ -165,7 +165,7 @@ We will now introduce two versions of the category of stratified manifolds that 
     The ordinary category of stratified manifolds $\mfld[r]$ is the category whose objects are stratified manifolds and whose morphisms are open embeddings between them.
 \end{definition}
 
-For the next definition we notice that all standard simplices are stratified manifolds, obtained as $\Delta^n\cong\overline{C}^n(\ast)\to\overline{C}(\{0\})\cong[n]$.
+For the next definition we notice that all standard simplices are stratified manifolds, obtained as $\Delta^n \cong \cone[b]^n(\ast) \to \cone[b]^n(\{0\}) \cong [n]$.
 
 \begin{definition}
     $\mfld$ is the $\infty$-category whose objects are stratified manifolds and whose morphisms are open embeddings among them. It is presented as the $\mathsf{Kan}$-enriched category of stratified manifolds by taking the Kan complex of morphisms between two objects $M$ and $N$ to be defined by
@@ -218,12 +218,12 @@ called the \emph{tangent classifier}. Here, $\mathsf{B}G$ is the classifying spa
 A similar picture applies in the stratified case. As a first step, \cite[Corollary 2.13]{af_fhtop} shows that $M\mapsto\tau_M$ can be presented as the symmetric monoidal functor
 %
 \begin{equation}
-    \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\mathbb{R}^n \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Spaces}_{/\mathsf{BO}(n)},
+    \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\{\mathbb{R}^n\} \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Spaces}_{/\mathsf{BO}(n)},
 \end{equation}
 where the codomain's symmetric monoidal structure is given by coproduct. 
 
-\begin{remark}\label{9EFM44H}
-    As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening-unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full sub-$\infty$-category at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
+\begin{remark}\label{rem:explaining_tau}
+    As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening--unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full $\infty$-subcategory at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
 \end{remark}
 
 By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of which was previously played by $\mathsf{B}G$), one has
@@ -249,14 +249,14 @@ By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of whi
     Classical examples for tangential structure come from principal $G$-bundles as discussed before. Namely, given a Lie group $G$ together with a smooth homomorphism $G \rightarrow \mathsf{GL}(n) \simeq \mathsf{O}(n)$, we have an induced map of spaces $\mathsf{B}G \rightarrow \mathsf{BO}(n)$, which gives rise to the following examples:
     %
     \begin{enumerate}
-        \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{O}(n) \xrightarrow{\mathrm{id}} \mathsf{O}(n))$ reproduces the case of no tangential structure,\footnote{or the contractible choice of a riemannian metric}
+        \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{O}(n) \xrightarrow{\mathrm{id}} \mathsf{O}(n))$ reproduces the case of no tangential structure\footnote{or the contractible choice of a Riemannian metric},
         \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{SO}(n) \xhookrightarrow{} \mathsf{O}(n))$ is the case of oriented smooth manifolds,
         \item $(G \rightarrow \mathsf{O}(n)) = (\mathsf{Spin}(n) \rightarrow \mathsf{SO}(n) \xhookrightarrow{} \mathsf{O}(n))$ is the case of spin manifolds,
         \item $(G \rightarrow \mathsf{O}(n)) = (* \rightarrow \mathsf{O}(n))$ is the case of framed smooth manifolds.
     \end{enumerate}
 \end{example}
 
-Moving on to the stratified setting, we note that the stratified version of the full $\infty$-subcategory $\mathbb{R}^n \subset \mfld_n$ is the $\infty$-category $\bsc$ of basic singularity types, obtaining
+Moving on to the stratified setting, we note that the stratified version of the full $\infty$-subcategory $\{\mathbb{R}^n\} \subset \mfld_n$ is the $\infty$-category $\bsc$ of basic singularity types, obtaining
 %
 \begin{equation}
     \tau: \mfld \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld) \xrightarrow{-|_{\bsc \subset \mfld}} \mathsf{PShv}(\bsc).
@@ -265,7 +265,7 @@ Moving on to the stratified setting, we note that the stratified version of the 
 In this case, as in the previous one, given a stratified manifold $M$, $\tau(M)$ is the functor that to each basic $U \in \bsc$ assigns the space of conically-smooth open embeddings of $U$ into $M$.
 
 \begin{remark}\label{rem:grothendieck_construction}
-    The straightening-unstraightening construction of \cite[§2.2]{lurie_htt} provides an equivalence between $\mathsf{Spaces}$-valued presheaves on an $\infty$-category $\catC$ and right fibrations\footnote{A \emph{right fibration} (over $\catC$) is a functor $f:\mathscr{E} \rightarrow \catC$ such that whenever a square of type
+    The straightening--unstraightening construction of \cite[§2.2]{lurie_htt} provides an equivalence between $\mathsf{Spaces}$-valued presheaves on an $\infty$-category $\catC$ and right fibrations\footnote{A \emph{right fibration} (over $\catC$) is a functor $f:\mathscr{E} \rightarrow \catC$ such that whenever a square of type
     %
     \begin{equation}
         \begin{tikzcd}[ampersand replacement=\&]
@@ -286,13 +286,13 @@ In this case, as in the previous one, given a stratified manifold $M$, $\tau(M)$
         \tau_M: \mathsf{Entr}(M) := \bsc_{/M} \rightarrow \bsc,
     \end{equation}
     %
-    i.e. the forgetful functor from the over-$\infty$-category over $M$.\footnote{The notation is slightly misleading since $M$ need not be in $\bsc$.} The $\infty$-category $\mathsf{Entr}(M)$ defined here is called the enter-path $\infty$-category of the stratified manifold $M$.\footnote{A different version of this $\infty$-cateogry is defined in  called the exit-path $\infty$-category of the stratified space $M$. It is shown in \cite{afr_homhyp} that the exit-path $\infty$-category of \cite[§A.6]{lurie_ha} is equivalent to the opposite of the enter-path $\infty$-category mentioned above.} In fact the statements that we will make next will take on this perspective for the tangent classifier.
+    i.e. the forgetful functor from the over-$\infty$-category over $M$.\footnote{The notation is slightly misleading since $M$ need not be in $\bsc$.} The $\infty$-category $\mathsf{Entr}(M)$ defined here is called the enter-path $\infty$-category of the stratified manifold $M$.\footnote{A different version of this $\infty$-cateogry is defined in \cite[§A.6]{lurie_ha} called the exit-path $\infty$-category of the stratified space $M$. It is shown in \cite{afr_homhyp} that the exit-path $\infty$-category of \cite[§A.6]{lurie_ha} is equivalent to the opposite of the enter-path $\infty$-category mentioned above.} In fact the statements that we will make next will take on this perspective for the tangent classifier.
 \end{remark}
 
-Having generalized the tangent classifier to stratified manifolds we can now think about adding structure to them. The key realization is that the data which the map of spaces $B \rightarrow \mathsf{BO}(n)$ provided before was the data of a presheaf on $\mathsf{BO}(n)$, standing in as the $\infty$-category of basics with only one object $\mathbb{R}^n$. The analogous construction in the stratified case is to provide a presheaf on $\bsc$, which by \Cref{rem:grothendieck_construction} is given by a right fibration over $\bsc$. 
+Having generalized the tangent classifier to stratified manifolds we can now think about adding structure to them. The key realization is that the data which the map of spaces $B \rightarrow \mathsf{BO}(n)$ provided before was the data of a presheaf on $\mathsf{BO}(n)$, standing in as the $\infty$-category of basics with only one object $\mathbb{R}^n$. The analogous construction in the stratified case is to provide a presheaf on $\bsc$, which by \cref{rem:grothendieck_construction} is given by a right fibration over $\bsc$. 
 
 \begin{definition}
-    An $\infty$-category of basics, or a tangential structure, is a right fibration $\bstr \rightarrow \bsc$.
+    An $\infty$-category of basics is a right fibration $\bstr \rightarrow \bsc$. It provides both the data of the allowed singularity types and the data of (a generalization of) tangential structure.
 \end{definition}
 
 \begin{definition}
@@ -359,23 +359,23 @@ In the case of smooth manifolds we argued that $\mfld_n^B$ was defined in a way 
 Along with the already familiar $\infty$-categories of basics $\mathsf{D}_n^{G} := \mathsf{B}G \xrightarrow{\{ \mathbb{R}^n\}} \bsc$, which govern smooth $n$-manifolds with $G$-structure, we recall a few more $\infty$-categories of basics that will be of interest to us. 
 
 \begin{example}[{\cite[Example 5.2.5]{aft_localstrut}}]
-    We denote by $\mathsf{D}_n\hookrightarrow \bsc$ or simply $\mathsf{D}_n$ the tangential structure given by the full sub-$\infty$-category inclusion of $\bsc_{0,n}$, the basics of depth $0$ and pure dimension $n$.\footnote{A stratified space $X\to P$ has \emph{pure dimension $n$} (\cite[Definition 2.4.1]{aft_localstrut}) if its local (\v{C}ech--Lebesgue) dimension $\mathsf{dim}_x(X)$ at every $x\in X$ is $n$. Connected topological manifolds are of this type.} Accordingly, $\mathsf{D}_n$-manifolds are topological $n$-manifolds. As in \Cref{9EFM44H}, we have an equivalence $\mathsf{D}_n\simeq \mathsf{BGL}(n)\simeq \mathsf{BO}(n)$ of $\infty$-groupoids.
+    We denote by $\mathsf{D}_n\hookrightarrow \bsc$ or simply $\mathsf{D}_n$ the tangential structure given by the full $\infty$-subcategory inclusion of $\bsc_{0,n}$, the basics of depth $0$ and pure dimension $n$.\footnote{A stratified space $X\to P$ has \emph{pure dimension $n$} (\cite[Definition 2.4.1]{aft_localstrut}) if its local (\v{C}ech--Lebesgue) dimension $\mathsf{dim}_x(X)$ at every $x\in X$ is $n$. Connected topological manifolds are of this type.} Accordingly, $\mathsf{D}_n$-manifolds are topological $n$-manifolds. As in \Cref{rem:explaining_tau}, we have an equivalence $\mathsf{D}_n\simeq \mathsf{BGL}(n)\simeq \mathsf{BO}(n)$ of $\infty$-groupoids.
 \end{example}
 
 An $\infty$-category of basics that will play a major role for the development of factorization homology to come is the particularly simple one describing oriented $1$-manifolds with boundary.
 
 \begin{construction}\label{con:d_1^bor_structure}
-    Consider the $\infty$-subcategory $\mathsf{D}_1^{\partial} \subset \bsc$ whose objects are $\mathbb{R}$ and $\hoint=C(\ast)$. There is a unique right fibration $\mathsf{D}_1^{\partial, \mathsf{or}} \rightarrow \mathsf{D}_1^{\partial}$, whose fiber over $\mathbb{R}$ is a point $\{ \mathbb{R}\}$, and whose fiber over $\hoint$ is two points $\{ \hoint, {\mathbb{R}_{\leq 0}} \}$. In other words, $\mathsf{D}_1^{\partial, \mathsf{or}}$ has objects $\mathbb{R}$, $\hoint$ and $\mathbb{R}_{\leq 0}$ with their canonical orientations, and the morphisms are orientation preserving embeddings between them. In this way, $\mathsf{D}_1^{\partial, \mathsf{or}}$ is the $\infty$-category of basics that describes oriented (or, equivalently in this case, framed), smooth 1-manifolds with boundary.
+    Consider the $\infty$-subcategory $\mathsf{D}_1^{\partial} \subset \bsc$ whose objects are $\mathbb{R}$ and $\hoint = \cone(\ast)$. There is a unique right fibration $\mathsf{D}_1^{\partial, \mathsf{or}} \rightarrow \mathsf{D}_1^{\partial}$, whose fiber over $\mathbb{R}$ is a point $\{ \mathbb{R}\}$, and whose fiber over $\hoint$ is two points $\{ \hoint, {\mathbb{R}_{\leq 0}} \}$. In other words, $\mathsf{D}_1^{\partial, \mathsf{or}}$ has objects $\mathbb{R}$, $\hoint$ and $\mathbb{R}_{\leq 0}$ with their canonical orientations, and the morphisms are orientation preserving embeddings between them. In this way, $\mathsf{D}_1^{\partial, \mathsf{or}}$ is the $\infty$-category of basics that describes oriented (or, equivalently in this case, framed), smooth 1-manifolds with boundary.
 \end{construction}
 
 \begin{remark}
-    Insisting that tangential structures be \emph{right fibrations} over $\bsc$, as opposed to simply $\infty$-categories over it as, e.g., in \cite{ayala2020factorization}, leads to technical issues that lead to our over-simplified notation due to the property of being a right fibration not being invariant under equivalence. For instance, when $G=\ast$, so that $\mathsf{D}^\ast_n$ constrols framed $n$-manifolds, the map $BG=\ast\to \mathsf{BO}(n)\simeq\mathsf{D}_n$ is not a right fibration, owing to the observation that right fibrations of Kan complexes are Kan fibrations, and these, when surjective on objects, are epimorphisms. On the other hand, $B\ast=\ast\simeq (\mathsf{D}_n)_{/\mathbb{R}^n}$ since over-$\infty$-groupoids are contractible (\cite[018Y]{lurie_kerodon}), but $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \mathsf{D}_n$ \emph{is} a right fibration since it is a projection from an over-$\infty$-category (\cite[Proposition 018F]{lurie_kerodon}, \cite{joyal}). Moreover, $\mathsf{D}_n\hookrightarrow \bsc$ is a right fibration since this full sub-$\infty$-category is trivially a sieve, so the composition $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \bsc$ is a right fibration as well. In general, the map $\mathsf{B}G\to \mathsf{BO}(n)$ is not a right fibration unless $G\to\mathsf{O}(n)$ is an epimorphism. However, given the latter, we can consider the presheaf $\mathsf{D}_n^{\text{op}}\to\mathsf{Spaces}$ given by mapping $\mathbb{R}^n$ to the space of $G$-structures on it, and sending an embedding to the induced pullback map on the respective spaces of $G$-structures. By unstraightening, this determines a right fibration for which, by abuse, we write $\mathsf{D}^G_n=\mathsf{B}G\to \mathsf{D}_n\hookrightarrow\bsc$.
+    Insisting that tangential structures be \emph{right fibrations} over $\bsc$, as opposed to simply $\infty$-categories over it as, e.g., in \cite{ayala2020factorization}, leads to technical issues that lead to our over-simplified notation due to the property of being a right fibration not being invariant under equivalence. For instance, when $G=\ast$, so that $\mathsf{D}^\ast_n$ constrols framed $n$-manifolds, the map $BG=\ast\to \mathsf{BO}(n)\simeq\mathsf{D}_n$ is not a right fibration, owing to the observation that right fibrations of Kan complexes are Kan fibrations, and these, when surjective on objects, are epimorphisms. On the other hand, $B\ast=\ast\simeq (\mathsf{D}_n)_{/\mathbb{R}^n}$ since over-$\infty$-groupoids are contractible (\cite[018Y]{lurie_kerodon}), but $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \mathsf{D}_n$ \emph{is} a right fibration since it is a projection from an over-$\infty$-category (\cite[018F]{lurie_kerodon}, \cite{joyal}). Moreover, $\mathsf{D}_n\hookrightarrow \bsc$ is a right fibration since this full $\infty$-subcategory is trivially a sieve, so the composition $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \bsc$ is a right fibration as well. In general, the map $\mathsf{B}G\to \mathsf{BO}(n)$ is not a right fibration unless $G\to\mathsf{O}(n)$ is an epimorphism. However, given the latter, we can consider the presheaf $\mathsf{D}_n^{\text{op}}\to\mathsf{Spaces}$ given by mapping $\mathbb{R}^n$ to the space of $G$-structures on it, and sending an embedding to the induced pullback map on the respective spaces of $G$-structures. By unstraightening, this determines a right fibration for which, by abuse, we write $\mathsf{D}^G_n=\mathsf{B}G\to \mathsf{D}_n\hookrightarrow\bsc$.
 \end{remark}
 
 Another type of stratified manifold that we will focus on heavily in this work is the case of a smooth manifold with a distinguished, properly embedded, smooth submanifold, which we alternatively call a \emph{defect}. Even though there is a clear picture of what this means we will now formally describe the $\infty$-category of basics that will give rise to these kinds of manifolds.
 
 \begin{construction}[{\cite[Example 5.2.10]{aft_localstrut}}]
-    Let $\mathsf{D}_{d \subset n} \subset \bsc$ be the full $\infty$-subcategory whose objects are $\mathbb{R}^n$ and $\mathbb{R}^{d \subset n} := \mathbb{R}^{d} \times \mathsf{C}(S^{n-d-1})$, where $d < n$. We elaborate that the morphism spaces are given as follows:
+    Let $\mathsf{D}_{d \subset n} \subset \bsc$ be the full $\infty$-subcategory whose objects are $\mathbb{R}^n$ and $\mathbb{R}^{d \subset n} := \mathbb{R}^{d} \times \cone(S^{n-d-1})$, where $d < n$. We elaborate that the morphism spaces are given as follows:
     %
     \begin{enumerate}
         \item $\mathsf{Hom}_{\mathsf{D}_{d \subset n}} (\mathbb{R}^n, \mathbb{R}^n) = \mathsf{Emb}(\mathbb{R}^n, \mathbb{R}^n)$, the space of smooth embeddings of $\mathbb{R}^n$.
