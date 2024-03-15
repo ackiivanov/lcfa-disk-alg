@@ -5,7 +5,7 @@
 
 \section{Collar-gluings and Disk Algebras}\label{ch:gluing_disk_alg}
 
-Given a stratified manifold $M$, we defined the $\infty$-category of locally constant factorization algebras on it $\lcfa_M (\catC)$. We want to examine what we can say about the behavior of this $\infty$-category under collar-gluings in the manifold variable. Our discussion will be in terms of disk algebras $\alg{\disk_{/M}} (\catC)$, but using \cref{thm:disk_alg=lcfa} there is no loss at all.
+Given a stratified manifold $M$, we defined the $\infty$-category of locally constant factorization algebras on it $\lcfa_M (\catC)$. We want to examine what we can say about the behavior of this $\infty$-category under collar-gluings in the manifold variable. Our discussion will be in terms of disk algebras $\alg{\disk_{/M}} (\catC)$, but using \Cref{thm:disk_alg=lcfa} there is no loss at all.
 
 \subsection{The Gluing Theorem}
 
@@ -70,7 +70,7 @@ Before me move on to the proof we show a few useful lemmas.
 \end{proof}
 
 \begin{corollary}\label{cor:fbar_func_discrete}
-    Taking only the first part of the proof of \cref{lem:fbar_func} it is immediate that in the setting of $\mfld[r]_{/M}$ there is also a functor
+    Taking only the first part of the proof of \Cref{lem:fbar_func} it is immediate that in the setting of $\mfld[r]_{/M}$ there is also a functor
     %
     \begin{equation}
         \bar{f}: \mfld[r]_{/M} \xrightarrow{\ \ \ \ } \alg{\mathsf{Assoc^{RL}}} (\mfld[r]_{/M}),
@@ -114,8 +114,8 @@ Before me move on to the proof we show a few useful lemmas.
     where $\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}}$ is the diagonal functor. The first equivalence comes from the symmetric monoidal structure of $\catC$ dues to reshuffling in the simplicial object. The second equivalence uses the finality of the diagonal functor which comes from the fact that $\Delta^{\mathsf{op}}$ is sifted. Finally, the third equivalence exists because the symmetric monoidal structure of $\catC$ commutes with (sifted) colimits.
 \end{proof}
 
-\begin{proof}[Proof of \cref{thm:gluing_alg_disk/M}]
-    The data of a collar-gluing provides open embeddings $M_0 \times \mathbb{R} \xhookrightarrow{} M_-$ and $M_0 \times \mathbb{R} \xhookrightarrow{} M_+$, where $M_-$, $M_0$ and $M_+$ have the usual meanings as in \cref{def:collar-gluing}. This can be used to construct the cospan of restriction functors $\alg{\disk_{/M_-}} (\catC) \rightarrow \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC) \leftarrow \alg{\disk_{/M_+}} (\catC)$. Using this data we can define the pullback $\infty$-category
+\begin{proof}[Proof of \Cref{thm:gluing_alg_disk/M}]
+    The data of a collar-gluing provides open embeddings $M_0 \times \mathbb{R} \xhookrightarrow{} M_-$ and $M_0 \times \mathbb{R} \xhookrightarrow{} M_+$, where $M_-$, $M_0$ and $M_+$ have the usual meanings as in \Cref{def:collar-gluing}. This can be used to construct the cospan of restriction functors $\alg{\disk_{/M_-}} (\catC) \rightarrow \alg{\disk_{/M_0 \times \mathbb{R}}} (\catC) \leftarrow \alg{\disk_{/M_+}} (\catC)$. Using this data we can define the pullback $\infty$-category
     %
     \begin{equation}
         \mathscr{P} := \alg{\disk_{/M_-}} (\catC) \bigtimes_{\alg{\disk_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\disk_{/M_+}} (\catC).
@@ -144,9 +144,9 @@ Before me move on to the proof we show a few useful lemmas.
         \gamma: \mathscr{P} \xrightarrow{\ \ \int \ \ } &\alg{\mfld_{/M_-}}(\catC) \bigtimes\limits_{\alg{\mfld_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\mfld_{/M_+}} (\catC)\notag\\ &\xrightarrow{\ - \circ \bar{f} \ } \mathsf{Fun}(\mfld_{/M}, \alg{\mathsf{Assoc^{RL}}} (\catC)) \xrightarrow{\ \mathsf{B} \circ - \ } \mathsf{Fun}(\mfld_{/M},\catC) \xrightarrow{\ } \mathsf{Fun}(\disk_{/M}, \catC),
     \end{align}
     %
-    where $\bar{f}$ is the functor from \cref{lem:fbar_func}.
+    where $\bar{f}$ is the functor from \Cref{lem:fbar_func}.
 
-    Our first order of business is to show that $\gamma$ actually even lands in $\alg{\disk_{/M}} (\catC)$, and not just $\mathsf{Fun}(\disk_{/M}, \catC)$. Since we have expressed the construction $A = \gamma(A_-, A_+)$ functorially, we can see that $A$ will inherit the structure of an algebra from the fact that factorization homology and the bar construction are symmetric monoidal functors (see \cref{lem:B_sym_mon} for the latter), together with \cref{lem:fbar_func} that lends this property to $\bar{f}$. With that we have constructed a functor
+    Our first order of business is to show that $\gamma$ actually even lands in $\alg{\disk_{/M}} (\catC)$, and not just $\mathsf{Fun}(\disk_{/M}, \catC)$. Since we have expressed the construction $A = \gamma(A_-, A_+)$ functorially, we can see that $A$ will inherit the structure of an algebra from the fact that factorization homology and the bar construction are symmetric monoidal functors (see \Cref{lem:B_sym_mon} for the latter), together with \Cref{lem:fbar_func} that lends this property to $\bar{f}$. With that we have constructed a functor
     %
     \begin{equation}
         \gamma : \mathscr{P} \xrightarrow{\ \ \ \ } \alg{\disk_{/M}} (\catC).
@@ -193,7 +193,7 @@ Before me move on to the proof we show a few useful lemmas.
         \end{tikzcd}
     \end{equation}
     %
-    represents an equivalence of spaces for each $A, B \in \alg{\disk_{/M}} (\catC)$. That is, we have to do similar computations as (1) and (2) above, but now on the level of morphisms. Nothing new happens in the calculations involving restrictions that don't involve multiple pieces, since their logic essentially only depends on the properties of the bar construction when restricting. In the rest of the calculations we crucially used the collar-gluing property of factorization homology. That this property continues to hold at the morphism level is a consequence of the fact that we made sure to elevate the statement of \cref{prop:barconst=intinterval} to the level of functors, together with the pushforward property which also holds functorially à la \cref{rem:fh_pushforward_functorial}. Namely, these provide equivalences of functors
+    represents an equivalence of spaces for each $A, B \in \alg{\disk_{/M}} (\catC)$. That is, we have to do similar computations as (1) and (2) above, but now on the level of morphisms. Nothing new happens in the calculations involving restrictions that don't involve multiple pieces, since their logic essentially only depends on the properties of the bar construction when restricting. In the rest of the calculations we crucially used the collar-gluing property of factorization homology. That this property continues to hold at the morphism level is a consequence of the fact that we made sure to elevate the statement of \Cref{prop:barconst=intinterval} to the level of functors, together with the pushforward property which also holds functorially à la \Cref{rem:fh_pushforward_functorial}. Namely, these provide equivalences of functors
     %
     \begin{equation}
         \int_U - \simeq \int_{[-1,1]} (f|_U)_* - \simeq \mathsf{B} \circ (f|_U)_* = \int_{U_-} (-)_- \bigotimes\limits_{\int_{U_0 \times \mathbb{R}} (-)_0} \int_{U_+} (-)_+,
@@ -202,7 +202,7 @@ Before me move on to the proof we show a few useful lemmas.
     which is exactly the collar-gluing property extended to the level of morphisms.
 \end{proof}
 
-Together with \cref{thm:disk_alg=lcfa} we immediately have the following corollary:
+Together with \Cref{thm:disk_alg=lcfa} we immediately have the following corollary:
 
 \begin{corollary}\label{cor:gluing_lcfas}
     A collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$ induces an equivalence of $\infty$-categories
@@ -216,7 +216,7 @@ Together with \cref{thm:disk_alg=lcfa} we immediately have the following corolla
     The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
 \end{remark}
 
-Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_discrete}, as well as the definition of factorization homology in the setting of the category $\disk[r]_{/M}$, the proof of \cref{thm:gluing_alg_disk/M} can be seen to clearly hold even in case of ordinary factorization algebras.
+Taking into account \Cref{cor:disk_alg=falg} together with \Cref{cor:fbar_func_discrete}, as well as the definition of factorization homology in the setting of the category $\disk[r]_{/M}$, the proof of \Cref{thm:gluing_alg_disk/M} can be seen to clearly hold even in case of ordinary factorization algebras.
 
 \begin{corollary}\label{cor:gluing_falgs}
     A collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$ induces an equivalence of $\infty$-categories
@@ -231,13 +231,13 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
 
 
 \begin{example}\label{ex:reproduce_lcfas_on_interval}
-    With the ingredients we have introduced up to now, specifically in \cref{ssec:lcfa_on_ints}, we can do a nontrivial check of the gluing theorem. This is because we can write a collar-gluing of the closed interval $[-1,1] \cong \left[-1,1\right) \coprod_{(-1,1)} \left(-1,1\right] \cong \mathbb{R}_{\geq 0} \coprod_{\mathbb{R}} \mathbb{R}_{\leq 0}$. We note here that we have written $\mathbb{R}_{\leq 0}$ and $\mathbb{R}_{\geq 0}$ to emphasize the maps forming the decomposition. At the level of unstructured objects these two are isomorphic (see also \cref{rem:left_or_right_module}). For this example, the theorem says that locally constant factorization algebras on the closed interval should be given by
+    With the ingredients we have introduced up to now, specifically in \Cref{ssec:lcfa_on_ints}, we can do a nontrivial check of the gluing theorem. This is because we can write a collar-gluing of the closed interval $[-1,1] \cong \left[-1,1\right) \coprod_{(-1,1)} \left(-1,1\right] \cong \mathbb{R}_{\geq 0} \coprod_{\mathbb{R}} \mathbb{R}_{\leq 0}$. We note here that we have written $\mathbb{R}_{\leq 0}$ and $\mathbb{R}_{\geq 0}$ to emphasize the maps forming the decomposition. At the level of unstructured objects these two are isomorphic (see also \Cref{rem:left_or_right_module}). For this example, the theorem says that locally constant factorization algebras on the closed interval should be given by
     %
     \begin{equation}
         \lcfa_{[-1,1]} (\catC) \simeq \lcfa_{\mathbb{R}_{\geq 0}} (\catC) \bigtimes_{\lcfa_{\mathbb{R}} (\catC)} \lcfa_{\mathbb{R}_{\leq 0}} (\catC) \simeq \mathsf{RMod} (\catC) \bigtimes_{\alg{\mathbb{E}_1} (\catC)} \mathsf{LMod} (\catC),
     \end{equation}
     %
-    where the functors are the ones that forget the module. At the level of objects, this is the data of an algebra with a right module $(A, R) \in \mathsf{RMod} (\catC)$ and an algebra with a left module $(B, L) \in \mathsf{LMod} (\catC)$, such that the algebras are equal $A = B$. But this is exactly the same as the description we gave in terms of an algebra with a left and a right module, i.e. an algebra over $\mathsf{Assoc^{RL}}$, in \cref{cor:lcfas_on_closed_int}.
+    where the functors are the ones that forget the module. At the level of objects, this is the data of an algebra with a right module $(A, R) \in \mathsf{RMod} (\catC)$ and an algebra with a left module $(B, L) \in \mathsf{LMod} (\catC)$, such that the algebras are equal $A = B$. But this is exactly the same as the description we gave in terms of an algebra with a left and a right module, i.e. an algebra over $\mathsf{Assoc^{RL}}$, in \Cref{cor:lcfas_on_closed_int}.
 \end{example}
 
 \begin{example}\label{ex:reproduce_lcfas_on_S1}
@@ -253,7 +253,7 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
         \lcfa_{S^1} (\catC) \simeq \lcfa_{\mathbb{R}} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \bigtimes_{\lcfa_{\mathbb{R} \sqcup \mathbb{R}} (\catC)} \alg{\mathbb{E}_1} (\catC).
     \end{equation}
     %
-    Since a disjoint union is a collar-gluing we also have that $\lcfa_{\mathbb{R} \sqcup \mathbb{R}} \simeq \lcfa_{\mathbb{R}} (\catC) \times \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \times \alg{\mathbb{E}_1} (\catC)$. Let's denote the restriction functors that restrict to the first and the second component of the disjoint union $\mathbb{R} \sqcup \mathbb{R}$ by $|_1$ and $|_2$ respectively. Going back to \cref{eq:lcfas_on_S1_gluing}, the data of a locally constant factorization algebra on $S^1$ is equivalent to the data of two $\mathbb{E}_1$-algebras $A$ and $B$ such that their restrictions $A|_1 = B|_1$ and $A|_2 = B|_2$ agree. Since all of these are $\mathbb{E}_1$-algebras there are equivalences with the restrictions forming
+    Since a disjoint union is a collar-gluing we also have that $\lcfa_{\mathbb{R} \sqcup \mathbb{R}} \simeq \lcfa_{\mathbb{R}} (\catC) \times \lcfa_{\mathbb{R}} (\catC) \simeq \alg{\mathbb{E}_1} (\catC) \times \alg{\mathbb{E}_1} (\catC)$. Let's denote the restriction functors that restrict to the first and the second component of the disjoint union $\mathbb{R} \sqcup \mathbb{R}$ by $|_1$ and $|_2$ respectively. Going back to \Cref{eq:lcfas_on_S1_gluing}, the data of a locally constant factorization algebra on $S^1$ is equivalent to the data of two $\mathbb{E}_1$-algebras $A$ and $B$ such that their restrictions $A|_1 = B|_1$ and $A|_2 = B|_2$ agree. Since all of these are $\mathbb{E}_1$-algebras there are equivalences with the restrictions forming
     %
     \begin{equation}
         \begin{tikzcd}[row sep = small, column sep= small]
@@ -267,7 +267,7 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
 \end{example}
 
 \begin{example}\label{ex:lcfas_on_S^n}
-    Unlike the covering space result for the circle \cite[sec.5.5]{ginot2015} which doesn't generalize to higher spheres, the gluing theorem has no such restriction. Just as for the circle, higher spheres can also be described as a collar-gluing $S^n \cong \mathbb{R}^n \coprod_{S^{n-1} \times \mathbb{R}} \mathbb{R^n}$. Thus, we can iterate the procedure from \cref{ex:reproduce_lcfas_on_S1} to get the locally constant factorization algebras on all higher spheres. For example, for the two-sphere $S^2$ we have
+    Unlike the covering space result for the circle \cite[sec.5.5]{ginot2015} which doesn't generalize to higher spheres, the gluing theorem has no such restriction. Just as for the circle, higher spheres can also be described as a collar-gluing $S^n \cong \mathbb{R}^n \coprod_{S^{n-1} \times \mathbb{R}} \mathbb{R^n}$. Thus, we can iterate the procedure from \Cref{ex:reproduce_lcfas_on_S1} to get the locally constant factorization algebras on all higher spheres. For example, for the two-sphere $S^2$ we have
     %
     \begin{equation}
         \lcfa_{\mathbb{R}^2}(\catC) \bigtimes_{\lcfa_{S^1 \times \mathbb{R}}(\catC)} \lcfa_{\mathbb{R}^2}(\catC) \simeq \alg{\mathbb{E}_2}(\catC) \bigtimes_{\alg{\mathbb{E}_1}( \aut (\alg{\mathbb{E}_1} (\catC))) } \alg{\mathbb{E}_2} (\catC),
@@ -279,13 +279,13 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
 \end{example}
 
 \begin{example}\label{ex:cylinder_mobius_band}
-    In \cref{ch:classif_defect_mfld} we will see that fiber bundles are important for the classification of some stratified manifolds. Here we will look at line bundles over the circle as a toy example, namely, the cylinder $C$ and M\"obius band $M$. The cylinder, as a trivial fiber bundle, is isomorphic to the product space $S^1 \times \mathbb{R}$. By \cref{prop:exp_of_products_lc} together with the results of \cref{ex:reproduce_lcfas_on_S1}, locally constant factorization algebras on it are given by $\mathbb{E}_2$-algebras together with an $\mathbb{E}_1$-self-equivalence
+    In \Cref{ch:classif_defect_mfld} we will see that fiber bundles are important for the classification of some stratified manifolds. Here we will look at line bundles over the circle as a toy example, namely, the cylinder $C$ and M\"obius band $M$. The cylinder, as a trivial fiber bundle, is isomorphic to the product space $S^1 \times \mathbb{R}$. By \Cref{prop:exp_of_products_lc} together with the results of \Cref{ex:reproduce_lcfas_on_S1}, locally constant factorization algebras on it are given by $\mathbb{E}_2$-algebras together with an $\mathbb{E}_1$-self-equivalence
     %
     \begin{align}
         \lcfa_C (\catC) \simeq \aut_{\mathbb{E}_1} (\alg{\mathbb{E}_2} (\catC)).
     \end{align}
 
-    Switching our attention to the M\"obius band $M$, we can use a similar logic as in \cref{ex:reproduce_lcfas_on_S1} to find a collar gluing of $M$. The pieces are the same as they would be for the cylinder, namely $M_- \cong M_+ \cong \mathbb{R}^2$, and $M_0 \times \mathbb{R} \cong \mathbb{R}^2 \sqcup \mathbb{R}^2$, but they are glued differently because of the twist. Using the notation from \cref{ex:reproduce_lcfas_on_S1} the diagram becomes
+    Switching our attention to the M\"obius band $M$, we can use a similar logic as in \Cref{ex:reproduce_lcfas_on_S1} to find a collar gluing of $M$. The pieces are the same as they would be for the cylinder, namely $M_- \cong M_+ \cong \mathbb{R}^2$, and $M_0 \times \mathbb{R} \cong \mathbb{R}^2 \sqcup \mathbb{R}^2$, but they are glued differently because of the twist. Using the notation from \Cref{ex:reproduce_lcfas_on_S1} the diagram becomes
     %
     \begin{equation}
         \begin{tikzcd}[row sep = small, column sep= small]
@@ -297,7 +297,7 @@ Taking into account \cref{cor:disk_alg=falg} together with \cref{cor:fbar_func_d
     %
     where $^{\mathsf{op_f}}$ is the opposite functor in the fiber direction. Thus, instead of an $\mathbb{E}_1$-\emph{self}-equivalence we have an equivalence with the opposite algebra.
 
-    We should remark that the fact that we can take the opposite algebra in one direction only is a consequence of the Dunn additivity of \cref{prop:dunn_additivity}. Without it, we wouldn't be able to combine the opposite algebra in one direction with the original algebra in the other direction into a well-defined algebra in two dimensions.
+    We should remark that the fact that we can take the opposite algebra in one direction only is a consequence of the Dunn additivity of \Cref{prop:dunn_additivity}. Without it, we wouldn't be able to combine the opposite algebra in one direction with the original algebra in the other direction into a well-defined algebra in two dimensions.
 \end{example}
 
 \end{document}
