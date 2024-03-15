@@ -177,7 +177,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
         \disk(\bstr)_{/M} \simeq \disk(\bsc)_{/M},
     \end{equation}
     %
-    where $M$ on the right-hand side is the underlying stratified manifold of the $\bstr$-manifold also called $M$. This is essentially because the $\infty$-cateogry of basics $\bstr \xrightarrow{} \bsc$ is defined as a right fibration. Intuitively, those disks that have an open embedding into $M$ admit a $\bstr$-structure by restriction since $M$ admits one. From here, since over $\infty$-groupoids are contractible, there is an equivalence between the singleton space consisting of this inherited $\bstr$-structure and the space of $\bstr$-structures the disk originally had. The argument, of course, holds for $\disk(\bstr)_{/M}$ too, as well as $\mfld(\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$. This is why, when talking about these slice $\infty$-operads we will simplify the notation down to $\disk_{/M}$, $\disk[r]_{/M}$, $\mfld_{/M}$ and $\mfld[r]_{/M}$.
+    where $M$ on the right-hand side is the underlying stratified manifold of the $\bstr$-manifold also called $M$. This is essentially because the $\infty$-cateogry of basics $\bstr \xrightarrow{} \bsc$ is defined as a right fibration. Intuitively, those disks that have an open embedding into $M$ admit a $\bstr$-structure by restriction since $M$ admits one. From here, since over $\infty$-groupoids are contractible (\cite[\href{https://kerodon.net/tag/018Y}{018Y}]{lurie_kerodon}), there is an equivalence between the singleton space consisting of this inherited $\bstr$-structure and the space of $\bstr$-structures the disk originally had. The argument, of course, holds for $\disk(\bstr)_{/M}$ too, as well as $\mfld(\bstr)_{/M}$ and $\mfld[r](\bstr)_{/M}$. This is why, when talking about these slice $\infty$-operads we will simplify the notation down to $\disk_{/M}$, $\disk[r]_{/M}$, $\mfld_{/M}$ and $\mfld[r]_{/M}$.
 \end{remark}
 
 Essentially the same argument as above, namely that over $\infty$-groupoids are contractible, also has another important consequence that we will need to make use of later:
@@ -192,10 +192,10 @@ Essentially the same argument as above, namely that over $\infty$-groupoids are 
     The same holds for $\mfld[r]$, as well as, $\disk$ and $\disk[r]$.
 \end{lemma}
 
-The next result is of key importance to the technical side of the theory, and will be used extensively throughout. It alone, is essentially the reason for the appearance of constructible bundles in a lot of later developments.
+The next result is of key importance to the technical side of the theory, and will be used extensively throughout. It alone, is essentially the reason for the appearance of weakly constructible bundles in a lot of later developments.
 
 \begin{lemma}[{\cite[lem.2.24]{aft_fhstrat}}]\label{lem:f^-1}
-    Let $f: M \xrightarrow{} N$ be a constructible bundle. There is a functor of $\infty$-operads
+    Let $f: M \xrightarrow{} N$ be a weakly constructible bundle. There is a functor of $\infty$-operads
     %
     \begin{equation}
         f^{-1}: \disk_{/N} \xrightarrow{} \mfld_{/M},
@@ -205,7 +205,7 @@ The next result is of key importance to the technical side of the theory, and wi
 \end{lemma}
 
 \begin{remark}
-    Because of \cref{rem:disk_b=disk_bsc}, the above construction works for manifolds with any general $\bstr$-structure, with no further requirements on the constructible bundle $f$.
+    Because of \cref{rem:disk_b=disk_bsc}, the above construction works for manifolds with any general $\bstr$-structure, with no further requirements on the weakly constructible bundle $f$.
 \end{remark}
 
 
@@ -401,7 +401,7 @@ In fact in the simple case of intervals, that we're considering here, even more 
 The construction of \cref{lem:f^-1} gives a functor which allows us to change the stratified manifold over which we work. This brings about the important operation of pushforward:
 
 \begin{theorem}[{\cite[thm.2.25]{aft_fhstrat}}]\label{thm:fh_pushforward}
-    Let $f: M \xrightarrow{} N$ be a constructible bundle. There is a pushforward functor
+    Let $f: M \xrightarrow{} N$ be a weakly constructible bundle. There is a pushforward functor
     %
     \begin{equation}
         f_*: \alg{\disk_{/M}}(\catC) \xrightarrow{\quad} \alg{\disk_{/N}}(\catC),
@@ -442,7 +442,7 @@ The construction of \cref{lem:f^-1} gives a functor which allows us to change th
 
 \subsection{\texorpdfstring{$\otimes$}{tensor}-excision and Homology Theories}
 
-Now that we have a pushforward operation, we can finally explicitly state what excision is in this context. This is because a collar-gluing of a stratified manifold $M$ is defined exactly as a constructible bundle $f: M \xrightarrow{} [-1,1]$.
+Now that we have a pushforward operation, we can finally explicitly state what excision is in this context. This is because a collar-gluing of a stratified manifold $M$ is defined exactly as a weakly constructible bundle $f: M \xrightarrow{} [-1,1]$.
 
 \begin{definition}
     Let $F: \mfld(\bstr) \xrightarrow{} \catC$ be a symmetric monoidal functor. Also let $M$ be a $\bstr$-manifold and $f: M \xrightarrow{} [-1,1]$ be a collar-gluing of $M$. This data allows for the construction of a canonical morphism in $\catC$
