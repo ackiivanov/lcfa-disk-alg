@@ -114,7 +114,7 @@ Before me move on to the proof of the above two results we pause to record a few
     where $\Delta^{\mathsf{op}} \rightarrow \Delta^{\mathsf{op}} \times \Delta^{\mathsf{op}}$ is the diagonal functor. The first equivalence comes from the symmetric monoidal structure of $\catC$ dues to reshuffling in the simplicial object. The second equivalence uses the finality of the diagonal functor which comes from the fact that $\Delta^{\mathsf{op}}$ is sifted. Finally, the third equivalence exists because the symmetric monoidal structure of $\catC$ commutes with (sifted) colimits.
 \end{proof}
 
-\begin{proof}[Proof of \cref{thm:gluing_lcfas}]
+\begin{proof}[Proof of \cref{cor:gluing_falgs}]
     We will first focus on the case of factorization algebras and prove the statement of \cref{cor:gluing_falgs}. Moreover, because of \cref{cor:disk_alg=falg}, this means that we will focus on $
     disk[r]_{/M}$-algebras.
     
@@ -203,8 +203,10 @@ Before me move on to the proof of the above two results we pause to record a few
     \end{equation}
     %
     which is exactly the collar-gluing property extended to the level of morphisms. This shows the equivalence at the level of factorization algebras.
-    
-    Since we know that restriction does not destroy local constancy, extending the result to the case of locally constant factorization algebras simply requires us to show that the gluing $\gamma$ also preserves this property. Let $U \xhookrightarrow{} V$ be two disks of $M$. What we have to check is that there is an equivalence
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:gluing_lcfas}]
+    In the case that all $\infty$-categoies involved are locally constant we will extend the previous proof to provide the equivalence. Since we know that restriction does not destroy local constancy, extending the result to the case of locally constant factorization algebras simply requires us to show that the gluing $\gamma$ also preserves this property. Let $U \xhookrightarrow{} V$ be two disks of $M$. What we have to check is that there is an equivalence
     %
     \begin{equation}
         \int_U \gamma(A_-, A_+) \xrightarrow{\ \ \simeq \ \ } \int_V \gamma(A_-, A_+)
@@ -218,7 +220,9 @@ Before me move on to the proof of the above two results we pause to record a few
     %
     on each of the pieces $(U_- \xhookrightarrow{} V_-), (U_0 \times \mathbb{R} \xhookrightarrow{} V_0 \times \mathbb{R}), (U_+ \xhookrightarrow{} V_+)$, and combine them using the bar construction. If these pieces were disks then the above equivalences would be given by the local constancy of the constituent locally constant factorization algebras.
     
-    Generically though, these pieces will not be disks again, so we can't simply inherit the local constancy property immediately. To alleviate this issue we make use of \cref{thm:decom_strat_man} which assures us that every manifold can be obtained by collar-gluings and sequential colimits if we start with disks. In fact, since our largest manifold of interest is a disk, which is finitary, we only need collar-gluings, and not sequential colimits. Thus, we can work inductively and iterate the cutting and gluing process until the pieces become disks. The only thing that we need to check is that through one inductive step the equivalences remain compatible. Specifically, by compatibility here we mean that there is a commutative diagram
+    Generically though, these pieces will not be disks again, so we can't simply inherit the local constancy property immediately. To alleviate this issue we make use of \cref{thm:decom_strat_man} which assures us that every manifold can be obtained by collar-gluings and sequential colimits if we start with disks. In fact, since our largest manifold of interest is a disk, which is finitary, we only need collar-gluings, and not sequential colimits. Thus, we can work inductively and iterate the cutting and gluing process until the pieces become disks. The only thing that we need to check is that through one inductive step the equivalences remain compatible.
+    
+    Specifically, by compatibility here we mean that there is a commutative diagram
     %
     \begin{equation}\label{cd:equivs_from_lc}
         \begin{tikzcd}
