@@ -116,8 +116,7 @@ Before me move on to the proof of the above two results we pause to record a few
 \end{proof}
 
 \begin{proof}[Proof of \Cref{cor:gluing_falgs}]
-    We will first focus on the case of factorization algebras and prove the statement of \Cref{cor:gluing_falgs}. Moreover, because of \Cref{cor:disk_alg=falg}, this means that we will focus on $
-    disk[r]_{/M}$-algebras.
+    We will first focus on the case of factorization algebras and prove the statement of \Cref{cor:gluing_falgs}. Moreover, because of \Cref{cor:disk_alg=falg}, this means that we will focus on $\disk[r]_{/M}$-algebras.
     
     The data of a collar-gluing provides open embeddings $M_0 \times \mathbb{R} \xhookrightarrow{} M_-$ and $M_0 \times \mathbb{R} \xhookrightarrow{} M_+$, where $M_-$, $M_0$ and $M_+$ have the usual meanings as in \Cref{def:collar-gluing}. This can be used to construct the cospan of restriction functors $\alg{\disk[r]_{/M_-}} (\catC) \rightarrow \alg{\disk[r]_{/M_0 \times \mathbb{R}}} (\catC) \leftarrow \alg{\disk[r]_{/M_+}} (\catC)$. Using this data we can define the pullback $\infty$-category
     %
@@ -243,7 +242,19 @@ Before me move on to the proof of the above two results we pause to record a few
     \end{equation}
     %
     one for each of $U$ and $V$. Stacking these two with the equivalence as connecting arrows is again a commutative diagram. This is enough information to guarantee that after acting with the bar construction in one direction we again get compatible equivalences. The key point being that we consider the collar-gluings on all pieces in both orders to get all the necessary arrows.
+
+    \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=5cm]{../images/extend_gluing.png}
+            \caption{Extending a collar-gluing.}
+            \label{fig:extend_gluing}
+        \end{figure}
+        %
+        The final point to check is that we have not limited ourselves by insisting to only consider collar-gluings which are inherited from ones on $M$. This is best shown in \Cref{fig:extend_gluing}. Namely, given the disk $V \xhookrightarrow{} M$, we can take a larger disk $V'$, which is guaranteed to exist from the fact that $M$ is a manifold. The figure then shows that given any collar-gluing of $V$ we can find one particular collar-gluing of $M$ that extends the one of $V$. Since $V'$ is a disk, the figure does not obscure any detail.
+    \end{multicols}
 \end{proof}
+
 
 
 \subsection{Some Examples of Gluing}
