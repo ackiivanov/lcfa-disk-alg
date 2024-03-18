@@ -35,17 +35,17 @@ as well as its \Cref{cor:disk_alg=falg} for the case of ordinary factorization a
 %
 Finally, we will examine some examples of factorization algebras whose construction is known, specifically, locally constant factorization algebras on the intervals $(-1,1)$, $[-1,1)$ and $[-1,1]$ as well as Euclidean spaces $\mathbb{R}^n$ more generally.
 
-\textbf{\Cref{ch:gluing_disk_alg} Collar-gluings and Disk Algebras:} The fourth section presents a novel result about the behavior of certain types of disk algebras under the operation of collar-gluing in the manifold variable. It essentially shows that we can reproduce a disk algebra on a stratified manifold if we know it on some particular pieces of it together with the data of how to glue them. Formally, we have
+\textbf{\Cref{ch:gluing_disk_alg} Collar-gluings and Disk Algebras:} The fourth section presents a novel result about the behavior of certain types of factorization algebras under the operation of collar-gluing in the manifold variable. It essentially shows that we can reproduce factorization algebras on a stratified manifold if we know them on some particular pieces of it together with the data of how to glue them. Formally, we have
 %
-\begin{theorem*}[\ref{thm:gluing_alg_disk/M}]
-    Given a collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$, the $\infty$-category of $\disk_{/M}$-algebras is equivalent to the pullback of $\infty$-categories
+\begin{theorem*}[\ref{thm:gluing_lcfas}]
+    Given a collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$, the $\infty$-category of locally constant factorization algebras is equivalent to the pullback of $\infty$-categories
     %
     \begin{equation}
-        \alg{\disk_{/M}} (\catC) \simeq \alg{\disk_{/M_-}} (\catC) \bigtimes_{\alg{\disk_{/M_0 \times \mathbb{R}}} (\catC)} \alg{\disk_{/M_+}} (\catC).
+        \lcfa_{M} (\catC) \simeq \lcfa_{M_-} (\catC) \bigtimes_{\lcfa{M_0 \times \mathbb{R}} (\catC)} \\cfa_{M_+} (\catC).
     \end{equation}
 \end{theorem*}
 %
-Together with the results of the previous section this gluing holds for locally constant factorization algebras too, and it hugely expands the number of manifolds for which the $\infty$-category of locally constant factorization algebras can be specified. As a straightforward example, it gives a way to work on and classify factorization algebras on all spheres $S^n$. Only the circle has been described to date (\cite{ginot2015}) using equivariant factorization algebras, so we should note the result above lets us obtain generalizations without falling back on covering space techniques. 
+The results of the previous section a very important in the proof of this statement, because we heavily use the properties of factorization homology. A similar version holds for ordinary factorization algebras in the for of \Cref{cor:disk_alg=falg}. This result hugely expands the number of manifolds for which the $\infty$-category of locally constant factorization algebras can be specified. As a straightforward example, it gives a way to work on, and classify, factorization algebras on all higher spheres $S^n$. Without it, only the circle has been described to date (\cite{ginot2015}) using equivariant factorization algebras and inheritance from covering spaces.
 
 \textbf{\Cref{ch:classif_defect_mfld} Classifying $\lcfa$s on Defect Manifolds:} The fifth section focuses on the stratified structure and gives a way to express what effect this has on the locally constant factorization algebras. Specifically, we look at the data of a smooth manifold $M$ with a distinguished, properly embedded submanifold $\Sigma$ (also known as a defect submanifold) as the data of a stratified manifold $M_\Sigma$. We will show that, along with giving algebras associated to the different pieces, locally constant factorization algebras on these manifolds, in some (precise) sense, also encode a module structure associated with $\Sigma$.
 
