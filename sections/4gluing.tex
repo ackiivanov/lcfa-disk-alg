@@ -244,7 +244,7 @@ Taking into account \Cref{cor:disk_alg=falg} together with \Cref{cor:fbar_func_d
     A highly nontrivial check of the gluing theorem is given by the circle $S^1$. Using results from \cite[prop.4.0.1]{cg2016}, namely inheritance from a covering space, \cite[sec.5.5]{ginot2015} characterizes locally constant factorization algebras on the circle $S^1$ as
     %
     \begin{equation}
-        \lcfa_{S^1} (\catC) \simeq \aut (\alg{\mathbb{E}_1} (\catC)),
+        \lcfa_{S^1} (\catC) \simeq \mathsf{Aut} (\alg{\mathbb{E}_1} (\catC)),
     \end{equation}
     %
     i.e. $\mathbb{E}_1$-algebras together with a self-equivalence. This result is not generalizable to higher spheres because it uses the technology of covering spaces. \Cref{cor:gluing_lcfas} allows us to recover this nontrivial result. To wit, the circle can be exhibited as a collar-gluing $S^1 \cong \mathbb{R} \coprod_{S^0 \times \mathbb{R}} \mathbb{R} \cong \mathbb{R} \coprod_{\mathbb{R} \sqcup \mathbb{R}} \mathbb{R}$. For locally constant factorization algebras this means that
@@ -270,7 +270,7 @@ Taking into account \Cref{cor:disk_alg=falg} together with \Cref{cor:fbar_func_d
     Unlike the covering space result for the circle \cite[sec.5.5]{ginot2015} which doesn't generalize to higher spheres, the gluing theorem has no such restriction. Just as for the circle, higher spheres can also be described as a collar-gluing $S^n \cong \mathbb{R}^n \coprod_{S^{n-1} \times \mathbb{R}} \mathbb{R^n}$. Thus, we can iterate the procedure from \Cref{ex:reproduce_lcfas_on_S1} to get the locally constant factorization algebras on all higher spheres. For example, for the two-sphere $S^2$ we have
     %
     \begin{equation}
-        \lcfa_{\mathbb{R}^2}(\catC) \bigtimes_{\lcfa_{S^1 \times \mathbb{R}}(\catC)} \lcfa_{\mathbb{R}^2}(\catC) \simeq \alg{\mathbb{E}_2}(\catC) \bigtimes_{\alg{\mathbb{E}_1}( \aut (\alg{\mathbb{E}_1} (\catC))) } \alg{\mathbb{E}_2} (\catC),
+        \lcfa_{\mathbb{R}^2}(\catC) \bigtimes_{\lcfa_{S^1 \times \mathbb{R}}(\catC)} \lcfa_{\mathbb{R}^2}(\catC) \simeq \alg{\mathbb{E}_2}(\catC) \bigtimes_{\alg{\mathbb{E}_1}( \mathsf{Aut} (\alg{\mathbb{E}_1} (\catC))) } \alg{\mathbb{E}_2} (\catC),
     \end{equation}
     %
     namely, a locally constant factorization algebra on $S^2$ is equivalent to two $\mathbb{E}_2$-algebras, such that they restrict on the fattened equator to the same $\mathbb{E}_2$-algebra equipped with an $\mathbb{E}_1$-automorphism. It is nontrivial to describe this data in a simpler way as was possible for $S^1$.
@@ -282,7 +282,7 @@ Taking into account \Cref{cor:disk_alg=falg} together with \Cref{cor:fbar_func_d
     In \Cref{ch:classif_defect_mfld} we will see that fiber bundles are important for the classification of some stratified manifolds. Here we will look at line bundles over the circle as a toy example, namely, the cylinder $C$ and M\"obius band $M$. The cylinder, as a trivial fiber bundle, is isomorphic to the product space $S^1 \times \mathbb{R}$. By \Cref{prop:exp_of_products_lc} together with the results of \Cref{ex:reproduce_lcfas_on_S1}, locally constant factorization algebras on it are given by $\mathbb{E}_2$-algebras together with an $\mathbb{E}_1$-self-equivalence
     %
     \begin{align}
-        \lcfa_C (\catC) \simeq \aut_{\mathbb{E}_1} (\alg{\mathbb{E}_2} (\catC)).
+        \lcfa_C (\catC) \simeq \mathsf{Aut}_{\mathbb{E}_1} (\alg{\mathbb{E}_2} (\catC)).
     \end{align}
 
     Switching our attention to the M\"obius band $M$, we can use a similar logic as in \Cref{ex:reproduce_lcfas_on_S1} to find a collar gluing of $M$. The pieces are the same as they would be for the cylinder, namely $M_- \cong M_+ \cong \mathbb{R}^2$, and $M_0 \times \mathbb{R} \cong \mathbb{R}^2 \sqcup \mathbb{R}^2$, but they are glued differently because of the twist. Using the notation from \Cref{ex:reproduce_lcfas_on_S1} the diagram becomes
