@@ -85,7 +85,7 @@ Next, we construct the cone of a stratified space. This plays a very important r
 \end{definition}
 
 \begin{example}
-    The open cone $\cone(S^k)$ on the $k$-sphere is canonically identified with $\mathbb{R}^{k+1}_*$, which is the stratified space with stratification given by the filtration $\{0\}\subset\mathbb{R}^{k+1}$ as in \cref{ex:strat_from_filtration}.
+    The open cone $\cone(S^k)$ on the $k$-sphere is canonically identified with $\mathbb{R}^{k+1}_*$, which is the stratified space with stratification given by the filtration $\{0\}\subset\mathbb{R}^{k+1}$ as in \Cref{ex:strat_from_filtration}.
 \end{example}
 
 The following will be used in the definition of the $\infty$-category $\mfld$ of stratified manifolds.
@@ -114,7 +114,7 @@ The equivalent of a topological manifold in the stratified setting is a \emph{$C
     Let $X \rightarrow P$ be a $C^0$ stratified space. For any $p \in P$, the stratified spaces $X_{\leq p}$, $X_{p}$ and $X_{\nless p}$, defined as the relevant preimages, are $C^0$ stratified spaces. Furthermore, $X_p$ is even a topological manifold.
 \end{theorem}
 
-For topological spaces we have the concept of (\v{C}ech--Lebesgue) covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces.\footnote{For example, we said that \cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \cone(Z)) = \mathsf{dpt} (\cone(Z)) = \mathsf{dpt} (Z) + 1$} As the name suggests, it conveys information about how deep the stratification is. For instance, if the stratification is given by a filtration as in \Cref{ex:strat_from_CW}, then it coincides with the length of the filtration, or equivalently, with the length of the longest non-trivial chain of arrives in the stratifying poset. Similarly to $\mathsf{dim}$ it has a pointwise and a global version.
+For topological spaces we have the concept of (\v{C}ech--Lebesgue) covering dimension $\mathsf{dim}_x (X)$ at a point $x \in X$. $C^0$ stratified spaces have an additional, related concept called depth. It plays a key role in describing these spaces.\footnote{For example, we said that \Cref{thm:basics_give_basis}, as a definition, would be circular. One way to resolve this is by induction on depth since $\mathsf{dpt} (\mathbb{R}^n \times \cone(Z)) = \mathsf{dpt} (\cone(Z)) = \mathsf{dpt} (Z) + 1$} As the name suggests, it conveys information about how deep the stratification is. For instance, if the stratification is given by a filtration as in \Cref{ex:strat_from_CW}, then it coincides with the length of the filtration, or equivalently, with the length of the longest non-trivial chain of arrives in the stratifying poset. Similarly to $\mathsf{dim}$ it has a pointwise and a global version.
 
 \begin{definition}
     Given a $C^0$ stratified space $(X \xrightarrow{s} P)$ the \emph{depth at $x$} is
@@ -289,7 +289,7 @@ In this case, as in the previous one, given a stratified manifold $M$, $\tau(M)$
     i.e. the forgetful functor from the over-$\infty$-category over $M$.\footnote{The notation is slightly misleading since $M$ need not be in $\bsc$.} The $\infty$-category $\mathsf{Entr}(M)$ defined here is called the enter-path $\infty$-category of the stratified manifold $M$.\footnote{A different version of this $\infty$-cateogry is defined in \cite[§A.6]{lurie_ha} called the exit-path $\infty$-category of the stratified space $M$. It is shown in \cite{afr_homhyp} that the exit-path $\infty$-category of \cite[§A.6]{lurie_ha} is equivalent to the opposite of the enter-path $\infty$-category mentioned above.} In fact the statements that we will make next will take on this perspective for the tangent classifier.
 \end{remark}
 
-Having generalized the tangent classifier to stratified manifolds we can now think about adding structure to them. The key realization is that the data which the map of spaces $B \rightarrow \mathsf{BO}(n)$ provided before was the data of a presheaf on $\mathsf{BO}(n)$, standing in as the $\infty$-category of basics with only one object $\mathbb{R}^n$. The analogous construction in the stratified case is to provide a presheaf on $\bsc$, which by \cref{rem:grothendieck_construction} is given by a right fibration over $\bsc$. 
+Having generalized the tangent classifier to stratified manifolds we can now think about adding structure to them. The key realization is that the data which the map of spaces $B \rightarrow \mathsf{BO}(n)$ provided before was the data of a presheaf on $\mathsf{BO}(n)$, standing in as the $\infty$-category of basics with only one object $\mathbb{R}^n$. The analogous construction in the stratified case is to provide a presheaf on $\bsc$, which by \Cref{rem:grothendieck_construction} is given by a right fibration over $\bsc$. 
 
 \begin{definition}
     An $\infty$-category of basics is a right fibration $\bstr \rightarrow \bsc$. It provides both the data of the allowed singularity types and the data of (a generalization of) tangential structure.
