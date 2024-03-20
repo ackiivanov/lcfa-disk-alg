@@ -37,7 +37,7 @@ In fact, technically, the only cases we need to consider are when $d=0$ --- the 
     \mathbb{R}^{d \subset n} \cong \mathbb{R}^{n-d}_* \times \mathbb{R}^d,
 \end{equation}
 %
-together with \Cref{prop:exp_of_products_lc}, which describes locally constant factorization algebras on product spaces. Since $\mathbb{R}^n_*$ is a basic the collar-gluing property \Cref{cor:gluing_lcfas} can't help us to analyze the situation. We are left with two cases: $n=1$ and $n > 1$. To get a better grasp on the data, we first explore the more complicated case of $n > 1$ by examining the $\infty$-operad $\disk(\mathsf{D}_{0 \subset n}^*)$, when $n > 1$. 
+together with \Cref{prop:exp_of_products_lc}, which describes locally constant factorization algebras on product spaces. Since $\mathbb{R}^n_*$ is a basic the collar-gluing property \Cref{thm:gluing_lcfas} can't help us to analyze the situation. We are left with two cases: $n=1$ and $n > 1$. To get a better grasp on the data, we first explore the more complicated case of $n > 1$ by examining the $\infty$-operad $\disk(\mathsf{D}_{0 \subset n}^*)$, when $n > 1$. 
 
 \begin{observation}\label{obs:explore_D*}
     For the purposes of the observation we will shorten notation to $\mathscr{D}_* := \disk (\mathsf{D}_{0 \subset n}^*)$. Since the defect is a point there can be at most one disk that contains it per morphism. Thus, the morphism spaces to consider are
@@ -93,7 +93,7 @@ together with \Cref{prop:exp_of_products_lc}, which describes locally constant f
 \end{proof}
 
 \begin{remark}
-    The study of locally constant factorization algebras on $\mathbb{R}^n_*$ was also undertaken in \cite[sec.6.3]{ginot2015}. \Cref{thm:classif_Rn*}, as it appears above, is slightly different in its statement compared to the corresponding \cite[cor.8]{ginot2015}. We believe that this is due to the fact that using the homotopy pullback is not what the proof provided in the reference actually does. The remaining discrepancy is then explained by our \Cref{cor:gluing_lcfas}, which glues locally constant factorization algebras.
+    The study of locally constant factorization algebras on $\mathbb{R}^n_*$ was also undertaken in \cite[sec.6.3]{ginot2015}. \Cref{thm:classif_Rn*}, as it appears above, is slightly different in its statement compared to the corresponding \cite[cor.8]{ginot2015}. We believe that this is due to the fact that using the homotopy pullback is not what the proof provided in the reference actually does. The remaining discrepancy is then explained by our \Cref{thm:gluing_lcfas}, which glues locally constant factorization algebras.
 \end{remark}
 
 \begin{remark}
@@ -114,7 +114,7 @@ together with \Cref{prop:exp_of_products_lc}, which describes locally constant f
 
 \subsection{The General Case of \texorpdfstring{$M_{\Sigma}$}{M Sigma}}
 
-Locally, near the defect, the locally constant factorization algebra is, of course, going to look like a locally constant factorization algebra over $\mathbb{R}^{d \subset n}$. However, it is possible that the global topology introduces some twisting of this local understanding. Due to \Cref{cor:gluing_lcfas} and the properties of stratified manifolds, in any particular case, it's possible to find some list of collar-gluings that reduce the problem down to the local case, but this doesn't tell us anything about the general structure. Despite this, there is a particular collar-gluing that is the obvious first step if we're looking at a general manifold $M_\Sigma$. We will now describe this.
+Locally, near the defect, the locally constant factorization algebra is, of course, going to look like a locally constant factorization algebra over $\mathbb{R}^{d \subset n}$. However, it is possible that the global topology introduces some twisting of this local understanding. Due to \Cref{thm:gluing_lcfas} and the properties of stratified manifolds, in any particular case, it's possible to find some list of collar-gluings that reduce the problem down to the local case, but this doesn't tell us anything about the general structure. Despite this, there is a particular collar-gluing that is the obvious first step if we're looking at a general manifold $M_\Sigma$. We will now describe this.
 
 The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to construct a regular neighborhood of our defect, echoing the tubular neighborhood theorem, now in the case of stratified spaces.
 %
@@ -164,7 +164,7 @@ The data of an embedding $\Sigma \xhookrightarrow{} M_\Sigma$ allows us to const
 \end{construction}
 
 
-\Cref{cor:gluing_lcfas} allows us to use the collar-gluing from above to write the equivalence of $\infty$-categories
+\Cref{thm:gluing_lcfas} allows us to use the collar-gluing from above to write the equivalence of $\infty$-categories
 %
 \begin{equation}
     \lcfa_{M_\Sigma} (\catC) \simeq \lcfa_{M \setminus \Sigma} (\catC) \bigtimes_{\lcfa_{\mathsf{L}_\Sigma \times \mathbb{R}} (\catC)} \lcfa_{\cone(\pi)} (\catC),

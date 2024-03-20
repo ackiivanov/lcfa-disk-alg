@@ -255,9 +255,88 @@ Before me move on to the proof of the above two results we pause to record a few
     \end{multicols}
 \end{proof}
 
+\begin{remark}
+    The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
+\end{remark}
+
+\subsection{An Outside View of Factorization Algebras}
+
+After the results of the previous section we remark on a general view that we can take for the $\infty$-categories of (locally constant) factorization algebras. Namely, we notice factorization algebras can be cast as a functor
+%
+\begin{equation}
+    \falg_{-}(\catC), \lcfa_{-}(\catC): \mfld[r] \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}},
+\end{equation}
+%
+where the action on morphisms is given by restriction, which is what gives rise to the $^{\mathsf{op}}$. 
+
+
+\begin{proposition}
+    Factorization algebras can be formulated as functors
+    %
+    \begin{equation}
+        \falg_{-}(\catC), \lcfa_{-}(\catC): \mfld \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}}.
+    \end{equation}
+\end{proposition}
+
+\begin{proof}
+    The proof will go along the same lines for both, so we will focus on factorization algebras, and shorten notation to $\mathscr{F} := \falg (\catC): \mfld[r] \xrightarrow{} \cat^{\mathsf{op}}$. Beyond the obvious assignment on objects, to define the functor we need to provide a map of spaces
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mfld}(M, N) \xrightarrow{\ \ \eta \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}.
+    \end{equation}
+    %
+    This data can be provided in the form of a map of simplicial sets, whose components are
+    %
+    \begin{equation}
+        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}_p,
+    \end{equation}
+    %
+    where the morphism space notation was introduced in \Cref{def:mfld_infty_cat}. Any map from a space will factor through the maximal $\infty$-groupoid of the codomain, so that we can drop the $^{\simeq}$ requirement on the target. Unraveling the definition of a functor category at the same time means that we need to provide maps
+    %
+    \begin{equation}
+        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Hom}_{\mathsf{sSet}}(\mathscr{F}(N) \times \Delta^p, \mathscr{F}(M)).
+    \end{equation}
+    %
+    But indeed,
+    %
+    \begin{align}
+        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xhookrightarrow{\ \ \ \ \ \ \ }& \mathsf{Emb}(M \times \Delta^p, N \times \Delta^p) \\
+        \xrightarrow{\mathrm{restrict}}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p), F(M \times \Delta^p)) \\
+        \xrightarrow{\ \pi_{1*} \circ -}& \mathsf{Hom_{sSet}} (F(N \times \Delta^p) , F(M)) \\
+        \xrightarrow{\ - \circ \alpha^p \ }& \mathsf{Hom_{sSet}} (F(N) \times \Delta^p , F(M))
+    \end{align}
+
+    WORK IN PROGRESS.
+\end{proof}
+
+
+
+
+
+
+
+
+In the case of disjoint union, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs} then provide the equivalences that are needed to make this into a symmetric monoidal functor, where the symmetric monoidal product on $\cat^{\mathsf{op}}$ is given by \emph{coproduct}. With that understanding the same two results, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs}, can be understood as saying that the functors $\falg(\catC)$ and $\lcfa(\catC)$ satisfy $\otimes$-excision as outlined in \Cref{sec:excision_homology}.% We can even work a bit more to show:
+%
+%\begin{proposition}
+%    The functors $\falg(\catC)$ and $\lcfa(\catC)$ respect sequential colimits.
+%\end{proposition}
+%
+%\begin{proof}
+%    The proof will go along the same lines for both, so we will focus on factorization algebras, and shorten notation to $\mathscr{F} := \falg (\catC): \mfld[r] \xrightarrow{} \cat^{\mathsf{op}}$. We will also use the convention that we work in $\cat$ instead of its opposite. In these terms, the statement we need to prove is that the canonical functor
+%    %
+%    \begin{equation}
+%        \mathscr{F}(M) \xrightarrow[\alpha]{\ \ \simeq \ \ } \mathsf{lim} (\mathscr{F}(M_0) \xleftarrow{} \mathscr{F}(M_1) \xleftarrow{} \dots)
+%    \end{equation}
+%    %
+%    is an equivalence of $\infty$-categories, where $M := \cup_{i \geq 0} M_i$. All functors used to make the diagram are restriction functors. 
+%
+%    An object of the limit is a collection $(A_0, A_1, \dots)$ of factorization algebras on $M_0, M_1, \dots$, respectively, together with equivalences $\eta_i: A_{i+1}|_{M_i} \simeq A_i$ for $i \geq 0$.
+%\end{proof}
+
+
 
 \subsection{Some Examples of Gluing}
-
 
 \begin{example}\label{ex:reproduce_lcfas_on_interval}
     With the ingredients we have introduced up to now, specifically in \Cref{ssec:lcfa_on_ints}, we can do a nontrivial check of the gluing theorem. This is because we can write a collar-gluing of the closed interval $[-1,1] \cong \left[-1,1\right) \coprod_{(-1,1)} \left(-1,1\right] \cong \mathbb{R}_{\geq 0} \coprod_{\mathbb{R}} \mathbb{R}_{\leq 0}$. We note here that we have written $\mathbb{R}_{\leq 0}$ and $\mathbb{R}_{\geq 0}$ to emphasize the maps forming the decomposition. At the level of unstructured objects these two are isomorphic (see also \Cref{rem:left_or_right_module}). For this example, the theorem says that locally constant factorization algebras on the closed interval should be given by
