@@ -259,7 +259,8 @@ Before me move on to the proof of the above two results we pause to record a few
     The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
 \end{remark}
 
-\subsection{An Outside View of Factorization Algebras}
+
+\subsection{An Outside View of Factorization Algebras ({\color{red} Work In Progress})}
 
 After the results of the previous section we remark on a general view that we can take for the $\infty$-categories of (locally constant) factorization algebras. Namely, we notice factorization algebras can be cast as a functor
 %
@@ -267,11 +268,47 @@ After the results of the previous section we remark on a general view that we ca
     \falg_{-}(\catC), \lcfa_{-}(\catC): \mfld[r] \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}},
 \end{equation}
 %
-where the action on morphisms is given by restriction, which is what gives rise to the $^{\mathsf{op}}$. 
+where the action on morphisms is given by restriction, which is what gives rise to the $^{\mathsf{op}}$. In the case of disjoint union, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs} then provide the equivalences that are needed to make these into symmetric monoidal functors, where the symmetric monoidal product on $\cat^{\mathsf{op}}$ is given by \emph{coproduct}. 
+
+We know from \Cref{thm:decom_strat_man} that any manifold can be constructed from basics by iterated collar-gluings and sequential colimits. Having described what happens to a locally constant factorization algebras under collar-gluings of manifolds, we now turn to sequential colimits.
+
+\begin{proposition}
+    The functors $\falg(\catC)$ and $\lcfa(\catC)$ respect sequential colimits.
+\end{proposition}
+
+\begin{proof}
+    The proof will go along the same lines for both, so we will focus on factorization algebras, and shorten notation to $\mathscr{F} := \falg (\catC): \mfld[r] \xrightarrow{} \cat^{\mathsf{op}}$. We will also use the convention that we work in $\cat$ instead of its opposite. In these terms, the statement we need to prove is that the canonical functor
+    %
+    \begin{equation}
+        \mathscr{F}(M) \xrightarrow[\alpha]{\ \ \simeq \ \ } \mathsf{lim} (\mathscr{F}(M_0) \xleftarrow{} \mathscr{F}(M_1) \xleftarrow{} \dots)
+    \end{equation}
+    %
+    is an equivalence of $\infty$-categories, where $M := \cup_{i \geq 0} M_i$. All functors used to make the diagram are restriction functors. 
+
+    An object of the limit is a collection $(A_0, A_1, \dots)$ of factorization algebras on $M_0, M_1, \dots$, respectively, together with equivalences $\eta_i: A_i \simeq A_{i+1}|_{M_i}$ for $i \geq 0$. Towards showing essential surjectivity of $\alpha$ we will construct the factorization algebra $A$ on $M$ given by the following prescription. Given any open $U \subset M$, there will be an integer $i$, such that $U \subset M_i$; we take the smallest such integer, call it $i_U$, and define
+    %
+    \begin{equation}
+        A(U) := A_{i_U} (U).
+    \end{equation}
+    %
+    Given a morphism $U \xhookrightarrow{} V$ we know that $i_U \leq i_V$, and the morphism we assign is
+    %
+    \begin{equation}
+        A(U \xhookrightarrow{} V) := A_{i_U}(U) \xrightarrow{\eta_{i_U}(U)} \cdots \xrightarrow{\eta_{i_V - 1}(U)} A_{i_V} (U) \xrightarrow{A_{i_V} (U \xhookrightarrow{} V)} A_{i_V} (V).
+    \end{equation} 
+    
+    ...
+    
+    Using \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg}, we will take the disk algebra incarnation of the relevant $\infty$-categories.
+\end{proof}
+
+
+
+
 
 
 \begin{proposition}
-    Factorization algebras can be formulated as functors
+    {\color{red} (Probably untrue)} Factorization algebras can be formulated as functors
     %
     \begin{equation}
         \falg_{-}(\catC), \lcfa_{-}(\catC): \mfld \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}}.
@@ -291,49 +328,53 @@ where the action on morphisms is given by restriction, which is what gives rise 
         \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}_p,
     \end{equation}
     %
-    where the morphism space notation was introduced in \Cref{def:mfld_infty_cat}. Any map from a space will factor through the maximal $\infty$-groupoid of the codomain, so that we can drop the $^{\simeq}$ requirement on the target. Unraveling the definition of a functor category at the same time means that we need to provide maps
+    where the morphism space notation was introduced in \Cref{def:mfld_infty_cat}. Any map from a space will factor through the maximal $\infty$-groupoid of the codomain, so that we can drop the $^{\simeq}$ requirement. Unraveling the definition of a functor category at the same time means that we need to provide maps
     %
     \begin{equation}
         \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Hom}_{\mathsf{sSet}}(\mathscr{F}(N) \times \Delta^p, \mathscr{F}(M)).
     \end{equation}
     %
-    But indeed,
+    And indeed,
     %
     \begin{align}
         \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xhookrightarrow{\ \ \ \ \ \ \ }& \mathsf{Emb}(M \times \Delta^p, N \times \Delta^p) \\
-        \xrightarrow{\mathrm{restrict}}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p), F(M \times \Delta^p)) \\
-        \xrightarrow{\ \pi_{1*} \circ -}& \mathsf{Hom_{sSet}} (F(N \times \Delta^p) , F(M)) \\
-        \xrightarrow{\ - \circ \alpha^p \ }& \mathsf{Hom_{sSet}} (F(N) \times \Delta^p , F(M))
+        \xrightarrow{\mathrm{restrict}}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p), \mathscr{F}(M \times \Delta^p)) \\
+        \xrightarrow{\ \pi_{1*} \circ -}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p) , \mathscr{F}(M)) \\
+        \xrightarrow{\ - \circ \alpha^p \ }& \mathsf{Hom_{sSet}} (\mathscr{F}(N) \times \Delta^p , \mathscr{F}(M)).
     \end{align}
-
-    WORK IN PROGRESS.
+    %
+    Let us further describe the final arrow. It arises as a functor
+    %
+    \begin{equation}
+        \mathscr{F} (N) \times \Delta^p \xrightarrow{\ \ \alpha^p \ \ } \mathscr{F}(N \times \Delta^p),
+    \end{equation}
+    %
+    whose components are given by
+    %
+    \begin{equation}
+        \alpha^p_m: \mathscr{F} (N)_m \times \mathsf{Hom}_{\Delta}([m], [p]) \xrightarrow{} \mathscr{F}(N \times \Delta^p)_m.
+    \end{equation}
+    %
+    ......
 \end{proof}
 
+{\color{red} Work in progress}
 
+This perspective on the theory of locally constant factorization algebras as a functor reframes the gluing result \Cref{thm:gluing_lcfas}, and together with lemma \Cref{lem:disk/M_to_disk} points towards a result like the following:
 
+\begin{conjecture}
+    The theory of locally constant factorization algebras is fully determined, using factorization homology, by the data of a functor
+    %
+    \begin{equation}
+        \bsc \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}},
+    \end{equation}
+    %
+    which to each basic $U$ attaches the $\infty$-category $\mathsf{Fun}^{\otimes} (\disk(\mathsf{B}_U), \catC)$ of disk algebras with $\mathsf{B}_U$ structure, where $\mathsf{B}_U$ is the sieve poset whose maximal element is $U$.
+\end{conjecture}
 
-
-
-
-
-In the case of disjoint union, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs} then provide the equivalences that are needed to make this into a symmetric monoidal functor, where the symmetric monoidal product on $\cat^{\mathsf{op}}$ is given by \emph{coproduct}. With that understanding the same two results, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs}, can be understood as saying that the functors $\falg(\catC)$ and $\lcfa(\catC)$ satisfy $\otimes$-excision as outlined in \Cref{sec:excision_homology}.% We can even work a bit more to show:
-%
-%\begin{proposition}
-%    The functors $\falg(\catC)$ and $\lcfa(\catC)$ respect sequential colimits.
-%\end{proposition}
-%
 %\begin{proof}
-%    The proof will go along the same lines for both, so we will focus on factorization algebras, and shorten notation to $\mathscr{F} := \falg (\catC): \mfld[r] \xrightarrow{} \cat^{\mathsf{op}}$. We will also use the convention that we work in $\cat$ instead of its opposite. In these terms, the statement we need to prove is that the canonical functor
-%    %
-%    \begin{equation}
-%        \mathscr{F}(M) \xrightarrow[\alpha]{\ \ \simeq \ \ } \mathsf{lim} (\mathscr{F}(M_0) \xleftarrow{} \mathscr{F}(M_1) \xleftarrow{} \dots)
-%    \end{equation}
-%    %
-%    is an equivalence of $\infty$-categories, where $M := \cup_{i \geq 0} M_i$. All functors used to make the diagram are restriction functors. 
-%
-%    An object of the limit is a collection $(A_0, A_1, \dots)$ of factorization algebras on $M_0, M_1, \dots$, respectively, together with equivalences $\eta_i: A_{i+1}|_{M_i} \simeq A_i$ for $i \geq 0$.
+%    The second part of the statement simply concerns what data defines a locally constant factorization algebra on a disk. 
 %\end{proof}
-
 
 
 \subsection{Some Examples of Gluing}
