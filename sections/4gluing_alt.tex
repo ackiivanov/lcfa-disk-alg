@@ -272,7 +272,7 @@ where the action on morphisms is given by restriction, which is what gives rise 
 
 We know from \Cref{thm:decom_strat_man} that any manifold can be constructed from basics by iterated collar-gluings and sequential colimits. Having described what happens to a locally constant factorization algebras under collar-gluings of manifolds, we now turn to sequential colimits.
 
-\begin{proposition}
+\begin{proposition}\label{prop:fa_seq_col}
     The functors $\falg(\catC)$ and $\lcfa(\catC)$ respect sequential colimits.
 \end{proposition}
 
@@ -285,7 +285,7 @@ We know from \Cref{thm:decom_strat_man} that any manifold can be constructed fro
     %
     is an equivalence of $\infty$-categories, where $M := \cup_{i \geq 0} M_i$. All functors used to make the diagram are restriction functors. 
 
-    An object of the limit is a collection $(A_0, A_1, \dots)$ of factorization algebras on $M_0, M_1, \dots$, respectively, together with equivalences $\eta_i: A_i \simeq A_{i+1}|_{M_i}$ for $i \geq 0$. Towards showing essential surjectivity of $\alpha$ we will construct the factorization algebra $A$ on $M$ given by the following prescription. Given any open $U \subset M$, there will be an integer $i$, such that $U \subset M_i$; we take the smallest such integer, call it $i_U$, and define
+    An object of the limit is a collection $(A_0, A_1, \dots)$ of factorization algebras on $M_0, M_1, \dots$, respectively, together with equivalences $\eta_i: A_i \simeq A_{i+1}|_{M_i}$ for $i \geq 0$. Towards showing essential surjectivity of $\alpha$ we will construct the factorization algebra $A$ on $M$ given by the following prescription. Using \Cref{cor:disk_alg=falg}, we will take the disk algebra incarnation of the relevant $\infty$-categories, so that we want to construct $A \in \alg{\disk[r]_{/M}}$. Given any disk $U \subset M$, there will be an integer $i$, such that $U \subset M_i$; we take the smallest such integer, call it $i_U$, and define
     %
     \begin{equation}
         A(U) := A_{i_U} (U).
@@ -293,74 +293,66 @@ We know from \Cref{thm:decom_strat_man} that any manifold can be constructed fro
     %
     Given a morphism $U \xhookrightarrow{} V$ we know that $i_U \leq i_V$, and the morphism we assign is
     %
-    \begin{equation}
-        A(U \xhookrightarrow{} V) := A_{i_U}(U) \xrightarrow{\eta_{i_U}(U)} \cdots \xrightarrow{\eta_{i_V - 1}(U)} A_{i_V} (U) \xrightarrow{A_{i_V} (U \xhookrightarrow{} V)} A_{i_V} (V).
-    \end{equation} 
-    
-    ...
-    
-    Using \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg}, we will take the disk algebra incarnation of the relevant $\infty$-categories.
-\end{proof}
-
-
-
-
-
-
-\begin{proposition}
-    {\color{red} (Probably untrue)} Factorization algebras can be formulated as functors
-    %
-    \begin{equation}
-        \falg_{-}(\catC), \lcfa_{-}(\catC): \mfld \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}}.
-    \end{equation}
-\end{proposition}
-
-\begin{proof}
-    The proof will go along the same lines for both, so we will focus on factorization algebras, and shorten notation to $\mathscr{F} := \falg (\catC): \mfld[r] \xrightarrow{} \cat^{\mathsf{op}}$. Beyond the obvious assignment on objects, to define the functor we need to provide a map of spaces
-    %
-    \begin{equation}
-        \mathsf{Hom}_{\mfld}(M, N) \xrightarrow{\ \ \eta \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}.
+    \begin{equation}\label{eq:seq_col_gluing}
+        A(U \xhookrightarrow{} V) := \left( A_{i_U}(U) \xrightarrow{\eta_{i_U}(U)} \cdots \xrightarrow{\eta_{i_V - 1}(U)} A_{i_V} (U) \xrightarrow{A_{i_V} (U \xhookrightarrow{} V)} A_{i_V} (V) \right).
     \end{equation}
     %
-    This data can be provided in the form of a map of simplicial sets, whose components are
-    %
-    \begin{equation}
-        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}_p,
-    \end{equation}
-    %
-    where the morphism space notation was introduced in \Cref{def:mfld_infty_cat}. Any map from a space will factor through the maximal $\infty$-groupoid of the codomain, so that we can drop the $^{\simeq}$ requirement. Unraveling the definition of a functor category at the same time means that we need to provide maps
-    %
-    \begin{equation}
-        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Hom}_{\mathsf{sSet}}(\mathscr{F}(N) \times \Delta^p, \mathscr{F}(M)).
-    \end{equation}
-    %
-    And indeed,
+    The same construction works for multimorphisms too, e.g. for $U \sqcup U' \xhookrightarrow{} V$ we would have
     %
     \begin{align}
-        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xhookrightarrow{\ \ \ \ \ \ \ }& \mathsf{Emb}(M \times \Delta^p, N \times \Delta^p) \\
-        \xrightarrow{\mathrm{restrict}}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p), \mathscr{F}(M \times \Delta^p)) \\
-        \xrightarrow{\ \pi_{1*} \circ -}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p) , \mathscr{F}(M)) \\
-        \xrightarrow{\ - \circ \alpha^p \ }& \mathsf{Hom_{sSet}} (\mathscr{F}(N) \times \Delta^p , \mathscr{F}(M)).
-    \end{align}
+        A(U \sqcup U' \xhookrightarrow{} V) := \left( A_{i_U}(U) \otimes A_{i_{U'}} (U') \xrightarrow{\eta_{i_U}(U) \otimes \mathbb{1}} \cdots \xrightarrow{\eta_{i_V - 1}(U) \otimes \mathbb{1}} A_{i_V} (U) \otimes A_{i_{U'}}(U') \right. \notag\\
+        \left.\xrightarrow{\mathbb{1} \otimes \eta_{i_{U'}}(U')} \cdots \xrightarrow{\mathbb{1} \otimes \eta_{i_V - 1}(U')} A_{i_V} (U) \otimes A_{i_V} (U') \xrightarrow{} A_{i_V} (U \sqcup U') \xrightarrow{A_{i_V} (U \sqcup U' \xhookrightarrow{} V)} A_{i_V} (V) \right).
+    \end{align} 
     %
-    Let us further describe the final arrow. It arises as a functor
+    This describes the data of a $\disk[r]_{/M}$-algebra. When applying the above construction to locally constant factorization algebras it's also clear that the property of local constancy is inherited since then all the arrows in \cref{eq:seq_col_gluing} are equivalences.
+    
+    To show essential surjectivity of $\alpha$ we need to find equivalences $\epsilon_i: A|_{M_i} \xrightarrow{\simeq} A_i$ for all $i \geq 0$, which fit into a commutative diagram
     %
-    \begin{equation}
-        \mathscr{F} (N) \times \Delta^p \xrightarrow{\ \ \alpha^p \ \ } \mathscr{F}(N \times \Delta^p),
+    \begin{equation}\label{cd:seq_col_equivs}
+        \begin{tikzcd}
+            & A|_{M_i} = (A|_{M_{i+1}})|_{M_i} \arrow[ld, "\epsilon_i"'] \arrow[rd, "\epsilon_i|_{M_i}"] & \\
+            A_i \arrow[rr, "\eta_i"] & & A_{i+1}|_{M_i},
+        \end{tikzcd}
     \end{equation}
     %
-    whose components are given by
+    where we have remembered that consecutive restrictions commute on the nose. The equivalence $\epsilon_i$ is given by its components $\epsilon_i(U): A|_{M_i} \xrightarrow{} A_i(U)$, which we define as
     %
     \begin{equation}
-        \alpha^p_m: \mathscr{F} (N)_m \times \mathsf{Hom}_{\Delta}([m], [p]) \xrightarrow{} \mathscr{F}(N \times \Delta^p)_m.
+        \epsilon_i(U) := \left( A|_{M_i}(U) = A_{i_U}(U) \xrightarrow{\eta_{i_U}(U)} \cdots \xrightarrow{\eta_{i-1}(U)} A_i (U) \right).
     \end{equation}
     %
-    ......
+    That these assemble into a natural transformation is provided by commutative diagrams like
+    %
+    \begin{equation}
+        \begin{tikzcd}[column sep = {2.5cm}]
+            A_{i_U}(U) \arrow[d, "\eta_{i_V-1}(U) \circ \cdots \circ \eta_{i_U}(U)"'] \arrow[r, "\eta_{i-1}(U) \circ \cdots \circ \eta_{i_U}(U)"] & A_i(U) \arrow[d, "="] \\
+            A_{i_V}(U) \arrow[d] \arrow[r, "\eta_{i-1}(U) \circ \cdots \circ \eta_{i_V}(U)"] & A_i (U) \arrow[d] \\
+            A_{i_V}(V) \arrow[r, "\eta_{i-1}(V) \circ \cdots \circ \eta_{i_V}(V)"] & A_i (V).
+        \end{tikzcd}
+    \end{equation}
+    %
+    That these equivalences $\epsilon_i$ fit into diagrams like in \cref{cd:seq_col_equivs} is obvious from their definition.
+
+    Showing full faithfulness of $\alpha$ is the same for ordinary and locally constant factorization algebras since the later are a full $\infty$-subcategory of the former. What we have to show is that
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mathscr{F} (M)}(A, B) \xrightarrow{\ \ \alpha \ \ } \mathsf{Hom}_{\mathsf{lim}} (\alpha (A), \alpha(B)) \simeq \mathsf{lim}_{i \geq 0} (\mathsf{Hom}_{\mathscr{F}(M_i)} (A_i, B_i))
+    \end{equation}
+    %
+    is an equivalence of spaces. In the last equivalence we made use of the essential surjectivity from above. The same idea as for the construction of $A$ work here too, the main point being that any disk $U$ will have a finite $i_U$.
+    
+    ...
 \end{proof}
 
-{\color{red} Work in progress}
+Considering \Cref{thm:decom_strat_man} together with the statements of \Cref{cor:disk_alg=falg} (or \Cref{thm:disk_alg=lcfa} in the locally constant case), together with the above \Cref{prop:fa_seq_col}, we have an algorithm of how to compute the $\infty$-category of factorization algebras on any manifold if we know it on the basics. In other words, the theory of (locally constant) factorization algebras is fully determined by the assignment
+%
+\begin{equation}
+    U \mapsto \falg_U (\catC),
+\end{equation}
+%
+for each basic $U \in \bsc$.
 
-This perspective on the theory of locally constant factorization algebras as a functor reframes the gluing result \Cref{thm:gluing_lcfas}, and together with lemma \Cref{lem:disk/M_to_disk} points towards a result like the following:
+After a simplification down to disks, in the locally constant case , lemma \Cref{lem:disk/M_to_disk} points towards a result like the following:
 
 \begin{conjecture}
     The theory of locally constant factorization algebras is fully determined, using factorization homology, by the data of a functor
@@ -375,6 +367,59 @@ This perspective on the theory of locally constant factorization algebras as a f
 %\begin{proof}
 %    The second part of the statement simply concerns what data defines a locally constant factorization algebra on a disk. 
 %\end{proof}
+
+
+%\begin{proposition}
+%    {\color{red} (Probably untrue)} Factorization algebras can be formulated as functors
+%    %
+%    \begin{equation}
+%        \lcfa_{-}(\catC): \mfld \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}}.
+%    \end{equation}
+%\end{proposition}
+
+%\begin{proof}
+%    The proof will go along the same lines for both, so we will focus on factorization algebras, and shorten notation to $\mathscr{F} := \falg (\catC): \mfld[r] \xrightarrow{} \cat^{\mathsf{op}}$. Beyond the obvious assignment on objects, to define the functor we need to provide a map of spaces
+%    %
+%    \begin{equation}
+%        \mathsf{Hom}_{\mfld}(M, N) \xrightarrow{\ \ \eta \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}.
+%    \end{equation}
+%    %
+%    This data can be provided in the form of a map of simplicial sets, whose components are
+%    %
+%    \begin{equation}
+%        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Fun}(\mathscr{F}(N), \mathscr{F}(M))^{\simeq}_p,
+%    \end{equation}
+%    %
+%    where the morphism space notation was introduced in \Cref{def:mfld_infty_cat}. Any map from a space will factor through the maximal $\infty$-groupoid of the codomain, so that we can drop the $^{\simeq}$ requirement. Unraveling the definition of a functor category at the same time means that we need to provide maps
+%    %
+%    \begin{equation}
+%        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xrightarrow{\ \ \eta_p \ \ } \mathsf{Hom}_{\mathsf{sSet}}(\mathscr{F}(N) \times \Delta^p, \mathscr{F}(M)).
+%    \end{equation}
+%    %
+%    And indeed,
+%    %
+%    \begin{align}
+%        \mathsf{Emb}_{\Delta^p}(M \times \Delta^p, N \times \Delta^p) \xhookrightarrow{\ \ \ \ \ \ \ }& \mathsf{Emb}(M \times \Delta^p, N \times \Delta^p) \\
+%        \xrightarrow{\mathrm{restrict}}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p), \mathscr{F}(M \times \Delta^p)) \\
+%        \xrightarrow{\ \pi_{1*} \circ -}& \mathsf{Hom_{sSet}} (\mathscr{F}(N \times \Delta^p) , \mathscr{F}(M)) \\
+%        \xrightarrow{\ - \circ \alpha^p \ }& \mathsf{Hom_{sSet}} (\mathscr{F}(N) \times \Delta^p , \mathscr{F}(M)).
+%    \end{align}
+%    %
+%    Let us further describe the final arrow. It arises as a functor
+%    %
+%    \begin{equation}
+%        \mathscr{F} (N) \times \Delta^p \xrightarrow{\ \ \alpha^p \ \ } \mathscr{F}(N \times \Delta^p),
+%    \end{equation}
+%    %
+%    whose components are given by
+%    %
+%    \begin{equation}
+%        \alpha^p_m: \mathscr{F} (N)_m \times \mathsf{Hom}_{\Delta}([m], [p]) \xrightarrow{} \mathscr{F}(N \times \Delta^p)_m.
+%    \end{equation}
+%    %
+%    ......
+%\end{proof}
+
 
 
 \subsection{Some Examples of Gluing}
