@@ -167,14 +167,14 @@ We will now introduce two versions of the category of stratified manifolds that 
 
 For the next definition we notice that all standard simplices are stratified manifolds, obtained as $\Delta^n \cong \cone[b]^n(\ast) \to \cone[b]^n(\{0\}) \cong [n]$.
 
-\begin{definition}
+\begin{definition}\label{def:mfld_infty_cat}
     $\mfld$ is the $\infty$-category whose objects are stratified manifolds and whose morphisms are open embeddings among them. It is presented as the $\mathsf{Kan}$-enriched category of stratified manifolds by taking the Kan complex of morphisms between two objects $M$ and $N$ to be defined by
     %
     \begin{equation}
-        \mathsf{Hom}_{\mfld} (M, N): [p] \mapsto \mathsf{Mfld}_{/\Delta^p} (M \times \Delta^p, N \times \Delta^p).
+        \mathsf{Hom}_{\mfld} (M, N): [p] \mapsto \mathsf{Emb}_{\Delta^p} (M \times \Delta^p, N \times \Delta^p),
     \end{equation}
     %
-    Here, $\mathsf{Mfld}_{/\Delta^p}$ takes the morphism set in the over-category over $\Delta^p$.
+    where $\mathsf{Emb}_{\Delta^p} (M \times \Delta^p, N \times \Delta^p)$ denotes the embeddings from $M \times \Delta^p$ to $N \times \Delta^p$ that commute on the nose with the projections to $\Delta^p$.
 \end{definition}
 
 \begin{remark}

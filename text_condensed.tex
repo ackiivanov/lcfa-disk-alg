@@ -1,16 +1,433 @@
-\documentclass[../text]{subfiles} 
+% Run only with XeLaTeX!
+%---------------------------------------------------------------------
+%	FORMATING AND TYPESETTING
+%---------------------------------------------------------------------
+
+% Set document class
+\documentclass[12pt,a4paper]{article}
+
+% Option to change margin size
+\usepackage[margin=2cm]{geometry}
+
+% Font and encoding settings
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc} not necessary with xelatex?
+\usepackage{yfonts} % germanic fonts (fraktur...)
+%\defaultfontfeatures{Ligatures=TeX} %??
+
+% Footnotes
+\usepackage[stable]{footmisc}
+
+% Indentation and spacing
+\usepackage{indentfirst} % indentation
+\usepackage{enumitem}[leftmargin=0pt] % spacing
+\setlist{nosep}
+
+% Multi column environment
+\usepackage{multicol}
+
+% Formating of titles
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\small\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\small\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\small\bfseries}{\thesubparagraph}{1em}{}
+\usepackage[titletoc]{appendix}
+
+% Math typesetting packages
+\usepackage{amsmath, amssymb, amsthm, mathtools, commath}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % makes \mathbb{1} work and changes font of mathbb
+\usepackage[mathscr]{euscript} % euler script font
+\usepackage{tikz-cd} % tikz commutative diagrams
+\usepackage{thmtools, thm-restate} % theorem tools, especially restatable
+
+\AtBeginDocument{\renewcommand\setminus{\smallsetminus}} % \setminus doesn't work in unicode-math 
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	GRAPHICS
+%---------------------------------------------------------------------
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{pdfpages} % for inserting pdf pages
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%---------------------------------------------------------------------
+
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\renewcommand*{\bibfont}{\small}
+\addbibresource{text.bib}
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	HYPERLINKS
+%---------------------------------------------------------------------
+
+% Define the colors
+\usepackage{xcolor}
+\definecolor{brown}{HTML}{CD853F}
+\definecolor{blue}{HTML}{4169E1}
+\definecolor{green}{HTML}{2E8B57}
+
+% Setup options for hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true, linkcolor=black, breaklinks=true,
+linktoc=all, bookmarksnumbered=true,
+urlcolor=brown, linkcolor=blue, citecolor=green, % Link colors
+}
+
+% Referencing package
+\usepackage{cleveref}
+\crefname{section}{\S\!}{\S\S\!}
+\Crefname{section}{\S\!}{\S\S\!}
+
+
+%---------------------------------------------------------------------
+%	THEOREM STYLES
+%---------------------------------------------------------------------
+
+% Define a dummy counter to keep count for all sub-environments
+\newcounter{counter} \numberwithin{counter}{section}
+
+% Define theorem styles here based on the definition style
+\theoremstyle{definition}
+\newtheorem{definition}[counter]{Definition}
+\newtheorem{construction}[counter]{Construction}
+\newtheorem{observation}[counter]{Observation}
+
+% Define theorem styles here based on the plain style
+\theoremstyle{plain} 
+\newtheorem{theorem}[counter]{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[counter]{Corollary}
+\newtheorem{lemma}[counter]{Lemma}
+\newtheorem{proposition}[counter]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{conjecture}[counter]{Conjecture}
+
+
+% Define theorem styles here based on the remark style
+\theoremstyle{remark}
+\newtheorem{example}[counter]{Example}
+\newtheorem{remark}[counter]{Remark}
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	NEW COMMANDS
+%---------------------------------------------------------------------
+
+% general target category
+\newcommand{\catC}{\mathscr{C}}
+
+% categories of factorization algebras
+\newcommand{\falg}{\mathscr{F} \mathsf{Alg}}
+\newcommand{\lcfa}{\mathscr{F} \mathsf{Alg}^{\mathsf{lc}}}
+
+% category of manifolds
+\newcommand{\mfld}[1][s]{%
+    \ifx r#1\mathsf{Mfld}\else
+    \ifx s#1\mathscr{M} \mathsf{fld}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of disks
+\newcommand{\disk}[1][s]{%
+    \ifx r#1\mathsf{Disk}\else
+    \ifx s#1\mathscr{D} \mathsf{isk}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of opens
+\newcommand{\opens}[1][s]{%
+    \ifx r#1\mathsf{Opns}\else
+    \ifx s#1\mathscr{O} \mathsf{pns}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of cosheaves
+\newcommand{\csheaves}[1][n]{%
+    \ifx n#1 \mathsf{c} \mathscr{S} \mathsf{hv}\else
+    \mathsf{c} \mathscr{S} \mathsf{hv}^{\mathsf{#1}}
+    \fi
+}
+
+% category of infinity categories
+\newcommand{\cat}{\mathscr{C} \mathsf{at}_{\infty}}
+
+% template for category of algebras
+\newcommand{\alg}[1]{\mathscr{A} \mathsf{lg}_{#1}}
+
+% template for category of locally constant algebras
+\newcommand{\lcalg}[1]{\mathscr{A} \mathsf{lg}^{\mathsf{lc}}_{#1}}
+
+% half-open interval
+\newcommand{\hoint}{\mathbb{R}_{\geq 0}}
+
+% Cech complex
+\newcommand{\cech}{\check{\mathsf{C}}}
+
+% Category of basics
+\newcommand{\bsc}{\mathscr{B} \mathsf{sc}}
+\newcommand{\bstr}{\mathscr{B}}
+
+% Open cone
+\newcommand{\cone}[1][n]{%
+    \ifx b#1\overline{\mathsf{C}}\else
+    \ifx n#1\mathsf{C}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+
+%---------------------------------------------------------------------
+
+%\usepackage{subfiles}
+
+\setcounter{section}{-1}
 
 \begin{document}
+
+% Set title, author and date
+\title{Factorization Algebras and Factorization Homology on Stratified Spaces}
+\author{Aleksandar Ivanov, Ödül Tetik}
+\date{}
+\maketitle
+
+\begin{abstract}
+    We endeavor to fully describe (locally constant) factorization algebras on stratified spaces, by giving a description of the $\infty$-operad that underlies them through the use of factorization homology. We also give a result about a collar-gluing property that the $\infty$-categories of (locally constant) factorization algebras satisfy, which enables novel descriptions of these on more complicated spaces. Finally, we outline a classification scheme for locally constant factorization algebras on some stratified manifolds. Parts of this work were adapted from a Master's thesis dissertation submitted to ETH Z\"urich for the first author.
+\end{abstract}
+
+\tableofcontents
+
+
+
+
+
+\section{Introduction}
+
+{\color{red} Needs to be rewritten slightly when we finalize decision on what to include.}
+
+In this work we will explore the concepts of factorization algebras and factorization homology over stratified spaces. These two concepts, which at first sight will looks very different, will turn out to be closely related. We will strive to keep the discussion at the level of stratified spaces, while making a comparison to results in the smooth case. Some results we will meet have been proven in the smooth case, but with methods which do not (at the present moment) generalize to the stratified case. We will endeavor to point these out and give proofs that hold more generally. The outline of the text is as follows:
+
+%\textbf{\Cref{ch:strat_spaces} Stratified Spaces:} The first section deals with setting up the theory of stratified spaces that we will use. It is essentially a recap of the necessary results from the work of Ayala, Francis and Tanaka (AFT) \cite{aft_localstrut}, which is one of our main sources. The idea and fundamentals of stratified spaces have existed for a long time in different incarnation beginning with the work of Whitney \cite{whitney92}. The reason why we choose to work with this particular version of stratified spaces is due to them supporting a notion of conical smoothness that is a generalization of smoothness of manifolds. Furthermore, the theory of factorization homology has been developed with these spaces in mind, which eases the process of extending certain results to the stratified case much easier. We will not go into the full details that this incarnation of the theory has to offer, but instead we will only mention results that we will make use of later on. Beyond conical smoothness, this will include tangential structure and its stratified generalization, together with the packaging of both of these data into the concept of an $\infty$-category of basic singularity types. For the proofs of these statements the reader is encouraged to consult \cite{aft_localstrut}.
+
+%\textbf{\Cref{ch:fact_hom} Factorization Homology:} The second section will present the theory of factorization homology. Similar to the first section this will mostly be a recap of useful results developed by Ayala, Francis and Tanaka. Specifically, the stratified space results can be found in \cite{aft_fhstrat}, while the results for topological manifolds can be found in \cite{af_fhtop}. For the purposes of the theory we will need the concept of (structured) disk algebras, since this will be the algebraic input. Factorization homology will then combine this with the data of a specific kind of (possibly stratified) manifold into an object that can be viewed either as an invariant of the manifold or an invariant of the algebra. We will explore the key example of factorization homology over the closed, oriented interval $[-1,1]$, and see how this gives rise to the algebraic concept of the two-sided bar construction. More generally, this underpins the theory because it codifies the property of $\otimes$-excision. Finally, we will also state a classification result \cite[prop.4.8]{aft_fhstrat} about a certain type of disk algebras with stratified structure.
+
+\textbf{\Cref{ch:fact_alg} Factorization Algebras:} The third section introduces the concept of factorization algebras, together with its different variations, like prefactorization algebras and locally constant factorization algebras. Of these, the locally constant factorization algebras will be the ones that capture the different possible stratified structures that a manifold can have, and they will be a large focus of this work. The definitions of these will not be novel. They can be found in the works \cite{cg2016}, \cite{ginot2015} and even \cite{af_primer}. In fact, in the slightly different context of vertex algebras the idea can be traced back to \cite{bd2004}. However, all of the above works take a slightly different perspective in their presentation of the definitions, which we hope to unite in this work. The key result of this section is the following:
+%
+\begin{theorem*}[\ref{thm:disk_alg=lcfa}]
+    There is an equivalence of $\infty$-categories between locally constant factorization algebras over a stratified manifold $M$ and $\disk_{/M}$-algebras
+    %
+    \begin{equation}
+        \int: \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_M (\catC),
+    \end{equation}
+    %
+    given by factorization homology,
+\end{theorem*}
+%
+as well as its \Cref{cor:disk_alg=falg} for the case of ordinary factorization algebras. These show that the $\infty$-operad governing factorization algebras can be taken to be the slice $\infty$-operad $\disk_{/M}$ (or $\disk[r]_{/M}$ for the ordinary case). We then introduce some operations that we can do with factorization algebras like the pushforward and restriction, as well as state a result for locally constant factorization algebras on product spaces, which confirms a conjecture of \cite{ginot2015}:
+%
+\begin{proposition*}[\ref{prop:exp_of_products_lc}]
+    Let $M$ and $N$ be stratified manifolds. There is an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \bar{\pi}: \lcfa_{M \times N}(\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{M}(\lcfa_{N}(\catC)).
+    \end{equation}
+\end{proposition*}
+%
+Finally, we will examine some examples of factorization algebras whose construction is known, specifically, locally constant factorization algebras on the intervals $(-1,1)$, $[-1,1)$ and $[-1,1]$ as well as Euclidean spaces $\mathbb{R}^n$ more generally.
+
+\textbf{\Cref{ch:gluing_disk_alg} Collar-gluings and Disk Algebras:} The fourth section presents a novel result about the behavior of certain types of factorization algebras under the operation of collar-gluing in the manifold variable. It essentially shows that we can reproduce factorization algebras on a stratified manifold if we know them on some particular pieces of it together with the data of how to glue them. Formally, we have
+%
+\begin{theorem*}[\ref{thm:gluing_lcfas}]
+    Given a collar-gluing of stratified manifolds $f: M \rightarrow [-1,1]$, the $\infty$-category of locally constant factorization algebras is equivalent to the pullback of $\infty$-categories
+    %
+    \begin{equation}
+        \lcfa_{M} (\catC) \simeq \lcfa_{M_-} (\catC) \bigtimes_{\lcfa{M_0 \times \mathbb{R}} (\catC)} \\cfa_{M_+} (\catC).
+    \end{equation}
+\end{theorem*}
+%
+The results of the previous section a very important in the proof of this statement, because we heavily use the properties of factorization homology. A similar version holds for ordinary factorization algebras in the for of \Cref{cor:disk_alg=falg}. This result hugely expands the number of manifolds for which the $\infty$-category of locally constant factorization algebras can be specified. As a straightforward example, it gives a way to work on, and classify, factorization algebras on all higher spheres $S^n$. Without it, only the circle has been described to date (\cite{ginot2015}) using equivariant factorization algebras and inheritance from covering spaces.
+
+\textbf{\Cref{ch:classif_defect_mfld} Classifying $\lcfa$s on Defect Manifolds:} The fifth section focuses on the stratified structure and gives a way to express what effect this has on the locally constant factorization algebras. Specifically, we look at the data of a smooth manifold $M$ with a distinguished, properly embedded submanifold $\Sigma$ (also known as a defect submanifold) as the data of a stratified manifold $M_\Sigma$. We will show that, along with giving algebras associated to the different pieces, locally constant factorization algebras on these manifolds, in some (precise) sense, also encode a module structure associated with $\Sigma$.
+
+\textbf{Further Questions:} The exploration below naturally leads to questions that are beyond the scope of this work. As we will see, factorization algebras only need a topological space to be defined, but locally constant factorization algebras also capture information about the stratified structure. Neither of these, however, capture information about the tangential structure of the manifold, so the question arises:
+%
+\begin{itemize}
+    \item Does there exist a version of factorization algebras that usefully capture information both about the stratified structure of a manifold and about its tangential structure?
+\end{itemize}
+%
+The recent thesis \cite{pena2022} could provide a fruitful direction of exploration of the former concept. In a similar vein, \cite{cg2016} explain why it's important to have the concept of a $G$-equivariant factorization algebra, where $G$ is a Lie group. In particular, according to them, this asks for some definition of a smooth action of $G$ on factorization algebras.
+%
+\begin{itemize}
+    \item Is there a suitable way to encompass this notion in the formalism presented here?
+\end{itemize}
+%
+The beginnings of examining this idea can already be found in the thesis \cite{murray2020}, however the development there, while important, is still preliminary.
+
+
+\subsection{Conventions on \texorpdfstring{$\infty$}{infinity}-categories}
+
+The $\infty$-categories in this work will use the quasi-category model of $\infty$-category theory introduced by Joyal in \cite{joyal}, which is based on the simplicial sets introduced by \cite{bv73}. The work by Lurie in \cite{lurie_htt} and \cite{lurie_ha} greatly builds on this theory, and questions about fundamental objects or constructions that are in this text will always be answered in those references. This choice is because a great deal of the theory of factorization homology, as well as factorization algebras deal with $\infty$-categories of functors, which are most easily defined for quasi-categories.
+
+It is also important to note that we will not be making a notational distinction between topological categories, Kan enriched categories and $\infty$-categories because of the functors
+%
+\begin{equation}
+    \{ \mathsf{Top}\mathrm{-categories}\} \xrightarrow{\mathsf{Sing}} \{ \mathsf{Kan}\mathrm{-categories}\} \xrightarrow{\mathsf{N}} \cat,
+\end{equation}
+%
+which are both Quillen--equivalences in appropriate ways (\cite{joyal2007quasi,bergner2010survey}). In particular, we will not distinguish notationally the nerve of an ordinary category from the ordinary category itself. Similarly, we will not distinguish between (topological) multicategories and their $\infty$-operadic nerve.
+
+
+\subsection{Stratified Spaces}\label{ssec:strat_spaces}
+
+The spaces that this work will be set in will very often be stratified spaces. Thus, we first need to define what we mean by this concept. There are multiple definitions of stratified spaces in the literature, all of which have their advantages and disadvantages. For our purposes, we will follow the account of \cite{aft_localstrut}. A compatible source is also \cite[sec.A.5]{lurie_ha}. The majority of the work on factorization homology has so far been elaborated using this particular set of definitions, and similarly the stratified spaces used in the literature on factorization algebras are usually subsumed too. Further details are, of course, discussed in the original \cite{aft_localstrut}, where one can find great explanations of the definitions that are needed, and detailed proofs of the theorems that can be proven.
+
+
+\subsection{Factorization Homology}\label{ssec:fact_hom}
+
+Factorization homology (also known as topological chiral homology) is a construction that to the data of a smooth manifold $M$ and an algebra $A$ valued in a symmetric monoidal $\infty$-category $\catC$ assigns an object
+%
+\begin{equation}
+    \int_{M} A \in \catC.
+\end{equation}
+%
+The physical interpretation is that given a spacetime $M$ and local observables $A$, $\int_MA$ returns global observables, though typically not all of them.
+
+This implementation, with $M$ relaxed to a stratified manifold and $A$ to an appropriate type of algebra, is sometimes termed `alpha' factorization homology, as opposed to the `beta' version of \cite{ayala2020factorization} that evaluates $(\infty,n)$-categories on variframed stratified $n$-manifolds. In this work, we will be concerned, in this sense, with alpha factorization homology. 
+
+Fixing the algebra, the construction is functorial with respect to open embeddings in the manifold variable, which is the starting point to show that it is a chain level homology theory in a generalized sense. The initial chiral version was first introduced in \cite{bd2004}, and a topological version was introduced by \cite{lurie_ha}. The theory of factorization homology in the manner that we will recall here has been developed in \cite{francis2013,af_fhtop, aft_fhstrat}. We will also follow the introductory text \cite{af_primer}.
+
+In the entirety of this work, we fix our target $\catC$ to be a symmetric monoidal $\infty$-category that is \emph{$\otimes$-presentable} \cite{af_fhtop}, i.e. it satisfies:
+%
+\begin{enumerate}
+    \item $\catC$ is presentable: it admits colimits, and every object is a filtered colimit of compact objects, and
+    \item the monoidal structure distributes over colimits: for all $c \in \catC$, the functor $c \otimes -: \catC \xrightarrow{} \catC$ takes colimit diagrams to colimit diagrams.
+\end{enumerate}
+
+\begin{remark}\label{rem:inherit_sym_mon_struct}
+    For developing the theory of factorization homology the assumption that $\catC$ has all \emph{sifted} colimits, and that the monoidal structure commutes with these, is enough. However, if we want the $\infty$-category of algebras valued in $\catC$ to inherit the properties of having sifted colimits that commute with the monoidal structure, then we must require that $\catC$ has \emph{all} (small) colimits. This will similarly be the case for factorization algebras. The stronger requirement also doesn't exclude any of the core examples that we are interested in.
+\end{remark}
+
+\begin{example}
+    The following are examples of $\otimes$-presentable categories:
+    %
+    \begin{enumerate}
+        \item chain complexes $\mathscr{C}\mathsf{h}_{\mathbb{k}}$ over a commutative ring $\mathbb{k}$, where equivalences are given by quasi-isomorphism. The symmetric monoidal structure can be both direct sum $\oplus$ or tensor product $\otimes$.
+        \item Any cocomplete, Cartesian closed $\infty$-category together with categorical product. (for example $\mathsf{Spaces}$ or $\cat$).
+    \end{enumerate}
+    %
+    In particular, $(\mathscr{C}\mathsf{h}_{\mathbb{k}}, \otimes)$ is the most relevant for physical examples which is why it is the target of choice in \cite{cg2016} and \cite{ginot2015}.
+\end{example}
+
+We also fix an $\infty$-category of basics $\bstr \xrightarrow{} \bsc$.
+
+\begin{remark}\label{rem:disk_b=disk_bsc}
+    Since we will be dealing with the relative case for the majority of the work, and because $\disk(\bstr)_{/M}$ (and the related slice $\infty$-operads) does not actually depend on the particular tangential structure, as long as $M$ admits it, we will simplify our notation down to $\disk_{/M}$.
+\end{remark}
+
+\begin{remark}\label{rem:fin_equiv_natural}
+    A few times in this work we will encounter the fact that a final functor $F: \mathscr{A} \xrightarrow{} \mathscr{B}$ between $\infty$-categories induces an equivalence
+    %
+    \begin{equation}\label{eq:fin_equivs_obj}
+        \mathsf{colim}(G) \xrightarrow{\ \ \simeq \ \ } \mathsf{colim}(G \circ F),
+    \end{equation}
+    %
+    for each functor $G: \mathscr{B} \xrightarrow{} \mathscr{C}$, whenever both colimits exist. We remark here that these equivalences are actually even natural in $G$. To explain this, we first notice that the equivalences in \Cref{eq:fin_equivs_obj} actually arise from equivalences between $\infty$-categories
+    %
+    \begin{equation}\label{eq:fin_equivs_cat}
+        \mathscr{C}_{G/} \xrightarrow{\ \ \simeq \ \ } \mathscr{C}_{G \circ F /},
+    \end{equation}
+    %
+    as discussed in \cite[prop.4.1.1.8]{lurie_htt}, where the functor is the obvious one. Furthermore, \cite[\href{https://kerodon.net/tag/016H}{016H}]{lurie_kerodon} tells us that the slice construction is functorial, which, after restricting, defines the functors
+    %
+    \begin{align}
+        &S: \mathsf{Fun}(\mathscr{B}, \mathscr{C}) \xrightarrow{\ \ \ } \cat& \mathrm{and}& &S': \mathsf{Fun}(\mathscr{A}, \mathscr{C}) \xrightarrow{\ \ \ } \cat,&
+    \end{align}
+    %
+    whose value on objects is given by $G \mapsto \mathscr{C}_{G/}$. We can now state that by naturality in $G$ we mean that the functors of \Cref{eq:fin_equivs_cat} assemble into an equivalence of functors   
+    %
+    \begin{equation}
+        S \xrightarrow{\ \ \simeq \ \ } S' \circ F^*
+    \end{equation}
+    %
+    in $\mathsf{Fun}(\mathsf{Fun(\mathscr{B}, \mathscr{C})}, \cat)$. But this is obviously the case, given the description of the maps in \Cref{eq:fin_equivs_cat}, and amounts to nothing more than bookkeeping.
+\end{remark}
+
+In particular, the above remark slightly extends \cite[prop.2.34]{aft_fhstrat}, as well as \cite[thm.2.25]{aft_fhstrat}, which become:
+%
+\begin{proposition}[{\cite[thm.2.34]{aft_fhstrat}}]\label{prop:barconst=intinterval}
+    There is an equivalence of functors between the two-sided bar construction
+    %
+    \begin{equation}
+        \mathsf{B}: \alg{\mathsf{Assoc^{RL}}}(\catC) \xrightarrow{} \catC
+    \end{equation}
+    %
+    and factorization homology over the oriented closed interval
+    %
+    \begin{equation}
+        \int_{[-1,1]}: \alg{\mathsf{Assoc^{RL}}}(\catC)\simeq \alg{\disk_{/[-1,1]}} (\catC) \xrightarrow{\ \int \ } \alg{\mfld_{/[-1,1]}} (\catC) \xrightarrow{\ \mathsf{ev}_{[-1,1]} \ } \catC.
+    \end{equation}
+    %
+    In particular, given a unital, (homotopy) associative algebra $A$, a unital right $A$-module $R$ and a unital left $A$-module $L$, there is an equivalence of objects
+    %
+    \begin{equation}
+        \int_{[-1,1]} (R, A, L) \xrightarrow{\ \ \simeq \ \ } R \bigotimes\limits_{A} L.
+    \end{equation}
+\end{proposition}
+
+\begin{proposition}[{\cite[thm.2.25]{aft_fhstrat}}]\label{prop:fh_pushforward}
+    Let $f: M \xrightarrow{} N$ be a weakly constructible bundle. There is a pushforward functor
+    %
+    \begin{equation}
+        f_*: \alg{\disk_{/M}}(\catC) \xrightarrow{\quad} \alg{\disk_{/N}}(\catC).
+    \end{equation}
+    %
+    This functor is such that there is a canonical equivalence between functors
+    %
+    \begin{equation}
+        \int_M -, \int_N f_* - : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \catC.
+    \end{equation}
+\end{proposition}
+
+
+
+
+
 
 \section{Factorization Algebras}\label{ch:fact_alg}
 
 \subsection{Definition of Factorization Algebras}
 
-Factorization algebras are a rigorous way to capture the idea of assigning an object to each piece of a space, together with a local-to-global principle that allows one to find out about larger pieces from smaller ones. The first ideas around factorization algebras were introduced by \cite{bd2004} in the context of vertex algebras in CFTs. These were geometric in nature. The topological version that we present was then introduced by Lurie and subsequently further developed in \cite{cg2016}, especially for the purposes of mathematical physics. Here we will present these ideas following \cite{cg2016} and also \cite{af_primer}. A similar exposition can be found in \cite{ginot2015}.
+Factorization algebras are a rigorous way to capture the idea of assigning an object to each piece of a space, together with a local-to-global principle that allows one to find out about larger pieces from smaller ones. The first ideas around factorization algebras were introduced by \cite{bd2004} in the context of vertex algebras in CFTs. These were geometric in nature. The topological version that we present was then introduced by Lurie and subsequently further developed in \cite{cg2016}, especially for the purposes of mathematical physics.
 
-\begin{remark}
-    We note that we have fixed a symmetric monoidal $\infty$-category $\catC$ that is $\otimes$-presentable to serve as the $\infty$-category that our algebras will be valued in.
-\end{remark}
+Here we will present these ideas following \cite{cg2016} and \cite{ginot2015} while also trying to express them more categorically in the style of \cite{af_primer}. In this sense, the present work bridges a gap in how factorization algebras are usually presented. 
 
 \begin{definition}
     Let $X$ be a topological space. We regard $\opens[s](X)$ as a multicategory (and consequently as an $\infty$-operad) whose objects are the open sets of $X$, and through the assignment of a unique multi-morphism from $\{U_i\}_{i \in I}$ to $U$ if the $U_i$ are pairwise disjoint and if $\bigcup_{i \in I} U_i \subset U$. A \emph{prefactorization algebra $F$ on $X$ with values in $\catC$} is an algebra in $\catC$ over this $\infty$-operad
@@ -21,7 +438,7 @@ Factorization algebras are a rigorous way to capture the idea of assigning an ob
 \end{definition}
 
 \begin{remark}
-    It is obvious that in the case of (stratified) manifolds we have already seen alternative notation for the $\infty$-operad $\opens(X)$ before, namely $\mfld[r]_{/M}$. This makes a connection to the standard notation used around factorization homology, and is something that we'll make use of later.
+    Restricting to the case of (stratified) manifolds we have an alternative notation for the $\infty$-operad $\opens(X)$, namely $\mfld[r]_{/M}$. This makes a connection to the standard notation used around factorization homology, and is something that we'll make use of later.
 \end{remark}
 
 \begin{remark}
@@ -57,7 +474,6 @@ Factorization algebras are a rigorous way to capture the idea of assigning an ob
     There is an obvious inclusion functor from the poset $\opens[r](X)$ of open subsets of $X$, ordered by inclusion, to the multicategory $\opens[s](X)$, namely, the one which hits only those multi-morphisms $\{U_i\}_{i \in I} \rightarrow U$, where the cardinality of the finite set $I$ is 1.
 \end{remark}
 
-
 A factorization algebra will be a prefactorization algebra that further satisfies a certain gluing condition that lets us construct its value on `larger' sets if we know it on `smaller' sets. More formally, this will be a kind of cosheaf condition, that we describe now, following \cite{weiss1999,af_primer}.
 
 We endow the poset $\opens[r](X)$ with a Grothendieck topology called the \emph{Weiss} Grothendieck topology \cite{weiss1999}. In this topology a sieve $\mathscr{U} \subset \opens[r](X)_{/U}$ on $U$ is a covering sieve if for each finite subset $S \subset U$, there is an object $(e: V \rightarrow U) \in \mathscr{U}$ for which $S \subset e(V)$. In other words, a family $\{ V_i \rightarrow U\}_{i \in I}$ is a Weiss cover of $U$ if every set of finitely many points in $U$ is contained in some $V_i$. Contrast this with the standard Grothendieck topology on the poset of opens $\opens[r](X)$, in which instead of a finite set we have a one-element set. Thus, every Weiss cover is a cover in the standard sense, but not necessarily the other way around.
@@ -87,16 +503,14 @@ We endow the poset $\opens[r](X)$ with a Grothendieck topology called the \emph{
 \end{remark}
 
 \begin{remark}
-    The category $\opens[r](X)$ can be replaced with any other category that supports an analogue of the Weiss Grothendieck topology. In the case of (stratified) manifolds, $\opens[r](X)$ is already the same as $\mfld[r]_{/X}$, be we could just as well define Weiss cosheaves on $\mfld[r]$, i.e. $\csheaves[W](\mfld[r], \catC)$. If we're working with the $\infty$-categories $\mfld$ or $\mfld_{/X}$, then we define cosheaves on them through the pullback
+    If we're working with the $\infty$-category $\mfld_{/X}$, then we define cosheaves on it through the pullback
     %
     \begin{equation}
         \begin{tikzcd}
-            \csheaves[W] (\mfld, \catC) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \mathsf{Fun}(\mfld, \catC) \arrow[d] \\
-            \csheaves[W] (\mfld[r], \catC) \arrow[r] & \mathsf{Fun}(\mfld[r], \catC),
+            \csheaves[W] (\mfld_{/X}, \catC) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \mathsf{Fun}(\mfld_{/X}, \catC) \arrow[d] \\
+            \csheaves[W] (\mfld_{/X}, \catC) \arrow[r] & \mathsf{Fun}(\mfld_{/X}, \catC).
         \end{tikzcd}
     \end{equation}
-    %
-    and similarly for the relative case $\mfld_{/X}$.
 \end{remark}
 
 \begin{definition}
@@ -114,7 +528,7 @@ We endow the poset $\opens[r](X)$ with a Grothendieck topology called the \emph{
     The previous definition implies that the top horizontal functor is fully faithful, which is something we need to prove. The bottom horizontal functor is fully faithful, by the definition of cosheaf, and the right vertical functor forgets the operations with arity higher than $1$. The key observation is that a Weiss cover is pairwise disjoint only when it consists of a single subset. Thus, the cosheaf condition does not affect the algebra morphisms and an equivalence of morphism spaces is trivial to find, namely one is given by the identity map.
 \end{proof}
 
-\begin{remark}\label{rem:check_nerve}
+\begin{remark}\label{rem:cech_nerve}
     A factorization algebra is a prefactorization algebra whose restriction to $\opens[r](X)$ is a Weiss cosheaf. This means that the definition can be rewritten in an equivalent way as with all cosheaves. Following \cite{nlab} (which presents the dual case of sheaves) we can express the condition through the \v{C}ech nerve. Let $\mathscr{U}_U = \{ U_i \rightarrow U\}_{i \in I}$ be a (Weiss) cover of an open set $U$ and $F$ be a copresheaf, and define the simplicial object
     %
     \begin{equation}
@@ -137,9 +551,7 @@ We endow the poset $\opens[r](X)$ with a Grothendieck topology called the \emph{
     $F$ is a (homotopy) cosheaf if, and only if, this morphism is an equivalence for every open set $U$ and every Weiss cover of it $\mathscr{U}_U$.
 \end{remark}
 
-All of our definitions above are valid for all topological spaces, so in particular, also the stratified spaces we introduced at the beginning. For the next definition of locally constant factorization algebras though, it will be important to specify more information about the space. In other words, they will capture information about the stratification.
-
-There is a general definition of locally constant algebra objects in the context of any $\infty$-operad given in \cite[def.2.3.3.20]{lurie_ha}, which, of course, applies here. In our case one can also take a perspective more akin to \cite[def.A.1.12]{lurie_ha} by defining locally constant cosheaves and then pulling back this property to factorization algebras. This is what we will do, along with focusing our attention to stratified (and therefore also to smooth) manifolds. The definitions we will make can in a lot of cases also be expanded for any $C^0$ stratified space or topological manifold.
+All of our definitions above are valid for all topological spaces, so in particular, also stratified spaces. For the next definition of locally constant factorization algebras though, it will be important to specify more information about the space. In other words, they will capture information about the stratification.
 
 \begin{definition}
     The $\infty$-category of locally constant Weiss cosheaves on a stratified manifold $M$ (or, equivalently, on $\mfld[r]_{/M}$) is the full $\infty$-subcategory
@@ -166,7 +578,7 @@ There is a general definition of locally constant algebra objects in the context
 \end{remark}
 
 \begin{definition}
-    The $\infty$-category $\lcfa_M (\catC)$ of \emph{locally constant factorization algebras on a stratified manifold $M$ valued in $\catC$} is the full $\infty$-subcategory of $\falg_M (\catC)$ as in the pullback
+    The $\infty$-category $\lcfa_M (\catC)$ of \emph{locally constant}\footnote{There is a general definition of locally constant algebra objects in the context of any $\infty$-operad given in \cite[def.2.3.3.20]{lurie_ha}, which, of course, applies here. Our present perspective is more akin to \cite[def.A.1.12]{lurie_ha} whereby we define locally constant cosheaves and then pull this property back to factorization algebras.} \emph{factorization algebras on a stratified manifold $M$ valued in $\catC$} is the full $\infty$-subcategory of $\falg_M (\catC)$ as in the pullback
     %
     \begin{equation}
         \begin{tikzcd}
@@ -177,13 +589,13 @@ There is a general definition of locally constant algebra objects in the context
 \end{definition}
 
 \begin{remark}\label{rem:sym_mon_inheritance}
-    The $\infty$-categories of factorization algebras of all varieties acquire a symmetric monoidal structure from the symmetric monoidal structure of $\catC$ pointwise
+    As mentioned in \Cref{rem:inherit_sym_mon_struct}, our assumptions on the target $\catC$ allow the $\infty$-categories of factorization algebras of all varieties to acquire a symmetric monoidal structure from the symmetric monoidal structure of $\catC$ pointwise
     %
     \begin{equation}
         (F \otimes G)(U) = F(U) \otimes G(U).
     \end{equation}
     %
-    The only subtlety is the cosheaf condition, where the symmetric monoidal structure is induced only if we also take into account that in $\catC$ colimits commute with its symmetric monoidal structure.
+    To satisfy the cosheaf condition we use the property that colimits in $\catC$ commute with its symmetric monoidal structure.
 
     The existence of colimits is also inherited from $\catC$ pointwise through the collection of evaluation functors $\{ \mathsf{ev}_U: \falg_X (\catC) \rightarrow \catC \}$, one for each open $U \subset X$.
 \end{remark}
@@ -192,10 +604,10 @@ There is a general definition of locally constant algebra objects in the context
 
 \subsection{The \texorpdfstring{$\infty$-}{infinity }operad of Factorization Algebras}
 
-Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for factorization algebras. In the case of stratified manifolds, we will show that the $\infty$-operad that governs locally constant factorization algebras can be taken to be $\disk_{/M}$, and the one that governs ordinary factorization algebras can be taken to be $\disk[r]_{/M}$. This result is immensely helpful in relating factorization algebras to results in the area of disk algebras. We will see one such example in \Cref{ch:gluing_disk_alg}.
+The way that we have defined the different kinds of factorization algebras only makes clear what the $\infty$-operad governing them is in the case of prefactorization algebras. Limiting our discussion to stratified manifolds, as opposed to general topological spaces, we will show that the $\infty$-operad that governs locally constant factorization algebras can be taken to be $\disk_{/M}$, where we use the notation of \cite{aft_fhstrat}, (which \cite{lurie_ha} alternatively denotes $\mathbb{E}_M^{\otimes}$), and the one that governs ordinary factorization algebras can be taken to be $\disk[r]_{/M}$ (which \cite{lurie_ha} denotes $\mathrm{N}(\mathrm{Disk}(M))^\otimes$). This result is immensely helpful in relating factorization algebras to results in the area of disk algebras. We will see one such example in \Cref{ch:gluing_disk_alg}.
 
 \begin{proposition}\label{prop:fh_disk_to_lcfa}
-    Given a stratified manifold $M$ factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
+    Given a stratified manifold $M$, factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
     %
     \begin{equation}
         \int : \alg{\disk_M} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
@@ -245,7 +657,7 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
         \end{tikzcd}
     \end{equation}
     %
-    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}
+    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using $(\mfld[r]_{/M})_{/(N \xhookrightarrow{} M)} \simeq \mfld[r]_{/N}$.
     
     Since $\catC$ has all relevant colimits the left Kan extension $\int F$ is given pointwise by
     %
@@ -265,7 +677,7 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
         \mathsf{colim} ((\disk_{/M})_{/e} \xrightarrow{} (\mfld_{/M})_{/e} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC),
     \end{equation}
     %
-    which is easier to compare to \Cref{eq:cosheaf_colim_relative}. Using the fact that $\disk[r]_{/M} \xrightarrow{} \disk_{/M}$ is a final functor, which is a consequence of \cite[prop.2.22]{aft_fhstrat}, and the equivalences of \Cref{lem:double_slice} we can rewrite \Cref{eq:idiosync_form} further into
+    which is easier to compare to \Cref{eq:cosheaf_colim_relative}. Using the fact that $\disk[r]_{/M} \xrightarrow{} \disk_{/M}$ is a final functor, which is a consequence of \cite[prop.2.22]{aft_fhstrat}, and the equivalence $(\disk_{/M})_{/(N \xhookrightarrow{} M)} \simeq \disk_{/N}$ we can rewrite \Cref{eq:idiosync_form} further into
     %
     \begin{align}
         \mathsf{colim} ((\disk[r]_{/M})_{/e} \xrightarrow{} (\disk_{/M})_{/e} \xrightarrow{} (\mfld_{/M})_{/e} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC) \\ \simeq \mathsf{colim} ((\disk[r]_{/M})_{/e} \xrightarrow{} (\mfld[r]_{/M})_{/e} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC).
@@ -398,7 +810,7 @@ As before, the case of ordinary factorization algebras gets a similar statement 
 \end{remark}
 
 \begin{remark}
-    As noted at the beginning of \S 2, the physical interpretation of this version of factorization homology is a way to take a spacetime $M$ and its local observables $A$, and construct \emph{some}, and typically not all, of the global observables. The previous \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} transfer this observation to factorization algebras, which aligns with the observation of \cite{cg2016} that the current version of factorization algebras can only deal with perturbative quantum field theory. 
+    As noted at the beginning of \Cref{ssec:fact_hom}, the physical interpretation of this version of factorization homology is a way to take a spacetime $M$ and its local observables $A$, and construct \emph{some}, and typically not all, of the global observables. The previous \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} transfer this observation to factorization algebras, which aligns with the observation of \cite{cg2016} that the current version of factorization algebras can only deal with perturbative quantum field theory. 
 \end{remark}
 
 The $\infty$-operad $\disk_{/M}$ is, in general, harder to deal with than its symmetric monoidal counterpart $\disk(\bstr)$. The next lemma outlines a certain situation where this is not the case.
@@ -417,10 +829,6 @@ The $\infty$-operad $\disk_{/M}$ is, in general, harder to deal with than its sy
     \end{equation}
 \end{lemma}
 
-\begin{remark}
-    If we limit $M$ to be a basic then the requirements of the lemma are exactly that $M$ is final in $\bstr_M$.
-\end{remark}
-
 \begin{proof}
     We follow the proof of \cite[cor.2.33]{aft_fhstrat}. Using \Cref{rem:disk_b=disk_bsc}, the forgetful functor from the slice $\infty$-operad, which is a map of $\infty$-operads, is what will provide the equivalence
     %
@@ -428,20 +836,7 @@ The $\infty$-operad $\disk_{/M}$ is, in general, harder to deal with than its sy
         \disk_{/M} \simeq \disk(\bstr_M)_{/M} \xrightarrow{\ \ \ \ } \disk(\bstr_M).
     \end{equation}
     %
-    This functor is an equivalence on maximal $\infty$-subgroupoids because for any $V \in \disk(\bstr_M)$ the space of morphisms to $M$ is contractible, so, up to equivalence it is unique. %To check that it is fully faithful we need to show that the induced maps
-    %
-    %\begin{equation}
-    %    \mathsf{Hom}_{\disk(\bstr)_{/U}} (V \xhookrightarrow{} U, V' \xhookrightarrow{} U) \xrightarrow{\ \ \ \ } \mathsf{Hom}_{\disk(\bstr)} (V, V')
-    %\end{equation}
-    %
-    %are equivalences. Giving a functor $\disk (\bstr) \xrightarrow{} \disk (\bstr)_{/U}$ is the same as giving a functor
-    %
-    %\begin{equation}
-    %    \disk (\bstr) ^{\vartriangleright} \xrightarrow{} \disk (\bstr)_{/U},
-    %\end{equation}
-    %
-    %which sends the cone point to $U$ (see e.g. \cite[prop.3.2]{joyal}).
-    Full faithfulness is provided by the fact that the functor on the active $\infty$-subcategories $\disk_{/M} \xrightarrow{} \disk(\bstr_M)$ is a right fibration. 
+    This functor is an equivalence on maximal $\infty$-subgroupoids because for any $V \in \disk(\bstr_M)$ the space of morphisms to $M$ is contractible, so, up to equivalence it is unique. Full faithfulness is provided by the fact that the functor on the active $\infty$-subcategories $\disk_{/M} \xrightarrow{} \disk(\bstr_M)$ is a right fibration. 
 \end{proof}
 
 The lemma says that for stratified manifolds $M$ that satisfy the conditions, the classification of locally constant factorization algebras on $M$, i.e. algebras over $\disk_{/M}$ simplifies to the classification of $\disk(\bstr_M)$-algebras in the usual sense
@@ -452,49 +847,12 @@ The lemma says that for stratified manifolds $M$ that satisfy the conditions, th
 %
 This is an improvement because $\disk(\bstr_M)$-algebras are easier to work with, one reason being that $\disk(\bstr_M)$ has the benefit of being not just an $\infty$-operad but even a symmetric monoidal $\infty$-category.
 
-The results of \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} can also be seen as lowering the amount of data that is necessary to say that we have defined a factorization algebra on a stratified manifold. There is a similar, but slightly weaker result by \cite{cg2016}, which nonetheless works for all Hausdorff topological spaces. We recount this result here for comparison.
-
-\begin{definition}
-    A \emph{factorizing basis} of a topological space $X$ is a basis $\{ U_i \xhookrightarrow{} X\}_{i \in I}$ for the topology of $X$ which is closed under finite intersections, and which satisfies that for each finite set $S \subset X$, there exists a finite sub-collection of pairwise disjoint open subsets $\{ U_j \xhookrightarrow{} X\}_{j \in J}$, for which $S \subset \bigsqcup_{j \in J} U_j$.
-\end{definition}
-
-\begin{definition}
-    We will call factorization algebras defined only on the open subsets of an open cover $\mathscr{U}$ (in particular, for example, a factorizing basis), a $\mathscr{U}$-factorization algebra and the $\infty$-category of such $\falg_{\mathscr{U}}(\catC)$.
-\end{definition}
-
-\begin{theorem}[\cite{cg2016}]\label{thm:fa_from_basis}
-    Given a Hausdorff topological space $X$, there is an equivalence of $\infty$-categories between the $\infty$-categories of $\mathscr{U}$-factorization algebras defined on a factorizing basis $\mathscr{U}$ and factorization algebras defined on the full topological space $X$
-    %
-    \begin{equation}
-        \begin{tikzcd}
-            \falg_X(\catC) \arrow[rr, bend left=10, "\mathrm{-|_{\mathscr{U}}}"] &  & \falg_{\mathscr{U}}(\catC) \arrow[ll, bend left=10, "\mathrm{ext}"],
-        \end{tikzcd}
-    \end{equation}
-    %
-    where the top functor is given by restriction.
-\end{theorem}
-
-\begin{remark}
-    Looking into the proof of this statement we see that the value of the extension on open sets $U \subset X$ is defined as
-    %
-    \begin{equation}
-        \mathrm{ext}(F)(U) := \cech(\mathscr{U}_U, F),
-    \end{equation}
-    %
-    where $\mathscr{U}_U$ is a Weiss cover of $U$ generated by $\mathscr{U}$. That such a cover exists is already guaranteed by the Hausdorffness of $X$ and the basis property of $\mathscr{U}$. Namely, given any finite set $S \subset U$, Hausdorffness gives us the existence of pairwise disjoint open sets $\{ V_s \ni s\}_{s \in S}$, while the basis property of $\mathscr{U}$ gives us open subsets $\{ U_s \in \mathscr{U} \}_{s \in S}$ such that $s \in U_s \subset V_s$. $\sqcup_{s \in S} U_s$ then gives an open set that covers $S$.
-\end{remark}
-
-\begin{remark}
-    The proof of \Cref{thm:fa_from_basis} can be found in \cite[ch.7.2]{cg2016}, and we will not reproduce it here. The target category there is the category of chain complexes, but it holds more generally in $\catC$ by considering simplicial objects and their geometric realizations (which exist by the colimit assumption on $\catC$) instead.
-    
-    As mentioned, in the stratified manifold case, this is an easy corollary of the proof of \Cref{prop:fh_disk_to_lcfa}, where we show that taking all disks as the Weiss cover of choice reproduces the result that we would have gotten with any other Weiss cover. It is important to point out though that disks are not necessarily closed under intersections, which means that we don't have the opposite implication, and the methods to prove \Cref{prop:fh_disk_to_lcfa} are necessary.
-\end{remark}
+The results of \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} can also be seen as lowering the amount of data that is necessary to say that we have defined a factorization algebra on a stratified manifold. There is a similar, but slightly weaker result \cite[ch.7.2]{cg2016}, which nonetheless works for all Hausdorff topological spaces. The main difference between our result and the result of \cite{cg2016} is that, unlike the `factorizing basis' defined there, we don't require our disks to be closed under finite intersections.
 
 
 \subsection{Operations on Factorization Algebras}
 
-There are a few important operations that we can do with factorization algebras (and the other mentioned variants) that will be important for our considerations. They allow us to compare factorization algebras from different spaces and will play a big role in any kind of classification statement one might make.
-
+There are a few important operations that we can do with factorization algebras (and the other mentioned variants) that will be important for our considerations.
 
 \begin{proposition}\label{prop:pushforward}
     Given a continuous map $f:X \rightarrow Y$ between topological spaces, there are pushforward functors
@@ -525,7 +883,7 @@ The case of locally constant factorization algebras is different when it comes t
 \end{proposition}
 
 \begin{corollary}\label{cor:pushforward_for_lc}
-    Let $f: M \xrightarrow{} N$ be a constructible bundle of stratified manifolds. Then the pushforward functor for factorization homology of \Cref{thm:fh_pushforward} serves as a pushforward
+    Let $f: M \xrightarrow{} N$ be a constructible bundle of stratified manifolds. Then the pushforward functor for factorization homology of \Cref{prop:fh_pushforward} serves as a pushforward
     %
     \begin{equation}
         f_*: \lcfa_M \xrightarrow{\quad} \lcfa_N,
@@ -545,8 +903,7 @@ The case of locally constant factorization algebras is different when it comes t
 \end{remark} 
 
 \begin{lemma}\label{lem:ff_functor_to_refinement}
-    Let $u: X \rightarrow \hat{X}$ be the morphism of \Cref{ex:forget_strat} that forgets the stratification.
-    The functor $u_*: \lcfa_{X} (\catC) \rightarrow \lcfa_{\hat{X}} (\catC)$ has a fully faithful left adjoint.
+    Let $u: X \rightarrow \hat{X}$ be the morphism that forgets the stratification. The functor $u_*: \lcfa_{X} (\catC) \rightarrow \lcfa_{\hat{X}} (\catC)$ has a fully faithful left adjoint.
 \end{lemma}
 
 \begin{proof}
@@ -558,7 +915,13 @@ The case of locally constant factorization algebras is different when it comes t
 \end{remark}
 
 
-In the opposite direction, we do not, in general, have a pullback functor. \cite{cg2016} provide a construction of a pullback in the case of open immersions, but we will only focus on the case of restrictions. Namely, given an open subset $U \subset X$ of a topological space $X$, and given a factorization algebra $F \in \falg_X$ we can clearly define a factorization algebra $F|_{U} \in \falg_U$ by restricting to those open subsets that are fully contained in $U$. Furthermore, this clearly holds not only for factorization algebras, but prefactorization algebras and locally constant factorization algebras too.
+In the opposite direction, we do not, in general, have a pullback functor. \Cite{cg2016} provide a construction of a pullback in the case of open immersions, but we will only focus on the case of restrictions. Namely, given an open subset $U \subset X$ of a topological space $X$, and given a factorization algebra $F \in \falg_X$ we can clearly define a factorization algebra $F|_{U} \in \falg_U$ by restricting to those open subsets that are fully contained in $U$, which gives a functor
+%
+\begin{equation}
+    \falg_X (\catC) \xrightarrow{\ \ -|_U \ \ } \falg_U (\catC).
+\end{equation}
+%
+Furthermore, this clearly holds not only for factorization algebras, but prefactorization algebras and locally constant factorization algebras too.
 
 In the special case of product spaces $X \times Y$, we now know that the projections $\pi_1: X \times Y \rightarrow X$ and $\pi_2: X \times Y \rightarrow Y$, give us pushforwards. For $\pi_1$, for example, this essentially uses the fact that if we can evaluate all open sets of $X \times Y$ then we can definitely evaluate the open sets that look like $U \times Y$, with $U \subset X$ an open set. But in this case we can do even more, because we can even evaluate the more granular open subsets $U \times V$ with $U \subset X$ and $V \subset Y$ opens. More formally, we claim:
 %
@@ -576,10 +939,6 @@ In the special case of product spaces $X \times Y$, we now know that the project
     \end{equation}
 \end{proposition}
 
-\begin{remark}
-    The conditions we imposed on $\catC$ allowed us, in \Cref{rem:sym_mon_inheritance}, to inherit a symmetric monoidal structure on the $\infty$-categories of factorization algebras of all varieties. It also allowed us to inherit the existence of colimits. This is the reason why the above can even be stated.
-\end{remark}
-
 \begin{proof}
     Indeed, given opens $U \subset X$ and $V \subset Y$, the values we assign are $(\bar{\pi}F) (U)(V) = F(U \times V)$. Fixing an open subset $U \subset X$, we obviously get a prefactorization algebra $(\pi_2|_U)_* (F|_U) \in \alg{\opens(Y)}$ by pushing forward with $\pi_2|_U: U \times Y \rightarrow Y$, which shows that $\bar{\pi}F$ is valued in $\alg{\opens(Y)}$. The only thing left to show is that $\bar{\pi} F$ has the structure of a prefactorization algebra on $X$. To do this, for each multi-morphism $(\{ U_i \}_{i \in I} \rightarrow U) \in \opens(X)$ we assign a map $\bar{\pi}F (\{ U_i \}_{i \in I}, U)$ of factorization algebras on $Y$. Such an algebra map is specified by giving its value on all opens of $Y$ separately. We can thus assign
     %
@@ -589,7 +948,7 @@ In the special case of product spaces $X \times Y$, we now know that the project
     %
     which uses the projections $\pi_1|_V : X \times V \rightarrow X$ to assign $\pi_1|_V^{-1}(U) = U \times V$.
 
-    It is not hard to check that the above also holds for the example of factorization algebras on topological spaces, by using \Cref{thm:fa_from_basis}. However, we'll focus on manifolds, in which case, the construction from above immediately works since we now have to do it for $\disk[r]_{/X}$ instead of $\mfld[r]_{/X}$. The only things to mention is that products of disks are again disks \cite[cor.3.4.9]{aft_localstrut}.
+    It is not hard to check that the above also holds for the example of factorization algebras on topological spaces, by using the result of \cite[ch.7.2]{cg2016}. However, we'll focus on manifolds, in which case, the construction from above immediately works since we now have to do it for $\disk[r]_{/X}$ instead of $\mfld[r]_{/X}$. The only things to mention is that products of disks are again disks \cite[cor.3.4.9]{aft_localstrut}.
 \end{proof}
 
 
@@ -638,16 +997,16 @@ In the special case of product spaces $X \times Y$, we now know that the project
 
 \subsection{Factorization Algebras on Intervals}\label{ssec:lcfa_on_ints}
 
-As was the case with factorization homology, so too with factorization algebras we now turn to a few very important constructions of locally constant factorization algebras on intervals. Namely, we will consider how we can construct a locally constant factorization algebra on the spaces $\mathbb{R}$ (a.k.a. the open interval) and $\hoint$ (a.k.a. the half-open interval). These will be a very important backbone for intuition about locally constant factorization algebras, as well as a key part of proofs later on. We finish with factorization algebras for the closed interval $[-1,1]$.
+We now turn to a few very important constructions of locally constant factorization algebras on intervals. Namely, we will consider how we can construct a locally constant factorization algebra on the spaces $\mathbb{R}$ (a.k.a. the open interval) and $\hoint$ (a.k.a. the half-open interval). These will be a very important backbone for intuition about locally constant factorization algebras, as well as a key part of proofs later on. We finish with factorization algebras for the closed interval $[-1,1]$.
 
 \begin{construction}\label{con:lcfas_on_R}
-    Consider a unital, (homotopy) associative algebra $A$ in the category $\catC$. For a first pass we use \Cref{thm:fa_from_basis} to construct a factorization algebra out of this data. We first check that the disks $\disk[r]_{/\mathbb{R}}$ of $\mathbb{R}$ form a factorizing basis. This is true since the disks are always a basis for any manifold, they are factorizing since we have all disjoint unions, and they are closed under finite intersections because the disks of $\mathbb{R}$ are intervals. Therefore, by \Cref{thm:fa_from_basis}, we need only assign values to these. Given any disk $U$ we assign the same value, $F_A(U) := A$. Similarly, given a multi-morphism $\sqcup_{i \in I} U_i \xhookrightarrow{} U$, with $I$ non-empty, we assign the map given by the multiplication of $A$
+    Consider a unital, (homotopy) associative algebra $A$ in the category $\catC$. We take the opportunity to construct a factorization algebra out of this data by hand. This is a feasible task since any open is some disjoint union of intervals. Thus, given any disk $U$ we assign the same value, $F_A(U) := A$. Similarly, given a multi-morphism $\sqcup_{i \in I} U_i \xhookrightarrow{} U$, with $I$ non-empty, we assign the map given by the multiplication of $A$
     %
     \begin{equation}
         F_A(\sqcup_{i \in I} U_i \xhookrightarrow{} U) := \otimes_{i \in I} A \rightarrow A.
     \end{equation}
     %
-    The implicit convention, is that the ordering of the intervals, provided by the standard orientation (or framing) of $\mathbb{R}$, determines the order in which we multiply. Associativity forbids any other ordering except the completely opposite one, which would yield the opposite multiplication, and thus the opposite algebra. Finally, in the case of $\emptyset \xhookrightarrow{} U$, we assign the map that chooses the unit $\mathbb{1} \rightarrow A$. At this point we have constructed a prefactorization algebra on $\mathbb{R}$. To use \Cref{thm:fa_from_basis} we need to first check the Weiss cosheaf condition. But because intervals are closed under finite intersections the \v{C}ech nerve definition of \Cref{rem:check_nerve} makes this easy; the simplicial object $\cech_{\bullet}(\disk[r]_{/\mathbb{R}}, F_A)$ in all degrees will be a coproduct of copies of $A$. Thus, $F_A$ is indeed a $\disk[r]_{/\mathbb{R}}$-factorization algebra and can be extended to a factorization algebra on $\mathbb{R}$. By definition, it is also obviously locally constant.
+    The implicit convention, is that the ordering of the intervals, provided by the standard orientation (or framing) of $\mathbb{R}$, determines the order in which we multiply. Associativity forbids any other ordering except the completely opposite one, which would yield the opposite multiplication, and thus the opposite algebra. Finally, in the case of $\emptyset \xhookrightarrow{} U$, we assign the map that chooses the unit $\mathbb{1} \rightarrow A$. At this point we have constructed a prefactorization algebra on $\mathbb{R}$. Next we need to check the Weiss cosheaf condition. Because intervals are closed under finite intersections the \v{C}ech nerve definition of \Cref{rem:cech_nerve} makes this easy; the simplicial object $\cech_{\bullet}(\disk[r]_{/\mathbb{R}}, F_A)$ in all degrees will be a coproduct of copies of $A$. Thus, $F_A$ is indeed a factorization algebra. From the definition, it is also obviously locally constant.
 
     In this simple case the disks are closed under finite intersections, so the construction works out. More generally, one would need to find another factorizing basis. In the case of smooth manifolds one possible way is to choose a Riemannian metric and take the geodesically convex neighborhoods. An alternative is to get rid of the property of being closed under finite intersections altogether. It turns out, because of \Cref{thm:disk_alg=lcfa}, that this is indeed possible, and that we can always stick to using disks even in the most general situations.
 
@@ -663,7 +1022,7 @@ As was the case with factorization homology, so too with factorization algebras 
 \end{proposition}
 
 \begin{proof}
-    What is left to show is the essential surjectivity of the functor. This holds because every disk in $\mathbb{R}$ is diffeomorphic to $\mathbb{R}$ itself. So, given $F \in \lcfa_{\mathbb{R}}$, we can get an underlying object for our $\mathbb{E}_1$-algebra as $A = F(\mathbb{R})$. The previous observation and the local constancy then force the value on each disk to be equivalent to this. The space of embeddings of two disks $\mathbb{R} \sqcup \mathbb{R} \xhookrightarrow{} \mathbb{R}$ is, up to homotopy, equivalent to two points, which provide exactly the multiplication map $ A \otimes A \rightarrow A$ of the algebra and its opposite multiplication.  Associativity, up to homotopy, comes about exactly because all embeddings of any number of disks can, up to homotopy, be factorized through the embedding of two disks at a time. As before, the unit comes from the map $F(\emptyset \xhookrightarrow{} \mathbb{R}) = (\mathbb{1} \rightarrow A)$. Thus, we have constructed an $\mathbb{E}_1$-algebra from the given data, and the proposition holds.
+    What is left to show is the essential surjectivity of the functor. This holds because every disk in $\mathbb{R}$ is diffeomorphic to $\mathbb{R}$ itself. So, given $F \in \lcfa_{\mathbb{R}}$, we can get an underlying object for our $\mathbb{E}_1$-algebra as $A = F(\mathbb{R})$. The previous observation and the local constancy then force the value on each disk to be equivalent to this. The space of embeddings of two disks $\mathbb{R} \sqcup \mathbb{R} \xhookrightarrow{} \mathbb{R}$ is, up to homotopy, equivalent to two points, which provide exactly the multiplication map $ A \otimes A \rightarrow A$ of the algebra and its opposite multiplication.  Associativity, up to homotopy, comes about exactly because all embeddings of any number of disks can, up to homotopy, be factorized through the embedding of two disks at a time. As before, the unit comes from the map $F(\emptyset \xhookrightarrow{} \mathbb{R}) = (\mathbb{1} \rightarrow A)$.
 \end{proof}
 
 \begin{construction}\label{con:lcfas_on_hoint}
@@ -692,14 +1051,14 @@ As was the case with factorization homology, so too with factorization algebras 
     The fact that we chose left modules to provide the data in \Cref{prop:hoint_gives_modules}, does not play much of a role because a left module is exactly a right module of the opposite algebra, giving $\mathsf{LMod}(\catC) \simeq \mathsf{RMod}(\catC)$. Where the distinction comes up, is if we want to fix the $\mathbb{E}_1$-algebra away from $0 \in \hoint$ beforehand. In that case we have to use one of the two possible conventions on the order of multiplication. If we choose the increasing convention then the subset containing $0 \in \hoint$ is on the left making it a right module, while with the opposite convention it would be a left module of the opposite algebra.
 \end{remark}
 
-It's not hard to extend \Cref{con:lcfas_on_R} and \Cref{con:lcfas_on_hoint} to the closed interval $[-1,1]$ by hand, but through \Cref{thm:disk_alg=lcfa} we can see that \Cref{prop:disk1bor_over_int=ORL} and \Cref{prop:env_ORL=env_assocRL} already do all the necessary work.
+It's not hard to extend \Cref{con:lcfas_on_R} and \Cref{con:lcfas_on_hoint} to the closed interval $[-1,1]$ by hand, but through \Cref{thm:disk_alg=lcfa} we can see that \cite[cor.2.33]{aft_fhstrat} already do all the necessary work.
 
 \begin{corollary}\label{cor:lcfas_on_closed_int}
     There is an equivalence between the $\infty$-categories of locally constant factorization algebras on the closed interval and algebras over the $\infty$-operad $\mathsf{Assoc^{RL}}$
     %
     \begin{equation}
         \lcfa_{[-1,1]} (\catC) \xrightarrow{\ \ \simeq \ \ } \alg{\mathsf{Assoc^{RL}}} (\catC).
-    \end{equation} 
+    \end{equation}
 \end{corollary}
 
 \begin{remark}
@@ -715,16 +1074,7 @@ It's not hard to extend \Cref{con:lcfas_on_R} and \Cref{con:lcfas_on_hoint} to t
 \end{remark}
 
 
-
-
 \subsection{Factorization Algebras on Euclidean Spaces}\label{ssec:lcfa_on_Rn}
-
-In this section we want to describe locally constant factorization algebras on Euclidean spaces $\mathbb{R}^n$. By \Cref{lem:disk/M_to_disk} we can hope for an $\infty$-category of basics such that we simplify the situation down to $\disk (\bstr)$-algebras. In fact, since $\mathbb{R}^n$ is frameable an $\infty$-category of basics that we can choose is $\mathsf{D}_n^* \simeq * \xrightarrow{\{ \mathbb{R}^n\}} \bsc$. Specifically, this makes us focus on framed $n$-dimensional disk algebras
-%
-\begin{equation}
-    \lcfa_{\mathbb{R}^n} (\catC) \simeq \alg{\disk (\mathsf{D}_n^*)} (\catC).
-\end{equation}
-%
 
 \begin{theorem}[{\cite[thm.5.5.4.10]{lurie_ha}}]
     There is an equivalence of $\infty$-categories between the $\infty$-categories of locally constant factorization algebras on $\mathbb{R}^n$ and $\mathbb{E}_n$-algebras
@@ -735,18 +1085,22 @@ In this section we want to describe locally constant factorization algebras on E
 \end{theorem}
 
 \begin{proof}
-    With our setup, thanks to \Cref{thm:disk_alg=lcfa} and \Cref{lem:disk/M_to_disk}, it is sufficient to show that there is a weak equivalence of $\infty$-operads between $\disk (\mathsf{D}_n^*)$ and $\mathbb{E}_n$, i.e.
+    Since $\mathbb{R}^n$ is frameable, we can choose the $\infty$-category of basics $\mathsf{D}_n^* \simeq * \xrightarrow{\{ \mathbb{R}^n\}} \bsc$, and use \Cref{lem:disk/M_to_disk} to simplify the question; This makes us focus on framed $n$-dimensional disk algebras
     %
     \begin{equation}
-        \alg{\disk (\mathsf{D}_n^*)} \xrightarrow{\ \ \simeq \ \ } \alg{\mathbb{E}_n}.
+        \lcfa_{\mathbb{R}^n} (\catC) \simeq \alg{\disk (\mathsf{D}_n^*)} (\catC).
     \end{equation}
     %
-    But this is just the fact that the $\disk_{/M}$ $\infty$-operad gives rise to $\mathbb{E}_n$-algebras from \cref{prop:framed_ndisk=En}.
+    With this, it is sufficient to show that there is an equivalence of $\infty$-operads
+    %
+    \begin{equation}
+        \disk (\mathsf{D}_n^*) \xrightarrow{\ \ \simeq \ \ } \mathbb{E}_n.
+    \end{equation}
+    %
+    But this is just the classical fact, that the little $n$-disks operad and the little $n$-cubes operad are equivalent, in disguise. One account of this fact with our terminology is, for example, \cite[prop.2.12]{aft_fhstrat}.
 \end{proof}
 
-\begin{remark}
-    We already encountered the $n=1$ version of the proposition above when we discussed locally constant factorization algebras on the open interval in \Cref{prop:R_gives_E1}, and the construction there gives us an intuition about how to actually construct the locally constant factorization algebra from the data of the $\mathbb{E}_n$-algebra. The theorem formalizes that this assignment is, in fact, an equivalence.
-\end{remark}
+
 
 \begin{remark}[{\cite[prop.3.16]{francis2013}, \cite[ex.5.5.4.16]{lurie_ha}}]
     In the case of Euclidean spaces like $\mathbb{R}^n$, essentially because of translation invariance, a special thing happens when we restrict away from the origin. That is, we know that given a locally constant factorization algebra $F$ on $\mathbb{R}^n$ we can restrict it to any open subset like, for example, $\mathbb{R}^n \setminus \{ 0 \} \cong S^{n-1} \times \mathbb{R}$ to get another locally constant factorization algebra $F|_{S^{n-1} \times \mathbb{R}}$. By \Cref{prop:exp_of_products_lc} we know that $F|_{S^{n-1} \times \mathbb{R}} \in \lcfa_{\mathbb{R}} (\lcfa_{S^{n-1}} (\catC))$, so that in particular it is an $\mathbb{E}_1$-algebra. If we pushforward to $\mathbb{R}$, by the discussion at \Cref{rem:fh_is_pushingforward} we could denote the resulting $\mathbb{E}_1$-algebra by
@@ -765,7 +1119,7 @@ In this section we want to describe locally constant factorization algebras on E
         \end{equation}
     \end{proposition}
     %
-    This result goes towards an explanation of the appearance of factorization homology over higher spheres in the classification statement of \Cref{thm:classif_disk_d_under_n*_alg}.
+    This result goes towards an explanation of the appearance of factorization homology over higher spheres in the classification statement of \cite[prop.4.8]{aft_fhstrat}.
 \end{remark}
 
 We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^m \times \mathbb{R}^n$, in which case \Cref{prop:exp_of_products_lc} specializes to give the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}:
@@ -783,4 +1137,10 @@ We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^
 \end{remark}
 
 
+
+% Generate bibliography
+\newpage
+\printbibliography
+
 \end{document}
+ 

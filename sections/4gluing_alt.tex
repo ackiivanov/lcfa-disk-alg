@@ -3,7 +3,7 @@
 \begin{document}
 
 
-\section{Collar-gluings and Disk Algebras}\label{ch:gluing_disk_alg}
+\section{Collar-gluings and Factorization Algebras}\label{ch:gluing_disk_alg}
 
 Given a stratified manifold $M$, and a $\otimes$-presentable $\infty$-category $\catC$, we defined the $\infty$-category $\lcfa_M (\catC)$ of locally constant factorization algebras on $M$ valued in $\catC$. We also noticed, in \Cref{thm:disk_alg=lcfa}, that factorization homology is involved in constructing these algebras from local data. This prompts us to ask if we can say something about the behavior of this $\infty$-category under collar-gluings in the manifold variable. In this section we will prove that such a result exists in both the cases of locally constant and ordinary factorization algebras.
 
@@ -251,13 +251,70 @@ Before me move on to the proof of the above two results we pause to record a few
             \label{fig:extend_gluing}
         \end{figure}
         %
-        The final point to check is that we have not limited ourselves by insisting to only consider collar-gluings which are inherited from ones on $M$. This is best shown in \Cref{fig:extend_gluing}. Namely, given the disk $V \xhookrightarrow{} M$, we can take a larger disk $V'$, which is guaranteed to exist from the fact that $M$ is a manifold. The figure then shows that given any collar-gluing of $V$ we can find one particular collar-gluing of $M$ that extends the one of $V$. Since $V'$ is a disk, the figure does not obscure any detail.
+        The final point to check is that we have not limited ourselves by insisting to only consider collar-gluings which are inherited from ones on $M$. This is best shown in \Cref{fig:extend_gluing}. Namely, given the disk $V \xhookrightarrow{} M$, we can take a larger disk $V'$, which is guaranteed to exist from the fact that $M$ is a manifold. The figure then shows that given any collar-gluing of $V$ how we can find one particular collar-gluing of $M$ that extends the one of $V$. Since $V'$ is a disk, the figure does not obscure any detail.
     \end{multicols}
 \end{proof}
 
+\begin{remark}
+    The simple case when the collar-gluing is a disjoint union, and the manifolds are smooth can also be found as \cite[ex.5.4.5.4]{lurie_ha}.
+\end{remark}
+
+
+\subsection{An Outside View of Factorization Algebras}
+
+After the results of the previous section we remark on a general view that we can take for the $\infty$-categories of (locally constant) factorization algebras. Namely, we notice factorization algebras can be cast as a functor
+%
+\begin{equation}
+    \falg_{-}(\catC), \lcfa_{-}(\catC): \mfld[r] \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}},
+\end{equation}
+%
+where the action on morphisms is given by restriction, which is what gives rise to the $^{\mathsf{op}}$. In the case of disjoint union, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs} then provide the equivalences that are needed to make these into symmetric monoidal functors, where the symmetric monoidal product on $\cat^{\mathsf{op}}$ is given by \emph{coproduct}. We emphasize that the domain of these functors, as defined, is $\mfld[r]$; there is no clear way of how to define the above functors so that they have the domain $\mfld$ with the idea of restriction functors as morphisms.
+
+We know from \Cref{thm:decom_strat_man} that any manifold can be constructed from basics by iterated collar-gluings and sequential colimits. Having described what happens to a locally constant factorization algebras under collar-gluings of manifolds, we now turn to sequential colimits. {\color{red} The gluing result has an ordinary (nonhomotopy) limit. Is this also the output of the (co)bar construction?}
+
+\begin{proposition}\label{prop:fa_seq_col}
+    The functors $\falg(\catC)$ and $\lcfa(\catC)$ respect sequential colimits.
+\end{proposition}
+
+\begin{proof}
+    Using \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} we will argue in terms of algebras over $\infty$-operads. Since the formation of algebras is contravariantly functorial (as precomposition), it is sufficient to show that there is an equivalence of $\infty$-operads
+    %
+    \begin{equation}
+        \mathsf{colim}_{i \geq 0} \disk_{/M_i} \xrightarrow{\ \ \simeq \ \ } \disk_{M},
+    \end{equation}
+    %
+    as well as the same for $\disk[r]_{/M}$. In the case of the former, as originally noted in the proof of \cite[cor.2.40]{aft_fhstrat}, the result follows from using \cite[cor.1.6.]{dugger2004hypercovers}, an argument about configuration spaces, as well as \cite[lem.2.21]{aft_fhstrat}, which explains the relation of these to the above operad. In the case of the latter, the situation is even simpler because of its discrete nature. One way to show this is to notice that the functor from the ordinary, nonhomtopy colimit factors through $\mathsf{colim}_{i \geq 0} \disk[r]_{/M_i} \xrightarrow{} \disk[r]_{/M}$, in which case it suffices to find an equivalence of \emph{ordinary} categories
+    %
+    \begin{equation}
+        \mathsf{colim}_{i \geq 0} \disk[r]_{/M_i} \xrightarrow{} \disk[r]_{/M},
+    \end{equation}
+    %
+    where the colimit is now the one relevant to ordinary category theory, namely the nonhomotopy one. But it's now easy to see that this the canonical morphism above is an equivalence since for every $U \in \disk_{/M}$ there will be a finite integer $i$, such that $U \subset M_i$.
+\end{proof}
+
+With this result we have fully described an algorithm of how to compute the $\infty$-category of factorization algebras on any stratified manifold if we know how to compute it on the basics. Through this algorithm the theory of (locally constant) factorization algebras is fully determined by the assignment
+%
+\begin{equation}
+    U \mapsto \falg_U (\catC),
+\end{equation}
+%
+for each disk $U \in \mathsf{Bsc}$.
+
+%\begin{conjecture}
+%    The theory of factorization algebras is fully determined, using factorization homology, by the data of a functor
+%    %
+%    \begin{equation}
+%        \mathsf{Bsc} \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}}.
+%    \end{equation}
+%    %
+%    In the locally constant case, we can even say that to each basic $U$ this functor attaches the $\infty$-category $\mathsf{Fun}^{\otimes} (\disk(\mathsf{B}_U), \catC)$ of disk algebras with $\mathsf{B}_U$ structure, where $\mathsf{B}_U$ is the sieve poset whose maximal element is $U$.
+%\end{conjecture}
+%
+%\begin{remark}
+%    The $\infty$-category of basics $\mathsf{B}_{U}$ for our purposes provides a kind of generalization of framing, which makes calculation easier.
+%\end{remark}
 
 \subsection{Some Examples of Gluing}
-
 
 \begin{example}\label{ex:reproduce_lcfas_on_interval}
     With the ingredients we have introduced up to now, specifically in \Cref{ssec:lcfa_on_ints}, we can do a nontrivial check of the gluing theorem. This is because we can write a collar-gluing of the closed interval $[-1,1] \cong \left[-1,1\right) \coprod_{(-1,1)} \left(-1,1\right] \cong \mathbb{R}_{\geq 0} \coprod_{\mathbb{R}} \mathbb{R}_{\leq 0}$. We note here that we have written $\mathbb{R}_{\leq 0}$ and $\mathbb{R}_{\geq 0}$ to emphasize the maps forming the decomposition. At the level of unstructured objects these two are isomorphic (see also \Cref{rem:left_or_right_module}). For this example, the theorem says that locally constant factorization algebras on the closed interval should be given by
