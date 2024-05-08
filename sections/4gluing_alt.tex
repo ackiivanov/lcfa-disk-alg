@@ -206,7 +206,7 @@ Before me move on to the proof of the above two results we pause to record a few
 \end{proof}
 
 \begin{proof}[Proof of \Cref{thm:gluing_lcfas}]
-    In the case that all $\infty$-categoies involved are locally constant we will extend the previous proof to provide the equivalence. Since we know that restriction does not destroy local constancy, extending the result to the case of locally constant factorization algebras simply requires us to show that the gluing $\gamma$ also preserves this property. Let $U \xhookrightarrow{} V$ be two disks of $M$. What we have to check is that there is an equivalence
+    In the case that all $\infty$-categories involved are locally constant we will extend the previous proof to provide the equivalence. Since we know that restriction does not destroy local constancy, extending the result to the case of locally constant factorization algebras simply requires us to show that the gluing $\gamma$ also preserves this property. Let $U \xhookrightarrow{} V$ be two disks of $M$. What we have to check is that there is an equivalence
     %
     \begin{equation}
         \int_U \gamma(A_-, A_+) \xrightarrow{\ \ \simeq \ \ } \int_V \gamma(A_-, A_+)
@@ -283,13 +283,13 @@ We know from \Cref{thm:decom_strat_man} that any manifold can be constructed fro
         \mathsf{colim}_{i \geq 0} \disk_{/M_i} \xrightarrow{\ \ \simeq \ \ } \disk_{M},
     \end{equation}
     %
-    as well as the same for $\disk[r]_{/M}$. In the case of the former, as originally noted in the proof of \cite[cor.2.40]{aft_fhstrat}, the result follows from using \cite[cor.1.6.]{dugger2004hypercovers}, an argument about configuration spaces, as well as \cite[lem.2.21]{aft_fhstrat}, which explains the relation of these to the above operad. In the case of the latter, the situation is even simpler because of its discrete nature. One way to show this is to notice that the functor from the ordinary, nonhomtopy colimit factors through $\mathsf{colim}_{i \geq 0} \disk[r]_{/M_i} \xrightarrow{} \disk[r]_{/M}$, in which case it suffices to find an equivalence of \emph{ordinary} categories
+    as well as the same for $\disk[r]_{/M}$. In the case of the former, as originally noted in the proof of \cite[cor.2.40]{aft_fhstrat}, the result follows from using \cite[cor.1.6.]{dugger2004hypercovers}, an argument about configuration spaces, as well as \cite[lem.2.21]{aft_fhstrat}, which explains the relation of these to the above operad. %In the case of the latter, the situation is even simpler because of its discrete nature. One way to show this is to notice that the functor from the ordinary, nonhomtopy colimit factors through $\mathsf{colim}_{i \geq 0} \disk[r]_{/M_i} \xrightarrow{} \disk[r]_{/M}$, in which case it suffices to find an equivalence of \emph{ordinary} categories
     %
-    \begin{equation}
-        \mathsf{colim}_{i \geq 0} \disk[r]_{/M_i} \xrightarrow{} \disk[r]_{/M},
-    \end{equation}
+    %\begin{equation}
+    %    \mathsf{colim}_{i \geq 0} \disk[r]_{/M_i} \xrightarrow{} \disk[r]_{/M},
+    %\end{equation}
     %
-    where the colimit is now the one relevant to ordinary category theory, namely the nonhomotopy one. But it's now easy to see that this the canonical morphism above is an equivalence since for every $U \in \disk_{/M}$ there will be a finite integer $i$, such that $U \subset M_i$.
+    %where the colimit is now the one relevant to ordinary category theory, namely the nonhomotopy one. But it's now easy to see that this the canonical morphism above is an equivalence since for every $U \in \disk_{/M}$ there will be a finite integer $i$, such that $U \subset M_i$.
 \end{proof}
 
 With this result we have fully described an algorithm of how to compute the $\infty$-category of factorization algebras on any stratified manifold if we know how to compute it on the basics. Through this algorithm the theory of (locally constant) factorization algebras is fully determined by the assignment
@@ -300,19 +300,7 @@ With this result we have fully described an algorithm of how to compute the $\in
 %
 for each disk $U \in \mathsf{Bsc}$.
 
-%\begin{conjecture}
-%    The theory of factorization algebras is fully determined, using factorization homology, by the data of a functor
-%    %
-%    \begin{equation}
-%        \mathsf{Bsc} \xrightarrow{\ \ \ \ } \cat^{\mathsf{op}}.
-%    \end{equation}
-%    %
-%    In the locally constant case, we can even say that to each basic $U$ this functor attaches the $\infty$-category $\mathsf{Fun}^{\otimes} (\disk(\mathsf{B}_U), \catC)$ of disk algebras with $\mathsf{B}_U$ structure, where $\mathsf{B}_U$ is the sieve poset whose maximal element is $U$.
-%\end{conjecture}
-%
-%\begin{remark}
-%    The $\infty$-category of basics $\mathsf{B}_{U}$ for our purposes provides a kind of generalization of framing, which makes calculation easier.
-%\end{remark}
+
 
 \subsection{Some Examples of Gluing}
 
