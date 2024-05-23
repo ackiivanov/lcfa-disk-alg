@@ -198,7 +198,7 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
     Given a stratified manifold $M$ factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
     %
     \begin{equation}
-        \int : \alg{\disk_M} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
+        \int : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
     \end{equation}
 \end{proposition}
 
@@ -284,6 +284,13 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
     \end{equation}
     %
     is final.
+
+    {\color{red} \bf TODOs:} \cite[prop.2.22]{af_primer} is smooth, we need stratified.
+    \begin{itemize} 
+        \item It rests on \cite[Lemma 2.30]{af_primer} which is about what happens when you do a base change from $\mathsf{RFib}_{\disk_n}$ to $\mathsf{RFib}_{\disk_n^{\simeq}}$ where $-^\simeq$ takes the core. The same base change in the stratified setting will be allowed because we will still be working with right fibrations. Probably in the stratified core $\disk^\simeq$ basic disks with different stratifications disconnect into separate connected components.\footnote{Not "probably", but surely.} This should lead to a similar argument. 
+        \item Then the following remark: a covering sieve $\mathscr{U}$ on $M$ being Weiss is exactly saying that the smallest sieve on $M$ containing $\{\mathrm{Conf}_i(U)_{\Sigma_i}\hookrightarrow\mathrm{Conf}_i(M)_{\Sigma_i}\}_{U\in\mathscr{U}}$ is a covering sieve on $\mathrm{Conf}_i(M)_{\Sigma_i}$.\footnote{Here $i$ is the number disks, fixed but arbitrary; $(-)_{\Sigma_i}$ makes the configurations unordered.} Then the fact that $\mathrm{Conf}_i(M)_{\Sigma_i}$ is Hausdorff and paracompact gives the desired equivalence. Something similar might hold in the stratified case but this is not obvious. Hopefully AFT already wrote it down somewhere. I vaguely remember a statement that conically-smooth stratified spaces have partitions of unity, possibly in their "Factorization homology I" paper. If so, it's either there or I'd guess in the local structures paper.
+        \item In the first place, the replacement of $\mathsf{Cat}_\infty$ by $\mathsf{RFib}_{\disk_n}$ in the calculation needs to be check to be benign. This is probably something obvious and has (I'd say) least priority.
+    \end{itemize}
 \end{proof}
 
 \begin{remark}
