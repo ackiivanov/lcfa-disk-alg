@@ -218,12 +218,12 @@ called the \emph{tangent classifier}. Here, $\mathsf{B}G$ is the classifying spa
 A similar picture applies in the stratified case. As a first step, \cite[Corollary 2.13]{af_fhtop} shows that $M\mapsto\tau_M$ can be presented as the symmetric monoidal functor
 %
 \begin{equation}
-    \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\{\mathbb{R}^n\} \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Spaces}_{/\mathsf{BO}(n)},
+    \tau: \mfld_n \xrightarrow{\mathrm{Yoneda}} \mathsf{PShv}(\mfld_n) \xrightarrow{-|_{\{\mathbb{R}^n\} \subset \mfld_n}} \mathsf{PShv}(\mathbb{R}^n) \simeq \mathsf{Sp}_{/\mathsf{BO}(n)},
 \end{equation}
 where the codomain's symmetric monoidal structure is given by coproduct. 
 
 \begin{remark}\label{rem:explaining_tau}
-    As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Spaces}_{/\mathsf{BTop}(n)}$ by straightening--unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Spaces})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full $\infty$-subcategory at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
+    As noted in \cite{af_fhtop}, the Kister--Mazur Theorem (\cite{kister1964microbundles}) provides an equivalence $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq \mathsf{Top}(n)$, where $\mathsf{Top}(n)$ is the group of topological automorphisms of $\mathbb{R}^n$; $\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)\simeq\mfld_n(\mathbb{R}^n,\mathbb{R}^n)$ is the group of self-embeddings of $\mathbb{R}^n$; and both groups are equipped with the compact-open topology. This yields $\mathsf{PShv}(\mathbb{R}^n)\simeq\mathsf{PShv}(\mathsf{BTop}(n))$, which is equivalent to $\mathsf{Sp}_{/\mathsf{BTop}(n)}$ by straightening--unstraightening (see \Cref{rem:grothendieck_construction}).\footnote{Presheaves are space-valued, that is, $\mathsf{PShv}(\mathscr{C})=\mathsf{Fun}(\mathscr{C}^{\mathsf{op}},\mathsf{Sp})$.} Finally, the inclusion $\mathsf{O}(n)\hookrightarrow\mathsf{Emb}(\mathbb{R}^n,\mathbb{R}^n)$ is also an equivalence (\cite[Proposition 2.2.6]{af_primer}), yielding the displayed equivalence. The first map, the $\infty$-categorical Yoneda embedding, sends $M\mapsto((\mfld_{n})_{/M}\to\mfld_n)$ as a map with target $\mathsf{RFib}(\mfld_n)$, as in \cite{lurie_htt}. The fiber of $(\mfld_{n})_{/M}\to\mfld_n$ at $N$ is equivalent to the space of embeddings of $N$ into $M$, and so the restricted presheaf on the full $\infty$-subcategory at $\mathbb{R}^n$ sends $\mathbb{R}^n$ to the space of embeddings of $\mathbb{R}^n$ into $M$. 
 \end{remark}
 
 By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of which was previously played by $\mathsf{B}G$), one has
@@ -233,8 +233,8 @@ By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of whi
     %
     \begin{equation}
         \begin{tikzcd}
-            \mfld_n^B \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \mathsf{Spaces}_{/B} \arrow[d] \\
-            \mfld_n \arrow[r, "\tau"] & \mathsf{Spaces}_{/\mathsf{BO}(n)},
+            \mfld_n^B \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \mathsf{Sp}_{/B} \arrow[d] \\
+            \mfld_n \arrow[r, "\tau"] & \mathsf{Sp}_{/\mathsf{BO}(n)},
         \end{tikzcd}
     \end{equation}
     %
@@ -242,7 +242,7 @@ By fixing a space $B$ with a map $B \rightarrow \mathsf{BO}(n)$ (the role of whi
 \end{definition}
 
 \begin{remark}
-    Since the tangent classifier $\tau$ is symmetric monoidal, and since the right vertical map is canonically symmetric monoidal with respect to disjoint union on both $\mathsf{Spaces}_{/B}$ and $\mathsf{Spaces}_{/\mathsf{BO}(n)}$, the newly defined $\infty$-category does indeed come with a canonical symmetric monoidal structure.
+    Since the tangent classifier $\tau$ is symmetric monoidal, and since the right vertical map is canonically symmetric monoidal with respect to disjoint union on both $\mathsf{Sp}_{/B}$ and $\mathsf{Sp}_{/\mathsf{BO}(n)}$, the newly defined $\infty$-category does indeed come with a canonical symmetric monoidal structure.
 \end{remark}
 
 \begin{example}
@@ -265,7 +265,7 @@ Moving on to the stratified setting, we note that the stratified version of the 
 In this case, as in the previous one, given a stratified manifold $M$, $\tau(M)$ is the functor that to each basic $U \in \bsc$ assigns the space of conically-smooth open embeddings of $U$ into $M$.
 
 \begin{remark}\label{rem:grothendieck_construction}
-    The straightening--unstraightening construction of \cite[§2.2]{lurie_htt} provides an equivalence between $\mathsf{Spaces}$-valued presheaves on an $\infty$-category $\catC$ and right fibrations\footnote{A \emph{right fibration} (over $\catC$) is a functor $f:\mathscr{E} \rightarrow \catC$ such that whenever a square of type
+    The straightening--unstraightening construction of \cite[§2.2]{lurie_htt} provides an equivalence between $\mathsf{Sp}$-valued presheaves on an $\infty$-category $\catC$ and right fibrations\footnote{A \emph{right fibration} (over $\catC$) is a functor $f:\mathscr{E} \rightarrow \catC$ such that whenever a square of type
     %
     \begin{equation}
         \begin{tikzcd}[ampersand replacement=\&]
@@ -369,7 +369,7 @@ An $\infty$-category of basics that will play a major role for the development o
 \end{construction}
 
 \begin{remark}\label{16GY5V1}
-    Insisting that tangential structures be \emph{right fibrations} over $\bsc$, as opposed to simply $\infty$-categories over it as, e.g., in \cite{ayala2020factorization}, leads to technical issues that lead to our over-simplified notation due to the property of being a right fibration not being invariant under equivalence. For instance, when $G=\ast$, so that $\mathsf{D}^\ast_n$ controls framed $n$-manifolds, the map $BG=\ast\to \mathsf{BO}(n)\simeq\mathsf{D}_n$ is not a right fibration, owing to the observation that right fibrations of Kan complexes are Kan fibrations, and these, when surjective on objects, are epimorphisms. On the other hand, $B\ast=\ast\simeq (\mathsf{D}_n)_{/\mathbb{R}^n}$ since over-$\infty$-groupoids are contractible (\cite[\href{https://kerodon.net/tag/018Y}{018Y}]{lurie_kerodon}), but $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \mathsf{D}_n$ \emph{is} a right fibration since it is a projection from an over-$\infty$-category (\cite[\href{https://kerodon.net/tag/018F}{018F}]{lurie_kerodon}, \cite{joyal}). Moreover, $\mathsf{D}_n\hookrightarrow \bsc$ is a right fibration since this full $\infty$-subcategory is trivially a sieve, so the composition $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \bsc$ is a right fibration as well. In general, the map $\mathsf{B}G\to \mathsf{BO}(n)$ is not a right fibration unless $G\to\mathsf{O}(n)$ is an epimorphism. However, given the latter, we can consider the presheaf $\mathsf{D}_n^{\text{op}}\to\mathsf{Spaces}$ given by mapping $\mathbb{R}^n$ to the space of $G$-structures on it, and sending an embedding to the induced pullback map on the respective spaces of $G$-structures. By unstraightening, this determines a right fibration for which, by abuse, we write $\mathsf{D}^G_n=\mathsf{B}G\to \mathsf{D}_n\hookrightarrow\bsc$.
+    Insisting that tangential structures be \emph{right fibrations} over $\bsc$, as opposed to simply $\infty$-categories over it as, e.g., in \cite{ayala2020factorization}, leads to technical issues that lead to our over-simplified notation due to the property of being a right fibration not being invariant under equivalence. For instance, when $G=\ast$, so that $\mathsf{D}^\ast_n$ controls framed $n$-manifolds, the map $BG=\ast\to \mathsf{BO}(n)\simeq\mathsf{D}_n$ is not a right fibration, owing to the observation that right fibrations of Kan complexes are Kan fibrations, and these, when surjective on objects, are epimorphisms. On the other hand, $B\ast=\ast\simeq (\mathsf{D}_n)_{/\mathbb{R}^n}$ since over-$\infty$-groupoids are contractible (\cite[\href{https://kerodon.net/tag/018Y}{018Y}]{lurie_kerodon}), but $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \mathsf{D}_n$ \emph{is} a right fibration since it is a projection from an over-$\infty$-category (\cite[\href{https://kerodon.net/tag/018F}{018F}]{lurie_kerodon}, \cite{joyal}). Moreover, $\mathsf{D}_n\hookrightarrow \bsc$ is a right fibration since this full $\infty$-subcategory is trivially a sieve, so the composition $(\mathsf{D}_n)_{/\mathbb{R}^n}\to \bsc$ is a right fibration as well. In general, the map $\mathsf{B}G\to \mathsf{BO}(n)$ is not a right fibration unless $G\to\mathsf{O}(n)$ is an epimorphism. However, given the latter, we can consider the presheaf $\mathsf{D}_n^{\text{op}}\to\mathsf{Sp}$ given by mapping $\mathbb{R}^n$ to the space of $G$-structures on it, and sending an embedding to the induced pullback map on the respective spaces of $G$-structures. By unstraightening, this determines a right fibration for which, by abuse, we write $\mathsf{D}^G_n=\mathsf{B}G\to \mathsf{D}_n\hookrightarrow\bsc$.
 \end{remark}
 
 Another type of stratified manifold that we will focus on heavily in this work is the case of a smooth manifold with a distinguished, properly embedded, smooth submanifold, which we alternatively call a \emph{defect}. Even though there is a clear picture of what this means we will now formally describe the $\infty$-category of basics that will give rise to these kinds of manifolds.

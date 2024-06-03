@@ -192,8 +192,8 @@ There is a general definition of locally constant algebra objects in the context
 
 \subsection{The \texorpdfstring{$\infty$-}{infinity }operad of Factorization Algebras}
 
-Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for factorization algebras. In the case of stratified manifolds, we will show that the $\infty$-operad that governs locally constant factorization algebras can be taken to be $\disk_{/M}$, and the one that governs ordinary factorization algebras can be taken to be $\disk[r]_{/M}$. This result is immensely helpful in relating factorization algebras to results in the area of disk algebras. We will see one such example in \Cref{ch:gluing_disk_alg}.
-
+Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for (locally constant) factorization algebras. We will be working in the generality of stratified manifolds, and all our results in this section will come in pairs, one for the locally constant case and one not. We call the results in the not-necessarily-locally-constant case corollaries since their proofs will be obvious from the proofs of the statements in the locally constant case. To connect factorization algebras to the theory of algebras over an $\infty$-operad we will work in two steps. First we have the following results:
+%
 \begin{proposition}\label{prop:fh_disk_to_lcfa}
     Given a stratified manifold $M$ factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
     %
@@ -201,8 +201,107 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
         \int : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
     \end{equation}
 \end{proposition}
+%
+\begin{corollary}\label{cor:fh_disk_to_falg}
+    Given a stratified manifold $M$ factorization homology provides a functor
+    %
+    \begin{equation}
+        \int: \alg{\disk[r]_{/M}} (\catC) \xrightarrow{\ \ \ \ } \falg_{M} (\catC).
+    \end{equation}
+\end{corollary}
+
+The second step is then showing that the functors constructed above are equivalences, which we summarize in the following results:
+%
+\begin{theorem}\label{thm:disk_alg=lcfa}
+    For each stratified manifold $M$, the previously constructed factorization homology functor provides an equivalence of $\infty$-categories between $\disk_{/M}$-algebras and locally constant factorization algebras on $M$. Equivalently, the $\infty$-operad governing locally constant factorization algebras can be taken to be $\disk_{/M}$
+    %
+    \begin{equation}
+        \alg{\disk_{/M}} (\catC) \xrightarrow[\int]{\ \ \simeq \ \ } \lcfa_M (\catC).
+    \end{equation}
+\end{theorem}
+%
+\begin{corollary}\label{cor:disk_alg=falg}
+    The $\infty$-operad governing factorization algebras on a stratified manifold $M$ can be taken to be $\disk[r]_{/M}$,
+    %
+    \begin{equation}
+        \alg{\disk[r]_{/M}} (\catC) \xrightarrow{\ \ \simeq \ \ } \falg_M (\catC).
+    \end{equation}
+\end{corollary}
+%
+The reason for the phrasing in these results is that, technically speaking, equivalence of the $\infty$-categories of algebras does not imply equivalence of the underlying operads. However since we only defined (locally constant) factorization algebras at the level of algebras and not on the level of $\infty$-operads, we can take the operadic definition as the basic one, and interpret the results as connecting this to the classical definition. The theorems that we present in this section are immensely helpful in relating factorization algebras to results in the area of disk algebras, which will be obvious throughout the rest of this work. One important example that we will see is in \Cref{ch:gluing_disk_alg}.
+
+In the service of working towards proofs of all of these results we first have to pause and develop some necessary technically results regarding Weiss covers.
+
+\begin{lemma}\label{lem:weiss_to_ordinary}
+    Let $M$ be a topological space with a sieve $\mathscr{U}$. The following are equivalent:
+    %
+    \begin{enumerate}
+        \item $\mathscr{U}$ is a Weiss sieve of $M$,
+        \item for all $n \geq 0$, the sieve $\{ \mathrm{Conf}_n(U)_{\Sigma_n} \xhookrightarrow{} \mathrm{Conf}_n(M)_{\Sigma_n} \mid U \in \mathscr{U} \}$ is a covering sieve of the unordered configuration space $\mathrm{Conf}_n(M)_{\Sigma_n}$ of $n$ points in $M$.
+    \end{enumerate}
+\end{lemma}
 
 \begin{proof}
+    In the forward direction, let $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(M)_{\Sigma_n}$ be an equivalence class of $n$ points under the action of the symmetric group. By definition of Weiss sieve, there is a $U \in \mathscr{U}$ such that $\{x_1, \dots, x_n\} \subset U$. Since none of the points are the same this means that $(x_1, \dots, x_n) \in U^{\times n}$, and subsequently that $(x_1, \dots, x_n) \in \mathrm{Conf}_n(U)$. Taking quotients we get that $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(U)_{\Sigma_n}$. Since $\mathrm{Conf}_n(U)_{\Sigma_n}$ is open in the topology of $\mathrm{Conf}_n(M)_{\Sigma_n}$, the collection of these form a covering sieve.
+
+    In the opposite direction, let $S \subset M$ be a finite set with cardinality $|S| = n$. Naming its elements $x_1, \dots, x_n$ in an arbitrary order that will not matter because of the $\Sigma_n$ quotient, we get the $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(M)_{\Sigma_n}$. By assumption there exists a $U \in \mathscr{U}$ such that $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(U)_{\Sigma_n}$. In particular, this means that $(x_1, \dots, x_n) \in U^{\times n}$, or in other words that $x_i \in U$ for all $1 \leq i \leq n$. This implies that $\mathscr{U}$ satisfies the Weiss property.
+\end{proof}
+
+\begin{lemma}\label{lem:gluing_disk/M}
+    A Weiss sieve $\mathscr{U} \subset \mfld[r]_{/M}$ canonically determines a morphism
+    %
+    \begin{equation}
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r] \xrightarrow{\disk_{/-}} \mathsf{RFib}_{\disk(\bstr)}) \xrightarrow{\ \ \simeq \ \ } \disk_{/M}
+    \end{equation}
+    of right fibrations over $\disk(\bstr)$, which moreover, is an equivalence.
+\end{lemma}
+
+\begin{proof}
+    The morphism is determined by the universal property of the colimit with the component maps $\disk_{/U} \xrightarrow{} \disk_{/M}$ given from the open embeddings $U \xhookrightarrow{} M$. To show the equivalence, we follow the strategy laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}, while at the same time adapting it to the stratified setting. A morphism of right fibrations, as in the statement, is an equivalence if, and only if, it is so when looked at as a right fibration over the maximal $\infty$-groupoid of the base (cite ...). In our case this is\footnote{Specifically, the wreath product of groups in the notation is referring to $\mathsf{End}_{\bstr}(U) \wr_{\{1, 2, \dots, i\}} \Sigma_i$, the one whose underlying set is $\mathsf{End}_{\bstr}(U)^{\times \{1, 2, \dots, i\}} \times \Sigma_i$.}
+    %
+    \begin{equation}
+        \disk(\bstr)^{\simeq} \simeq \coprod_{i \geq 0} \prod_{[U]} \mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i),
+    \end{equation}
+    %
+    as given by \cite[Lem.2.21]{aft_fhstrat}. The same lemma also tells us that the maximal $\infty$-groupoid of $\disk_{/M}$ is given by\footnote{The notation $M_{[U]}$ denotes the $[U]$-stratum of the stratified manifold $M$, which is a \emph{smooth} manifold, as defined in \cite[Def.4.4.5]{aft_localstrut}.}
+    %
+    \begin{equation}
+        \disk_{/M}^{\simeq} \simeq \coprod_{i \geq 0} \prod_{[U]} \mathrm{Conf}_{i}(M_{[U]})_{\Sigma_i}.
+    \end{equation}
+    %
+    In both cases, the product runs over isomorphism classes of basics. It is also clear that the map $\disk_{/M}^{\simeq} \xrightarrow{} \disk(\bstr)^{\simeq}$ resulting from the right fibration from the slice respects this decomposition in that there result maps of spaces
+    %
+    \begin{equation}
+        \mathrm{Conf}_i(M_{[U]})_{\Sigma_i} \xrightarrow{\ \ \ \ } \mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i),
+    \end{equation}
+    %
+    for each $i \geq 0$, and each isomorphism class $[U]$ of basics in $\bstr$. Thus, working piece by piece, we need to show that
+    %
+    \begin{equation}
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i}(-_{[U]})_{\Sigma_i}} \mathsf{Sp}_{/\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i}(M_{[U]})_{\Sigma_i},
+    \end{equation}
+    %
+    for all $i$ and $[U]$ as specified before, where we notice that the decomposition into maps of spaces means that our target is even $\mathsf{Sp}_{/\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)}$ and not just right fibrations. We will first explain this equivalence at the level of spaces and only after will we argue why the equivalence respects the maps to $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$. From a Weiss sieve $\mathscr{U}$ of $M$ we easily get a Weiss sieve $\mathscr{U}_{[U]}$ of $M_{[U]}$ by intersecting with $M_{[U]}$ as a submanifold of $M$. Using $\mathscr{U}_{[U]}$, we define $\mathscr{U}_{i, [U]}$ to be the sieve of $\mathrm{Conf}_i(M_{[U]})_{\Sigma_i}$ as in \Cref{lem:weiss_to_ordinary}. These considerations give us equivalences
+    %
+    \begin{align}\label{eq:ord_to_W_equivs}
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i}(-_{[U]})_{\Sigma_i}} \mathsf{Sp}) &\simeq \mathsf{colim} (\mathscr{U}_{[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i}(-)_{\Sigma_i}} \mathsf{Sp})\notag\\
+        &\simeq \mathsf{colim} (\mathscr{U}_{i,[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}).
+    \end{align}
+    %
+    The second equivalence in the above is simply a statement about the unions over the two covers and is a restatement of \Cref{lem:weiss_to_ordinary}. But, by \cite[Prop.A.3.2]{lurie_ha} there is an equivalence
+    %
+    \begin{equation}\label{eq:gluing_top_lurie}
+        \mathsf{colim} (\mathscr{U}_{i,[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i}(M_{[U]})_{\Sigma_i}.
+    \end{equation}
+    %
+    It is obvious that the equivalences in \Cref{eq:ord_to_W_equivs} lie over $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$, since they're nothing more than a rewriting. The equivalence in \Cref{eq:gluing_top_lurie} also lies over $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$ because all the various pieces that we're gluing in $\mathsf{Sp}$ come from unordered configuration space manifolds............. 
+\end{proof}
+
+\begin{remark}
+    That the maps to $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$ don't play much of a role can also be seen through the fact that this is the only place where the choice of tangential structure $\bstr$ enters the discussion in the form of including or excluding certain endomorphisms. 
+\end{remark}
+
+\begin{proof}[Proof of {\Cref{prop:fh_disk_to_lcfa}}]
     We adopt a proof strategy similar to \cite[prop.3.14]{af_primer}. Unlike there, we work in the relative case of $\disk_{/M}$ instead of $\disk(\bstr)$. Since the $\infty$-category of factorization algebras is defined as a pullback, we will look for a commutative diagram involving $\alg{\disk_{/M}}$, so that, by the universal property of the pullback, we get the stated functor.
     
     We first observe that, by definition, the $\infty$-operad $\opens(M) := \mfld[r]_{/M}$. There are clear functors of $\infty$-operads
@@ -245,77 +344,53 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
         \end{tikzcd}
     \end{equation}
     %
-    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}
-    
-    Since $\catC$ has all relevant colimits the left Kan extension $\int F$ is given pointwise by
+    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}, so that the Weiss sieve $\mathscr{U}$ is defined as a subcategory of $\mfld[r]_{/N}$.
+
+    A similar calculation appears in part 2 of the proof of \cite[prop.2.22]{af_primer}, with the caveat that there things are presented for smooth manifolds. However, because of \Cref{lem:weiss_to_ordinary} and \Cref{lem:gluing_disk/M} we can adapt the proof to the stratified setting as well. Namely, we're trying to show that the canonical map 
     %
-    \begin{equation}\label{eq:pointwiseKan}
-        \int_e F \simeq \mathsf{colim} ((\disk_{/M})_{/e} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC),
+    \begin{equation}\label{eq:fhfunc_canonical_map}
+        \mathsf{colim}(\mathscr{U} \xhookrightarrow{} \mfld[r]_{/N} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC) \xrightarrow{\ \ \ \ } \int_e F
     \end{equation}
     %
-    so what we need to show is that this colimit is equivalent to the colimit
+    is an equivalence for each sieve $\mathscr{U}$. Since $\catC$ has all relevant colimits the left Kan extension $\int F$ is given pointwise by
     %
-    \begin{equation}\label{eq:cosheaf_colim_relative}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} (\mfld[r]_{/M})_{/e} \xrightarrow{} \mfld[r]_{/M} \rightarrow \mfld_{/M} \xrightarrow{\int F} \catC),
+    \begin{equation}
+        \int_e F \simeq \mathsf{colim} (\disk_{/N} \xrightarrow{\simeq} (\disk_{/M})_{/e} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC),
     \end{equation}
     %
-    for each covering sieve $\mathscr{U}$. Since we aren't actually trying to get the value of these colimits we can rewrite \Cref{eq:pointwiseKan} into the idiosyncratic form
-    %
-    \begin{equation}\label{eq:idiosync_form}
-        \mathsf{colim} ((\disk_{/M})_{/e} \xrightarrow{} (\mfld_{/M})_{/e} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC),
-    \end{equation}
-    %
-    which is easier to compare to \Cref{eq:cosheaf_colim_relative}. Using the fact that $\disk[r]_{/M} \xrightarrow{} \disk_{/M}$ is a final functor, which is a consequence of \cite[prop.2.22]{aft_fhstrat}, and the equivalences of \Cref{lem:double_slice} we can rewrite \Cref{eq:idiosync_form} further into
+    and this allows us to rewrite our canonical map from \Cref{eq:fhfunc_canonical_map} into
     %
     \begin{align}
-        \mathsf{colim} ((\disk[r]_{/M})_{/e} \xrightarrow{} (\disk_{/M})_{/e} \xrightarrow{} (\mfld_{/M})_{/e} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC) \\ \simeq \mathsf{colim} ((\disk[r]_{/M})_{/e} \xrightarrow{} (\mfld[r]_{/M})_{/e} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC).
+        \mathsf{colim} \Big( \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\disk_{/-}} \cat) \xrightarrow{} &\disk_{/N} \rightarrow \disk_{/M} \xrightarrow{F} \catC \Big)\notag\\
+        \xrightarrow{\ \ \ \ \ } \mathsf{colim} (&\disk_{/N} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC).
     \end{align}
     %
-    Denoting the functor $\mfld[r]_{/N} \simeq (\mfld[r]_{/M})_{/e} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC$ by $K_F$ and comparing with \Cref{eq:cosheaf_colim_relative} we need to show
-    %
-    \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{K_F} C) \simeq \mathsf{colim} (\disk[r]_{/N} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{K_F} C),
-    \end{equation}
-    %
-    but this already follows from part 2 of the proof of \cite[prop.2.22]{af_primer}, and is equivalent to the statement that the functor
-    %
-    \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r]_{/N} \xrightarrow{} \mfld[r] \xrightarrow{\disk_{/-}} \cat) \xrightarrow{} \disk_{/N},
-    \end{equation}
-    %
-    is final.
-
-    {\color{red} \bf TODOs:} \cite[prop.2.22]{af_primer} is smooth, we need stratified.
-    \begin{itemize} 
-        \item It rests on \cite[Lemma 2.30]{af_primer} which is about what happens when you do a base change from $\mathsf{RFib}_{\disk_n}$ to $\mathsf{RFib}_{\disk_n^{\simeq}}$ where $-^\simeq$ takes the core. The same base change in the stratified setting will be allowed because we will still be working with right fibrations. Probably in the stratified core $\disk^\simeq$ basic disks with different stratifications disconnect into separate connected components.\footnote{Not "probably", but surely.} This should lead to a similar argument. 
-        \item Then the following remark: a covering sieve $\mathscr{U}$ on $M$ being Weiss is exactly saying that the smallest sieve on $M$ containing $\{\mathrm{Conf}_i(U)_{\Sigma_i}\hookrightarrow\mathrm{Conf}_i(M)_{\Sigma_i}\}_{U\in\mathscr{U}}$ is a covering sieve on $\mathrm{Conf}_i(M)_{\Sigma_i}$.\footnote{Here $i$ is the number disks, fixed but arbitrary; $(-)_{\Sigma_i}$ makes the configurations unordered.} Then the fact that $\mathrm{Conf}_i(M)_{\Sigma_i}$ is Hausdorff and paracompact gives the desired equivalence. Something similar might hold in the stratified case but this is not obvious. Hopefully AFT already wrote it down somewhere. I vaguely remember a statement that conically-smooth stratified spaces have partitions of unity, possibly in their "Factorization homology I" paper. If so, it's either there or I'd guess in the local structures paper.
-        \item In the first place, the replacement of $\mathsf{Cat}_\infty$ by $\mathsf{RFib}_{\disk_n}$ in the calculation needs to be check to be benign. This is probably something obvious and has (I'd say) least priority.
-    \end{itemize}
+    However, the statement of \Cref{lem:gluing_disk/M} is exactly the statement that the above map is an equivalence.
 \end{proof}
 
 \begin{remark}
     Intuitively, the key idea for the statement and proof is that $\disk[r]_{/N}$ is a basis for the Weiss Grothendieck topology on manifolds. This is essentially because for each finite set of points $S \subset N$, and each Weiss cover of it $U_S$, we can take small enough disks $\{ D_s \}_{s \in S}$ around each point, by virtue of $N$ being a manifold, and their disjoint union will cover $S$, as well as satisfy $\sqcup_{s \in S} D_s \subset U_S$. The proof of \cite[prop.2.22]{af_primer} makes this precise, and the above proof transports that idea to the relative case.
 \end{remark}
 
-From the proof of \Cref{prop:fh_disk_to_lcfa} it is easy to see that we can make a similar statement for ordinary factorization algebras too:
 
-\begin{corollary}\label{cor:fh_disk_to_falg}
-    Given a stratified manifold $M$ factorization homology provides a functor
-    %
-    \begin{equation}
-        \int: \alg{\disk[r]_{/M}} (\catC) \xrightarrow{\ \ \ \ } \falg_{M} (\catC).
-    \end{equation}
-\end{corollary}
 
-\begin{theorem}\label{thm:disk_alg=lcfa}
-    For each stratified manifold $M$, the previously constructed factorization homology functor provides an equivalence of $\infty$-categories between $\disk_{/M}$-algebras and locally constant factorization algebras on $M$. Equivalently, the $\infty$-operad governing locally constant factorization algebras can be taken to be $\disk_{/M}$
-    %
-    \begin{equation}
-        \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_M (\catC).
-    \end{equation}
-\end{theorem}
 
-\begin{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{proof}[Proof of {\Cref{thm:disk_alg=lcfa}}]
     To show essential surjectivity of $\int$, for each $F \in \lcfa_M (\catC)$ we will find an equivalence $\int F| \simeq F$ in $\lcfa_M (\catC)$, with $F|$ to be defined later. Since $\lcfa_M (\catC) \xrightarrow{} \alg{\opens(M)}$ is fully faithful, this amounts to finding equivalences of prefactorization algebras, namely a family of equivalences
     %
     \begin{equation}
@@ -392,13 +467,6 @@ From the proof of \Cref{prop:fh_disk_to_lcfa} it is easy to see that we can make
 
 As before, the case of ordinary factorization algebras gets a similar statement whose proof goes along the same lines:
 
-\begin{corollary}\label{cor:disk_alg=falg}
-    The $\infty$-operad governing factorization algebras on a stratified manifold $M$ can be taken to be $\disk[r]_{/M}$,
-    %
-    \begin{equation}
-        \alg{\disk[r]_{/M}} (\catC) \xrightarrow{\ \ \simeq \ \ } \falg_M (\catC).
-    \end{equation}
-\end{corollary}
 
 \begin{remark}
     A version of \Cref{thm:disk_alg=lcfa} was proven as \cite[thm.6]{gtz2014} in the case of smooth manifolds. The proof there, however, made crucial use of choosing a Riemannian metric on the manifold and constructing geodesically convex neighborhoods. This technique is, at least presently, not extendable to the stratified case, but our proof above subverts the need for it. 
