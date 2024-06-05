@@ -224,7 +224,7 @@ The second step is then showing that the functors constructed above are equivale
     The $\infty$-operad governing factorization algebras on a stratified manifold $M$ can be taken to be $\disk[r]_{/M}$,
     %
     \begin{equation}
-        \alg{\disk[r]_{/M}} (\catC) \xrightarrow{\ \ \simeq \ \ } \falg_M (\catC).
+        \alg{\disk[r]_{/M}} (\catC) \xrightarrow[\int]{\ \ \simeq \ \ } \falg_M (\catC).
     \end{equation}
 \end{corollary}
 %
@@ -257,49 +257,31 @@ In the service of working towards proofs of all of these results we first have t
 \end{lemma}
 
 \begin{proof}
-    The morphism is determined by the universal property of the colimit with the component maps $\disk_{/U} \xrightarrow{} \disk_{/M}$ given from the open embeddings $U \xhookrightarrow{} M$. To show the equivalence, we follow the strategy laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}, while at the same time adapting it to the stratified setting. A morphism of right fibrations, as in the statement, is an equivalence if, and only if, it is so when looked at as a right fibration over the maximal $\infty$-groupoid of the base (cite ...). In our case this is\footnote{Specifically, the wreath product of groups in the notation is referring to $\mathsf{End}_{\bstr}(U) \wr_{\{1, 2, \dots, i\}} \Sigma_i$, the one whose underlying set is $\mathsf{End}_{\bstr}(U)^{\times \{1, 2, \dots, i\}} \times \Sigma_i$.}
+    The morphism is determined by the universal property of the colimit with the component maps $\disk_{/U} \xrightarrow{} \disk_{/M}$ given from the open embeddings $U \xhookrightarrow{} M$. To show the equivalence, we follow a related strategy to the one laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}. By \cite[Def.2.2.3.2]{lurie_htt}, a morphism of right fibrations, as in the statement, is an equivalence if, and only if, it induces equivalences of spaces on the fibers over each object of the base. The objects of the base $\disk(\bstr)$ (e.g. acroding to \cite[Lem.2.21]{aft_fhstrat}) are lists $(i_{[U]} | [U] \in [\bstr])$ of integers, one for each isomorphism class of objects in $\bstr$. According to the same lemma, the fibers are given by the spaces
     %
     \begin{equation}
-        \disk(\bstr)^{\simeq} \simeq \coprod_{i \geq 0} \prod_{[U]} \mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i),
+        (\disk_{/M})_{(i_{[U]} | [U])} \simeq \coprod_{[U]} \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}.
     \end{equation}
     %
-    as given by \cite[Lem.2.21]{aft_fhstrat}. The same lemma also tells us that the maximal $\infty$-groupoid of $\disk_{/M}$ is given by\footnote{The notation $M_{[U]}$ denotes the $[U]$-stratum of the stratified manifold $M$, which is a \emph{smooth} manifold, as defined in \cite[Def.4.4.5]{aft_localstrut}.}
+    Thus, we endeavor to show that the induced morphism
     %
     \begin{equation}
-        \disk_{/M}^{\simeq} \simeq \coprod_{i \geq 0} \prod_{[U]} \mathrm{Conf}_{i}(M_{[U]})_{\Sigma_i}.
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i_{[U]}}(-_{[U]})_{\Sigma_{i_{[U]}}}} \mathsf{Sp}) \xrightarrow{\ \ \ \ \ } \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}
     \end{equation}
     %
-    In both cases, the product runs over isomorphism classes of basics. It is also clear that the map $\disk_{/M}^{\simeq} \xrightarrow{} \disk(\bstr)^{\simeq}$ resulting from the right fibration from the slice respects this decomposition in that there result maps of spaces
-    %
-    \begin{equation}
-        \mathrm{Conf}_i(M_{[U]})_{\Sigma_i} \xrightarrow{\ \ \ \ } \mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i),
-    \end{equation}
-    %
-    for each $i \geq 0$, and each isomorphism class $[U]$ of basics in $\bstr$. Thus, working piece by piece, we need to show that
-    %
-    \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i}(-_{[U]})_{\Sigma_i}} \mathsf{Sp}_{/\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i}(M_{[U]})_{\Sigma_i},
-    \end{equation}
-    %
-    for all $i$ and $[U]$ as specified before, where we notice that the decomposition into maps of spaces means that our target is even $\mathsf{Sp}_{/\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)}$ and not just right fibrations. We will first explain this equivalence at the level of spaces and only after will we argue why the equivalence respects the maps to $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$. From a Weiss sieve $\mathscr{U}$ of $M$ we easily get a Weiss sieve $\mathscr{U}_{[U]}$ of $M_{[U]}$ by intersecting with $M_{[U]}$ as a submanifold of $M$. Using $\mathscr{U}_{[U]}$, we define $\mathscr{U}_{i, [U]}$ to be the sieve of $\mathrm{Conf}_i(M_{[U]})_{\Sigma_i}$ as in \Cref{lem:weiss_to_ordinary}. These considerations give us equivalences
+    is an equivalence of spaces for all isomorphism classes of basics $[U]$ and for all $i_{[U]} \geq 0$. From a Weiss sieve $\mathscr{U}$ of $M$ we easily get a Weiss sieve $\mathscr{U}_{[U]}$ of $M_{[U]}$ by intersecting with $M_{[U]}$ as a submanifold of $M$. Using $\mathscr{U}_{[U]}$, we define $\mathscr{U}_{i_{[U]}, [U]}$ to be the sieve of $\mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}$ as in \Cref{lem:weiss_to_ordinary}. These considerations give us equivalences
     %
     \begin{align}\label{eq:ord_to_W_equivs}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i}(-_{[U]})_{\Sigma_i}} \mathsf{Sp}) &\simeq \mathsf{colim} (\mathscr{U}_{[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i}(-)_{\Sigma_i}} \mathsf{Sp})\notag\\
-        &\simeq \mathsf{colim} (\mathscr{U}_{i,[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}).
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i_{[U]}}(-_{[U]})_{\Sigma_{i_{[U]}}}} \mathsf{Sp}) &\simeq \mathsf{colim} (\mathscr{U}_{[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i_{[U]}}(-)_{\Sigma_{i_{[U]}}}} \mathsf{Sp})\notag\\
+        &\simeq \mathsf{colim} (\mathscr{U}_{i_{[U]},[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}).
     \end{align}
     %
-    The second equivalence in the above is simply a statement about the unions over the two covers and is a restatement of \Cref{lem:weiss_to_ordinary}. But, by \cite[Prop.A.3.2]{lurie_ha} there is an equivalence
+    The second equivalence in the above is simply a statement about the unions over the two covers and is a restatement of \Cref{lem:weiss_to_ordinary}. But, by \cite[Prop.A.3.2]{lurie_ha} the induced map is an equivalence
     %
     \begin{equation}\label{eq:gluing_top_lurie}
-        \mathsf{colim} (\mathscr{U}_{i,[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i}(M_{[U]})_{\Sigma_i}.
+        \mathsf{colim} (\mathscr{U}_{i_{[U]},[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}.
     \end{equation}
-    %
-    It is obvious that the equivalences in \Cref{eq:ord_to_W_equivs} lie over $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$, since they're nothing more than a rewriting. The equivalence in \Cref{eq:gluing_top_lurie} also lies over $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$ because all the various pieces that we're gluing in $\mathsf{Sp}$ come from unordered configuration space manifolds............. 
 \end{proof}
-
-\begin{remark}
-    That the maps to $\mathsf{B}(\mathsf{End}_{\bstr}(U) \wr \Sigma_i)$ don't play much of a role can also be seen through the fact that this is the only place where the choice of tangential structure $\bstr$ enters the discussion in the form of including or excluding certain endomorphisms. 
-\end{remark}
 
 \begin{proof}[Proof of {\Cref{prop:fh_disk_to_lcfa}}]
     We adopt a proof strategy similar to \cite[prop.3.14]{af_primer}. Unlike there, we work in the relative case of $\disk_{/M}$ instead of $\disk(\bstr)$. Since the $\infty$-category of factorization algebras is defined as a pullback, we will look for a commutative diagram involving $\alg{\disk_{/M}}$, so that, by the universal property of the pullback, we get the stated functor.
@@ -354,50 +336,49 @@ In the service of working towards proofs of all of these results we first have t
     %
     is an equivalence for each sieve $\mathscr{U}$. Since $\catC$ has all relevant colimits the left Kan extension $\int F$ is given pointwise by
     %
-    \begin{equation}
+    \begin{equation}\label{eq:fh_colim_formula}
         \int_e F \simeq \mathsf{colim} (\disk_{/N} \xrightarrow{\simeq} (\disk_{/M})_{/e} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC),
     \end{equation}
     %
-    and this allows us to rewrite our canonical map from \Cref{eq:fhfunc_canonical_map} into
+    and this allows us to rewrite our canonical map from \Cref{eq:fhfunc_canonical_map}. On the right-hand side we just insert \Cref{eq:fh_colim_formula}, but the left-hand side requires more elaboration. After substituting \Cref{eq:fh_colim_formula} into the left-hand side of \Cref{eq:fhfunc_canonical_map} we're doing two colimits, and we can pull some information from the inner colimit into the outer one, namely as
     %
+    \begin{equation}
+        \mathsf{colim} \Big( \mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\disk_{/-}} \cat| \xrightarrow{\mathsf{colim}(- \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC)} \catC \Big),
+    \end{equation}
+    %
+    where $\cat|$ is the restriction to the image of the functor $\mfld[r]_{/M} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \cat$ in the above.... We want to show that $ $
+
+
+
+
     \begin{align}
         \mathsf{colim} \Big( \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\disk_{/-}} \cat) \xrightarrow{} &\disk_{/N} \rightarrow \disk_{/M} \xrightarrow{F} \catC \Big)\notag\\
-        \xrightarrow{\ \ \ \ \ } \mathsf{colim} (&\disk_{/N} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC).
+        \xrightarrow{\ \ \ \ \ } \mathsf{colim} (&\disk_{/N} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC),
     \end{align}
     %
-    However, the statement of \Cref{lem:gluing_disk/M} is exactly the statement that the above map is an equivalence.
+    where for the right-hand side we've just inserted \Cref{eq:fh_colim_formula}, while for the left-hand side we've further included a rewriting of the two colimits in play. However, the statement of \Cref{lem:gluing_disk/M} is exactly the statement that the above map is an equivalence.
 \end{proof}
 
 \begin{remark}
-    Intuitively, the key idea for the statement and proof is that $\disk[r]_{/N}$ is a basis for the Weiss Grothendieck topology on manifolds. This is essentially because for each finite set of points $S \subset N$, and each Weiss cover of it $U_S$, we can take small enough disks $\{ D_s \}_{s \in S}$ around each point, by virtue of $N$ being a manifold, and their disjoint union will cover $S$, as well as satisfy $\sqcup_{s \in S} D_s \subset U_S$. The proof of \cite[prop.2.22]{af_primer} makes this precise, and the above proof transports that idea to the relative case.
+    Intuitively, the key idea for the statement and proof is that $\disk[r]_{/N}$ is a basis for the Weiss Grothendieck topology on manifolds. This is essentially because for each finite set of points $S \subset N$ we can take disks $\{ D_s \}_{s \in S}$ around each point, by virtue of $N$ being a manifold. Subsequently, for each $U_S$ that covers $S$ we can take small enough disks, whose disjoint union will cover $S$ by construction, as well as satisfy $\sqcup_{s \in S} D_s \subset U_S$. The proof makes this idea precise, and tells us that we can calculate factorization homology using any Weiss sieve
+    %
+    \begin{equation}
+        \int_M F \simeq \mathsf{colim}(\disk[r]_{/M} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC)
+        \simeq \mathsf{colim}(\mathscr{U} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC).
+    \end{equation}
 \end{remark}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The above proof already shows how the ideas that went into defining factorization algebras are not that different from the ideas that went into defining factorization homology. Namely, the ideas of Weiss cosheaves and algebras over disks are deeply connected. Now that this connection has been illuminated, the proof of \Cref{thm:disk_alg=lcfa}, which we delve into promptly, is not hard to establish.
 
 
 \begin{proof}[Proof of {\Cref{thm:disk_alg=lcfa}}]
-    To show essential surjectivity of $\int$, for each $F \in \lcfa_M (\catC)$ we will find an equivalence $\int F| \simeq F$ in $\lcfa_M (\catC)$, with $F|$ to be defined later. Since $\lcfa_M (\catC) \xrightarrow{} \alg{\opens(M)}$ is fully faithful, this amounts to finding equivalences of prefactorization algebras, namely a family of equivalences
+    To show essential surjectivity of $\int$, for each $F \in \lcfa_M (\catC)$ we will find an equivalence $\int F| \simeq F$ in $\lcfa_M (\catC)$, with $F|$ to be defined later. Since $\lcfa_M (\catC) \xrightarrow{} \alg{\opens(M)}$ is fully faithful, this amounts to finding an equivalence of prefactorization algebras, namely a family of equivalences
     %
     \begin{equation}
         \int_U F| \xrightarrow[\simeq]{\ \ \phi (U) \ \ } F(U),
     \end{equation}
     %
-    one for each $(U \xhookrightarrow{} M) \in \mfld[r]_{/M}$, which preserve the multiplicative structure (see \Cref{cd:fa_morphisms}). Since $F$ is a locally constant factorization algebra the functor
+    one for each $(U \xhookrightarrow{} M) \in \mfld[r]_{/M}$, which are natural in $U$ and preserve the multiplicative structure (see \Cref{cd:fa_morphisms}). Since $F$ is a locally constant factorization algebra the functor
     %
     \begin{equation}
         \lcfa_M (\catC) \xrightarrow{} \csheaves[W, lc](\mfld[r]_{/M}, \catC) \simeq \csheaves[W](\mfld_{/M}, \catC) \xrightarrow{} \mathsf{Fun}(\mfld_{/M}, \catC),
@@ -419,13 +400,13 @@ In the service of working towards proofs of all of these results we first have t
         \end{tikzcd}
     \end{equation}
     %
-    and using the fact that $\disk[r]_{/U} \xrightarrow{} \disk_{/U}$ is final (\cite[prop.2.22]{aft_fhstrat}) immediately gives us that
+    where $F|$ is the restriction of $F$ to disks, and using the fact that $\disk[r]_{/U} \xrightarrow{} \disk_{/U}$ is final (\cite[prop.2.22]{aft_fhstrat}) immediately gives us that
     %
     \begin{equation}
-        F(U) \simeq \mathsf{colim} (\disk_{/U} \xrightarrow{} \disk_{/M} \xrightarrow{F|} \catC) =: \int_U F|.
+        F(U) \simeq \mathsf{colim} (\disk_{/U} \xrightarrow{} \disk_{/M} \xrightarrow{F|} \catC) \simeq \int_U F|.
     \end{equation}
     %
-    To preserve the multiplicative structure, these equivalences have to be natural, and there also has to be a commutative diagram
+    Naturality of these equivalences is immediate from the construction because, as already used, each inclusion of open subsets $V \xhookrightarrow{} U$ gives a full subcategory inclusion $\disk[r]_{/V} \xhookrightarrow{} \disk[r]_{/U}$. Given this fact, to preserve the multiplicative structure it is enough to show that the following is a commutative diagram
     %
     \begin{equation}\label{eq:mult_strut_comm_square}
         \begin{tikzcd}
@@ -434,7 +415,7 @@ In the service of working towards proofs of all of these results we first have t
         \end{tikzcd}
     \end{equation}
     %
-    for each collection of disjoint open sets $\{U_i\}$. Naturality is immediate from the construction because, as already used, each inclusion of open subsets $V \xhookrightarrow{} U$ gives a full subcategory inclusion $\disk[r]_{/V} \xhookrightarrow{} \disk[r]_{/U}$. On the other hand, the existence of the commutative diagram is guaranteed by the equivalence
+    for each collection of disjoint open sets $\{U_i\}$. This, however, is guaranteed by the equivalences
     %
     \begin{equation}
         \disk[r]_{/\sqcup_i U_i} \xrightarrow{\ \ \simeq \ \ } \bigtimes_i \disk[r]_{/U_i}.
@@ -465,15 +446,24 @@ In the service of working towards proofs of all of these results we first have t
     One perspective on this result, provided by \cite[thm.2.43]{aft_fhstrat}, is that the theory of locally constant factorization algebras captures as much information as (generalized) homology theory in the sense of \cite[def.2.37]{aft_fhstrat}.
 \end{remark}
 
-As before, the case of ordinary factorization algebras gets a similar statement whose proof goes along the same lines:
-
-
 \begin{remark}
     A version of \Cref{thm:disk_alg=lcfa} was proven as \cite[thm.6]{gtz2014} in the case of smooth manifolds. The proof there, however, made crucial use of choosing a Riemannian metric on the manifold and constructing geodesically convex neighborhoods. This technique is, at least presently, not extendable to the stratified case, but our proof above subverts the need for it. 
 \end{remark}
 
 \begin{remark}
-    As noted at the beginning of \S 2, the physical interpretation of this version of factorization homology is a way to take a spacetime $M$ and its local observables $A$, and construct \emph{some}, and typically not all, of the global observables. The previous \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} transfer this observation to factorization algebras, which aligns with the observation of \cite{cg2016} that the current version of factorization algebras can only deal with perturbative quantum field theory. 
+    As noted at the beginning of \S2, the physical interpretation of this version of factorization homology is a way to take a spacetime $M$ and its local observables $A$, and construct \emph{some}, though typically not all, of the global observables. The previous \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} transfer this observation to factorization algebras, which aligns with the observation of \cite{cg2016} that the current version of factorization algebras can only deal with perturbative quantum field theories. 
+\end{remark}
+
+\begin{remark}
+    The results of \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} can be seen as lowering the amount of data that is necessary to define a factorization algebra. There is a similar, but slightly weaker result in \cite[\S7.2]{cg2016}, which nonetheless works for all Hausdorff topological spaces. The key tool for them are factorizing bases, which play the role of Weiss covers but are further required to be closed under finite intersections. Their result then says that a factorization algebra defined on such a basis $\mathscr{U}$ can be extended to the full space $X$, namely there is an equivalence
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \falg_X(\catC) \arrow[rr, bend left=10, "\mathrm{-|_{\mathscr{U}}}"] \arrow[rr, phantom, "\simeq"]&  & \falg_{\mathscr{U}}(\catC) \arrow[ll, bend left=10, "\mathrm{ext}"].
+        \end{tikzcd}
+    \end{equation}
+    %
+    In comparison, our result drops the intersection requirement, while maintaining the statement.
 \end{remark}
 
 The $\infty$-operad $\disk_{/M}$ is, in general, harder to deal with than its symmetric monoidal counterpart $\disk(\bstr)$. The next lemma outlines a certain situation where this is not the case.
@@ -503,68 +493,14 @@ The $\infty$-operad $\disk_{/M}$ is, in general, harder to deal with than its sy
         \disk_{/M} \simeq \disk(\bstr_M)_{/M} \xrightarrow{\ \ \ \ } \disk(\bstr_M).
     \end{equation}
     %
-    This functor is an equivalence on maximal $\infty$-subgroupoids because for any $V \in \disk(\bstr_M)$ the space of morphisms to $M$ is contractible, so, up to equivalence it is unique. %To check that it is fully faithful we need to show that the induced maps
-    %
-    %\begin{equation}
-    %    \mathsf{Hom}_{\disk(\bstr)_{/U}} (V \xhookrightarrow{} U, V' \xhookrightarrow{} U) \xrightarrow{\ \ \ \ } \mathsf{Hom}_{\disk(\bstr)} (V, V')
-    %\end{equation}
-    %
-    %are equivalences. Giving a functor $\disk (\bstr) \xrightarrow{} \disk (\bstr)_{/U}$ is the same as giving a functor
-    %
-    %\begin{equation}
-    %    \disk (\bstr) ^{\vartriangleright} \xrightarrow{} \disk (\bstr)_{/U},
-    %\end{equation}
-    %
-    %which sends the cone point to $U$ (see e.g. \cite[prop.3.2]{joyal}).
-    Full faithfulness is provided by the fact that the functor on the active $\infty$-subcategories $\disk_{/M} \xrightarrow{} \disk(\bstr_M)$ is a right fibration. 
+    This functor is an equivalence on maximal $\infty$-subgroupoids because for any $V \in \disk(\bstr_M)$ the space of morphisms to $M$ is contractible, so, up to equivalence it is unique. Full faithfulness is provided by the fact that the functor on the active $\infty$-subcategories $\disk_{/M} \xrightarrow{} \disk(\bstr_M)$ is a right fibration. 
 \end{proof}
 
-The lemma says that for stratified manifolds $M$ that satisfy the conditions, the classification of locally constant factorization algebras on $M$, i.e. algebras over $\disk_{/M}$ simplifies to the classification of $\disk(\bstr_M)$-algebras in the usual sense
+The lemma says that for stratified manifolds $M$ that satisfy the conditions, the classification of locally constant factorization algebras on $M$, i.e. algebras over $\disk_{/M}$ simplifies to the classification of $\disk(\bstr_M)$-algebras in the usual sense, which are typically easier to work with,
 %
 \begin{equation}
     \lcfa_M (\catC) \simeq \mathsf{Fun}^\otimes (\mathsf{Env}(\disk_{/M}), \catC) \simeq \alg{\disk(\bstr_M)} (\catC).
 \end{equation}
-%
-This is an improvement because $\disk(\bstr_M)$-algebras are easier to work with, one reason being that $\disk(\bstr_M)$ has the benefit of being not just an $\infty$-operad but even a symmetric monoidal $\infty$-category.
-
-The results of \Cref{thm:disk_alg=lcfa} and \Cref{cor:disk_alg=falg} can also be seen as lowering the amount of data that is necessary to say that we have defined a factorization algebra on a stratified manifold. There is a similar, but slightly weaker result by \cite{cg2016}, which nonetheless works for all Hausdorff topological spaces. We recount this result here for comparison.
-
-\begin{definition}
-    A \emph{factorizing basis} of a topological space $X$ is a basis $\{ U_i \xhookrightarrow{} X\}_{i \in I}$ for the topology of $X$ which is closed under finite intersections, and which satisfies that for each finite set $S \subset X$, there exists a finite sub-collection of pairwise disjoint open subsets $\{ U_j \xhookrightarrow{} X\}_{j \in J}$, for which $S \subset \bigsqcup_{j \in J} U_j$.
-\end{definition}
-
-\begin{definition}
-    We will call factorization algebras defined only on the open subsets of an open cover $\mathscr{U}$ (in particular, for example, a factorizing basis), a $\mathscr{U}$-factorization algebra and the $\infty$-category of such $\falg_{\mathscr{U}}(\catC)$.
-\end{definition}
-
-\begin{theorem}[\cite{cg2016}]\label{thm:fa_from_basis}
-    Given a Hausdorff topological space $X$, there is an equivalence of $\infty$-categories between the $\infty$-categories of $\mathscr{U}$-factorization algebras defined on a factorizing basis $\mathscr{U}$ and factorization algebras defined on the full topological space $X$
-    %
-    \begin{equation}
-        \begin{tikzcd}
-            \falg_X(\catC) \arrow[rr, bend left=10, "\mathrm{-|_{\mathscr{U}}}"] &  & \falg_{\mathscr{U}}(\catC) \arrow[ll, bend left=10, "\mathrm{ext}"],
-        \end{tikzcd}
-    \end{equation}
-    %
-    where the top functor is given by restriction.
-\end{theorem}
-
-\begin{remark}
-    Looking into the proof of this statement we see that the value of the extension on open sets $U \subset X$ is defined as
-    %
-    \begin{equation}
-        \mathrm{ext}(F)(U) := \cech(\mathscr{U}_U, F),
-    \end{equation}
-    %
-    where $\mathscr{U}_U$ is a Weiss cover of $U$ generated by $\mathscr{U}$. That such a cover exists is already guaranteed by the Hausdorffness of $X$ and the basis property of $\mathscr{U}$. Namely, given any finite set $S \subset U$, Hausdorffness gives us the existence of pairwise disjoint open sets $\{ V_s \ni s\}_{s \in S}$, while the basis property of $\mathscr{U}$ gives us open subsets $\{ U_s \in \mathscr{U} \}_{s \in S}$ such that $s \in U_s \subset V_s$. $\sqcup_{s \in S} U_s$ then gives an open set that covers $S$.
-\end{remark}
-
-\begin{remark}
-    The proof of \Cref{thm:fa_from_basis} can be found in \cite[ch.7.2]{cg2016}, and we will not reproduce it here. The target category there is the category of chain complexes, but it holds more generally in $\catC$ by considering simplicial objects and their geometric realizations (which exist by the colimit assumption on $\catC$) instead.
-    
-    As mentioned, in the stratified manifold case, this is an easy corollary of the proof of \Cref{prop:fh_disk_to_lcfa}, where we show that taking all disks as the Weiss cover of choice reproduces the result that we would have gotten with any other Weiss cover. It is important to point out though that disks are not necessarily closed under intersections, which means that we don't have the opposite implication, and the methods to prove \Cref{prop:fh_disk_to_lcfa} are necessary.
-\end{remark}
-
 
 \subsection{Operations on Factorization Algebras}
 
@@ -664,7 +600,7 @@ In the special case of product spaces $X \times Y$, we now know that the project
     %
     which uses the projections $\pi_1|_V : X \times V \rightarrow X$ to assign $\pi_1|_V^{-1}(U) = U \times V$.
 
-    It is not hard to check that the above also holds for the example of factorization algebras on topological spaces, by using \Cref{thm:fa_from_basis}. However, we'll focus on manifolds, in which case, the construction from above immediately works since we now have to do it for $\disk[r]_{/X}$ instead of $\mfld[r]_{/X}$. The only things to mention is that products of disks are again disks \cite[cor.3.4.9]{aft_localstrut}.
+    It is not hard to check that the above also holds for the example of factorization algebras on topological spaces, by using \cite[\S7.2]{cg2016}. However, we'll focus on manifolds, in which case, the construction from above immediately works since we now have to do it for $\disk[r]_{/X}$ instead of $\mfld[r]_{/X}$. The only things to mention is that products of disks are again disks \cite[cor.3.4.9]{aft_localstrut}.
 \end{proof}
 
 
@@ -716,13 +652,13 @@ In the special case of product spaces $X \times Y$, we now know that the project
 As was the case with factorization homology, so too with factorization algebras we now turn to a few very important constructions of locally constant factorization algebras on intervals. Namely, we will consider how we can construct a locally constant factorization algebra on the spaces $\mathbb{R}$ (a.k.a. the open interval) and $\hoint$ (a.k.a. the half-open interval). These will be a very important backbone for intuition about locally constant factorization algebras, as well as a key part of proofs later on. We finish with factorization algebras for the closed interval $[-1,1]$.
 
 \begin{construction}\label{con:lcfas_on_R}
-    Consider a unital, (homotopy) associative algebra $A$ in the category $\catC$. For a first pass we use \Cref{thm:fa_from_basis} to construct a factorization algebra out of this data. We first check that the disks $\disk[r]_{/\mathbb{R}}$ of $\mathbb{R}$ form a factorizing basis. This is true since the disks are always a basis for any manifold, they are factorizing since we have all disjoint unions, and they are closed under finite intersections because the disks of $\mathbb{R}$ are intervals. Therefore, by \Cref{thm:fa_from_basis}, we need only assign values to these. Given any disk $U$ we assign the same value, $F_A(U) := A$. Similarly, given a multi-morphism $\sqcup_{i \in I} U_i \xhookrightarrow{} U$, with $I$ non-empty, we assign the map given by the multiplication of $A$
+    Consider a unital, (homotopy) associative algebra $A$ in the category $\catC$. For a first pass we use \cite[\S7.2]{cg2016} to construct a factorization algebra out of this data. We first check that the disks $\disk[r]_{/\mathbb{R}}$ of $\mathbb{R}$ form a factorizing basis. This is true since the disks are always a basis for any manifold, they are factorizing since we have all disjoint unions, and they are closed under finite intersections because the disks of $\mathbb{R}$ are intervals. Therefore, by \cite[\S7.2]{cg2016}, we need only assign values to these. Given any disk $U$ we assign the same value, $F_A(U) := A$. Similarly, given a multi-morphism $\sqcup_{i \in I} U_i \xhookrightarrow{} U$, with $I$ non-empty, we assign the map given by the multiplication of $A$
     %
     \begin{equation}
         F_A(\sqcup_{i \in I} U_i \xhookrightarrow{} U) := \otimes_{i \in I} A \rightarrow A.
     \end{equation}
     %
-    The implicit convention, is that the ordering of the intervals, provided by the standard orientation (or framing) of $\mathbb{R}$, determines the order in which we multiply. Associativity forbids any other ordering except the completely opposite one, which would yield the opposite multiplication, and thus the opposite algebra. Finally, in the case of $\emptyset \xhookrightarrow{} U$, we assign the map that chooses the unit $\mathbb{1} \rightarrow A$. At this point we have constructed a prefactorization algebra on $\mathbb{R}$. To use \Cref{thm:fa_from_basis} we need to first check the Weiss cosheaf condition. But because intervals are closed under finite intersections the \v{C}ech nerve definition of \Cref{rem:check_nerve} makes this easy; the simplicial object $\cech_{\bullet}(\disk[r]_{/\mathbb{R}}, F_A)$ in all degrees will be a coproduct of copies of $A$. Thus, $F_A$ is indeed a $\disk[r]_{/\mathbb{R}}$-factorization algebra and can be extended to a factorization algebra on $\mathbb{R}$. By definition, it is also obviously locally constant.
+    The implicit convention, is that the ordering of the intervals, provided by the standard orientation (or framing) of $\mathbb{R}$, determines the order in which we multiply. Associativity forbids any other ordering except the completely opposite one, which would yield the opposite multiplication, and thus the opposite algebra. Finally, in the case of $\emptyset \xhookrightarrow{} U$, we assign the map that chooses the unit $\mathbb{1} \rightarrow A$. At this point we have constructed a prefactorization algebra on $\mathbb{R}$. To use \cite[\S7.2]{cg2016} we need to first check the Weiss cosheaf condition. But because intervals are closed under finite intersections the \v{C}ech nerve definition of \Cref{rem:check_nerve} makes this easy; the simplicial object $\cech_{\bullet}(\disk[r]_{/\mathbb{R}}, F_A)$ in all degrees will be a coproduct of copies of $A$. Thus, $F_A$ is indeed a $\disk[r]_{/\mathbb{R}}$-factorization algebra and can be extended to a factorization algebra on $\mathbb{R}$. By definition, it is also obviously locally constant.
 
     In this simple case the disks are closed under finite intersections, so the construction works out. More generally, one would need to find another factorizing basis. In the case of smooth manifolds one possible way is to choose a Riemannian metric and take the geodesically convex neighborhoods. An alternative is to get rid of the property of being closed under finite intersections altogether. It turns out, because of \Cref{thm:disk_alg=lcfa}, that this is indeed possible, and that we can always stick to using disks even in the most general situations.
 
