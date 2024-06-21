@@ -195,11 +195,13 @@ There is a general definition of locally constant algebra objects in the context
 Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for (locally constant) factorization algebras. We will be working in the generality of stratified manifolds, and all our results in this section will come in pairs, one for the locally constant case and one not. We call the results in the not-necessarily-locally-constant case corollaries since their proofs will be obvious from the proofs of the statements in the locally constant case. To connect factorization algebras to the theory of algebras over an $\infty$-operad we will work in two steps. First we have the following results:
 %
 \begin{proposition}\label{prop:fh_disk_to_lcfa}
-    Given a stratified manifold $M$ factorization homology provides a functor between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$
+    Given a stratified manifold $M$ factorization homology provides a functor
     %
     \begin{equation}
-        \int : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC).
+        \int : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC)
     \end{equation}
+    %
+    between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$.
 \end{proposition}
 %
 \begin{corollary}\label{cor:fh_disk_to_falg}
@@ -213,11 +215,13 @@ Now that we have introduced all the varieties of factorization algebras, it's a 
 The second step is then showing that the functors constructed above are equivalences, which we summarize in the following results:
 %
 \begin{theorem}\label{thm:disk_alg=lcfa}
-    For each stratified manifold $M$, the previously constructed factorization homology functor provides an equivalence of $\infty$-categories between $\disk_{/M}$-algebras and locally constant factorization algebras on $M$. Equivalently, the $\infty$-operad governing locally constant factorization algebras can be taken to be $\disk_{/M}$
+    For each stratified manifold $M$, the previously constructed factorization homology functor provides an equivalence of $\infty$-categories
     %
     \begin{equation}
-        \alg{\disk_{/M}} (\catC) \xrightarrow[\int]{\ \ \simeq \ \ } \lcfa_M (\catC).
+        \alg{\disk_{/M}} (\catC) \xrightarrow[\int]{\ \ \simeq \ \ } \lcfa_M (\catC)
     \end{equation}
+    %
+    between $\disk_{/M}$-algebras and locally constant factorization algebras on $M$. Equivalently, the $\infty$-operad governing locally constant factorization algebras can be taken to be $\disk_{/M}$.
 \end{theorem}
 %
 \begin{corollary}\label{cor:disk_alg=falg}
@@ -230,14 +234,24 @@ The second step is then showing that the functors constructed above are equivale
 %
 The reason for the phrasing in these results is that, technically speaking, equivalence of the $\infty$-categories of algebras does not imply equivalence of the underlying operads. However since we only defined (locally constant) factorization algebras at the level of algebras and not on the level of $\infty$-operads, we can take the operadic definition as the basic one, and interpret the results as connecting this to the classical definition. The theorems that we present in this section are immensely helpful in relating factorization algebras to results in the area of disk algebras, which will be obvious throughout the rest of this work. One important example that we will see is in \Cref{ch:gluing_disk_alg}.
 
-In the service of working towards proofs of all of these results we first have to pause and develop some necessary technically results regarding Weiss covers.
+In the service of working towards proofs of all of these results we first have to pause and develop some necessary technically results regarding Weiss covers and preservation of colimits.
+
+
+
+
+
+
+
+
+
+
 
 \begin{lemma}\label{lem:weiss_to_ordinary}
     Let $M$ be a topological space with a sieve $\mathscr{U}$. The following are equivalent:
     %
     \begin{enumerate}
         \item $\mathscr{U}$ is a Weiss sieve of $M$,
-        \item for all $n \geq 0$, the sieve $\{ \mathrm{Conf}_n(U)_{\Sigma_n} \xhookrightarrow{} \mathrm{Conf}_n(M)_{\Sigma_n} \mid U \in \mathscr{U} \}$ is a covering sieve of the unordered configuration space $\mathrm{Conf}_n(M)_{\Sigma_n}$ of $n$ points in $M$.
+        \item for all $n \geq 0$, the smallest sieve containing $\{ \mathrm{Conf}_n(U)_{\Sigma_n} \xhookrightarrow{} \mathrm{Conf}_n(M)_{\Sigma_n} \mid U \in \mathscr{U} \}$ is a covering sieve of the unordered configuration space $\mathrm{Conf}_n(M)_{\Sigma_n}$ of $n$ points in $M$.
     \end{enumerate}
 \end{lemma}
 
@@ -246,6 +260,8 @@ In the service of working towards proofs of all of these results we first have t
 
     In the opposite direction, let $S \subset M$ be a finite set with cardinality $|S| = n$. Naming its elements $x_1, \dots, x_n$ in an arbitrary order that will not matter because of the $\Sigma_n$ quotient, we get the $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(M)_{\Sigma_n}$. By assumption there exists a $U \in \mathscr{U}$ such that $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(U)_{\Sigma_n}$. In particular, this means that $(x_1, \dots, x_n) \in U^{\times n}$, or in other words that $x_i \in U$ for all $1 \leq i \leq n$. This implies that $\mathscr{U}$ satisfies the Weiss property.
 \end{proof}
+
+{\color{red} This is the statement in the absolute case, needs to be adapted to the relative case.}
 
 \begin{lemma}\label{lem:gluing_disk/M}
     A Weiss sieve $\mathscr{U} \subset \mfld[r]_{/M}$ canonically determines a morphism
@@ -257,7 +273,7 @@ In the service of working towards proofs of all of these results we first have t
 \end{lemma}
 
 \begin{proof}
-    The morphism is determined by the universal property of the colimit with the component maps $\disk_{/U} \xrightarrow{} \disk_{/M}$ given from the open embeddings $U \xhookrightarrow{} M$. To show the equivalence, we follow a related strategy to the one laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}. By \cite[Def.2.2.3.2]{lurie_htt}, a morphism of right fibrations, as in the statement, is an equivalence if, and only if, it induces equivalences of spaces on the fibers over each object of the base. The objects of the base $\disk(\bstr)$ (e.g. acroding to \cite[Lem.2.21]{aft_fhstrat}) are lists $(i_{[U]} | [U] \in [\bstr])$ of integers, one for each isomorphism class of objects in $\bstr$. According to the same lemma, the fibers are given by the spaces
+    The morphism is determined by the universal property of the colimit with the component maps $\disk_{/U} \xrightarrow{} \disk_{/M}$ given from the open embeddings $U \xhookrightarrow{} M$. To show the equivalence, we follow a related strategy to the one laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}. By \cite[Def.2.2.3.2]{lurie_htt}, a morphism of right fibrations, as in the statement, is an equivalence if, and only if, it induces equivalences of spaces on the fibers over each object of the base. The objects of the base $\disk(\bstr)$ (e.g. according to \cite[Lem.2.21]{aft_fhstrat}) are lists $(i_{[U]} | [U] \in [\bstr])$ of integers, one for each isomorphism class of objects in $\bstr$\footnote{The choice of $\bstr$-structure does not play much of a role, because if we don't choose the appropriate one some fibers can be trivial, but this does not impede the result.}. According to the same lemma, the fibers are given by the spaces
     %
     \begin{equation}
         (\disk_{/M})_{(i_{[U]} | [U])} \simeq \coprod_{[U]} \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}.
@@ -282,6 +298,88 @@ In the service of working towards proofs of all of these results we first have t
         \mathsf{colim} (\mathscr{U}_{i_{[U]},[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}.
     \end{equation}
 \end{proof}
+
+
+
+\begin{lemma}\label{lem:gluing_disk/M/e}
+    A Weiss sieve $\mathscr{U} \subset \mfld[r]_{/M}$ canonically determines a morphism
+    %
+    \begin{equation}
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{(\disk_{/M})_{/-}} \mathsf{RFib}_{\disk_{/M}}) \xrightarrow{\ \ \simeq \ \ } (\disk_{/M})_{/-}
+    \end{equation}
+    of right fibrations over $\disk_{/M}$, which moreover, is an equivalence.
+\end{lemma}
+
+\begin{proof}
+    .....
+\end{proof}
+
+
+
+
+
+
+
+
+
+The following lemma about preservation of colimits is sketched out in \cite{rezk2023lan}.
+%
+\begin{lemma}\label{lem:Lan_preserve_colim}
+    Let $F: \mathscr{D} \xrightarrow{} \catC$ and $\iota: \mathscr{D} \xrightarrow{} \mathscr{M}$ be functors of (locally small) $\infty$-categories, where $\mathscr{M}$ and $\catC$ are cocomplete. Let $L_{\iota} F: \mathscr{M} \xrightarrow{} \catC$ be the left Kan extension of $F$ along $\iota$. $L_{\iota} F$ preserves a given colimit if, and only if, the restricted Yoneda embedding
+    %
+    \begin{align}
+        T_{\iota}: \mathscr{M} \xrightarrow{\ y_{\mathscr{M}} \ } \mathsf{PShv}(\mathscr{M}) \xrightarrow{\ \iota^* \ } \mathsf{PShv}(\mathscr{D}) 
+    \end{align}
+    %
+    does so.
+\end{lemma}
+
+\begin{proof}
+    First consider the special case when $(\iota: \mathscr{D} \xrightarrow{} \mathscr{M}) = (y_{\mathscr{D}}: \mathscr{D} \xrightarrow{} \mathsf{PShv}(\mathscr{D}))$ the Yoneda embedding of $\mathscr{D}$. We will see that in this case, $L_{y_{\mathscr{D}}} F$ is colimit preserving because it is a left adjoint to the functor
+    %
+    \begin{equation}
+        T_F: \catC \xrightarrow{y_{\catC}} \mathsf{PShv} (\catC) \xrightarrow{F^*} \mathsf{PShv} (\mathscr{D}).
+    \end{equation}
+    %
+    %Indeed, let $X \simeq y_{\mathscr{D}} (d)$ be a representable presheaf, then there is an equivalence of morphism spaces $\mathsf{Hom}_{\catC} (L_{y_{\mathscr{D}}} F (X), c) \simeq \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (X, T_F (c))$ given by 
+    %
+    %\begin{align}
+    %    \mathsf{Hom}_{\catC} (L_{y_{\mathscr{D}}} F (X), c) &\simeq \mathsf{Hom}_{\catC} (F (d), c) \simeq \mathsf{Hom}_{\mathsf{PShv}(\catC)} (y_{\catC}(F(d)), y_{\catC}(c))\notag\\ &\simeq \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (F^*(y_{\catC}(F(d))), T_F(c)) \simeq \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (X, T_F(c)).
+    %\end{align}
+    %
+    %In general, the Yoneda embedding $y_{\mathscr{D}}$ is a dense functor
+    
+    {\color{red} Proof of being adjoint}
+
+    In the general situation where $\iota$ is not necessarily the Yoneda embedding we can partially reduce to the previous case because we can write
+    %
+    \begin{equation}
+        L_{\iota} F \simeq L_{y_{\mathscr{D}}}F \circ L_{\iota} y_{\mathscr{D}}.
+    \end{equation}
+    %
+    Namely, this is because we know that $L_{y_{\mathscr{D}}} F$ preserves colimits, and by the assumptions in the lemma, $L_{\iota} F$ and $L_{\iota} y_{\mathscr{D}}$ are computed pointwise, as colimits over the same indexing $\infty$-category.
+
+    Finally, we claim that there is an equivalence of functors
+    %
+    \begin{equation}
+        \Big( L_{\iota} y_{\mathscr{D}} \simeq T_{\iota} \Big) \in \mathsf{Fun}(\mathscr{M}, \mathsf{PShv}(\mathscr{D})) 
+    \end{equation}
+
+    {\color{red} Proof of functor equivalence}
+    
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{proof}[Proof of {\Cref{prop:fh_disk_to_lcfa}}]
     We adopt a proof strategy similar to \cite[prop.3.14]{af_primer}. Unlike there, we work in the relative case of $\disk_{/M}$ instead of $\disk(\bstr)$. Since the $\infty$-category of factorization algebras is defined as a pullback, we will look for a commutative diagram involving $\alg{\disk_{/M}}$, so that, by the universal property of the pullback, we get the stated functor.
@@ -326,37 +424,21 @@ In the service of working towards proofs of all of these results we first have t
         \end{tikzcd}
     \end{equation}
     %
-    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}, so that the Weiss sieve $\mathscr{U}$ is defined as a subcategory of $\mfld[r]_{/N}$.
-
-    A similar calculation appears in part 2 of the proof of \cite[prop.2.22]{af_primer}, with the caveat that there things are presented for smooth manifolds. However, because of \Cref{lem:weiss_to_ordinary} and \Cref{lem:gluing_disk/M} we can adapt the proof to the stratified setting as well. Namely, we're trying to show that the canonical map 
-    %
-    \begin{equation}\label{eq:fhfunc_canonical_map}
-        \mathsf{colim}(\mathscr{U} \xhookrightarrow{} \mfld[r]_{/N} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{\int F} \catC) \xrightarrow{\ \ \ \ } \int_e F
-    \end{equation}
-    %
-    is an equivalence for each sieve $\mathscr{U}$. Since $\catC$ has all relevant colimits the left Kan extension $\int F$ is given pointwise by
-    %
-    \begin{equation}\label{eq:fh_colim_formula}
-        \int_e F \simeq \mathsf{colim} (\disk_{/N} \xrightarrow{\simeq} (\disk_{/M})_{/e} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC),
-    \end{equation}
-    %
-    and this allows us to rewrite our canonical map from \Cref{eq:fhfunc_canonical_map}. On the right-hand side we just insert \Cref{eq:fh_colim_formula}, but the left-hand side requires more elaboration. After substituting \Cref{eq:fh_colim_formula} into the left-hand side of \Cref{eq:fhfunc_canonical_map} we're doing two colimits, and we can pull some information from the inner colimit into the outer one, namely as
+    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}, so that the Weiss sieve $\mathscr{U}$ is defined as an $\infty$-subcategory of $\mfld[r]_{/N}$.
+    
+    With the Weiss cosheaf property being a statement about preserving colimits, and with $\int F$ being a left Kan extension we are exactly in the situation of \Cref{lem:Lan_preserve_colim}. Thus, we only need to show that functor $T: \mfld_{/M} \xrightarrow{} \mathsf{PShv} (\disk_{/M})$\footnote{This functor is related to the tangent classifier, with the differences being that we're now in the relative case, and we're not fully limiting to $\bsc$ but instead only to disks.} preserves Weiss colimits, namely that there is an equivalence
     %
     \begin{equation}
-        \mathsf{colim} \Big( \mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\disk_{/-}} \cat| \xrightarrow{\mathsf{colim}(- \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC)} \catC \Big),
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld_{/M} \xrightarrow{T} \mathsf{PShv} (\disk_{/M})) \simeq T(N \xhookrightarrow{} M),
     \end{equation}
     %
-    where $\cat|$ is the restriction to the image of the functor $\mfld[r]_{/M} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \cat$ in the above.... We want to show that $ $
-
-
-
-
-    \begin{align}
-        \mathsf{colim} \Big( \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\disk_{/-}} \cat) \xrightarrow{} &\disk_{/N} \rightarrow \disk_{/M} \xrightarrow{F} \catC \Big)\notag\\
-        \xrightarrow{\ \ \ \ \ } \mathsf{colim} (&\disk_{/N} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC),
-    \end{align}
+    where on the right-hand side we've used the fact that $\mathscr{U}$ is, in particular, a covering sieve. If we also append the straightening--unstraightening construction to $T$, we can write the desired equivalence as
     %
-    where for the right-hand side we've just inserted \Cref{eq:fh_colim_formula}, while for the left-hand side we've further included a rewriting of the two colimits in play. However, the statement of \Cref{lem:gluing_disk/M} is exactly the statement that the above map is an equivalence.
+    \begin{equation}
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld_{/M} \xrightarrow{ (\disk_{/M})_{/-}} \mathsf{RFib}_{\disk_{/M}}) \simeq (\disk_{/M})_{/e}.
+    \end{equation}
+    %
+    \Cref{lem:gluing_disk/M/e} guarantees the existence of this equivalence.
 \end{proof}
 
 \begin{remark}
@@ -368,7 +450,7 @@ In the service of working towards proofs of all of these results we first have t
     \end{equation}
 \end{remark}
 
-The above proof already shows how the ideas that went into defining factorization algebras are not that different from the ideas that went into defining factorization homology. Namely, the ideas of Weiss cosheaves and algebras over disks are deeply connected. Now that this connection has been illuminated, the proof of \Cref{thm:disk_alg=lcfa}, which we delve into promptly, is not hard to establish.
+The above proof already shows how the ideas that went into defining factorization algebras are not that different from the ideas that went into defining factorization homology. Namely, the ideas of Weiss cosheaves and algebras over disks are deeply connected. Now that this connection has been explained, the proof of \Cref{thm:disk_alg=lcfa}, which we delve into promptly, is not hard to establish.
 
 
 \begin{proof}[Proof of {\Cref{thm:disk_alg=lcfa}}]
