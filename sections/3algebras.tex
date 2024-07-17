@@ -236,16 +236,6 @@ The reason for the phrasing in these results is that, technically speaking, equi
 
 In the service of working towards proofs of all of these results we first have to pause and develop some necessary technically results regarding Weiss covers and preservation of colimits.
 
-
-
-
-
-
-
-
-
-
-
 \begin{lemma}\label{lem:weiss_to_ordinary}
     Let $M$ be a topological space with a sieve $\mathscr{U}$. The following are equivalent:
     %
@@ -261,65 +251,79 @@ In the service of working towards proofs of all of these results we first have t
     In the opposite direction, let $S \subset M$ be a finite set with cardinality $|S| = n$. Naming its elements $x_1, \dots, x_n$ in an arbitrary order that will not matter because of the $\Sigma_n$ quotient, we get the $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(M)_{\Sigma_n}$. By assumption there exists a $U \in \mathscr{U}$ such that $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(U)_{\Sigma_n}$. In particular, this means that $(x_1, \dots, x_n) \in U^{\times n}$, or in other words that $x_i \in U$ for all $1 \leq i \leq n$. This implies that $\mathscr{U}$ satisfies the Weiss property.
 \end{proof}
 
-{\color{red} This is the statement in the absolute case, needs to be adapted to the relative case.}
-
-\begin{lemma}\label{lem:gluing_disk/M}
-    A Weiss sieve $\mathscr{U} \subset \mfld[r]_{/M}$ canonically determines a morphism
-    %
-    \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r] \xrightarrow{\disk_{/-}} \mathsf{RFib}_{\disk(\bstr)}) \xrightarrow{\ \ \simeq \ \ } \disk_{/M}
-    \end{equation}
-    of right fibrations over $\disk(\bstr)$, which moreover, is an equivalence.
-\end{lemma}
-
-\begin{proof}
-    The morphism is determined by the universal property of the colimit with the component maps $\disk_{/U} \xrightarrow{} \disk_{/M}$ given from the open embeddings $U \xhookrightarrow{} M$. To show the equivalence, we follow a related strategy to the one laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}. By \cite[Def.2.2.3.2]{lurie_htt}, a morphism of right fibrations, as in the statement, is an equivalence if, and only if, it induces equivalences of spaces on the fibers over each object of the base. The objects of the base $\disk(\bstr)$ (e.g. according to \cite[Lem.2.21]{aft_fhstrat}) are lists $(i_{[U]} | [U] \in [\bstr])$ of integers, one for each isomorphism class of objects in $\bstr$\footnote{The choice of $\bstr$-structure does not play much of a role, because if we don't choose the appropriate one some fibers can be trivial, but this does not impede the result.}. According to the same lemma, the fibers are given by the spaces
-    %
-    \begin{equation}
-        (\disk_{/M})_{(i_{[U]} | [U])} \simeq \coprod_{[U]} \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}.
-    \end{equation}
-    %
-    Thus, we endeavor to show that the induced morphism
-    %
-    \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i_{[U]}}(-_{[U]})_{\Sigma_{i_{[U]}}}} \mathsf{Sp}) \xrightarrow{\ \ \ \ \ } \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}
-    \end{equation}
-    %
-    is an equivalence of spaces for all isomorphism classes of basics $[U]$ and for all $i_{[U]} \geq 0$. From a Weiss sieve $\mathscr{U}$ of $M$ we easily get a Weiss sieve $\mathscr{U}_{[U]}$ of $M_{[U]}$ by intersecting with $M_{[U]}$ as a submanifold of $M$. Using $\mathscr{U}_{[U]}$, we define $\mathscr{U}_{i_{[U]}, [U]}$ to be the sieve of $\mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}$ as in \Cref{lem:weiss_to_ordinary}. These considerations give us equivalences
-    %
-    \begin{align}\label{eq:ord_to_W_equivs}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i_{[U]}}(-_{[U]})_{\Sigma_{i_{[U]}}}} \mathsf{Sp}) &\simeq \mathsf{colim} (\mathscr{U}_{[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{\mathrm{Conf}_{i_{[U]}}(-)_{\Sigma_{i_{[U]}}}} \mathsf{Sp})\notag\\
-        &\simeq \mathsf{colim} (\mathscr{U}_{i_{[U]},[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}).
-    \end{align}
-    %
-    The second equivalence in the above is simply a statement about the unions over the two covers and is a restatement of \Cref{lem:weiss_to_ordinary}. But, by \cite[Prop.A.3.2]{lurie_ha} the induced map is an equivalence
-    %
-    \begin{equation}\label{eq:gluing_top_lurie}
-        \mathsf{colim} (\mathscr{U}_{i_{[U]},[U]} \xrightarrow{} \mfld[r](\bstr) \xrightarrow{} \mathsf{Sp}) \xrightarrow{\ \ \simeq \ \ } \mathrm{Conf}_{i_{[U]}}(M_{[U]})_{\Sigma_{i_{[U]}}}.
-    \end{equation}
-\end{proof}
-
+%To show the equivalence, we follow a related strategy to the one laid out in part 2 of the proof of \cite[Prop.2.22]{af_primer}.
 
 
 \begin{lemma}\label{lem:gluing_disk/M/e}
-    A Weiss sieve $\mathscr{U} \subset \mfld[r]_{/M}$ canonically determines a morphism
+    A Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$ canonically determines a morphism
     %
     \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{(\disk_{/M})_{/-}} \mathsf{RFib}_{\disk_{/M}}) \xrightarrow{\ \ \simeq \ \ } (\disk_{/M})_{/-}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\cdot, -)} \mathsf{PShv}(\disk_{/M}) \big) \xrightarrow{\ \ \simeq \ \ } \mathsf{Hom}_{\mfld_{/M}}(\cdot, e)
     \end{equation}
-    of right fibrations over $\disk_{/M}$, which moreover, is an equivalence.
+    of presheaves over $\disk_{/M}$, which moreover, is an equivalence.
 \end{lemma}
 
 \begin{proof}
-    .....
+    The morphism is determined by the universal property of the colimit. The components of the morphism of presheaves are given by
+    %
+    \begin{equation}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\iota, -)} \mathsf{Sp} \big) \xrightarrow{\ \ \ \ \ } \mathsf{Hom}_{\mfld_{/M}}(\iota, e),
+    \end{equation}
+    %
+    for each $\iota \in \disk_{/M}$, an open embedding of disks in $M$, and these morphisms are now maps of spaces which we want to show are equivalences. We now study the hom-spaces appearing above. By definition of the slice $\infty$-category, the hom-spaces are given as the homotopy fibers
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathsf{Hom}_{\mfld_{/M}} (\iota, e) \arrow[d] \arrow[r] & \mathsf{Hom}_{\mfld}(D, N) \arrow[d, "e^*"] \\
+            * \arrow[r, "\{\iota\}"] & \mathsf{Hom}_{\mfld}(D, M),
+        \end{tikzcd}
+    \end{equation}
+    %
+    where we have fixed the notation $\iota: D \xhookrightarrow{} M$ and $e: N \xhookrightarrow{} M$, for the domains of these maps. We further establish the notation that for each isomorphism class of basics $[B]$, the fixed $D$ has $i_[B]$-many disks of type $[B]$. With this notation in hand, by the characterization of the maximal $\infty$-subgroupoid of $\disk_{/M}$ \cite[Lem.2.21]{aft_fhstrat} for example, we know that
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mfld}(D, M) \simeq \coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(M_{[B]}),
+    \end{equation}
+    %
+    where the notation $M_{[B]}$ denotes the $[B]$-stratum of $M$ (see \cite[Prop.4.4.7]{aft_localstrut}). We also note that under these equivalences the map $e^*$ is given by $\coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(e_{[B]})$, which is even an open inclusion. Thus, the hom-spaces of the slice $\infty$-category are given as 
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mfld_{/M}} (\iota, e) \simeq \coprod_{[B]} \mathsf{Fib}_\iota^{[B]}(e),
+    \end{equation}
+    %
+    where $\mathsf{Fib}_\iota^{[B]}(e)$ is defined as the homotopy fiber
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathsf{Fib}_\iota^{[B]}(e) \arrow[d] \arrow[r] & \mathrm{UConf}_{i_{[B]}}(N_{[B]}) \arrow[d, "\mathrm{UConf}_{i_{[B]}}(e_{[B]})"] \\
+            * \arrow[r, "\{\iota_{[B]}\}"] & \mathrm{UConf}_{i_{[B]}}(M_{[B]}),
+        \end{tikzcd}
+    \end{equation}
+    %
+    where, by slight abuse, we denoted the point over which the fiber lies with $\iota_{[B]}$ as well. With all of this notation in place, and by switching the places of the colimits, what we want to show is that the canonical maps
+    %
+    \begin{equation}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Fib}_{\iota}^{[B]}(-)} \mathsf{Sp} \big) \xrightarrow{\ \ \ \ \ } \mathsf{Fib}_{\iota}^{[B]}(e),
+    \end{equation}
+    %
+    are equivalences for every $\iota$ and every $[B]$. Using \cite[Prop.A.3.2]{lurie_ha}, a sufficient condition for these maps to be equivalences is for the composition $\mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Fib}_{\iota}^{[B]}(-)} \mathsf{Sp}$ to be a covering sieve of $\mathsf{Fib}_{\iota}^{[B]}(e)$. To exhibit such a property we pick a particular model for the homotopy fiber $\mathsf{Fib}_{\iota}^{[B]}(e)$, namely
+    %
+    \begin{equation}
+        \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(N) := \big( \mathsf{P}(\mathrm{UConf}_{i_{[B]}}(M_{[B]})) \times \mathrm{UConf}_{i_{[B]}}(N_{[B]}) \big) / (s (p) = \iota_{[B]}, t (p) = e(x)),
+    \end{equation}
+    %
+    the space of paths in $\mathrm{UConf}_{i_{[B]}}(M_{[B]})$ that start at $\iota_{[B]}$ and end at a point $x$ in $\mathrm{UConf}_{i_{[B]}}(N_{[B]})$. With this model, for each $(U \xhookrightarrow{} N) \in \mathscr{U} \subset (\mfld[r]_{/M})_{/e} \simeq \mfld[r]_{/N}$ (by \Cref{lem:double_slice}) we get an open inclusion
+    %
+    \begin{equation}
+        \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(U) \xhookrightarrow{\ \ \ \ } \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(N),
+    \end{equation}
+    %
+    and we're trying to show that the collection $\mathscr{V}_{\iota}^{[B]}$ of these is a cover.
+
+    Given a Weiss cover $\mathscr{U}$ on $N$ we can restrict it to a Weiss cover $\mathscr{U}_{[B]}$ of $N_{[B]}$ by intersecting. The statement of \Cref{lem:weiss_to_ordinary} is that we can build an ordinary cover $\mathscr{U}_{i_{[B]},[B]}$ of $\mathrm{UConf}_{i_{[B]}}(N_{[B]})$. $\mathscr{V}_{\iota}^{[B]}$ is a cover if for any $p \in \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(N)$ we can find an open $\widetilde{\mathsf{Fib}_{\iota}^{[B]}}(U)$ that contains it. But this is indeed the case, because looking at the target $t(p)$ of the path $p$, we get $t(p) \in \mathrm{UConf}_{i_{[B]}}(N_{[B]})$, and we know that there exists a $U \in \mathscr{U}$ such that $\mathrm{UConf}_{i_{[B]}}(U_{[B]})$ covers $t(p)$ and subsequently also that $\widetilde{\mathsf{Fib}_{\iota}^{[B]}}(U)$ covers $p$.
+
+    ...
 \end{proof}
-
-
-
-
-
-
-
 
 
 The following lemma about preservation of colimits is sketched out in \cite{rezk2023lan}.
@@ -341,13 +345,13 @@ The following lemma about preservation of colimits is sketched out in \cite{rezk
         T_F: \catC \xrightarrow{y_{\catC}} \mathsf{PShv} (\catC) \xrightarrow{F^*} \mathsf{PShv} (\mathscr{D}).
     \end{equation}
     %
-    %Indeed, let $X \simeq y_{\mathscr{D}} (d)$ be a representable presheaf, then there is an equivalence of morphism spaces $\mathsf{Hom}_{\catC} (L_{y_{\mathscr{D}}} F (X), c) \simeq \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (X, T_F (c))$ given by 
+    Indeed, let $X \simeq y_{\mathscr{D}} (d)$ be a representable presheaf, then there are maps of morphism spaces
     %
-    %\begin{align}
-    %    \mathsf{Hom}_{\catC} (L_{y_{\mathscr{D}}} F (X), c) &\simeq \mathsf{Hom}_{\catC} (F (d), c) \simeq \mathsf{Hom}_{\mathsf{PShv}(\catC)} (y_{\catC}(F(d)), y_{\catC}(c))\notag\\ &\simeq \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (F^*(y_{\catC}(F(d))), T_F(c)) \simeq \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (X, T_F(c)).
-    %\end{align}
+    \begin{align}
+        \mathsf{Hom}_{\catC} (L_{y_{\mathscr{D}}} F (X), c) &\xrightarrow[\simeq]{} \mathsf{Hom}_{\catC} (F (d), c) \xrightarrow[\simeq]{y_{\mathscr{C}}} \mathsf{Hom}_{\mathsf{PShv}(\catC)} (y_{\catC}(F(d)), y_{\catC}(c))\notag\\ &\xrightarrow{F^*} \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (F^*(y_{\catC}(F(d))), T_F(c)) \xrightarrow[\simeq]{} \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (X, T_F(c)).
+    \end{align}
     %
-    %In general, the Yoneda embedding $y_{\mathscr{D}}$ is a dense functor
+    The Yoneda embedding $y_{\mathscr{D}}$ is a dense functor, so the above argument holds  
     
     {\color{red} Proof of being adjoint}
 
@@ -426,19 +430,19 @@ The following lemma about preservation of colimits is sketched out in \cite{rezk
     %
     If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}, so that the Weiss sieve $\mathscr{U}$ is defined as an $\infty$-subcategory of $\mfld[r]_{/N}$.
     
-    With the Weiss cosheaf property being a statement about preserving colimits, and with $\int F$ being a left Kan extension we are exactly in the situation of \Cref{lem:Lan_preserve_colim}. Thus, we only need to show that functor $T: \mfld_{/M} \xrightarrow{} \mathsf{PShv} (\disk_{/M})$\footnote{This functor is related to the tangent classifier, with the differences being that we're now in the relative case, and we're not fully limiting to $\bsc$ but instead only to disks.} preserves Weiss colimits, namely that there is an equivalence
+    With the Weiss cosheaf property being a statement about preserving colimits, and with $\int F$ being a left Kan extension we are exactly in the situation of \Cref{lem:Lan_preserve_colim}. Thus, we only need to show that the functor $T: \mfld_{/M} \xrightarrow{} \mathsf{PShv} (\disk_{/M})$ preserves Weiss colimits. Namely, we need to show that there is an equivalence
     %
     \begin{equation}
-        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld_{/M} \xrightarrow{T} \mathsf{PShv} (\disk_{/M})) \simeq T(N \xhookrightarrow{} M),
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\cdot, -)} \mathsf{PShv} (\disk_{/M}) \big) \xrightarrow{\ \ \simeq \ \ } \mathsf{Hom}_{\mfld_{/M}}(\cdot, e),
     \end{equation}
     %
-    where on the right-hand side we've used the fact that $\mathscr{U}$ is, in particular, a covering sieve. If we also append the straightening--unstraightening construction to $T$, we can write the desired equivalence as
+    where on the right-hand side we've used the fact that $\mathscr{U}$ is, in particular, a covering sieve.\footnote{If we also append the straightening--unstraightening construction to $T$, the desired equivalence can equivalently be written as
     %
     \begin{equation}
         \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld_{/M} \xrightarrow{ (\disk_{/M})_{/-}} \mathsf{RFib}_{\disk_{/M}}) \simeq (\disk_{/M})_{/e}.
-    \end{equation}
+    \end{equation}}
     %
-    \Cref{lem:gluing_disk/M/e} guarantees the existence of this equivalence.
+    But this is exactly the result of \Cref{lem:gluing_disk/M/e}.
 \end{proof}
 
 \begin{remark}
@@ -450,7 +454,7 @@ The following lemma about preservation of colimits is sketched out in \cite{rezk
     \end{equation}
 \end{remark}
 
-The above proof already shows how the ideas that went into defining factorization algebras are not that different from the ideas that went into defining factorization homology. Namely, the ideas of Weiss cosheaves and algebras over disks are deeply connected. Now that this connection has been explained, the proof of \Cref{thm:disk_alg=lcfa}, which we delve into promptly, is not hard to establish.
+The above proof also shows how the ideas that went into defining factorization algebras are not that different from the ideas that went into defining factorization homology. Namely, the ideas of Weiss cosheaves and algebras over disks are deeply connected. Now that this connection has been explained, the proof of \Cref{thm:disk_alg=lcfa}, which we delve into promptly, is not hard to establish.
 
 
 \begin{proof}[Proof of {\Cref{thm:disk_alg=lcfa}}]
@@ -502,6 +506,16 @@ The above proof already shows how the ideas that went into defining factorizatio
     \begin{equation}
         \disk[r]_{/\sqcup_i U_i} \xrightarrow{\ \ \simeq \ \ } \bigtimes_i \disk[r]_{/U_i}.
     \end{equation}
+    %
+    Indeed, the fact that (sifted) colimits commute with the monoidal product on $\catC$ means that, for example in the case of two objects
+    %
+    \begin{align}
+        \mathsf{colim}(K \xrightarrow{F} \catC) \otimes \mathsf{colim}(K' \xrightarrow{F'} \catC) &\simeq \mathsf{colim}(K \xrightarrow{F(-) \otimes \mathsf{colim}(K' \xrightarrow{F'} \catC)} \catC)\notag\\
+        &\simeq \mathsf{colim}(K \xrightarrow{\mathsf{colim}(K' \xrightarrow{F(-) \otimes F'(-)} \catC)} \catC)\notag\\
+        &\simeq \mathsf{colim}(K \times K' \xrightarrow{F \times F'} \catC \times \catC \xrightarrow{- \otimes -} \catC),
+    \end{align}
+    %
+    for any (sifted) indexing $\infty$-categories $K, K'$.
 
     To show full faithfulness we need to find equivalences of morphism spaces
     %
@@ -521,7 +535,7 @@ The above proof already shows how the ideas that went into defining factorizatio
         \mathsf{Hom}_{\alg{\disk[r]_{/M}} (\catC)} (A, B) \simeq \mathsf{Hom}_{\alg{\mfld[r]_{/M}} (\catC)} (\int A, \int B).
     \end{equation}
     %
-    The existence of these is exactly the requirement that factorization homology in the usual sense is fully faithful, which is part of the statement of \cite[lem.2.17]{aft_fhstrat}
+    The existence of these is exactly the requirement that factorization homology in the usual sense is fully faithful, which is part of the statement of \cite[lem.2.17]{aft_fhstrat}.
 \end{proof}
 
 \begin{remark}
