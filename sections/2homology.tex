@@ -1,4 +1,4 @@
-\documentclass[../text]{subfiles} 
+\documentclass[../text.tex]{subfiles} 
 
 \begin{document}
 
@@ -26,7 +26,7 @@ In the following, and from now on, we let $\catC$ be a symmetric monoidal $\inft
 \end{enumerate}
 
 \begin{remark}
-    For developing the theory of factorization homology the assumption that $\catC$ has all \emph{sifted}\footnote{Sifted colimits are colimits over a sifted indexing simplicial set $K$, which means that the diagonal functor of $K \neq \emptyset$ is final \[ \mathsf{colim}(K \xrightarrow{} K \times K \xrightarrow{} \catC) \simeq \mathsf{colim}(K \times K \xrightarrow{} \catC).\]} colimits, and the monoidal structure commutes with these, is usually enough. However, if we want the $\infty$-category of algebras valued in $\catC$ to inherit the properties of having sifted colimits that commute with the monoidal structure, then we must require that $\catC$ has \emph{all} (small) colimits. This will similarly be the case for factorization algebras. The stronger requirement also doesn't exclude any of the core examples that we are interested in. In fact, in some situations, the full requirement of presentability makes examples tractable.
+    For developing the theory of factorization homology the assumption that $\catC$ has all \emph{sifted}\footnote{Sifted colimits are colimits over a sifted indexing simplicial set $K$, which means that the diagonal functor of $K \neq \emptyset$ is final \[ \mathsf{colim}(K \xrightarrow{} K \times K \xrightarrow{} \catC) \simeq \mathsf{colim}(K \times K \xrightarrow{} \catC).\]} colimits, and the monoidal structure commutes with these, is usually enough. However, if we want the $\infty$-category of algebras valued in $\catC$ to inherit the properties of having sifted colimits that commute with the monoidal structure, then we must require that $\catC$ has \emph{all} (small) colimits. This will similarly be the case for factorization algebras. The stronger requirement also doesn't exclude any of the core examples that we are interested in. In fact, in some situations, the full requirement of presentability makes examples more tractable.
 \end{remark}
 
 \begin{example}
@@ -89,7 +89,7 @@ when $\mathscr{O}$, $\mathscr{C}$ are symmetric monoidal $\infty$-categories. Th
 %
 and such that the swap in $\disk(\bstr)$, $U \sqcup V \simeq V \sqcup U$, is sent to the swap in $\catC$, $F(U) \otimes F(V) \simeq F(V) \otimes F(U)$, in a way that is compatible with the maps in \eqref{eq:symmon_maps}. A good informal explanation of this and other topics related to disk algebras can be found in the lecture notes \cite{tanaka20}.
 
-More generally, an \emph{$\infty$-operad} is a map $\catC\to\mathsf{Fin}_\ast$ that satisfies a generalisation of the properties of a symmetric monoidal $\infty$-category: see \cite[Definition 2.1.1.10]{lurie_ha}. For these, \eqref{W1183QD} still holds: see \cite[Remark 2.1.1.14]{lurie_ha}.
+More generally, an \emph{$\infty$-operad} is a map $\catC\to\mathsf{Fin}_\ast$ that satisfies a generalization of the properties of a symmetric monoidal $\infty$-category: see \cite[Definition 2.1.1.10]{lurie_ha}. For these, \eqref{W1183QD} still holds: see \cite[Remark 2.1.1.14]{lurie_ha}.
 
 \begin{definition}
     The $\infty$-category of disk algebras valued in $\catC$ is the $\infty$-category of symmetric monoidal functors
@@ -124,7 +124,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
 
 \begin{remark}
     For more details on $\mathbb{E}_n$-algebras and why these algebras encompass large portions of the examples one usually cares about see \cite[§5.1]{lurie_ha}. %or alternatively in appendix \Cref{app:En_algebras}. 
-    Roughly speaking, $\mathbb{E}_1$-algebras are homotopy-associative algebras and with increasing $n$ we get increasing levels of homotopy commutativity, such that the colimit $\mathbb{E}_\infty$ parametrizes homotopy-commtuative algebras. Having said that, the first part of the proposition is just the classical statement that the little $n$-disks operad and the little $n$-cubes operad are weakly equivalent. Through \cite{lurie_tqft} and \cite{scheimbauer2014}, $\mathbb{E}_n$-algebras also serve as input for constructing fully extended TQFTs by using factorization homology.
+    Roughly speaking, $\mathbb{E}_1$-algebras are homotopy--associative algebras and with increasing $n$ we get increasing levels of homotopy commutativity, such that the colimit $\mathbb{E}_\infty$ parametrizes homotopy--commutative algebras. Having said that, the first part of the proposition is just the classical statement that the little $n$-disks operad and the little $n$-cubes operad are weakly equivalent. Through \cite{lurie_tqft} and \cite{scheimbauer2014}, $\mathbb{E}_n$-algebras also serve as input for constructing fully extended TQFTs by using factorization homology.
 \end{remark}
 
 
@@ -158,7 +158,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
     
     The first piece is in $\prod_{\nu=1,2}\mathsf{Hom}_{\disk(\bstr)_{/M}}(\iota_\nu,\iota)$, and projecting from the slice gives maps $\prod_{\nu=1,2}\mathsf{Hom}_{\disk(\bstr)_{/M}}(\iota_\nu,\iota)\to \prod_{\nu=1,2}\mathsf{Hom}_{\disk(\bstr)}(D_\nu,D)$, producing the maps $D_\nu\hookrightarrow D$ mentioned in piece 3. Piece 2 is in $\disk(\bstr)$. The monoidal unit $\emptyset\in\disk(\bstr)$ is initial, so we obtain the map $\mathsf{Mul}_{\disk(\bstr)}(D_1, D_2; D)\to\prod_{\nu=1,2}\mathsf{Hom}_{\disk(\bstr)}(D_\nu,D)$ as indicated above. See \cite[Notation 2.1.1.16]{lurie_ha} for $\mathsf{Mul}$.
 
-    Now, \cite[§2.4.3]{lurie_ha} contains a construction which associates an $\infty$-operad $\mathscr{C}^{\amalg}$ to any $\infty$-category $\mathscr{C}$ such that $\mathsf{Mul}_{\mathscr{C}^{\amalg}}(x_1\oplus\cdots\oplus x_n; y)\simeq \prod_{\nu=1}^{n}\mathsf{Hom}_{\mathscr{C}}(x_\nu,y)$. If $\mathscr{C}$ is already an $\infty$-operad with a initial unit $0\in\mathscr{C}_{\lrangle{1}}$, then there is (\cite[Lemma 1.20]{aft_fhstrat}) a canonical map of $\infty$-operads $\mathscr{C}\to(\mathscr{C}_{\lrangle{1}})^\amalg$ generalising the idea above. 
+    Now, \cite[§2.4.3]{lurie_ha} contains a construction which associates an $\infty$-operad $\mathscr{C}^{\amalg}$ to any $\infty$-category $\mathscr{C}$ such that $\mathsf{Mul}_{\mathscr{C}^{\amalg}}(x_1\oplus\cdots\oplus x_n; y)\simeq \prod_{\nu=1}^{n}\mathsf{Hom}_{\mathscr{C}}(x_\nu,y)$. If $\mathscr{C}$ is already an $\infty$-operad with a initial unit $0\in\mathscr{C}_{\lrangle{1}}$, then there is (\cite[Lemma 1.20]{aft_fhstrat}) a canonical map of $\infty$-operads $\mathscr{C}\to(\mathscr{C}_{\lrangle{1}})^\amalg$ generalizing the idea above. 
     
     We see that piece 1 is in $(\disk(\bstr)_{/M})^{\amalg}$, piece 2 is in $\disk(\bstr)$, and piece (3) describes equivalences in $\disk(\bstr)^{\amalg}$. The full collection is thus in the homotopy pullback $\infty$-operad 
     \[
@@ -167,7 +167,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
         \disk(\bstr)\ar[r] & \disk(\bstr)^{\amalg}
         \end{tikzcd}.
     \]
-    A representative is then the following ordinary iterated fibre product of $\infty$-operads:
+    A representative is then the following ordinary iterated fiber product of $\infty$-operads:
     \[
         \disk(\bstr)_{/M}\coloneqq \disk(\bstr)\times_{(\disk(\bstr)^{\amalg})^{\{0\}}}\mathsf{Isom}(\disk(\bstr)^{\amalg})\times_{(\disk(\bstr)^{\amalg})^{\{1\}}}(\disk(\bstr)_{/M})^{\amalg},
     \]
@@ -183,8 +183,7 @@ These algebras will be the algebraic input of factorization homology. To convinc
         \end{tikzcd}
     \end{equation}
     %
-    which is homotopy commutative as explained above, while in $\disk[r](\bstr)_{/M}$ a morphism is a diagram as above that commutes on the nose.\footnote{Regarding notation, \cite{lurie_ha} introduces both the $\infty$-operad $\disk(\bstr)_{/M}$ and $\disk[r](\bstr)_{/M}$, however there they are denoted by $\mathbb{E}_M^\otimes$ and $\mathrm{N}(\mathrm{Disk}(M))^\otimes$, respectively.} 
-    Similarly for higher arity-morphisms.
+    which is homotopy commutative as explained above, while in $\disk[r](\bstr)_{/M}$ a morphism is a diagram as above that commutes on the nose\footnote{Regarding notation, \cite{lurie_ha} introduces both the $\infty$-operad $\disk(\bstr)_{/M}$ and $\disk[r](\bstr)_{/M}$, however there they are denoted by $\mathbb{E}_M^\otimes$ and $\mathrm{N}(\mathrm{Disk}(M))^\otimes$, respectively.}. Similarly for higher arity morphisms.
 \end{remark}
 
 
@@ -311,7 +310,7 @@ We now focus on describing disk algebras over oriented intervals (or equivalentl
 We want to show that disk algebras with $\mathsf{D}_1^{\partial, *}$-structure, as defined in \Cref{con:d_1^bor_structure}, can be described algebraically. For this we set up two $\infty$-operads $\mathsf{Assoc^{RL}}$ and $\mathsf{O^{RL}}$.
 
 \begin{construction}\label{con:assocRL}
-    Let $\mathsf{Assoc^{RL}}$ denote the multicategory\footnote{A \emph{multicategory}, or \emph{(colored) operad}, is like an (ordinary) category except that morphisms (now called multi-morphisms) are allowed to have multiple objects in their domain while still having only a single object in their codomain. The operadic nerve of a topological or Kan-enriched multicategy is an $\infty$-operad: see \cite[Proposition 2.1.1.27]{lurie_ha}.} with three objects $R$, $A$ and $L$. To describe the multi-morphisms let $I$ be an arbitrary finite list of the objects of $\mathsf{Assoc^{RL}}$. We have:
+    Let $\mathsf{Assoc^{RL}}$ denote the multicategory\footnote{A \emph{multicategory}, or \emph{(colored) operad}, is like an (ordinary) category except that morphisms (now called multi-morphisms) are allowed to have multiple objects in their domain while still having only a single object in their codomain. The operadic nerve of a topological or Kan-enriched multicategory is an $\infty$-operad: see \cite[Proposition 2.1.1.27]{lurie_ha}.} with three objects $R$, $A$ and $L$. To describe the multi-morphisms let $I$ be an arbitrary finite list of the objects of $\mathsf{Assoc^{RL}}$. We have:
     %
     \begin{enumerate}
         \item $\mathsf{Assoc^{RL}}(I, A)$ is empty if either $R$ or $L$ appear on the list $I$; otherwise it is given by the number of total orders of $I$.

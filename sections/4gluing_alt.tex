@@ -1,11 +1,11 @@
-\documentclass[../text]{subfiles} 
+\documentclass[../text.tex]{subfiles} 
 
 \begin{document}
 
 
-\section{Collar-gluings and Factorization Algebras}\label{ch:gluing_disk_alg}
+\section{Collar--gluings and Factorization Algebras}\label{ch:gluing_disk_alg}
 
-Given a stratified manifold $M$, and a $\otimes$-presentable $\infty$-category $\catC$, we defined the $\infty$-category $\lcfa_M (\catC)$ of locally constant factorization algebras on $M$ valued in $\catC$. We also noticed, in \Cref{thm:disk_alg=lcfa}, that factorization homology is involved in constructing these algebras from local data. This prompts us to ask if we can say something about the behavior of this $\infty$-category under collar-gluings in the manifold variable. In this section we will prove that such a result exists in both the cases of locally constant and ordinary factorization algebras.
+Given a stratified manifold $M$, and a $\otimes$-presentable $\infty$-category $\catC$, we defined the $\infty$-category $\lcfa_M (\catC)$ of locally constant factorization algebras on $M$ valued in $\catC$. We also noticed, in \Cref{thm:disk_alg=lcfa}, that factorization homology is involved in constructing these algebras from local data. This prompts us to ask if we can say something about the behavior of this $\infty$-category under collar--gluings in the manifold variable. In this section we will prove that such a result exists in both the cases of locally constant and ordinary factorization algebras.
 
 
 \subsection{The Gluing Theorem}
@@ -83,7 +83,7 @@ Before me move on to the proof of the above two results we pause to record a few
 \end{lemma}
 
 \begin{proof}
-    The symmetric monoidal structure of $\alg{\mathsf{Assoc^{RL}}} (\catC)$ is inherited from $\catC$ pointwise. We denote the objects of $\alg{\mathsf{Assoc^{RL}}} (\catC)$ as $(R,A,L)$, and use $\mathsf{B}_{\bullet} (R, A, L):\Delta^{\mathsf{op}} \rightarrow \catC$ for the simplicial object of the bar construction. Using the language of \cite[def.2.1.2.7]{lurie_ha}, to prove that $\mathsf{B}$ is symmetric monoidal amounts to showing that for each basepoint-preserving map of based finite sets $f: I_* \xrightarrow{} J_*$ there is a commutative diagram of $\infty$-categories
+    The symmetric monoidal structure of $\alg{\mathsf{Assoc^{RL}}} (\catC)$ is inherited from $\catC$ pointwise. We denote the objects of $\alg{\mathsf{Assoc^{RL}}} (\catC)$ as $(R,A,L)$, and use $\mathsf{B}_{\bullet} (R, A, L):\Delta^{\mathsf{op}} \rightarrow \catC$ for the simplicial object of the bar construction. Using the language of \cite[def.2.1.2.7]{lurie_ha}, to prove that $\mathsf{B}$ is symmetric monoidal amounts to showing that for each basepoint--preserving map of based finite sets $f: I_* \xrightarrow{} J_*$ there is a commutative diagram of $\infty$-categories
     %
     \begin{equation}
         \begin{tikzcd}
@@ -218,7 +218,7 @@ Before me move on to the proof of the above two results we pause to record a few
     %
     on each of the pieces $(U_- \xhookrightarrow{} V_-), (U_0 \times \mathbb{R} \xhookrightarrow{} V_0 \times \mathbb{R}), (U_+ \xhookrightarrow{} V_+)$, and combine them using the bar construction. If these pieces were disks then the above equivalences would be given by the local constancy of the constituent locally constant factorization algebras.
     
-    Generically though, these pieces will not be disks again, so we can't simply inherit the local constancy property immediately. To alleviate this issue we make use of \Cref{thm:decom_strat_man} which assures us that every manifold can be obtained by collar-gluings and sequential colimits if we start with disks. In fact, since our largest manifold of interest is a disk, which is finitary, we only need collar-gluings, and not sequential colimits. Thus, we can work inductively and iterate the cutting and gluing process until the pieces become disks. The only thing that we need to check is that through one inductive step the equivalences remain compatible.
+    Generically though, these pieces will not be disks again, so we can't simply inherit the local constancy property immediately. To alleviate this issue we make use of \Cref{thm:decom_strat_man} which assures us that every manifold can be obtained by collar--gluings and sequential colimits if we start with disks. In fact, since our largest manifold of interest is a disk, which is finitary, we only need collar--gluings, and not sequential colimits. Thus, we can work inductively and iterate the cutting and gluing process until the pieces become disks. The only thing that we need to check is that through one inductive step the equivalences remain compatible.
     
     Specifically, by compatibility here we mean that there is a commutative diagram
     %
@@ -229,7 +229,7 @@ Before me move on to the proof of the above two results we pause to record a few
         \end{tikzcd}
     \end{equation}
     %
-    where the horizontal arrows are induced by the relevant embeddings. A sufficient condition to guarantee compatibility is that all collar-gluings are defined as collar-gluings of $M$ and then inherited to every open submanifold through its embedding in $M$. Focusing on the final two consecutive collar-gluings we get a commutative diagram, which we schematically denote
+    where the horizontal arrows are induced by the relevant embeddings. A sufficient condition to guarantee compatibility is that all collar--gluings are defined as collar--gluings of $M$ and then inherited to every open submanifold through its embedding in $M$. Focusing on the final two consecutive collar--gluings we get a commutative diagram, which we schematically denote
     %
     \begin{equation}
         \begin{tikzcd}
@@ -239,7 +239,7 @@ Before me move on to the proof of the above two results we pause to record a few
         \end{tikzcd}
     \end{equation}
     %
-    one for each of $U$ and $V$. Stacking these two with the equivalence as connecting arrows is again a commutative diagram. This is enough information to guarantee that after acting with the bar construction in one direction we again get compatible equivalences. The key point being that we consider the collar-gluings on all pieces in both orders to get all the necessary arrows.
+    one for each of $U$ and $V$. Stacking these two with the equivalence as connecting arrows is again a commutative diagram. This is enough information to guarantee that after acting with the bar construction in one direction we again get compatible equivalences. The key point being that we consider the collar--gluings on all pieces in both orders to get all the necessary arrows.
 
     \begin{multicols}{2}
         \begin{figure}[H]
@@ -249,7 +249,7 @@ Before me move on to the proof of the above two results we pause to record a few
             \label{fig:extend_gluing}
         \end{figure}
         %
-        The final point to check is that we have not limited ourselves by insisting to only consider collar-gluings which are inherited from ones on $M$. This is best shown in \Cref{fig:extend_gluing}. Namely, given the disk $V \xhookrightarrow{} M$, we can take a larger disk $V'$, which is guaranteed to exist from the fact that $M$ is a manifold. The figure then shows that given any collar-gluing of $V$ how we can find one particular collar-gluing of $M$ that extends the one of $V$. Since $V'$ is a disk, the figure does not obscure any detail.
+        The final point to check is that we have not limited ourselves by insisting to only consider collar--gluings which are inherited from ones on $M$. This is best shown in \Cref{fig:extend_gluing}. Namely, given the disk $V \xhookrightarrow{} M$, we can take a larger disk $V'$, which is guaranteed to exist from the fact that $M$ is a manifold. The figure then shows that given any collar-gluing of $V$ how we can find one particular collar-gluing of $M$ that extends the one of $V$. Since $V'$ is a disk, the figure does not obscure any detail.
     \end{multicols}
 \end{proof}
 
@@ -268,7 +268,7 @@ After the results of the previous section we remark on a general view that we ca
 %
 where the action on morphisms is given by restriction, which is what gives rise to the $^{\mathsf{op}}$. In the case of disjoint union, \Cref{thm:gluing_lcfas} and \Cref{cor:gluing_falgs} then provide the equivalences that are needed to make these into symmetric monoidal functors, where the symmetric monoidal product on $\cat^{\mathsf{op}}$ is given by \emph{coproduct}. We emphasize that the domain of these functors, as defined, is $\mfld[r]$; there is no clear way of how to define the above functors so that they have the domain $\mfld$ with the idea of restriction functors as morphisms.
 
-We know from \Cref{thm:decom_strat_man} that any manifold can be constructed from basics by iterated collar-gluings and sequential colimits. Having described what happens to a locally constant factorization algebras under collar-gluings of manifolds, we now turn to sequential colimits. {\color{red} The gluing result has an ordinary (nonhomotopy) limit. Is this also the output of the (co)bar construction?}
+We know from \Cref{thm:decom_strat_man} that any manifold can be constructed from basics by iterated collar--gluings and sequential colimits. Having described what happens to a locally constant factorization algebras under collar--gluings of manifolds, we now turn to sequential colimits. {\color{red} The gluing result has an ordinary (nonhomotopy) limit. Is this also the output of the (co)bar construction?}
 
 \begin{proposition}\label{prop:fa_seq_col}
     The functors $\falg(\catC)$ and $\lcfa(\catC)$ respect sequential colimits.

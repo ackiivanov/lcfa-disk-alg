@@ -1,4 +1,4 @@
-\documentclass[../text]{subfiles} 
+\documentclass[../text.tex]{subfiles} 
 
 \begin{document}
 
@@ -190,7 +190,7 @@ There is a general definition of locally constant algebra objects in the context
 
 
 
-\subsection{The \texorpdfstring{$\infty$-}{infinity }operad of Factorization Algebras}
+\subsection{The \texorpdfstring{$\infty$-}{infinity-}operad of Factorization Algebras}
 
 Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for (locally constant) factorization algebras. We will be working in the generality of stratified manifolds, and all our results in this section will come in pairs, one for the locally constant case and one not. We call the results in the not-necessarily-locally-constant case corollaries since their proofs will be obvious from the proofs of the statements in the locally constant case. To connect factorization algebras to the theory of algebras over an $\infty$-operad we will work in two steps. First we have the following results:
 %
@@ -270,7 +270,7 @@ In the service of working towards proofs of all of these results we first have t
         \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\iota, -)} \mathsf{Sp} \big) \xrightarrow{\ \ \ \ \ } \mathsf{Hom}_{\mfld_{/M}}(\iota, e),
     \end{equation}
     %
-    for each $\iota \in \disk_{/M}$, an open embedding of disks in $M$, and these morphisms are now maps of spaces which we want to show are equivalences. We now study the hom-spaces appearing above. By definition of the slice $\infty$-category, the hom-spaces are given as the homotopy fibers
+    for each $\iota \in \disk_{/M}$, an open embedding of disks in $M$, and these morphisms are now maps of spaces which we want to show are equivalences. We now study the hom--spaces appearing above. By definition of the slice $\infty$-category, the hom--spaces are given as the homotopy fibers
     %
     \begin{equation}
         \begin{tikzcd}
@@ -285,7 +285,7 @@ In the service of working towards proofs of all of these results we first have t
         \mathsf{Hom}_{\mfld}(D, M) \simeq \coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(M_{[B]}),
     \end{equation}
     %
-    where the notation $M_{[B]}$ denotes the $[B]$-stratum of $M$ (see \cite[Prop.4.4.7]{aft_localstrut}). We also note that under these equivalences the map $e^*$ is given by $\coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(e_{[B]})$, which is even an open inclusion. Thus, the hom-spaces of the slice $\infty$-category are given as 
+    where the notation $M_{[B]}$ denotes the $[B]$-stratum of $M$ (see \cite[Prop.4.4.7]{aft_localstrut}). We also note that under these equivalences the map $e^*$ is given by $\coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(e_{[B]})$, which is even an open inclusion. Thus, the hom--spaces of the slice $\infty$-category are given as 
     %
     \begin{equation}
         \mathsf{Hom}_{\mfld_{/M}} (\iota, e) \simeq \coprod_{[B]} \mathsf{Fib}_\iota^{[B]}(e),
@@ -737,16 +737,23 @@ In the special case of product spaces $X \times Y$, we now know that the project
     This is an equivalence in $\lcfa_{X}(\lcfa_{Y}(\catC))$, which means that it is a family of equivalences $\phi(U,V)$ in $\catC$
     %
     \begin{equation}
-        \int_{U \times V} \bar{A} \xrightarrow[\simeq]{\ \ \phi (U,V)\ \ } \int_{U} \big( \int_{V} A \big),
+        \int_{U \times V} \bar{A} \xrightarrow[\simeq]{\ \ \phi (U,V)\ \ } \int_{V} \big( \int_{U} A \big),
     \end{equation}
     %
-    one for each open $U \subset X$, and each open $V \subset Y$. Furthermore, this family is natural in $U$ and $V$ separately, and it is also multiplicative in $U$ and $V$ separately (cf. \Cref{rem:unpack_pfac_def}). Such a family of equivalences is provided by the Fubini theorem \cite[cor.2.29]{aft_fhstrat}\footnote{The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear from the context that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold (see \Cref{rem:fh_is_pushingforward}).} for factorization homology, which pointwise gives us the equivalences $\phi(U,V)$. As argued in the proof of \Cref{thm:disk_alg=lcfa}, these equivalences are natural in the open set variables by the very functoriality of factorization homology, and they also preserve the multiplicative structure dues to the equivalences
-    %
-    \begin{equation}
-        \disk[r]_{\sqcup_{i} U_i} \xrightarrow{\ \ \simeq \ \ } \bigtimes_{i} \disk[r]_{U_i},
-    \end{equation}
-    %
-    together with the colimit preserving property of the monoidal product of $\catC$. This makes $\phi$ a fully-fledged equivalence of locally constant factorization algebras, which means that $\bar{pi}$ is essentially surjective. Moreover, looking at the proof of \cite[thm.2.25]{aft_fhstrat}, which is what underlies the construction of the above equivalences, we see that they arise from an argument about a final functor. By \Cref{rem:fin_equiv_natural} this means that the equivalences are actually natural (or rather functorial) in the algebra variable, so it is immediate that the equivalences of individual locally constant factorization algebras lift to a full equivalence of $\infty$-categories.
+    one for each open $U \subset X$, and each open $V \subset Y$, such that the family is natural in $U$ and $V$ separately, and it is also multiplicative in $U$ and $V$ separately (cf. \Cref{rem:unpack_pfac_def}). Such a family of equivalences is provided by the Fubini theorem \cite[cor.2.29]{aft_fhstrat}\footnote{The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear from the context that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold (see \Cref{rem:fh_is_pushingforward}).} for factorization homology, which pointwise gives us the equivalences $\phi(U,V)$. 
+    
+    ...
+    
+    
+    As argued in the proof of \Cref{thm:disk_alg=lcfa}, these equivalences are natural in the open set variables by the very functoriality of factorization homology, and they also preserve the multiplicative structure %due to the equivalences
+    %%
+    %\begin{equation}
+    %    \disk[r]_{\sqcup_{i} U_i} \xrightarrow{\ \ \simeq \ \ } \bigtimes_{i} \disk[r]_{/U_i},
+    %\end{equation}
+    %%
+    %together with the colimit preserving property of the monoidal product of $\catC$. This makes $\phi$ a fully-fledged equivalence of locally constant factorization algebras, which means that $\bar{\pi}$ is essentially surjective. 
+    
+    Finally, looking at the proof of \cite[thm.2.25]{aft_fhstrat}, which is what underlies the construction of the above equivalences, we see that they arise from an argument about a final functor. By \Cref{rem:fin_equiv_natural} this means that the equivalences are actually natural (or rather functorial) in the algebra variable, so it is immediate that the equivalences of individual locally constant factorization algebras lift to a full equivalence of $\infty$-categories.
 \end{proof}
 
 
