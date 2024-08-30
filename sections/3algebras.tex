@@ -825,78 +825,19 @@ In the special case of product spaces $X \times Y$, from the previous discussion
     is immediate.
 
     To complete the proof we only have to check that $\times: \disk_{/M} \times \disk_{/N} \xrightarrow{} \disk_{M \times N}$ satisfies the conditions to qualify as a bifunctor of $\infty$-operads.
+
+    ....
+
+    The equivalence of $\infty$-operads $\disk_{/M} \otimes \disk_{/N} \xrightarrow{\ \ \simeq \ \ } \disk_{/M \times N}$ implies and equivalence at the level of $\alg{\disk_{/M}}$, which together with \Cref{thm:disk_alg=lcfa} this the equivalence of factorization algebras of the statement. That this is related to the functor $\bar{\pi}$ can be seen by inspection of the objects and morphisms.
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{proof}
-    The proof of existence of the functor goes along the same lines as the proof of \Cref{prop:exp_of_products} because of \Cref{thm:disk_alg=lcfa}. The thing to take into account is that the projection maps are both, trivially, constructible bundles so by \Cref{cor:pushforward_for_lc}, pushing forward by them yields locally constant factorization algebras again. This combined with the fact that for any $\infty$-operads $\mathscr{O}$, $\mathscr{O}'$ and $\mathscr{C}$ we have an equivalence
-    %
-    \begin{equation}
-        \alg{\mathscr{O}} (\alg{\mathscr{O}'} (\catC)) \simeq \alg{\mathscr{O}'} (\alg{\mathscr{O}} (\catC))
-    \end{equation}
-    %
-    allows us to conclude that the functor lands in locally constant factorization algebras
-    %
-    \begin{equation}
-        \bar{\pi}: \lcfa_{X \times Y}(\catC) \xrightarrow{\ \ \ \ } \lcfa_{X}(\lcfa_{Y}(\catC)).
-    \end{equation}
-
-    One way to show the equivalence is to use factorization homology, as in \Cref{thm:disk_alg=lcfa}. In this language, first we have to provide, for each locally constant factorization algebra in two variables $\int_{-}(\int_{-} A) \in \lcfa_{X}(\lcfa_{Y}(\catC))$, a locally constant factorization algebra $\int_{-} \bar{A} \in \lcfa_{X \times Y} (\catC)$ and an equivalence
-    %
-    \begin{equation}
-        \bar{\pi} \int_{-} \bar{A} \xrightarrow[\simeq]{\ \ \phi \ \ } \int_{-} \big( \int_{-} A \big).
-    \end{equation}
-    %
-    This is an equivalence in $\lcfa_{X}(\lcfa_{Y}(\catC))$, which means that it is a family of equivalences $\phi(U,V)$ in $\catC$
-    %
-    \begin{equation}
-        \int_{U \times V} \bar{A} \xrightarrow[\simeq]{\ \ \phi (U,V)\ \ } \int_{V} \big( \int_{U} A \big),
-    \end{equation}
-    %
-    one for each open $U \subset X$, and each open $V \subset Y$, such that the family is natural in $U$ and $V$ separately, and it is also multiplicative in $U$ and $V$ separately (cf. \Cref{rem:unpack_pfac_def}). Such a family of equivalences is provided by the Fubini theorem \cite[cor.2.29]{aft_fhstrat}\footnote{The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear from the context that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold (see \Cref{rem:fh_is_pushingforward}).} for factorization homology, which pointwise gives us the equivalences $\phi(U,V)$. 
-    
-    ...
-    
-    
-    As argued in the proof of \Cref{thm:disk_alg=lcfa}, these equivalences are natural in the open set variables by the very functoriality of factorization homology, and they also preserve the multiplicative structure %due to the equivalences
-    %%
-    %\begin{equation}
-    %    \disk[r]_{\sqcup_{i} U_i} \xrightarrow{\ \ \simeq \ \ } \bigtimes_{i} \disk[r]_{/U_i},
-    %\end{equation}
-    %%
-    %together with the colimit preserving property of the monoidal product of $\catC$. This makes $\phi$ a fully-fledged equivalence of locally constant factorization algebras, which means that $\bar{\pi}$ is essentially surjective. 
-    
-    Finally, looking at the proof of \cite[thm.2.25]{aft_fhstrat}, which is what underlies the construction of the above equivalences, we see that they arise from an argument about a final functor. By \Cref{rem:fin_equiv_natural} this means that the equivalences are actually natural (or rather functorial) in the algebra variable, so it is immediate that the equivalences of individual locally constant factorization algebras lift to a full equivalence of $\infty$-categories.
-\end{proof}
-
+\begin{remark}
+    At the pointwise level of evaluating specific opens this statement is related to the Fubini theorem for factorization homology \cite[cor.2.29]{aft_fhstrat}. The notation used in the citation is technically abusive because factorization homology is evaluating lower dimensional manifolds, but it is clear from the context that this is to be understood exactly as the evaluation of the pushforward factorization algebra on the lower dimensional manifold (see \Cref{rem:fh_is_pushingforward}).
+\end{remark}
 
 \begin{example}
-    We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^m \times \mathbb{R}^n$, in which case \Cref{prop:exp_of_products_lc} specializes to give the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}:
-
+    We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^m \times \mathbb{R}^n$, in which case \Cref{thm:additivity_lc} specializes to give the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}:
+    %
     \begin{proposition}\label{prop:dunn_additivity}
         There is an equivalence of $\infty$-categories
         %
@@ -906,9 +847,8 @@ In the special case of product spaces $X \times Y$, from the previous discussion
     \end{proposition}
 \end{example}
 
-
 \begin{remark}
-    The proof of \Cref{prop:exp_of_products_lc}, when specialized to ordinary manifolds, as given in \cite{ginot2015} actually depends on Dunn additivity to work, however the proof presented above and the one in \cite{lurie_ha} are both independent of this special case. 
+    The proof of \Cref{thm:additivity_lc}, when specialized to ordinary manifolds, as given in \cite{ginot2015} actually depends on Dunn additivity to work, however the proof presented above and the one in \cite{lurie_ha} are both independent of this special case. 
 \end{remark}
 
 
@@ -1028,7 +968,7 @@ In this section we want to describe locally constant factorization algebras on E
 \end{remark}
 
 \begin{remark}[{\cite[prop.3.16]{francis2013}, \cite[ex.5.5.4.16]{lurie_ha}}]
-    In the case of Euclidean spaces like $\mathbb{R}^n$, essentially because of translation invariance, a special thing happens when we restrict away from the origin. That is, we know that given a locally constant factorization algebra $F$ on $\mathbb{R}^n$ we can restrict it to any open subset like, for example, $\mathbb{R}^n \setminus \{ 0 \} \cong S^{n-1} \times \mathbb{R}$ to get another locally constant factorization algebra $F|_{S^{n-1} \times \mathbb{R}}$. By \Cref{prop:exp_of_products_lc} we know that $F|_{S^{n-1} \times \mathbb{R}} \in \lcfa_{\mathbb{R}} (\lcfa_{S^{n-1}} (\catC))$, so that in particular it is an $\mathbb{E}_1$-algebra. If we pushforward to $\mathbb{R}$, by the discussion at \Cref{rem:fh_is_pushingforward} we could denote the resulting $\mathbb{E}_1$-algebra by
+    In the case of Euclidean spaces like $\mathbb{R}^n$, essentially because of translation invariance, a special thing happens when we restrict away from the origin. That is, we know that given a locally constant factorization algebra $F$ on $\mathbb{R}^n$ we can restrict it to any open subset like, for example, $\mathbb{R}^n \setminus \{ 0 \} \cong S^{n-1} \times \mathbb{R}$ to get another locally constant factorization algebra $F|_{S^{n-1} \times \mathbb{R}}$. By \Cref{thm:additivity_lc} we know that $F|_{S^{n-1} \times \mathbb{R}} \in \lcfa_{\mathbb{R}} (\lcfa_{S^{n-1}} (\catC))$, so that in particular it is an $\mathbb{E}_1$-algebra. If we pushforward to $\mathbb{R}$, by the discussion at \Cref{rem:fh_is_pushingforward} we could denote the resulting $\mathbb{E}_1$-algebra by
     %
     \begin{equation}
         \int_{S^{n-1}} F.
