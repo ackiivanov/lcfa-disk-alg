@@ -663,11 +663,13 @@ In the opposite direction, we do not, in general, have a pullback functor. \cite
 \end{remark}
 
 
+\subsection{Additivity of \texorpdfstring{$\lcfa$}{lcfa}s on Stratified Spaces}
 
-In the special case of product spaces $X \times Y$, we now know that the projections $\pi_1: X \times Y \rightarrow X$ and $\pi_2: X \times Y \rightarrow Y$, give us pushforwards. For $\pi_1$, for example, this essentially uses the fact that if we can evaluate all open sets of $X \times Y$ then we can definitely evaluate the open sets that look like $U \times Y$, with $U \subset X$ an open set. But in this case we can do even more, because we can even evaluate the more granular open subsets $U \times V$ with $U \subset X$ and $V \subset Y$ opens. More formally, we claim:
+
+In the special case of product spaces $X \times Y$, from the previous discussion we now know that the projections $\pi_1: X \times Y \rightarrow X$ and $\pi_2: X \times Y \rightarrow Y$, give us pushforwards. This is true even in the locally constant case since the projections are (even trivial) fiber bundles, which is a concept that is a special case of constructible bundles. For $\pi_1$, for example, this essentially uses the fact that if we can evaluate all open sets of $X \times Y$ then we can definitely evaluate the open sets that look like $U \times Y$, with $U \subset X$ an open set. But, in fact, we can do even more, because we can even evaluate the more granular open subsets $U \times V$ with $U \subset X$ and $V \subset Y$ opens. To capture this idea in formal terms we claim:
 %
 \begin{proposition}\label{prop:exp_of_products}
-    Let $X$ and $Y$ be topological spaces. There is a functor from the $\infty$-category of prefactorization algebras on the product $X \times Y$ to the $\infty$-category of prefactorization algebras on $X$ valued in the category of prefactorization algebras on $Y$
+    Let $X$ and $Y$ be topological spaces. There is a functor from the $\infty$-category of prefactorization algebras on the product $X \times Y$ to the $\infty$-category of prefactorization algebras on $X$ valued in the $\infty$-category of prefactorization algebras on $Y$
     %
     \begin{equation}
         \bar{\pi}: \alg{\opens(X \times Y)}(\catC) \xrightarrow{\qquad} \alg{\opens(X)} (\alg{\opens(Y)} (\catC)).
@@ -697,23 +699,158 @@ In the special case of product spaces $X \times Y$, we now know that the project
 \end{proof}
 
 
-\begin{proposition}[Additivity]\label{prop:exp_of_products_lc}
-    Let $M$ and $N$ be stratified manifolds. The functor $\bar{\pi}$ descends to locally constant factorization algebras, and moreover, it is an equivalence of $\infty$-categories
+\begin{theorem}[Additivity]\label{thm:exp_of_products_lc}
+    Let $M$ and $N$ be stratified manifolds. There is an equivalence of $\infty$-operads
     %
     \begin{equation}
-        \bar{\pi}: \lcfa_{M \times N}(\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{M}(\lcfa_{N}(\catC)).
+        \disk_{/M} \otimes \disk_{/N} \xrightarrow{\ \ \simeq \ \ } \disk_{/M \times N},
     \end{equation}
-\end{proposition}
+    %
+    between the tensor product of $\infty$-operads $\disk_{/M}$ and $\disk_{/N}$ and the $\infty$-operad $\disk_{/M \times N}$. In particular, there is an equivalence of $\infty$-categories of algebras
+    %
+    \begin{equation}
+        \bar{\pi}: \lcfa_{M \times N}(\catC) \xrightarrow{\ \ \simeq \ \ } \lcfa_{M}(\lcfa_{N}(\catC)),
+    \end{equation}
+    which can be seen to be induced by the functor $\bar{\pi}$.
+\end{theorem}
 
 \begin{remark}
-    The above proposition also appears as \cite[prop.18]{ginot2015}. The equivalence proven there is for the case of smooth manifolds and relies on the local proof of \cite{lurie_ha} for $\mathbb{R}^n$. Using \Cref{thm:disk_alg=lcfa}, the statement is implied by the fact that there is an equivalence of $\infty$-operads
+    A version of the above theorem also appears as \cite[prop.18]{ginot2015}. The equivalence proven there is for the case of smooth manifolds and relies on the local proof of \cite{lurie_ha} for $\mathbb{R}^n$. The statement at the level of $\infty$-operads is slightly stronger and, using \Cref{thm:disk_alg=lcfa}, it implies the statement for factorization algebras. This $\infty$-operadic statement, again for smooth manifolds, is found in \cite[ex.5.4.5.5]{lurie_ha}.
+\end{remark}
+
+
+\begin{proof}
+    Following \cite[\S.2.2.5]{lurie_ha} the tensor product of $\infty$-operads is defined through a universal property. Namely, we define a bifunctor of $\infty$-operads to be a map $f: \mathscr{O}_1 \times \mathscr{O}_2 \xrightarrow{} \mathscr{O}$ such that:
+    %
+    \begin{enumerate}
+        \item The diagram
+        %
+        \begin{equation}
+            \begin{tikzcd}
+                \mathscr{O}_1 \times \mathscr{O}_2 \arrow[r, "f"] \arrow[d] & \mathscr{O} \arrow[d] \\
+                \mathsf{Fin}_* \times \mathsf{Fin}_* \arrow[r, "\wedge"] & \mathsf{Fin}_*
+            \end{tikzcd}
+        \end{equation}
+        %
+        commutes, and
+        \item $f$ sends pairs of inert morphisms in $\mathscr{O}_1$ and $\mathscr{O}_2$ to inert morphisms in $\mathscr{O}$.
+    \end{enumerate}
+    %
+    We denote the full $\infty$-subcategory of $\mathsf{Fun}_{\mathsf{Fin}_*}(\mathscr{O}_1 \times \mathscr{O}_2, \mathscr{O})$ consisting of the bifunctors of $\infty$-operads by $\mathsf{BiFunc}(\mathscr{O}_1, \mathscr{O}_2; \mathscr{O})$. The universal property of the tensor product is then that it is the $\infty$-operad $\mathscr{O}_1 \otimes \mathscr{O}_2$ together with a bifunctor of $\infty$-operads $f: \mathscr{O}_1 \times \mathscr{O}_2 \xrightarrow{} \mathscr{O}_1 \otimes \mathscr{O}_2$ such that composition with $f$ determines an equivalence
     %
     \begin{equation}
-        \disk_{/M} \otimes \disk_{/N} \xrightarrow{\ \ \ \ \ } \disk_{/M \times N},
+        \alg{\mathscr{O}_1 \otimes \mathscr{O}_2} (\mathscr{O}) \xrightarrow{\ \ \simeq \ \ } \mathsf{BiFunc}(\mathscr{O}_1, \mathscr{O}_1; \mathscr{O}),
     \end{equation}
     %
-    with $\otimes$ the tensor product of $\infty$-opeards. Again for smooth manifolds this is found in \cite[ex.5.4.5.5]{lurie_ha}.
-\end{remark}
+    for every $\infty$-operad $\mathscr{O}$\footnote{More details about the construction, its existence, and the fact that it captures a nontrivial concept can be found in the provided reference.}.
+
+    For us this means that we can show the desired equivalence of $\infty$-operads if we provide a bifunctor of $\infty$-operads $\disk_{/M} \times \disk_{/N} \xrightarrow{} \disk_{/M \times N}$ that is an equivalence. Our candidate bifunctor for this purpose will be $\times$, the product of stratified spaces. We now explain what this means on a technical level.
+
+    By \Cref{rem:details_disk/M} the definition of $\disk_{/M}$ as an $\infty$-operad is given by the pullback
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \disk_{/M} \arrow[rd, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & (\disk_{/M})^{\amalg} \arrow[d] \\
+            \disk(\bsc) \arrow[r] & \disk(\bsc)^{\amalg}
+        \end{tikzcd},
+    \end{equation}
+    %
+    where on the right-hand side $\disk_{/M}$ and $\disk(\bsc)$ are appearing in their role as $\infty$-categories through \cite[Con.2.4.3.1]{lurie_ha}, while on the left-hand side they're appearing in their role as $\infty$-operads. We note here that the construction of $\mathscr{O}^{\amalg}$ for any $\infty$-category $\mathscr{O}$ is given through a universal property from which it immediately follows that $\mathscr{O}_1^{\amalg} \times \mathscr{O}_2^{\amalg} \simeq (\mathscr{O}_1 \times \mathscr{O}_2)^{\amalg}$. Keeping this in mind together with the fact that products and pullbacks commute we can draw the following commutative diagram
+    %
+    \begin{equation}
+        \begin{tikzcd}[column sep = 25]
+            \disk_{/M} \times \disk_{/N} \arrow[rd, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & (\disk_{/M})^{\amalg} \times (\disk_{/N})^{\amalg} \arrow[r, "\simeq"] \arrow[d] & (\disk_{/M} \times \disk_{/N})^{\amalg} \arrow[d] \\
+            \disk(\bsc) \times \disk(\bsc) \arrow[r] & \disk(\bsc)^{\amalg} \times \disk(\bsc)^{\amalg} \arrow[r, "\simeq"] & (\disk(\bsc) \times \disk(\bsc))^{\amalg}  
+        \end{tikzcd}.
+    \end{equation}
+    %
+    Since $\disk_{/M \times N}$ is also given by a pullback, to provide an equivalence of $\infty$-operads $\disk_{/M} \times \disk_{/N} \xrightarrow{} \disk_{/M \times N}$ it is then sufficient to provide a commutative diagram of equivalences of $\infty$-operads
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \disk(\bsc) \times \disk(\bsc) \arrow[r] \arrow[d, "\simeq"] & (\disk(\bsc) \times \disk(\bsc))^{\amalg} \arrow[d, "\simeq"] & (\disk_{/M} \times \disk_{/N})^{\amalg} \arrow[l] \arrow[d, "\simeq"] \\
+            \disk(\bsc) \arrow[r] & \disk(\bsc)^{\amalg} & (\disk_{/M \times N})^{\amalg} \arrow[l]
+        \end{tikzcd}
+    \end{equation}
+    %
+    Looking back at the construction \cite[Con.2.4.3.1]{lurie_ha} of $\mathscr{O}^{\coprod}$, since it is given by a universal property we see that an equivalence of $\infty$-categories $\mathscr{O}_1 \simeq \mathscr{O}_2$ implies an equivalence of $\infty$-operads $\mathscr{O}_1^{\amalg} \simeq \mathscr{O}_2^{\amalg}$ such that the left-hand square in the above diagram would come for free. With this the ingredients we need are:
+    %
+    \begin{enumerate}
+        \item an equivalence of $\infty$-operads
+        %
+        \begin{equation}
+            \disk(\bsc) \times \disk(\bsc) \xrightarrow[\ \ \simeq \ \ ]{\times} \disk(\bsc),
+        \end{equation}
+        %
+        \item an equivalence, now only, of $\infty$-categories
+        %
+        \begin{equation}
+            \disk_{/M} \times \disk_{/N} \xrightarrow[\ \ \simeq \ \ ]{\times} \disk_{/M \times N},
+        \end{equation}
+        %
+        \item such that there is a commutative diagram of $\infty$-categories
+        %
+        \begin{equation}
+            \begin{tikzcd}
+                \disk_{/M} \times \disk_{/N} \arrow[r, "\times", "\simeq"'] \arrow[d] & \disk_{/M \times N} \arrow[d] \\
+                \disk(\bsc) \times \disk(\bsc) \arrow[r, "\times", "\simeq"'] & \disk(\bsc)
+            \end{tikzcd},
+        \end{equation}
+        %
+        where we have forgotten the $\infty$-operad equivalence down to an $\infty$-category equivalence.
+    \end{enumerate}
+    %
+    In the above we have already used the notation $\times$ to express an idea about what the maps we will provide are. Though there is abuse of notation it is clear from context which map $\times$ we want. Since the vertical maps are the canonical forgetful functors it will be clear from the construction that (3) is satisfied.
+
+    To get the data of (2) (..... reduce to $\bsc$). So we need to provide an equivalence of $\infty$-categories
+    %
+    \begin{equation}\label{eq:b/M_x_b/N=b/MxN}
+        \bsc_{/M} \times \bsc_{/N} \xrightarrow[\ \ \simeq \ \ ]{\times} \bsc_{/M \times N}.
+    \end{equation}
+
+    To get (1), we remember that as an $\infty$-operad $\disk(\bsc)$ is, in fact, the free symmetric monoidal $\infty$-category generated by $\bsc$, thus it suffices to provide and equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \bsc \times \bsc \xrightarrow[\ \ \simeq \ \ ]{\times} \bsc.
+    \end{equation}
+    %
+    Remembering that $\bsc$ has a terminal object $*$ so that $\bsc_{/*} \simeq \bsc$, this equivalence is just a special case of \Cref{eq:b/M_x_b/N=b/MxN} in the case when $M = N = *$.
+
+    The $\infty$-category $\bsc_{/M}$ is also known, by definition, as $\mathsf{Entr(M)}$, the enter-path $\infty$-category of the stratified manifold $M$. By \cite[Lem.3.3.9]{afr_homhyp} this is equivalent to the opposite $\infty$-category of the exit-path $\infty$-category of $M$. By \cite[Obs.3.3.3]{afr_homhyp} the equivalence
+    %
+    \begin{equation}
+        \mathsf{Exit}(M) \times \mathsf{Exit}(N) \xrightarrow[\ \ \simeq \ \ ]{\times} \mathsf{Exit}(M \times N)
+    \end{equation}
+    %
+    is immediate.
+
+    To complete the proof we only have to check that $\times: \disk_{/M} \times \disk_{/N} \xrightarrow{} \disk_{M \times N}$ satisfies the conditions to qualify as a bifunctor of $\infty$-operads.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{proof}
     The proof of existence of the functor goes along the same lines as the proof of \Cref{prop:exp_of_products} because of \Cref{thm:disk_alg=lcfa}. The thing to take into account is that the projection maps are both, trivially, constructible bundles so by \Cref{cor:pushforward_for_lc}, pushing forward by them yields locally constant factorization algebras again. This combined with the fact that for any $\infty$-operads $\mathscr{O}$, $\mathscr{O}'$ and $\mathscr{C}$ we have an equivalence
