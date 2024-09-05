@@ -1,0 +1,726 @@
+% Run only with XeLaTeX!
+%---------------------------------------------------------------------
+%	FORMATING AND TYPESETTING
+%---------------------------------------------------------------------
+
+% Set document class
+\documentclass[12pt,a4paper]{article}
+
+% Option to change margin size
+\usepackage[margin=2cm]{geometry}
+
+% Font and encoding settings
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc} not necessary with xelatex?
+\usepackage{yfonts} % germanic fonts (fraktur...)
+%\defaultfontfeatures{Ligatures=TeX} %??
+
+% Footnotes
+\usepackage[stable]{footmisc}
+
+% Indentation and spacing
+\usepackage{indentfirst} % indentation
+\usepackage{enumitem}[leftmargin=0pt] % spacing
+\setlist{nosep}
+
+% Multi column environment
+\usepackage{multicol}
+
+% Formating of titles
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\small\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\small\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\small\bfseries}{\thesubparagraph}{1em}{}
+\usepackage[titletoc]{appendix}
+
+% Math typesetting packages
+\usepackage{amsmath, amssymb, amsthm, mathtools, commath}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % makes \mathbb{1} work and changes font of mathbb
+\usepackage[mathscr]{euscript} % euler script font
+\usepackage{tikz-cd} % tikz commutative diagrams
+\usepackage{thmtools, thm-restate} % theorem tools, especially restatable
+
+\AtBeginDocument{\renewcommand\setminus{\smallsetminus}} % \setminus doesn't work in unicode-math 
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	GRAPHICS
+%---------------------------------------------------------------------
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{pdfpages} % for inserting pdf pages
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%---------------------------------------------------------------------
+
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\renewcommand*{\bibfont}{\small}
+\addbibresource{text.bib}
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	HYPERLINKS
+%---------------------------------------------------------------------
+
+% Define the colors
+\usepackage{xcolor}
+\definecolor{brown}{HTML}{CD853F}
+\definecolor{blue}{HTML}{4169E1}
+\definecolor{green}{HTML}{2E8B57}
+
+% Setup options for hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true, linkcolor=black, breaklinks=true,
+linktoc=all, bookmarksnumbered=true,
+urlcolor=brown, linkcolor=blue, citecolor=green, % Link colors
+}
+
+% Referencing package
+\usepackage{cleveref}
+\crefname{section}{\S\!}{\S\S\!}
+\Crefname{section}{\S\!}{\S\S\!}
+
+
+%---------------------------------------------------------------------
+%	THEOREM STYLES
+%---------------------------------------------------------------------
+
+% Define a dummy counter to keep count for all sub-environments
+\newcounter{counter} \numberwithin{counter}{section}
+
+% Define theorem styles here based on the definition style
+\theoremstyle{definition}
+\newtheorem{definition}[counter]{Definition}
+\newtheorem{construction}[counter]{Construction}
+\newtheorem{observation}[counter]{Observation}
+
+% Define theorem styles here based on the plain style
+\theoremstyle{plain} 
+\newtheorem{theorem}[counter]{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[counter]{Corollary}
+\newtheorem{lemma}[counter]{Lemma}
+\newtheorem{proposition}[counter]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{conjecture}[counter]{Conjecture}
+
+
+% Define theorem styles here based on the remark style
+\theoremstyle{remark}
+\newtheorem{example}[counter]{Example}
+\newtheorem{remark}[counter]{Remark}
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	NEW COMMANDS
+%---------------------------------------------------------------------
+
+% general target category
+\newcommand{\catC}{\mathscr{C}}
+
+% categories of factorization algebras
+\newcommand{\falg}{\mathscr{F} \mathsf{Alg}}
+\newcommand{\lcfa}{\mathscr{F} \mathsf{Alg}^{\mathsf{lc}}}
+
+% category of manifolds
+\newcommand{\mfld}[1][s]{%
+    \ifx r#1\mathsf{Mfld}\else
+    \ifx s#1\mathscr{M} \mathsf{fld}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of disks
+\newcommand{\disk}[1][s]{%
+    \ifx r#1\mathsf{Disk}\else
+    \ifx s#1\mathscr{D} \mathsf{isk}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of opens
+\newcommand{\opens}[1][s]{%
+    \ifx r#1\mathsf{Opns}\else
+    \ifx s#1\mathscr{O} \mathsf{pns}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of cosheaves
+\newcommand{\csheaves}[1][n]{%
+    \ifx n#1 \mathsf{c} \mathscr{S} \mathsf{hv}\else
+    \mathsf{c} \mathscr{S} \mathsf{hv}^{\mathsf{#1}}
+    \fi
+}
+
+% category of infinity categories
+\newcommand{\cat}{\mathscr{C} \mathsf{at}_{\infty}}
+
+% template for category of algebras
+\newcommand{\alg}[1]{\mathscr{A} \mathsf{lg}_{#1}}
+
+% template for category of locally constant algebras
+\newcommand{\lcalg}[1]{\mathscr{A} \mathsf{lg}^{\mathsf{lc}}_{#1}}
+
+% half-open interval
+\newcommand{\hoint}{\mathbb{R}_{\geq 0}}
+
+% Cech complex
+\newcommand{\cech}{\check{\mathsf{C}}}
+
+% Category of basics
+\newcommand{\bsc}{\mathscr{B} \mathsf{sc}}
+\newcommand{\bstr}{\mathscr{B}}
+
+% Open cone
+\newcommand{\cone}[1][n]{%
+    \ifx b#1\overline{\mathsf{C}}\else
+    \ifx n#1\mathsf{C}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+\newcommand{\lrangle}[1]{\langle #1 \rangle}
+
+%---------------------------------------------------------------------
+
+\usepackage{subfiles}
+
+%\setcounter{section}{-1}
+
+\begin{document}
+
+% Set title, author and date
+\title{Factorization Algebras and Factorization Homology on Stratified Spaces}
+\author{Aleksandar Ivanov, Ödül Tetik}
+\date{}
+\maketitle
+
+
+\section{Factorization Algebras}\label{ch:fact_alg}
+
+\subsection{Definition of Factorization Algebras}
+    We fix a symmetric monoidal $\infty$-category $\catC$ that is $\otimes$-presentable to serve as the target $\infty$-category.
+
+\begin{definition}
+    Let $X$ be a topological space. We regard $\opens[s](X)$ as a multicategory (and consequently as an $\infty$-operad) whose objects are the open sets of $X$, and through the assignment of a unique multi-morphism from $\{U_i\}_{i \in I}$ to $U$ if the $U_i$ are pairwise disjoint and if $\bigcup_{i \in I} U_i \subset U$. A \emph{prefactorization algebra $F$ on $X$ with values in $\catC$} is an algebra in $\catC$ over this $\infty$-operad
+    %
+    \begin{equation}
+        F \in \alg{\opens[s](X)}(\catC).
+    \end{equation}
+\end{definition}
+
+\begin{remark}\label{rem:unpack_pfac_def}
+    Let's unwind the above definition to understand the underlying data needed to define a prefactorization algebra. On the level of objects, for every open set $U$ we need to assign an object $F(U) \in \catC$. On the level of morphisms, given a pairwise disjoint set of opens $\{U_i\}_{i \in I}$ and an open $U$, such that the $U_i$ all lie in $U$ we need to assign a morphism in $\catC$
+    %
+    \begin{equation}
+        \bigotimes_{i \in I} F(U_i) \xrightarrow{F(\{U_i\},U)} F(U).
+    \end{equation}
+    %
+    As the notation suggests and the operadic symmetry condition guarantees, the maps $F(\{U_i\},U)$ only depend on the set of $U_i$ and not on any particular order of the $U_i$, which is also allowed on the left-hand side by the symmetric monoidal structure of $\catC$. Furthermore, the operadic associativity condition imposes that given pairwise disjoint $\{U_i\}_{i \in I}$ that all lie in $U$, and for each $i \in I$, pairwise disjoint $\{ V_{i, j}\}_{j \in J_i}$ that all lie in $U_i$, there is a commutative diagram in $\catC$
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \bigotimes\limits_{(i,j)} F(V_{i,j}) \arrow[rd, shorten <=-2ex, "\bigotimes\limits_{i} F(\{V_{i, j}\} {,} U_i)"'] \arrow[rr, "F( \{V_{i, j}\} {,} U)"] &   & F(U) \\
+            & \bigotimes\limits_{i} F(U_i) \arrow[ru, "F( \{U_i \} {,} U)"'] &,          
+        \end{tikzcd}
+    \end{equation}
+    %
+    where the $(i,j)$ tensor product runs over all possible pairs $i \in I$ and $j \in J_i$. Finally, the operadic unitarity condition actually tells us that the morphisms $F(\{U\}, U)$ are equivalent to the identity morphism.
+
+    We also get out that an algebra morphism $\phi: F \rightarrow G$ is simply a family of maps $\phi(U): F(U) \rightarrow G(U)$ for each open set $U$, such that it respects the operations of the algebra. Namely, for each multi-morphism $\{ U_i \}_{i \in I} \rightarrow U$ there is a commuting square
+    %
+    \begin{equation}\label{cd:fa_morphisms}
+        \begin{tikzcd}[row sep=large, column sep = large]
+            \bigotimes\limits_{i \in I} F(U_i) \arrow[r, "F(\{ U_i\} {,} U)"] \arrow[d, "\bigotimes\limits_{i \in I} \phi(U_i)"'] & F(U) \arrow[d, "\phi(U)"] \\
+            \bigotimes\limits_{i \in I} G(U_i) \arrow[r, "G(\{ U_i\} {,} U)"'] & G(U).
+        \end{tikzcd}
+    \end{equation}
+\end{remark}
+
+
+We endow the poset $\opens[r](X)$ with a Grothendieck topology called the \emph{Weiss} Grothendieck topology \cite{weiss1999}. In this topology a sieve $\mathscr{U} \subset \opens[r](X)_{/U}$ on $U$ is a covering sieve if for each finite subset $S \subset U$, there is an object $(e: V \rightarrow U) \in \mathscr{U}$ for which $S \subset e(V)$. In other words, a family $\{ V_i \rightarrow U\}_{i \in I}$ is a Weiss cover of $U$ if every set of finitely many points in $U$ is contained in some $V_i$. Contrast this with the standard Grothendieck topology on the poset of opens $\opens[r](X)$, in which instead of a finite set we have a one-element set. Thus, every Weiss cover is a cover in the standard sense, but not necessarily the other way around.
+
+\begin{definition}
+    The $\infty$-category of \emph{$\catC$-valued Weiss (homotopy) cosheaves on $X$} is the full $\infty$-subcategory
+    %
+    \begin{equation}
+        \csheaves[W]_{X}(\catC) \subset \mathsf{Fun}(\opens[r](X), \catC),
+    \end{equation}
+    %
+    of the $\infty$-category of copresheaves, consisting of those functors $F: \opens[r](X) \rightarrow \catC$ for which, for each Weiss covering sieve $\mathscr{U} \subset \opens[r](X)_{/U}$, the canonical functor
+    %
+    \begin{equation}
+        \mathscr{U}^{\vartriangleright} \rightarrow \opens[r](X)_{/U} \rightarrow \opens[r](X) \xrightarrow{F} \catC,
+    \end{equation}
+    %
+    where $\mathscr{U}^{\vartriangleright} \rightarrow \opens[r](X)_{/U}$ is the functor from the colimit cone that assigns $U$ to the colimit object, is a colimit diagram.
+\end{definition}
+
+\begin{remark}
+    The category $\opens[r](X)$ can be replaced with any other category that supports an analogue of the Weiss Grothendieck topology. In the case of (stratified) manifolds, $\opens[r](X)$ is already the same as $\mfld[r]_{/X}$, be we could just as well define Weiss cosheaves on $\mfld[r]$, i.e. $\csheaves[W](\mfld[r], \catC)$. If we're working with the $\infty$-categories $\mfld$ or $\mfld_{/X}$, then we define cosheaves on them through the pullback
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \csheaves[W] (\mfld, \catC) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \mathsf{Fun}(\mfld, \catC) \arrow[d] \\
+            \csheaves[W] (\mfld[r], \catC) \arrow[r] & \mathsf{Fun}(\mfld[r], \catC),
+        \end{tikzcd}
+    \end{equation}
+    %
+    and similarly for the relative case $\mfld_{/X}$.
+\end{remark}
+
+\begin{definition}
+    The $\infty$-category of \emph{($\catC$-valued) factorization algebras on $X$} is the full $\infty$-subcategory of $\alg{\opens[s](X)}$ as in the pullback
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \falg_X (\catC) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \alg{\opens[s](X)}(\catC) \arrow[d] \\
+            \csheaves[W]_X(\catC) \arrow[r] & \mathsf{Fun}(\opens[r](X), \catC).
+        \end{tikzcd}
+    \end{equation}
+\end{definition}
+
+\begin{proof}
+    The previous definition implies that the top horizontal functor is fully faithful, which is something we need to prove. The bottom horizontal functor is fully faithful, by the definition of cosheaf, and the right vertical functor forgets the operations with arity higher than $1$. The key observation is that a Weiss cover is pairwise disjoint only when it consists of a single subset. Thus, the cosheaf condition does not affect the algebra morphisms and an equivalence of morphism spaces is trivial to find, namely one is given by the identity map.
+\end{proof}
+
+
+All of our definitions above are valid for all topological spaces, so in particular, also the stratified spaces we introduced at the beginning. For the next definition of locally constant factorization algebras though, it will be important to specify more information about the space. In other words, they will capture information about the stratification.
+
+\begin{definition}
+    The $\infty$-category of locally constant Weiss cosheaves on a stratified manifold $M$ (or, equivalently, on $\mfld[r]_{/M}$) is the full $\infty$-subcategory
+    %
+    \begin{equation}
+        \csheaves[W, lc]_M (\catC) \subset \csheaves[W]_M (\catC),
+    \end{equation}
+    %
+    of those Weiss cosheaves whose underlying functor $F: \bsc_{/M} \xrightarrow{} \catC$ satisfies
+    %
+    \begin{equation}
+        f(U) \simeq f(V) \Rightarrow F(U) \simeq F(V),
+    \end{equation}
+    %
+    for all $U, V \in \bsc_{/M}$, where $f: \bsc_{/M} \xrightarrow{} \bsc$ denotes the forgetful functor.
+\end{definition}
+
+\begin{remark}
+    Thus, a functor is locally constant if it takes open embeddings of basics $V \xhookrightarrow{} U$, with equivalent stratifications to equivalences in $\catC$. We emphasize this last point about stratification; the disks have to have equivalent stratifications inherited from the stratified space. In the case of $\hoint$, for example, open embeddings like $(a, b) \rightarrow \left[0, c\right)$, for $0 \leq a < b \leq c$, would \emph{not} be taken to equivalences since the disks have different stratifications.
+\end{remark}
+
+\begin{remark}
+    Since being locally constant according to the previous definition is only a property of the underlying functor the definition can easily be used to define locally constant prefactorization algebras too.
+\end{remark}
+
+\begin{definition}
+    The $\infty$-category $\lcfa_M (\catC)$ of \emph{locally constant factorization algebras on a stratified manifold $M$ valued in $\catC$} is the full $\infty$-subcategory of $\falg_M (\catC)$ as in the pullback
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \lcfa_M (\catC) \arrow[dr, phantom, "\ulcorner", very near start] \arrow[r] \arrow[d] & \falg_M (\catC) \arrow[d] \\
+            \csheaves[W, lc]_M (\catC) \arrow[r] & \csheaves[W]_M (\catC).
+        \end{tikzcd}
+    \end{equation}
+\end{definition}
+
+\begin{remark}\label{rem:sym_mon_inheritance}
+    The $\infty$-categories of factorization algebras of all varieties acquire a symmetric monoidal structure from the symmetric monoidal structure of $\catC$ pointwise
+    %
+    \begin{equation}
+        (F \otimes G)(U) = F(U) \otimes G(U).
+    \end{equation}
+    %
+    The only subtlety is the cosheaf condition, where the symmetric monoidal structure is induced only if we also take into account that in $\catC$ colimits commute with its symmetric monoidal structure.
+
+    The existence of colimits is also inherited from $\catC$ pointwise through the collection of evaluation functors $\{ \mathsf{ev}_U: \falg_X (\catC) \rightarrow \catC \}$, one for each open $U \subset X$.
+\end{remark}
+
+
+
+
+
+\subsection{The \texorpdfstring{$\infty$-}{infinity-}operad of Factorization Algebras}
+
+Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for factorization algebras, locally constant or not. We will be working in the generality of stratified manifolds, and all our results in this section will come in pairs, one for the locally constant case and one not. We call the results in the not-necessarily-locally-constant case corollaries since their proofs will be obvious from the proofs of the statements in the locally constant case. To connect factorization algebras to the theory of algebras over an $\infty$-operad we will work in two steps. First we have the following results:
+%
+\begin{proposition}\label{prop:fh_disk_to_lcfa}
+    Given a stratified manifold $M$ factorization homology provides a functor
+    %
+    \begin{equation}
+        \int : \alg{\disk_{/M}} (\catC) \xrightarrow{\ \ \ \ } \lcfa_M (\catC)
+    \end{equation}
+    %
+    between the $\infty$-categories of $\disk_{/M}$-algebras and locally constant factorization algebras $\lcfa_M$.
+\end{proposition}
+%
+\begin{corollary}\label{cor:fh_disk_to_falg}
+    Given a stratified manifold $M$ factorization homology provides a functor
+    %
+    \begin{equation}
+        \int: \alg{\disk[r]_{/M}} (\catC) \xrightarrow{\ \ \ \ } \falg_{M} (\catC).
+    \end{equation}
+\end{corollary}
+
+The second step is then showing that the functors constructed above are equivalences, which we summarize in the following results:
+%
+\begin{theorem}\label{thm:disk_alg=lcfa}
+    For each stratified manifold $M$, the previously constructed factorization homology functor provides an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        \alg{\disk_{/M}} (\catC) \xrightarrow[\int]{\ \ \simeq \ \ } \lcfa_M (\catC)
+    \end{equation}
+    %
+    between $\disk_{/M}$-algebras and locally constant factorization algebras on $M$. Equivalently, the $\infty$-operad governing locally constant factorization algebras can be taken to be $\disk_{/M}$.
+\end{theorem}
+%
+\begin{corollary}\label{cor:disk_alg=falg}
+    The $\infty$-operad governing factorization algebras on a stratified manifold $M$ can be taken to be $\disk[r]_{/M}$,
+    %
+    \begin{equation}
+        \alg{\disk[r]_{/M}} (\catC) \xrightarrow[\int]{\ \ \simeq \ \ } \falg_M (\catC).
+    \end{equation}
+\end{corollary}
+%
+The reason for the phrasing in these results is that, technically speaking, equivalence of the $\infty$-categories of algebras does not imply equivalence of the underlying $\infty$-operads. However since we only defined (locally constant) factorization algebras at the level of algebras and not at the level of $\infty$-operads, we can take the operadic definition as the basic one, and interpret the results as connecting this to the classical definition.
+
+In the service of working towards proofs of all of these results we first have to pause and develop some necessary technically results regarding Weiss covers and preservation of colimits, as well as record a known fact about the relative versions of the $\infty$-operads in play. We start with this fact first.
+
+\begin{lemma}\label{lem:double_slice}
+    Every open embedding $e: N \xhookrightarrow{} M$ induces an equivalence of $\infty$-categories
+    %
+    \begin{equation}
+        (\mfld_{/M})_{/e} \simeq \mfld_{/N}.
+    \end{equation}
+    %
+    The same holds for $\mfld[r]$, as well as, $\disk$ and $\disk[r]$.
+\end{lemma}
+
+
+\begin{lemma}\label{lem:weiss_to_ordinary}
+    Let $M$ be a topological space with a sieve $\mathscr{U}$. The following are equivalent:
+    %
+    \begin{enumerate}
+        \item $\mathscr{U}$ is a Weiss sieve of $M$,
+        \item for all $n \geq 0$, the smallest sieve containing $\{ \mathrm{Conf}_n(U)_{\Sigma_n} \xhookrightarrow{} \mathrm{Conf}_n(M)_{\Sigma_n} \mid U \in \mathscr{U} \}$ is a covering sieve of the unordered configuration space $\mathrm{Conf}_n(M)_{\Sigma_n}$ of $n$ points in $M$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    In the forward direction, let $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(M)_{\Sigma_n}$ be an equivalence class of $n$ points under the action of the symmetric group. By definition of Weiss sieve, there is a $U \in \mathscr{U}$ such that $\{x_1, \dots, x_n\} \subset U$. Since none of the points are the same this means that $(x_1, \dots, x_n) \in U^{\times n}$, and subsequently that $(x_1, \dots, x_n) \in \mathrm{Conf}_n(U)$. Taking quotients we get that $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(U)_{\Sigma_n}$. Since $\mathrm{Conf}_n(U)_{\Sigma_n}$ is open in the topology of $\mathrm{Conf}_n(M)_{\Sigma_n}$, the collection of these form a covering sieve.
+
+    In the opposite direction, let $S \subset M$ be a finite set with cardinality $|S| = n$. Naming its elements $x_1, \dots, x_n$ in an arbitrary order that will not matter because of the $\Sigma_n$ quotient, we get the $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(M)_{\Sigma_n}$. By assumption there exists a $U \in \mathscr{U}$ such that $[(x_1, \dots, x_n)] \in \mathrm{Conf}_n(U)_{\Sigma_n}$. In particular, this means that $(x_1, \dots, x_n) \in U^{\times n}$, or in other words that $x_i \in U$ for all $1 \leq i \leq n$. This implies that $\mathscr{U}$ satisfies the Weiss property.
+\end{proof}
+
+
+\begin{lemma}\label{lem:gluing_disk/M/e}
+    A Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$ canonically determines a morphism
+    %
+    \begin{equation}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\cdot, -)} \mathsf{PShv}(\disk_{/M}) \big) \xrightarrow{\ \ \simeq \ \ } \mathsf{Hom}_{\mfld_{/M}}(\cdot, e)
+    \end{equation}
+    of presheaves over $\disk_{/M}$, which moreover, is an equivalence.
+\end{lemma}
+
+\begin{proof}
+    The morphism is determined by the universal property of the colimit. The components of the morphism of presheaves are given by
+    %
+    \begin{equation}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\iota, -)} \mathsf{Sp} \big) \xrightarrow{\ \ \ \ \ } \mathsf{Hom}_{\mfld_{/M}}(\iota, e),
+    \end{equation}
+    %
+    for each $\iota \in \disk_{/M}$, an open embedding of disks in $M$, and these morphisms are now maps of spaces which we want to show are equivalences. We now study the hom--spaces appearing above. By definition of the slice $\infty$-category, the hom--spaces are given as the homotopy fibers
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathsf{Hom}_{\mfld_{/M}} (\iota, e) \arrow[d] \arrow[r] & \mathsf{Hom}_{\mfld}(D, N) \arrow[d, "e^*"] \\
+            * \arrow[r, "\{\iota\}"] & \mathsf{Hom}_{\mfld}(D, M),
+        \end{tikzcd}
+    \end{equation}
+    %
+    where we have fixed the notation $\iota: D \xhookrightarrow{} M$ and $e: N \xhookrightarrow{} M$, for the domains of these maps. We further establish the notation that for each isomorphism class of basics $[B]$, the fixed $D$ has $i_{[B]}$-many disks of type $[B]$. With this notation in hand, by the characterization of the maximal $\infty$-subgroupoid of $\disk_{/M}$ \cite[Lem.2.21]{aft_fhstrat} for example, we know that
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mfld}(D, M) \simeq \coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(M_{[B]}),
+    \end{equation}
+    %
+    where the notation $M_{[B]}$ denotes the $[B]$-stratum of $M$ (see \cite[Prop.4.4.7]{aft_localstrut}). We also note that under these equivalences the map $e^*$ is given by $\coprod_{[B]} \mathrm{UConf}_{i_{[B]}}(e_{[B]})$, which is even an open inclusion. Thus, the hom--spaces of the slice $\infty$-category are given as 
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\mfld_{/M}} (\iota, e) \simeq \coprod_{[B]} \mathsf{Fib}_\iota^{[B]}(e),
+    \end{equation}
+    %
+    where $\mathsf{Fib}_\iota^{[B]}(e)$ is defined as the homotopy fiber
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathsf{Fib}_\iota^{[B]}(e) \arrow[d] \arrow[r] & \mathrm{UConf}_{i_{[B]}}(N_{[B]}) \arrow[d, "\mathrm{UConf}_{i_{[B]}}(e_{[B]})"] \\
+            * \arrow[r, "\{\iota_{[B]}\}"] & \mathrm{UConf}_{i_{[B]}}(M_{[B]}),
+        \end{tikzcd}
+    \end{equation}
+    %
+    where, by slight abuse, we denoted the point over which the fiber lies with $\iota_{[B]}$ as well. With all of this notation in place, and by switching the places of the colimits, what we want to show is that the canonical maps
+    %
+    \begin{equation}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Fib}_{\iota}^{[B]}(-)} \mathsf{Sp} \big) \xrightarrow{\ \ \ \ \ } \mathsf{Fib}_{\iota}^{[B]}(e),
+    \end{equation}
+    %
+    are equivalences for every $\iota$ and every $[B]$. Using \cite[Prop.A.3.2]{lurie_ha}, a sufficient condition for these maps to be equivalences is for the composition $\mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Fib}_{\iota}^{[B]}(-)} \mathsf{Sp}$ to be a covering sieve of $\mathsf{Fib}_{\iota}^{[B]}(e)$. To exhibit such a property we pick a particular model for the homotopy fiber $\mathsf{Fib}_{\iota}^{[B]}(e)$, namely
+    %
+    \begin{equation}
+        \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(N) := \big( \mathsf{P}(\mathrm{UConf}_{i_{[B]}}(M_{[B]})) \times \mathrm{UConf}_{i_{[B]}}(N_{[B]}) \big) / (s (p) = \iota_{[B]}, t (p) = e(x)),
+    \end{equation}
+    %
+    the space of paths in $\mathrm{UConf}_{i_{[B]}}(M_{[B]})$ that start at $\iota_{[B]}$ and end at a point $x$ in $\mathrm{UConf}_{i_{[B]}}(N_{[B]})$. With this model, for each $(U \xhookrightarrow{} N) \in \mathscr{U} \subset (\mfld[r]_{/M})_{/e} \simeq \mfld[r]_{/N}$ (by \Cref{lem:double_slice}) we get an open inclusion
+    %
+    \begin{equation}
+        \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(U) \xhookrightarrow{\ \ \ \ } \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(N),
+    \end{equation}
+    %
+    and we're trying to show that the collection $\mathscr{V}_{\iota}^{[B]}$ of these is a cover.
+
+    Given a Weiss cover $\mathscr{U}$ on $N$ we can restrict it to a Weiss cover $\mathscr{U}_{[B]}$ of $N_{[B]}$ by intersecting. The statement of \Cref{lem:weiss_to_ordinary} is that we can build an ordinary cover $\mathscr{U}_{i_{[B]},[B]}$ of $\mathrm{UConf}_{i_{[B]}}(N_{[B]})$. $\mathscr{V}_{\iota}^{[B]}$ is a cover if for any $p \in \widetilde{\mathsf{Fib}_{\iota}^{[B]}}(N)$ we can find an open $\widetilde{\mathsf{Fib}_{\iota}^{[B]}}(U)$ that contains it. But this is indeed the case, because looking at the target $t(p)$ of the path $p$, we get $t(p) \in \mathrm{UConf}_{i_{[B]}}(N_{[B]})$, and we know that there exists a $U \in \mathscr{U}$ such that $\mathrm{UConf}_{i_{[B]}}(U_{[B]})$ covers $t(p)$ and subsequently also that $\widetilde{\mathsf{Fib}_{\iota}^{[B]}}(U)$ covers $p$.
+\end{proof}
+
+
+A suggestion regarding the following lemma about preservation of colimits is sketched out in \cite{rezk2023lan}.
+%
+\begin{lemma}\label{lem:Lan_preserve_colim}
+    Let $F: \mathscr{D} \xrightarrow{} \catC$ and $\iota: \mathscr{D} \xrightarrow{} \mathscr{M}$ be functors of $\infty$-categories, where $\mathscr{D}$ is essentially small, while $\mathscr{M}$ and $\catC$ are locally small and cocomplete. Let $L_{\iota} F: \mathscr{M} \xrightarrow{} \catC$ be the left Kan extension of $F$ along $\iota$. $L_{\iota} F$ preserves a given colimit if, and only if, the restricted Yoneda embedding
+    %
+    \begin{align}
+        T_{\iota}: \mathscr{M} \xrightarrow{\ y_{\mathscr{M}} \ } \mathsf{PShv}(\mathscr{M}) \xrightarrow{\ \iota^* \ } \mathsf{PShv}(\mathscr{D}) 
+    \end{align}
+    %
+    does so.
+\end{lemma}
+
+\begin{proof}
+    We use the standard notation $y_{\mathscr{X}}=h_\bullet\colon\mathscr{X}\to\mathsf{PShv}(\mathscr{X})$ for `the' covariant Yoneda embedding of a locally small $\infty$-category $\mathscr{X}$ (see \cite[\href{https://kerodon.net/tag/03NF}{03NF},\href{https://kerodon.net/tag/03N2}{03N2}]{lurie_kerodon}). First, note that a left Kan extension of type
+    %
+    \begin{equation}
+        L_{y_{\mathscr{D}}}F \colon \mathsf{PShv}(\mathscr{D}) \xrightarrow{\ \ \ \ } \mathscr{C}
+    \end{equation}
+    %
+    preserves colimits as a consequence of \cite[\href{https://kerodon.net/tag/03WH}{03WH}]{lurie_kerodon}. Next, we claim that there is an equivalence
+    %
+    \begin{equation}\label{WZUZC5F}
+        L_{\iota}F \simeq L_{y_{\mathscr{D}}}F \circ L_{\iota}y_{\mathscr{D}}
+    \end{equation}
+    %
+    as functors $\mathscr{M} \to \mathscr{C}$. Indeed, consider the diagram
+    % 
+    \begin{equation}
+        \begin{tikzcd}[sep = large]
+            & \mathscr{D}\ar[dl,"{\iota}"']\ar[dr,"{F}"]\ar[d,"{y_{\mathscr{D}}}"]\\
+            \mathscr{M}\ar[rr,bend right=40,"{L_{\iota}F}"']\ar[r,"{L_{\iota}y_{\mathscr{D}}}"'] &[4em] \mathsf{PShv}(\mathscr{D})\ar[r,"{L_{y_{\mathscr{D}}}F}"'] & \mathscr{C},
+        \end{tikzcd}
+    \end{equation}
+    %
+    and note that by \cite[\href{https://kerodon.net/tag/03W9}{03W9},\href{https://kerodon.net/tag/03WH}{03WH}]{lurie_kerodon} there is an equivalence (actually even an isomorphism) $L_{y_{\mathscr{D}}}F \circ y_{\mathscr{D}} \simeq F$ which commutes the right triangle. Consequently, using \cite[\href{https://kerodon.net/tag/02YH}{02YH}]{lurie_kerodon}, we have $L_{\iota}F \simeq L_{\iota}(L_{y_{\mathscr{D}}}F \circ y_{\mathscr{D}})$. Since $L_{y_{\mathscr{D}}}F$ preserves colimits, we have $L_{\iota}(L_{y_{\mathscr{D}}}F \circ y_{\mathscr{D}})\simeq L_{y_{\mathscr{D}}}F \circ L_{\iota}y_{\mathscr{D}}$, obtaining \Cref{WZUZC5F}.
+
+    Finally, we claim
+    %
+    \begin{equation}\label{D9NQYMT}
+        L_{\iota}y_{\mathscr{D}} \simeq T_{\iota} := \iota^* \circ y_{\mathscr{M}}
+    \end{equation}
+    %
+    as functors $\mathscr{M} \to \mathsf{PShv}(\mathscr{D})$, which will imply the Lemma by \Cref{WZUZC5F}. By \cite[\href{https://kerodon.net/tag/03WN}{03WN}]{lurie_kerodon} we have the following diagram in which the triangle commutes
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathscr{M} \arrow[r, "y_{\mathscr{M}}"] & \mathsf{PShv}(\mathscr{M}) \arrow[r, "\iota^*"] \arrow[d, "\top", phantom, very near start] & \mathsf{PShv}(\mathscr{D}) \arrow[ll, "H", bend left] \\
+            & {} & \mathscr{D} \arrow[u, "y_{\mathscr{D}}"'] \arrow[llu, "\iota", bend left]
+            \end{tikzcd},
+    \end{equation}
+    %
+    so that $H$ is a left adjoint to $\iota^* \circ y_{\mathscr{M}}$. Being a right adjoint, we can write $\iota^* \circ y_{\mathscr{M}}$ as a left Kan extension, which allows for the following calculation
+    %
+    \begin{equation}
+        \iota^* \circ y_{\mathscr{M}} \simeq L_{H}\mathrm{id}_{\mathsf{PShv}(\mathscr{D})} \simeq L_{H}(L_{y_{\mathscr{D}}} y_{\mathscr{D}}) \simeq L_{H \circ y_{\mathscr{D}}}(\mathscr{D}) \simeq L_{\iota}(y_\mathscr{D}),
+    \end{equation}
+    %
+    where for the second equivalence we used the fact that $y_{\mathscr{D}}$ is a dense functor \cite[\href{https://kerodon.net/tag/03W2}{03W2}]{lurie_kerodon} (using the definition of dense functor as in \cite[\href{https://kerodon.net/tag/03VP}{03VP}]{lurie_kerodon}) and in the third equivalence we used \cite[\href{https://kerodon.net/tag/031M}{031M}]{lurie_kerodon}.
+\end{proof}
+
+
+\begin{proof}[Proof of {\Cref{prop:fh_disk_to_lcfa}}]
+    We adopt a proof strategy similar to \cite[prop.3.14]{af_primer}. Unlike there, we work in the relative case of $\disk_{/M}$ instead of $\disk(\bstr)$. Since the $\infty$-category of factorization algebras is defined as a pullback, we will look for a commutative diagram involving $\alg{\disk_{/M}}$, so that, by the universal property of the pullback, we get the stated functor.
+    
+    We first observe that, by definition, the $\infty$-operad $\opens(M) := \mfld[r]_{/M}$. There are clear functors of $\infty$-operads
+    %
+    \begin{equation}
+        \disk_{/M} \xhookrightarrow{\ \ \ } \mfld_{/M} \xleftarrow{\ \ \ } \mfld[r]_{/M}.
+    \end{equation}
+    %
+    At the level of algebras over them, they give rise to the commutative diagram
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \alg{\disk_{/M}} (\catC) \arrow[d] & \alg{\mfld_{/M}} (\catC) \arrow[l] \arrow[r] \arrow[d] & \alg{\opens(M)} (\catC) \arrow[d] \\
+            \mathsf{Fun}(\disk_{/M}, \catC) & \mathsf{Fun}(\mfld_{/M}, \catC) \arrow[l] \arrow[r] & \mathsf{Fun}(\opens(M), \catC),
+        \end{tikzcd}
+    \end{equation}
+    %
+    where the vertical arrows are forgetful functors. Factorization homology as a left Kan extension gives one the adjoints indicated below
+    %
+    \begin{equation}
+        \begin{tikzcd}[row sep = large, column sep = large]
+            \alg{\disk_{/M}} (\catC) \arrow[r, bend left=10, "\int"] \arrow[d] & \alg{\mfld_{/M}} (\catC) \arrow[l, bend left=10] \arrow[r] \arrow[d] & \alg{\opens(M)} (\catC) \arrow[d] \\
+            \mathsf{Fun}(\disk_{/M}, \catC) \arrow[r, bend left=10, "\int"] & \mathsf{Fun}(\mfld_{/M}, \catC) \arrow[l, bend left=10] \arrow[r] & \mathsf{Fun}(\opens(M), \catC).
+        \end{tikzcd}
+    \end{equation}
+    %
+    A result found in \cite[thm.1.2.5]{aft_localstrut} (where they use slightly different notation and call locally constant sheaves constructible) gives us the equivalence
+    %
+    \begin{equation}
+        \csheaves[W](\mfld_{/M}, \catC) \simeq \csheaves[W, lc](\mfld[r]_{/M}, \catC) =: \csheaves[W, lc]_M(\catC),
+    \end{equation}
+    %
+    which at the level of underlying functors, is exactly the restriction along the functor $\opens(M) \xrightarrow{} \mfld_{/M}$, so that we can append this to our commutative diagram
+    %
+    \begin{equation}
+        \begin{tikzcd}[row sep = large, column sep = large]
+            \alg{\disk_{/M}} (\catC) \arrow[r, bend left=10, "\int"] \arrow[d] & \alg{\mfld_{/M}} (\catC) \arrow[l, bend left=10] \arrow[r] \arrow[d] & \alg{\opens(M)} (\catC) \arrow[d] \\
+            \mathsf{Fun}(\disk_{/M}, \catC) \arrow[r, bend left=10, "\int"] \arrow[dr, dashed] & \mathsf{Fun}(\mfld_{/M}, \catC) \arrow[l, bend left=10] \arrow[r] & \mathsf{Fun}(\opens(M), \catC) \\
+            & \csheaves[W](\mfld_{/M}, \catC) \arrow[r, "\simeq"] \arrow[u] & \csheaves[W, lc]_M(\catC) \arrow[u].
+        \end{tikzcd}
+    \end{equation}
+    %
+    If we can find the dashed functor which makes the diagram commute, as indicated above, we would be done with the construction. This amounts to showing that the left Kan extension $\int F$ of a functor $F \in \mathsf{Fun}(\disk_{/M}, \catC)$ along $\disk_{/M} \xhookrightarrow{} \mfld_{/M}$ is automatically a Weiss cosheaf. By the definition of $\csheaves[W](\mfld_{/M}, \catC)$, this means that the restriction of $\int F$ to $\mathsf{Fun}(\mfld[r]_{/M}, \catC)$ satisfies the cosheaf property for every Weiss sieve $\mathscr{U} \subset (\mfld[r]_{/M})_{/e}$, where $e:N \xhookrightarrow{} M$ is an open embedding. Here we notice that for the Weiss property to even make sense, we are implicitly using \Cref{lem:double_slice}, so that the Weiss sieve $\mathscr{U}$ is defined as an $\infty$-subcategory of $\mfld[r]_{/N}$.
+    
+    With the Weiss cosheaf property being a statement about preserving colimits, and with $\int F$ being a left Kan extension we are exactly in the situation of \Cref{lem:Lan_preserve_colim}. Thus, we only need to show that the functor $T: \mfld_{/M} \xrightarrow{} \mathsf{PShv} (\disk_{/M})$ preserves Weiss colimits. Namely, we need to show that there is an equivalence
+    %
+    \begin{equation}
+        \mathsf{colim} \big( \mathscr{U} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{\mathsf{Hom}_{\mfld_{/M}}(\cdot, -)} \mathsf{PShv} (\disk_{/M}) \big) \xrightarrow{\ \ \simeq \ \ } \mathsf{Hom}_{\mfld_{/M}}(\cdot, e),
+    \end{equation}
+    %
+    where on the right-hand side we've used the fact that $\mathscr{U}$ is, in particular, a covering sieve.\footnote{If we also append the straightening--unstraightening construction to $T$, the desired equivalence can be thought of as an equivalence
+    %
+    \begin{equation}
+        \mathsf{colim} (\mathscr{U} \xrightarrow{} \mfld_{/M} \xrightarrow{ (\disk_{/M})_{/-}} \mathsf{RFib}_{\disk_{/M}}) \simeq (\disk_{/M})_{/e}.
+    \end{equation}}
+    %
+    But this is exactly the result of \Cref{lem:gluing_disk/M/e}.
+\end{proof}
+
+\begin{remark}
+    Intuitively, the key idea for the statement and proof is that $\disk[r]_{/N}$ is a basis for the Weiss Grothendieck topology on manifolds. This is essentially because for each finite set of points $S \subset N$ we can take disks $\{ D_s \}_{s \in S}$ around each point, by virtue of $N$ being a manifold. Subsequently, for each $U_S$ that covers $S$ we can take small enough disks, whose disjoint union will cover $S$ by construction, as well as satisfy $\sqcup_{s \in S} D_s \subset U_S$. The proof makes this idea precise, and tells us that we can calculate factorization homology using any Weiss sieve
+    %
+    \begin{equation}
+        \int_M F \simeq \mathsf{colim}(\disk[r]_{/M} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC)
+        \simeq \mathsf{colim}(\mathscr{U} \xrightarrow{} \disk_{/M} \xrightarrow{F} \catC).
+    \end{equation}
+\end{remark}
+
+The above proof also shows how the ideas that went into defining factorization algebras are not that different from the ideas that went into defining factorization homology. Namely, the ideas of Weiss cosheaves and algebras over disks are deeply connected. Now that this connection has been explained, the proof of \Cref{thm:disk_alg=lcfa}, which we delve into promptly, is not hard to establish.
+
+\begin{proof}[Proof of {\Cref{thm:disk_alg=lcfa}}]
+    To show essential surjectivity of $\int$, for each $F \in \lcfa_M (\catC)$ we will find an equivalence $\int F| \simeq F$ in $\lcfa_M (\catC)$, with $F|$ to be defined later. Since $\lcfa_M (\catC) \xrightarrow{} \alg{\opens(M)}$ is fully faithful, this amounts to finding an equivalence of prefactorization algebras, namely a family of equivalences
+    %
+    \begin{equation}
+        \int_U F| \xrightarrow[\simeq]{\ \ \phi (U) \ \ } F(U),
+    \end{equation}
+    %
+    one for each $(U \xhookrightarrow{} M) \in \mfld[r]_{/M}$, which are natural in $U$ and preserve the multiplicative structure of prefactorization algebras (see \Cref{rem:unpack_pfac_def,cd:fa_morphisms}). Since $F$ is a locally constant factorization algebra the functor
+    %
+    \begin{equation}
+        \lcfa_M (\catC) \xrightarrow{} \csheaves[W, lc](\mfld[r]_{/M}, \catC) \simeq \csheaves[W](\mfld_{/M}, \catC) \xrightarrow{} \mathsf{Fun}(\mfld_{/M}, \catC),
+    \end{equation}
+    %
+    which we omit in the notation, allows us to consider $F$ as a functor from $\mfld_{/M}$. Furthermore, since $\disk[r]_{/U}$ is a Weiss sieve we can write
+    %
+    \begin{align}
+        F(U) &\simeq \mathsf{colim} (\disk[r]_{/U} \xrightarrow{} \disk[r]_{/M} \xrightarrow{} \mfld[r]_{/M} \xrightarrow{} \mfld_{/M} \xrightarrow{F} \catC).
+    \end{align}
+    %
+    By consulting the commutative diagram
+    % 
+    \begin{equation}
+        \begin{tikzcd}
+            \disk[r]_{/U} \arrow[d] \arrow[r] & \disk_{/U} \arrow[d] & \\
+            \disk[r]_{/M} \arrow[d] \arrow[r] & \disk_{/M} \arrow[d] \arrow[r, "F|"] & \catC, \\
+            \mfld[r]_{/M} \arrow[r] & \mfld_{/M} \arrow[ru, "F"'] &  
+        \end{tikzcd}
+    \end{equation}
+    %
+    where $F|$ is the restriction of $F$ to disks, and using the fact that $\disk[r]_{/U} \xrightarrow{} \disk_{/U}$ is final (\cite[prop.2.22]{aft_fhstrat}) immediately gives us that
+    %
+    \begin{equation}
+        F(U) \simeq \mathsf{colim} (\disk_{/U} \xrightarrow{} \disk_{/M} \xrightarrow{F|} \catC) \simeq \int_U F|.
+    \end{equation}
+    %
+    Naturality of these equivalences is immediate from the construction because, as already used, each inclusion of open subsets $V \xhookrightarrow{} U$ gives a full subcategory inclusion $\disk[r]_{/V} \xhookrightarrow{} \disk[r]_{/U}$. Given this fact, to preserve the multiplicative structure it is enough to show that the following is a commutative diagram
+    %
+    \begin{equation}\label{eq:mult_strut_comm_square}
+        \begin{tikzcd}
+            \otimes_i \int_{U_i} F| \arrow[r, "\simeq"] \arrow[d, "\otimes_i \phi (U_i)"', "\simeq"] & \int_{\sqcup_i U_i} F| \arrow[d, "\phi (\sqcup_i U_i)", "\simeq"']\\
+            \otimes_i F (U_i) \arrow[r, "\simeq"] & F (\sqcup_i U_i),
+        \end{tikzcd}
+    \end{equation}
+    %
+    for each collection of disjoint open sets $\{U_i\}$. This, however, is guaranteed by the equivalences
+    %
+    \begin{equation}
+        \disk[r]_{/\sqcup_i U_i} \xrightarrow{\ \ \simeq \ \ } \bigtimes_i \disk[r]_{/U_i}.
+    \end{equation}
+    %
+    Indeed, the fact that (sifted) colimits commute with the monoidal product on $\catC$ means that, for example in the case of two objects
+    %
+    \begin{align}
+        \mathsf{colim}(K \xrightarrow{F} \catC) \otimes \mathsf{colim}(K' \xrightarrow{F'} \catC) &\simeq \mathsf{colim}(K \xrightarrow{F(-) \otimes \mathsf{colim}(K' \xrightarrow{F'} \catC)} \catC)\notag\\
+        &\simeq \mathsf{colim}(K \xrightarrow{\mathsf{colim}(K' \xrightarrow{F(-) \otimes F'(-)} \catC)} \catC)\notag\\
+        &\simeq \mathsf{colim}(K \times K' \xrightarrow{F \times F'} \catC \times \catC \xrightarrow{- \otimes -} \catC),
+    \end{align}
+    %
+    for any (sifted) indexing $\infty$-categories $K, K'$.
+
+    To show full faithfulness we need to find equivalences of morphism spaces
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\alg{\disk_{/M}} (\catC)} (A, B) \simeq \mathsf{Hom}_{\lcfa_M (\catC)} (\int A, \int B),
+    \end{equation}
+    %
+    for each $A, B \in \alg{\disk_{/M}}$. However, since the functors
+    %
+    \begin{align}
+        &\alg{\disk_{/M}} (\catC) \xrightarrow{\mathsf{f.f.}} \alg{\disk[r]_{/M}} (\catC) &\lcfa_M (\catC) \xrightarrow{\mathsf{f.f.}} \alg{\mfld[r]_{/M}} (\catC)
+    \end{align}
+    %
+    are both fully faithful we are reduced to finding equivalences
+    %
+    \begin{equation}
+        \mathsf{Hom}_{\alg{\disk[r]_{/M}} (\catC)} (A, B) \simeq \mathsf{Hom}_{\alg{\mfld[r]_{/M}} (\catC)} (\int A, \int B).
+    \end{equation}
+    %
+    The existence of these is exactly the requirement that factorization homology in the usual sense is fully faithful, which is part of the statement of \cite[lem.2.17]{aft_fhstrat}.
+\end{proof}
+
+% Generate bibliography
+\newpage
+\printbibliography
+
+\end{document}

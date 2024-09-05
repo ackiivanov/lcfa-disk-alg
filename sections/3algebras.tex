@@ -192,7 +192,7 @@ There is a general definition of locally constant algebra objects in the context
 
 \subsection{The \texorpdfstring{$\infty$-}{infinity-}operad of Factorization Algebras}
 
-Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for (locally constant) factorization algebras. We will be working in the generality of stratified manifolds, and all our results in this section will come in pairs, one for the locally constant case and one not. We call the results in the not-necessarily-locally-constant case corollaries since their proofs will be obvious from the proofs of the statements in the locally constant case. To connect factorization algebras to the theory of algebras over an $\infty$-operad we will work in two steps. First we have the following results:
+Now that we have introduced all the varieties of factorization algebras, it's a natural and useful question to ask what the $\infty$-operad governing them is. For prefactorization algebras, the answer comes by definition, but this is not the case for factorization algebras, locally constant or not. We will be working in the generality of stratified manifolds, and all our results in this section will come in pairs, one for the locally constant case and one not. We call the results in the not-necessarily-locally-constant case corollaries since their proofs will be obvious from the proofs of the statements in the locally constant case. To connect factorization algebras to the theory of algebras over an $\infty$-operad we will work in two steps. First we have the following results:
 %
 \begin{proposition}\label{prop:fh_disk_to_lcfa}
     Given a stratified manifold $M$ factorization homology provides a functor
@@ -327,7 +327,7 @@ In the service of working towards proofs of all of these results we first have t
 The following lemma about preservation of colimits is sketched out in \cite{rezk2023lan}.
 %
 \begin{lemma}\label{lem:Lan_preserve_colim}
-    Let $F: \mathscr{D} \xrightarrow{} \catC$ and $\iota: \mathscr{D} \xrightarrow{} \mathscr{M}$ be functors of (locally small) $\infty$-categories, where $\mathscr{M}$ and $\catC$ are cocomplete. Let $L_{\iota} F: \mathscr{M} \xrightarrow{} \catC$ be the left Kan extension of $F$ along $\iota$. $L_{\iota} F$ preserves a given colimit if, and only if, the restricted Yoneda embedding
+    Let $F: \mathscr{D} \xrightarrow{} \catC$ and $\iota: \mathscr{D} \xrightarrow{} \mathscr{M}$ be functors of $\infty$-categories, where $\mathscr{D}$ is essentially small, while $\mathscr{M}$ and $\catC$ are locally small and cocomplete. Let $L_{\iota} F: \mathscr{M} \xrightarrow{} \catC$ be the left Kan extension of $F$ along $\iota$. $L_{\iota} F$ preserves a given colimit if, and only if, the restricted Yoneda embedding
     %
     \begin{align}
         T_{\iota}: \mathscr{M} \xrightarrow{\ y_{\mathscr{M}} \ } \mathsf{PShv}(\mathscr{M}) \xrightarrow{\ \iota^* \ } \mathsf{PShv}(\mathscr{D}) 
@@ -337,29 +337,51 @@ The following lemma about preservation of colimits is sketched out in \cite{rezk
 \end{lemma}
 
 \begin{proof}
-    We use the standard notation $y_{\mscr{X}}=h_\bullet\colon\mscr{X}\to\msf{PShv}(\mscr{X})$ for `the' covariant Yoneda embedding of a locally small $\infty$-category $\mscr{X}$ [see Kerodon Definition II.8.3.3.9/03NF; Proposition II.8.3.3.2/03N2]. First, note that a left Kan extension of type
-    \[
-        L_{y_{\mscr{D}}}F\colon\msf{PShv}(\mscr{D})\to\mscr{C}
-    \]
-    preserves colimits as a consequence of [Kerodon Theorem II.8.4.3.6/03WH]. 
-    Next, we claim that there is an equivalence of functors
-    \begin{equation}\label{WZUZC5F}
-        L_{\iota}(F)\simeq L_{y_{\mscr{D}}}(F)\circ L_{\iota}(y_{\mscr{D}}).
+    We use the standard notation $y_{\mathscr{X}}=h_\bullet\colon\mathscr{X}\to\mathsf{PShv}(\mathscr{X})$ for `the' covariant Yoneda embedding of a locally small $\infty$-category $\mathscr{X}$ (see \cite[\href{https://kerodon.net/tag/03NF}{03NF},\href{https://kerodon.net/tag/03N2}{03N2}]{lurie_kerodon}). First, note that a left Kan extension of type
+    %
+    \begin{equation}
+        L_{y_{\mathscr{D}}}F \colon \mathsf{PShv}(\mathscr{D}) \xrightarrow{\ \ \ \ } \mathscr{C}
     \end{equation}
-    as functors $\mscr{M}\to\mscr{C}$. Indeed, consider the diagram 
-    \[
-        \begin{tikzcd}[sep=large]
-             & \mscr{D}\ar[dl,"{\iota}"']\ar[dr,"{F}"]\ar[d,"{y_{\mscr{D}}}"]\\
-            \mscr{M}\ar[rr,bend right=40,"{L_{\iota}(F)}"']\ar[r,"{L_{\iota}(y_{\mscr{D}})}"'] &[4em] \msf{PShv}(\mscr{D})\ar[r,"{L_{y_{\mscr{D}}}(F)}"'] & \mscr{C}
+    %
+    preserves colimits as a consequence of \cite[\href{https://kerodon.net/tag/03WH}{03WH}]{lurie_kerodon}. Next, we claim that there is an equivalence
+    %
+    \begin{equation}\label{WZUZC5F}
+        L_{\iota}F \simeq L_{y_{\mathscr{D}}}F \circ L_{\iota}y_{\mathscr{D}}
+    \end{equation}
+    %
+    as functors $\mathscr{M} \to \mathscr{C}$. Indeed, consider the diagram
+    % 
+    \begin{equation}
+        \begin{tikzcd}[sep = large]
+            & \mathscr{D}\ar[dl,"{\iota}"']\ar[dr,"{F}"]\ar[d,"{y_{\mathscr{D}}}"]\\
+            \mathscr{M}\ar[rr,bend right=40,"{L_{\iota}F}"']\ar[r,"{L_{\iota}y_{\mathscr{D}}}"'] &[4em] \mathsf{PShv}(\mathscr{D})\ar[r,"{L_{y_{\mathscr{D}}}F}"'] & \mathscr{C},
         \end{tikzcd}
-    \]
-    and note that by [Kerodon Theorem II.8.4.0.3/03W9 and Theorem II.8.4.3.6/03WH] there is an isomorphism $L_{y_{\mscr{D}}}(F)\circ y_{\mscr{D}}\cong F$ which commutes the right triangle. Consequently, using [Kerodon Remark 7.3.1.10/02YH], we have $L_{\iota}(F)\simeq L_{\iota}(L_{y_{\mscr{D}}}(F)\circ y_{\mscr{D}})$. Since $L_{y_{\mscr{D}}}(F)$ preserves colimits, we have $L_{\iota}(L_{y_{\mscr{D}}}(F)\circ y_{\mscr{D}})\simeq L_{y_{\mscr{D}}}(F)\circ L_{\iota}(y_{\mscr{D}})$, obtaining \eqref{WZUZC5F}.
+    \end{equation}
+    %
+    and note that by \cite[\href{https://kerodon.net/tag/03W9}{03W9},\href{https://kerodon.net/tag/03WH}{03WH}]{lurie_kerodon} there is an equivalence (actually even an isomorphism) $L_{y_{\mathscr{D}}}F \circ y_{\mathscr{D}} \simeq F$ which commutes the right triangle. Consequently, using \cite[\href{https://kerodon.net/tag/02YH}{02YH}]{lurie_kerodon}, we have $L_{\iota}F \simeq L_{\iota}(L_{y_{\mathscr{D}}}F \circ y_{\mathscr{D}})$. Since $L_{y_{\mathscr{D}}}F$ preserves colimits, we have $L_{\iota}(L_{y_{\mathscr{D}}}F \circ y_{\mathscr{D}})\simeq L_{y_{\mathscr{D}}}F \circ L_{\iota}y_{\mathscr{D}}$, obtaining \Cref{WZUZC5F}.
 
     Finally, we claim
+    %
     \begin{equation}\label{D9NQYMT}
-        L_{\iota}(y_{\mscr{D}})\simeq T_{\iota}=\iota^*\circ y_{\mscr{M}}
+        L_{\iota}y_{\mathscr{D}} \simeq T_{\iota} := \iota^* \circ y_{\mathscr{M}}
     \end{equation}
-    as functors $\mscr{M}\to\msf{PShv}(\mscr{D})$, which will imply the Lemma by \eqref{WZUZC5F}. To prove \eqref{D9NQYMT}, let us observe that $L_{\iota}(y_{\mscr{D}})\simeq L_{y_{\mscr{M}}}(L_{\iota}(y_{\mscr{D}}))\circ y_{\mscr{M}}$ similarly to the above, and that $L_{y_{\mscr{M}}}(L_{\iota}(y_{\mscr{D}}))\simeq L_{y_{\mscr{M}}\circ\iota}(y_{\mscr{D}})$ by [Kerodon Proposition II.7.3.8.18/031M]. Thus, it suffices to show that $\iota^*\simeq L_{y_{\mscr{M}}\circ\iota}(y_{\mscr{D}})$. 
+    %
+    as functors $\mathscr{M} \to \mathsf{PShv}(\mathscr{D})$, which will imply the Lemma by \Cref{WZUZC5F}. By \cite[\href{https://kerodon.net/tag/03WN}{03WN}]{lurie_kerodon} we have the following diagram in which the triangle commutes
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mathscr{M} \arrow[r, "y_{\mathscr{M}}"] & \mathsf{PShv}(\mathscr{M}) \arrow[r, "\iota^*"] \arrow[d, "\top", phantom, very near start] & \mathsf{PShv}(\mathscr{D}) \arrow[ll, "H", bend left] \\
+            & {} & \mathscr{D} \arrow[u, "y_{\mathscr{D}}"'] \arrow[llu, "\iota", bend left]
+            \end{tikzcd},
+    \end{equation}
+    %
+    so that $H$ is a left adjoint to $\iota^* \circ y_{\mathscr{M}}$. Being a right adjoint, we can write $\iota^* \circ y_{\mathscr{M}}$ as a left Kan extension, which allows for the following calculation
+    %
+    \begin{equation}
+        \iota^* \circ y_{\mathscr{M}} \simeq L_{H}\mathrm{id}_{\mathsf{PShv}(\mathscr{D})} \simeq L_{H}(L_{y_{\mathscr{D}}} y_{\mathscr{D}}) \simeq L_{H \circ y_{\mathscr{D}}}(\mathscr{D}) \simeq L_{\iota}(y_\mathscr{D}),
+    \end{equation}
+    %
+    where for the second equivalence we used the fact that $y_{\mathscr{D}}$ is a dense functor \cite[\href{https://kerodon.net/tag/03W2}{03W2}]{lurie_kerodon} (using the definition of dense functor as in \cite[\href{https://kerodon.net/tag/03VP}{03VP}]{lurie_kerodon}) and in the third equivalence we used \cite[\href{https://kerodon.net/tag/031M}{031M}]{lurie_kerodon}.
 \end{proof}
 
 
