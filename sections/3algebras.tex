@@ -337,38 +337,29 @@ The following lemma about preservation of colimits is sketched out in \cite{rezk
 \end{lemma}
 
 \begin{proof}
-    First consider the special case when $(\iota: \mathscr{D} \xrightarrow{} \mathscr{M}) = (y_{\mathscr{D}}: \mathscr{D} \xrightarrow{} \mathsf{PShv}(\mathscr{D}))$ the Yoneda embedding of $\mathscr{D}$. We will see that in this case, $L_{y_{\mathscr{D}}} F$ is colimit preserving because it is a left adjoint to the functor
-    %
-    \begin{equation}
-        T_F: \catC \xrightarrow{y_{\catC}} \mathsf{PShv} (\catC) \xrightarrow{F^*} \mathsf{PShv} (\mathscr{D}).
+    We use the standard notation $y_{\mscr{X}}=h_\bullet\colon\mscr{X}\to\msf{PShv}(\mscr{X})$ for `the' covariant Yoneda embedding of a locally small $\infty$-category $\mscr{X}$ [see Kerodon Definition II.8.3.3.9/03NF; Proposition II.8.3.3.2/03N2]. First, note that a left Kan extension of type
+    \[
+        L_{y_{\mscr{D}}}F\colon\msf{PShv}(\mscr{D})\to\mscr{C}
+    \]
+    preserves colimits as a consequence of [Kerodon Theorem II.8.4.3.6/03WH]. 
+    Next, we claim that there is an equivalence of functors
+    \begin{equation}\label{WZUZC5F}
+        L_{\iota}(F)\simeq L_{y_{\mscr{D}}}(F)\circ L_{\iota}(y_{\mscr{D}}).
     \end{equation}
-    %
-    Indeed, let $X \simeq y_{\mathscr{D}} (d)$ be a representable presheaf, then there are maps of morphism spaces
-    %
-    \begin{align}
-        \mathsf{Hom}_{\catC} (L_{y_{\mathscr{D}}} F (X), c) &\xrightarrow[\simeq]{} \mathsf{Hom}_{\catC} (F (d), c) \xrightarrow[\simeq]{y_{\mathscr{C}}} \mathsf{Hom}_{\mathsf{PShv}(\catC)} (y_{\catC}(F(d)), y_{\catC}(c))\notag\\ &\xrightarrow{F^*} \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (F^*(y_{\catC}(F(d))), T_F(c)) \xrightarrow[\simeq]{} \mathsf{Hom}_{\mathsf{PShv}(\mathscr{D})} (X, T_F(c)).
-    \end{align}
-    %
-    The Yoneda embedding $y_{\mathscr{D}}$ is a dense functor, so the above argument holds  
-    
-    {\color{red} Proof of being adjoint}
+    as functors $\mscr{M}\to\mscr{C}$. Indeed, consider the diagram 
+    \[
+        \begin{tikzcd}[sep=large]
+             & \mscr{D}\ar[dl,"{\iota}"']\ar[dr,"{F}"]\ar[d,"{y_{\mscr{D}}}"]\\
+            \mscr{M}\ar[rr,bend right=40,"{L_{\iota}(F)}"']\ar[r,"{L_{\iota}(y_{\mscr{D}})}"'] &[4em] \msf{PShv}(\mscr{D})\ar[r,"{L_{y_{\mscr{D}}}(F)}"'] & \mscr{C}
+        \end{tikzcd}
+    \]
+    and note that by [Kerodon Theorem II.8.4.0.3/03W9 and Theorem II.8.4.3.6/03WH] there is an isomorphism $L_{y_{\mscr{D}}}(F)\circ y_{\mscr{D}}\cong F$ which commutes the right triangle. Consequently, using [Kerodon Remark 7.3.1.10/02YH], we have $L_{\iota}(F)\simeq L_{\iota}(L_{y_{\mscr{D}}}(F)\circ y_{\mscr{D}})$. Since $L_{y_{\mscr{D}}}(F)$ preserves colimits, we have $L_{\iota}(L_{y_{\mscr{D}}}(F)\circ y_{\mscr{D}})\simeq L_{y_{\mscr{D}}}(F)\circ L_{\iota}(y_{\mscr{D}})$, obtaining \eqref{WZUZC5F}.
 
-    In the general situation where $\iota$ is not necessarily the Yoneda embedding we can partially reduce to the previous case because we can write
-    %
-    \begin{equation}
-        L_{\iota} F \simeq L_{y_{\mathscr{D}}}F \circ L_{\iota} y_{\mathscr{D}}.
+    Finally, we claim
+    \begin{equation}\label{D9NQYMT}
+        L_{\iota}(y_{\mscr{D}})\simeq T_{\iota}=\iota^*\circ y_{\mscr{M}}
     \end{equation}
-    %
-    Namely, this is because we know that $L_{y_{\mathscr{D}}} F$ preserves colimits, and by the assumptions in the lemma, $L_{\iota} F$ and $L_{\iota} y_{\mathscr{D}}$ are computed pointwise, as colimits over the same indexing $\infty$-category.
-
-    Finally, we claim that there is an equivalence of functors
-    %
-    \begin{equation}
-        \Big( L_{\iota} y_{\mathscr{D}} \simeq T_{\iota} \Big) \in \mathsf{Fun}(\mathscr{M}, \mathsf{PShv}(\mathscr{D})) 
-    \end{equation}
-
-    {\color{red} Proof of functor equivalence}
-    
+    as functors $\mscr{M}\to\msf{PShv}(\mscr{D})$, which will imply the Lemma by \eqref{WZUZC5F}. To prove \eqref{D9NQYMT}, let us observe that $L_{\iota}(y_{\mscr{D}})\simeq L_{y_{\mscr{M}}}(L_{\iota}(y_{\mscr{D}}))\circ y_{\mscr{M}}$ similarly to the above, and that $L_{y_{\mscr{M}}}(L_{\iota}(y_{\mscr{D}}))\simeq L_{y_{\mscr{M}}\circ\iota}(y_{\mscr{D}})$ by [Kerodon Proposition II.7.3.8.18/031M]. Thus, it suffices to show that $\iota^*\simeq L_{y_{\mscr{M}}\circ\iota}(y_{\mscr{D}})$. 
 \end{proof}
 
 
