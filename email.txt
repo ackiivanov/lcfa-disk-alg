@@ -1,0 +1,14 @@
+Interest in your recent paper (2403.19472)
+
+Dear Eilind Karlsson, Claudia Scheimbauer, Tashi Walde,
+
+We've recently read your paper 'Assembly of Constructible Factorization Algebras' and found it quite interesting. We've also been working close to this area and have found similar results to yours.
+
+One that might interest you is a result about the $\infty$-operads of factorization algebras and locally constant (i.e.constructible) factorization algebras. Similar to your corollary 5.26, we show that there are equivalences between factorization algebras and relative disk algebras, however our approach does not require the assumption of having enough good disks since it is an argument in the style of Ayala-Francis (1903.10961). In fact the equivalence is provided by relative factorization homology. Attached below is a write-up of this result with the accompanying relevant definitions. We would welcome any comments that you might have.
+
+We would also like to mention that with our result in hand the proof of additivity for locally constant factorization algebras in the generality of stratified manifolds seems doable, in fact, we've already written up a big chunk of it.
+
+When we were in Munich, for the mini-workshop we heard that one of Claudia's students was working on the additivity problem....
+
+Best regards,
+Aleksandar Ivanov and Ödül Tetik
