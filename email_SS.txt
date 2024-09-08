@@ -1,1 +1,10 @@
-Dear Claudia Scheimbauer and Anja Svraka
+Dear Claudia Scheimbauer and Anja Švraka,
+
+During the mini workshop in Munich we talked with Anja about the fact that she was working on additivity of factorization algebras in the setting of stratified spaces.
+
+We were also working on results around this area like some of the ones that recently appeared in Claudia's paper 'Assembly of Constructible Factorization Algebras'.
+
+We already sent an email Claudia and the rest of the authors of that paper telling the about a result that we think we have showing that the $\infty$-categories of locally constant (i.e. constructible) factorization algebras and algebras over the $\infty$-operad $\mathscr{D}isk_{/M}$ are equivalent. With this result in hand we've realized that an additivity result is possible and we've also been working towards it. We think we have a proof based on the draft we sent to Claudia (which is also attached below), but still need some time to finish it. Has there been any progress on your end in the meantime? If so, we would be happy to coordinate the publication in the coming months.
+
+Best regards,
+Ödül Tetik and Aleksandar Ivanov
