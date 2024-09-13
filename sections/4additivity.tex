@@ -58,8 +58,36 @@ In the special case of product spaces $X \times Y$, from the previous discussion
     A version of the above theorem also appears as \cite[prop.18]{ginot2015}. The equivalence proven there is for the case of smooth manifolds and relies on the local proof of \cite{lurie_ha} for $\mathbb{R}^n$. The statement at the level of $\infty$-operads is slightly stronger and, using \Cref{thm:disk_alg=lcfa}, it implies the statement for factorization algebras. This $\infty$-operadic statement, again for smooth manifolds, is found in \cite[ex.5.4.5.5]{lurie_ha}.
 \end{remark}
 
+{\color{red} The following lemmas are just an outline for a possible proof following Lurie as an example}
+
+\begin{lemma}\label{lem:slicing_disk_functor}
+    The construction of $\disk_{/M}$ elevates to a functor
+    %
+    \begin{equation}
+        \disk_{/-}: \mfld \xrightarrow{\ \ \ \ \ } \mathscr{O}\mathsf{p}_{\infty}.
+    \end{equation}
+\end{lemma}
 
 \begin{proof}
+    .....
+\end{proof}
+
+\begin{lemma}
+    The functor $\disk_{/-}$ from \Cref{lem:slicing_disk_functor} factorizes as in the commutative diagram
+    %
+    \begin{equation}
+        \begin{tikzcd}
+            \mfld \arrow[rr, "\disk_{/-}"] \arrow[dr, "\mathsf{Entr}"'] & & \mathscr{O} \mathsf{p}_{\infty} \\
+            & \cat \arrow[ur, "(-)^\sqcup ??"'] &
+        \end{tikzcd}
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    .....
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:additivity_lc}]
     Following \cite[\S.2.2.5]{lurie_ha} the tensor product of $\infty$-operads is defined through a universal property. Namely, we define a bifunctor of $\infty$-operads to be a map $f: \mathscr{O}_1 \times \mathscr{O}_2 \xrightarrow{} \mathscr{O}$ such that:
     %
     \begin{enumerate}
@@ -168,7 +196,7 @@ In the special case of product spaces $X \times Y$, from the previous discussion
 
     ....
 
-    The equivalence of $\infty$-operads $\disk_{/M} \otimes \disk_{/N} \xrightarrow{\ \ \simeq \ \ } \disk_{/M \times N}$ implies an equivalence at the level of $\alg{\disk_{/M}}$, which together with \Cref{thm:disk_alg=lcfa} gives rise to the equivalence of factorization algebras in the theorem statement. That this is related to the functor $\bar{\pi}$ can be seen by inspection of the objects and morphisms.
+    The equivalence of $\infty$-operads $\disk_{/M} \otimes \disk_{/N} \xrightarrow{\ \ \simeq \ \ } \disk_{/M \times N}$ implies an equivalence at the level of $\alg{\disk_{/M}} (\catC)$, which together with \Cref{thm:disk_alg=lcfa} gives rise to the equivalence of factorization algebras in the theorem statement. That this is related to the functor $\bar{\pi}$ can be seen by inspection of the objects and morphisms.
 \end{proof}
 
 \begin{remark}
@@ -178,13 +206,13 @@ In the special case of product spaces $X \times Y$, from the previous discussion
 \begin{example}
     We can view a Euclidean space $\mathbb{R}^{m+n}$ as a product space $\mathbb{R}^m \times \mathbb{R}^n$, in which case \Cref{thm:additivity_lc} specializes to give the famous result of Dunn additivity \cite{dunn1988} which can be found in the following form in \cite{lurie_ha}:
     %
-    \begin{proposition}\label{prop:dunn_additivity}
+    \begin{corollary}\label{prop:dunn_additivity}
         There is an equivalence of $\infty$-categories
         %
         \begin{equation}
             \alg{\mathbb{E}_{n + m}} (\catC) \xrightarrow{\ \ \simeq \ \ } \alg{\mathbb{E}_n} (\alg{\mathbb{E}_m} (\catC)).
         \end{equation}
-    \end{proposition}
+    \end{corollary}
 \end{example}
 
 \begin{remark}
