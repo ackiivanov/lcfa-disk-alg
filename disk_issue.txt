@@ -1,0 +1,7 @@
+At the level of manifolds, there are functors between the poset $Opns(X)$ and the slice category $Mfld_{/X}$, which we can call $Im: Mfld_{/X} \to Opns(X)$, which takes the image of an embedding, and $Dom: Opns(X) \to Mfld_{/X}$, which takes an open $U$ of $X$ to the canonical embedding $U \subset X$. There is nothing special at the level of morphisms since we're dealing with posets. The two functors together form an equivalence.
+
+Now at the level of disks things change. Denoting by $Disk(X)^{KSW}$ the category of disks as defined in KSW, and by $Disk_{/X}^{AFT}$ the category of disks as defined in AFT, the functor $Im$ descends to $Disk_{/X}^{AFT} \to Disk(X)^{KSW}$, but the functor $Dom$ does \emph{not} descend to a functor of disks since the AFT version of the category is abstractly defined. $Im$ is, however, still an equivalence of categories, but now there is no canonical choice for an inverse. This would normally, not be a big deal.
+
+However, it comes up, for example, in the proof of Theorem 5.10 of KSW, where lemma A.2 requires a choice of functor, for which we then recognize certain conditions.
+
+What is canonically given in that situation is just $\Disk(X)^{KSW} \xleftarrow[\simeq]{Im} Disk_{/X}^{AFT} \rightarrow \mathscr{D}isk_{/X}^{AFT}$, so that before we even start we have to choose some inverse to $Im$, which then, at least, needs additional arguments for why statements that were obvious before are true now.
