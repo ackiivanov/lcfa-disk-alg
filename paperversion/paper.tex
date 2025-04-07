@@ -1,0 +1,354 @@
+\documentclass[]{amsart}
+
+% from preamble ->
+
+\usepackage[ngerman,french,british]{babel} % clashes with q.uiver/tikzcd
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools} % \coloneqq
+\usepackage{amsmath}
+\usepackage[outline]{contour}
+\usepackage[mathscr]{euscript}
+\usepackage[all,2cell,cmtip]{xy}
+\usepackage{csquotes}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[
+  %hidelinks
+]{hyperref}
+\usepackage{microtype}
+
+
+% quiver ->
+
+% `tikz-cd` is necessary to draw commutative diagrams.
+\usepackage{tikz-cd}
+% `amssymb` is necessary for `\lrcorner` and `\ulcorner`.
+\usepackage{amssymb}
+% `calc` is necessary to draw curved arrows.
+\usetikzlibrary{calc}
+% `pathmorphing` is necessary to draw squiggly arrows.
+\usetikzlibrary{decorations.pathmorphing}
+
+\usetikzlibrary{babel} % ADDED MYSELF, OTHERWISE CLASHES WITH TIKZ-CD KEYS -Ö
+
+% A TikZ style for curved arrows of a fixed height, due to AndréC.
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+% <- quiver
+
+\usepackage[hyperref,
+maxbibnames=99,
+backend=biber,
+%backref, %& "cit. on p.X",
+%backrefstyle=none,
+%style=numeric,
+style=alphabetic-verb,
+%citestyle=numeric,
+citestyle=alphabetic-verb,
+giveninits=true
+%sorting=none
+%citestyle=alphabetic
+]{biblatex}
+\DefineBibliographyStrings{english}{% %REMOVE "p." and "pp."
+  page             = {},
+  pages            = {},
+} 
+\renewbibmacro{in:}{} % gets rid of "In:[journal]"
+\emergencystretch=1.5em
+\addbibresource{text.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+
+
+
+
+
+\usepackage{graphicx}
+\usepackage{cleveref}   % use with \cref and \Cref
+\usepackage{underscore} % use _ in text
+
+
+
+%%%%%%%%%%%INCLUDING INKSCAPE %%%%%%%%%%%%%%
+\usepackage{import}
+\usepackage{color} % NECESSARY for inkscape for some reason
+\usepackage{xifthen}
+
+\usepackage{rotating} 
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{0.3\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\msc}[1]{\mathscr{#1}}
+\newcommand{\msf}[1]{\mathsf{#1}}
+\newcommand{\mscc}[1]{\mathbf{#1}}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\mfrak}[1]{\mathfrak{#1}}
+\newcommand{\down}[3][ ]{(#2 \downarrow #3)^{#1}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+
+
+\newcommand{\R}{\mbb{R}}
+\newcommand{\Imm}{\mathrm{Im}}
+\newcommand{\id}{{\mathrm{id}}}
+\newcommand{\colim}{\mathrm{colim}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\dfnt}{\bfseries \itshape}
+\newcommand{\hyph}{{\mbox{-}}}
+\newcommand{\Bred}{\mathcal{B}\mbox{-}\mathrm{red}}
+\newcommand{\Yred}{Y\mbox{-}\mathrm{red}}
+\newcommand{\Bopen}{\mathcal{B}\mbox{-}\mathrm{open}}
+\newcommand{\Snglr}{\mathcal{S}\mathrm{nglr}}
+\newcommand{\bighrule}{\vspace{\baselineskip} \hrule \hrule \hrule\vspace{\baselineskip}}
+\newcommand{\solidone}{\mathbf{s}\ast_1} 
+\newcommand{\Vinj}{{\mscc{V}^{\mathrm{inj}}}}
+\newcommand{\Vhook}{\mscc{V}^{\hookrightarrow}}
+\newcommand{\Vsim}{{\mscc{V}^{\simeq}}}
+\newcommand{\Vlhook}{\mscc{V}^{\hookleftarrow}}
+\newcommand{\TB}{T^{\mathcal{B}}}
+\newcommand{\EX}{{\mathbf{Ex}}}
+\newcommand{\Disk}{{\mathcal{D}\mathrm{isk}}}
+\newcommand{\scB}{{\mathcal{B}}}
+\newcommand{\OB}{{\mathbb{O}^{\mathcal{B}}}}
+\newcommand{\Mnf}{{\mscc{M}\mathrm{nf}}}
+\newcommand{\sfr}{{\mathbf{s}\ast}}
+\newcommand{\solid}{\mathbf{s}}
+\newcommand{\Bord}{{\mathrm{Bord}}}
+\newcommand{\BM}{{\mathcal{B}\mathbf{M}}}
+\newcommand{\pt}{{\mathrm{pt}}}
+\newcommand{\falc}{{\mathrm{FA}^{\mathrm{lc}}}}
+\newcommand{\stfr}{{\mathbf{st}\ast}}
+\newcommand{\Tang}{{\mathcal{T}\mathrm{ang}}}
+\newcommand{\opp}{{\mathrm{op}}}
+\newcommand{\Opp}{{\mathrm{Op}}}
+\newcommand{\Vsur}{{\mathcal{V}^{\twoheadrightarrow}}}
+\newcommand{\EN}{{\mathbf{En}}}
+\newcommand{\codim}{{\mathrm{codim}\,}}
+\newcommand{\red}{{\text{-}\mathrm{red}}}
+\newcommand{\Vect}{{\mathcal{V}}}
+\newcommand{\Cinfty}{\mscc{C}\mathrm{at}_{\infty}}
+\newcommand{\Sp}{{\mathcal{S}\mathrm{p}}}
+\newcommand{\BhookO}{{\mathcal{B}^{\hookrightarrow}\mathrm{O}}}
+\newcommand{\EhookO}{{\mathcal{E}^{\hookrightarrow}\mathrm{O}}}
+\newcommand{\purp}{\color{purple}}
+\newcommand{\Eop}{{\mathcal{E}^{\mathrm{op}}}}
+\newcommand{\E}{{\mathcal{E}}}
+\newcommand{\Tw}{{\mathrm{Tw}}}
+\newcommand{\Map}{{\mathrm{Map}}}
+\newcommand{\gpdinf}{{\mathcal{G}\mathrm{pd}_{\infty}}}
+\newcommand{\cdon}{\[\begin{tikzcd}}
+\newcommand{\cdoff}{\end{tikzcd}\]}
+\newcommand{\ncdon}{\begin{equation}\begin{tikzcd}}
+\newcommand{\ncdoff}{\end{tikzcd}\end{equation}}
+\newcommand{\OO}{{\mathrm{O}}}
+\newcommand{\pbarrow}{\ar[dr,phantom,"\ulcorner" very near start]}
+\newcommand{\Gr}{{\mathrm{Gr}}}
+\newcommand{\arrowedruleron}{{\vspace{5pt}{\purp\hrule\hrule\hrule}
+\begin{center}\purp
+	$\downarrow$
+\end{center}}}
+\newcommand{\arrowedruleroff}{{\begin{center}\purp
+	$\uparrow$
+\end{center}
+\vspace{5pt}{\purp\hrule\hrule\hrule}}}
+\newcommand{\blue}{\color{blue}}
+\newcommand{\Sing}{{\mathrm{Sing}}}
+\newcommand{\Bbox}{\mathcal{B}^{\oplus}}
+\newcommand{\bbox}{B^{\oplus}}
+\newcommand{\bboxop}{B^{\oplus}_{\opp}}
+\newcommand{\Nerve}{{\mathrm{N}}}
+\newcommand{\Ndelta}{\mathrm{N}^{\mbf{\Delta}}}
+\newcommand{\Nhc}{\mathrm{N}^{\mathrm{hc}}}
+\newcommand{\sSet}{\mathrm{sSet}}
+\newcommand{\Cdelta}{{\mathcal{C}\mathrm{at}_{\mbf{\Delta}}}}
+\newcommand{\pSh}{\mathrm{pSh}}
+\newcommand{\EEx}{\mathbf{EX}}
+\newcommand{\Pnsim}{\mscc{P}^{\nsim}}
+\newcommand{\Phat}{\mscc{P}^{\Delta}}
+\newcommand{\Pbox}{\mscc{P}^{\Box}}
+\newcommand{\Nhat}{\widehat{\mathcal{N}}}
+\newcommand{\Fun}{\mathrm{Fun}}
+\newcommand{\Path}{\mathrm{Path}}
+\newcommand{\Tangent}{\mathrm{T}}
+\newcommand{\Normal}{\mathrm{N}}
+\newcommand{\vfr}{\mathrm{vfr}}
+\newcommand{\hty}{\mathrm{h}}
+\newcommand{\evv}{\mathrm{ev}}
+\newcommand{\Ar}{\mathrm{Ar}}
+\newcommand{\inc}{$\infty$-category}
+\newcommand{\btu}{\bigtriangleup}
+\makeatletter
+\newcommand{\btd}{\mathord{\mathpalette\raise@half\bigtriangledown}}
+\newcommand\raise@half[2]{%
+  \raisebox{.9\depth}{$\m@th#1#2$}%
+}
+\makeatother
+\newcommand{\ashrk}{\text{\textexclamdown}}
+\newcommand{\dash}{\mbox{-}}
+\newcommand{\cat}[2]{\mscc{#1}\mathrm{#2}}
+\newcommand{\htimes}{\times^{\mathrm{h}}}
+
+\newcommand{\spans}{\mscc{S}^{\mrm{sp}}}
+\newcommand{\OEEx}{\overrightarrow{\EEx}}
+\newcommand{\Ssp}{\mscc{S}^{\mrm{sp}}}
+\newcommand{\ocat}[1]{\mathrm{#1}}
+\newcommand{\Ctop}{\mscc{C}\mrm{at}_{\mrm{Top}}}
+\newcommand{\Tame}{\Hom^{t}}
+\newcommand{\tame}{\tau}
+\newcommand{\Unzip}{\mrm{Unzip}}
+
+\numberwithin{equation}{section}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}%[section]
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem*{notation*}{Notation}
+\newtheorem{construction}[equation]{Construction}
+\newtheorem*{construction*}{Construction}
+
+
+\theoremstyle{remark}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{example}[equation]{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{warning}[equation]{Warning}
+\newtheorem*{warning*}{Warning}
+\newtheorem{convention}[equation]{Convention}
+\newtheorem*{convention*}{Convention}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{definition-theorem}[equation]{Definition-Theorem}
+\newtheorem*{definition-theorem*}{Definition-Theorem}
+\newtheorem{postulate}[equation]{Postulate}
+\newtheorem*{postulate*}{Postulate}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{observation}[equation]{Observation}
+\newtheorem*{observation*}{Observation}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{question}[equation]{Question}
+\newtheorem*{question*}{Question}
+
+
+% <- from preamble
+
+
+\title{{Good covers and algebras on conically smooth spaces}}
+\address{University of Vienna, Faculty of Physics, Mathematical Physics Group, Boltzmanngasse 5, 1090 Vienna, Austria}
+\thanks{The authors were supported by the Austrian Science Fund (FWF) through Project no.\ P 37046.}
+\author{Aleksandar Ivanov}
+\email{aleksandar.ivanov@univie.ac.at}
+\author{\"Od\"ul Tet\.{i}k}
+\email{oeduel.tetik@univie.ac.at}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    We construct good covers for conically smooth spaces {\color{MidnightBlue} over depth-$1$ posets}. By a result of Karlsson--Scheimbauer--Walde, this implies that, for every such space $X$, constructible factorisation algebras on $X$ and disk algebras over $X$ coincide. We also give a simplified proof of that result.
+\end{abstract}
+
+
+
+\tableofcontents
+
+\section{Introduction}
+
+\subsubsection*{Acknowledgments} We thank Tashi Walde for very useful exchanges.
+
+\section{Good covers}
+
+\begin{definition}
+    Let $X$ be a CSS. A \emph{good cover} of $X$ is an open cover $\mcal{U}$ of $X$ consisting of basics whose finite intersections are also in $\mcal{U}$.
+\end{definition}
+
+\begin{definition}
+    Let $Y$ be a smooth manifold with or without boundary, equipped with a riemannian metric. We call a cover of $Y$ \emph{geodesically convex} if it consists of geodesically convex basics.
+\end{definition}
+
+%It is classical that geodesically convex covers are good. In particular, the union of geodesically convex covers of an arbitrary cover of a smooth manifold with or without boundary is good.
+
+\begin{theorem}
+    Let $X$ be a CSS {\color{MidnightBlue} over a depth-$1$ poset}. Then $X$ has a good cover.
+\end{theorem}
+
+\begin{proof}
+    Without loss of generality, suppose $X$ is stratified over $[1]$ and let $M=X_0$ and $N=X_1$. Recall the blow-up of $M$, the smooth manifold
+    \[
+        \mrm{Unzip}\cong L\amalg_{L\times(0,\infty)}N
+    \]
+    with boundary $L=\partial\mrm{Unzip}$. We write $\pi\colon L\to M$ for the accompanying proper fibre bundle. Let us equip $\mrm{Unzip}$ with a riemannian metric which splits along the boundary.
+
+    Using the paracompactness of $M$, let $\mcal{U}$ be a locally finite good cover of $M$ which trivialises $\pi$. For each $U\in\mcal{U}$, let $\epsilon_U>0$ be the radius of injectivity in the normal direction on the compact closure $\overline{U}$ so that there is a smooth embedding 
+    \[
+        I_U\colon \pi^{-1}U\times[0,\epsilon_U)\hookrightarrow \mrm{Unzip}
+    \]
+    whose restriction $I_U|_{\pi^{-1}U\times\{0\}}$ to $\pi^{-1}U\subset L$ is given by the boundary inclusion, and the path $I_U(q,-)\colon[0,\epsilon_U)\hookrightarrow \mrm{Unzip}$, for every $q\in\pi^{-1}U$, is the minimising geodesic given by the normal exponential map. More precisely, for $\nu$ the inward-pointing unit normal vector field along the boundary, we set $I_U(x,t)=\exp_x(t\nu_x)$.\footnote{A global $\epsilon$ need not exist unless $\mrm{Unzip}$ is of bounded geometry; see e.g.\ Schick \cite{schick2001bounded}.} Let 
+    \[
+        C=\bigcup_{U\in\mcal{U}}\mrm{Im}(I_U)
+    \]
+    be the induced `collar' and consider the cover
+    \[  
+        \mcal{C}=\{I_U(\pi^{-1}U\times[0,\delta)) : U\in\mcal{U},\ \delta\leq\epsilon_U\}
+    \]
+    of $C$. Let us write $C_{U,\delta}=I_U(\pi^{-1}U\times[0,\delta))\in\mcal{C}$. Note that $\mcal{C}$ is closed under finite intersections since so is $\mcal{U}$: we have $\pi^{-1}U\cap\pi^{-1}V=\pi^{-1}(U\cap V)$ and
+    \[
+        C_{U,\delta}\cap C_{V,\delta'}=C_{U\cap V,\min(\delta,\delta')}\in\mcal{C}
+    \] 
+    since $\min(\delta,\delta')\leq\epsilon_{U\cap V}$ for $\delta\leq\epsilon_U$, $\delta'\leq\epsilon_V$.
+    
+    Consider now the collection $\mcal{V}$ of those convex geodesic disks $V$ in $N$ such that $V\cap C_{U,\delta}$ is either empty or a convex geodesic disk for every $C_{U,\delta}\in\mcal{C}$. Then $\mcal{V}$ is a good cover of $N$. To prove this, it suffices to show that every $p\in C$ has a neighbourhood $V_p\in\mcal{V}$, since convex geodesic disks are closed under finite intersections and so $V\cap V'\cap C_{U,\delta}=V\cap V''\in\mcal{V}$. Let now $p\in I_U(\pi^{-1}U\times [0,\delta))\in\mcal{C}$, which uniquely determines a point $l_p=\pi(\mrm{pr}_1(p))\in\pi^{-1}U\subset L$. Let $W\subset\pi^{-1}U$ be a convex geodesic disk neighbourhood of $l_p$. Now, since $\mcal{U}$ is locally finite, so is the  cover $\widetilde{\mcal{C}}=\{I_U(\pi^{-1}U\times[0,\epsilon_U))\}$ of $C$ (which is not necessarily closed under finite intersections), so in particular $p$ is contained within finitely many members $I_{U_i}(\pi^{-1}U_i\times[0,\epsilon_i))\in\widetilde{\mcal{C}}$. We necessarily have $p\in I_{U}(\pi^{-1}U\times[0,\min_i(\epsilon_i)))$ with $U\in\{U_i\}_i$ an open satisfying $\epsilon_U=\min_i(\epsilon_i)$. Then $W\times[0,\min_i(\epsilon_i))\ni p$ is a convex geodesic half-disk since the riemannian metric on $\mrm{Unzip}$ splits along the boundary, and so we have $p\in V_p= W\times(0,\min_i(\epsilon_i))\in \mcal{V}$. 
+
+    Let us now observe that $\pi^{-1}U\cong L_p\times U$ for $p\in U$ implies that each
+    \[
+        C(L_p)\times U\cong U\amalg_{\pi^{-1}U}C_{U,\delta} \subseteq X
+    \]
+    is a basic in $X$. Thus, writing $\widehat{C_{U,\delta}}=U\amalg_{\pi^{-1}U}C_{U,\delta}$, we obtain that
+    \[
+        \widehat{\mcal{C}}=\{\widehat{C_{U,\delta}} : C_{U,\delta}\in \mcal{C}\}
+    \]
+    is a cover by basics of the `tubular neighbourhood' 
+    \[
+        \widehat{C}=\bigcup_{U\in\mcal{C}}\widehat{C_{U,\epsilon_U}}\subseteq X
+    \]
+    of $M$. It is closed intersections since so is $\mcal{C}$. Finally, since for $V\in\mcal{V}$ we have $\widehat{C_{U,\delta}}\cap V=C_{U,\delta}\cap V\in\mcal{V}$, we conclude that
+    \[
+        \widehat{\mcal{C}}\cup \mcal{V}
+    \]
+    is a good cover of $X$. 
+\end{proof}
+
+\section{A proof of...}
+
+
+\printbibliography
+
+\end{document}
