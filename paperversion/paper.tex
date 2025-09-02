@@ -1,4 +1,4 @@
-\documentclass[]{amsart}
+\documentclass[11pt]{amsart}
 
 % from preamble ->
 
@@ -277,7 +277,7 @@ giveninits=true
     on $\R_{\geq0}\times X$, where $\mrm{pr}_X\colon \R_{\geq}\times X\to X$ is the coordinate projection. It is the flow along the vector field $V^+=\sum(\rho_U\circ\mrm{pr}_X)\cdot V_U^+$ where $V_U^+=\partial_s+V_U$ where $\partial_s$ is the standard basis of $\Tangent_0\R_{\geq0}\subset\Tangent_0(\R_{\geq0}\times\R^{n-c_U}\times\R^{c_U}_{\geq0})$.
 \end{construction}
 
-\begin{lemma}
+\begin{lemma}\label{DYQ422D}
     Let $X$ be a smooth manifold with corners and let $I^+\colon\R_{\geq0}\times \partial(\R_{\geq0}\times\partial X)\hookrightarrow\R_{\geq0}\times X$ be as in \Cref{O6BEXS3}. Then 
     \[
         I^+=\alpha_I\circ\phi
@@ -318,19 +318,19 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
     Equip $M$ with a riemannian metric. We can put $\mcal{U}=\langle\mcal{V}\rangle$ for $\mcal{V}=\{D_p\}_{p\in M}$ where $D_p$ is the convex disk which is the interior of the image of a ball in $\Tangent_p M$ under the exponential map, with a radius that is strictly smaller than the radius of injectivity.
 \end{proof}
 
-\begin{lemma}
-    Suppose $U\subset C(Z)$ be conically smooth basics with $S_{C(Z)}\cong U$, and suppose that $U\cong C(L)$ is extendable. Let $\pi\colon \Link(C(Z))|_{U}\to U$ denote the link projection of $\Unzip (C(Z))$ over $U$. Then there is an isomorphism
+\begin{lemma}\label{V6RIX5L}
+    Let $L=S_Z$ and let $U=C^{<1}(L)\subset C^{<1}(Z)\subset C(Z)$. Let $\pi\colon \Link(C(Z))|_{U}\to U$ denote the link projection of $\Unzip (C(Z))$ over $U$. Then there is an isomorphism
     \[
         \partial\overline{\pi^{-1}U}\cong \Link_L(Z)
     \]
     and an induced conically smooth collar 
-    \[
+    \(
         (0,1]\times\partial\overline{\pi^{-1}U}\hookrightarrow \overline{\pi^{-1}U}
-    \]
+    \)
     which is a refinement onto its image.
 \end{lemma}
 \begin{proof}
-    Up to isomorphism we have that $U=C^{<1}(L)\subset C^{<1}(Z)\subset C(Z)$ is induced by the inclusion $L=S_Z\subset Z$. Abbreviating $S=S_{C(Z)}$, the inclusion of $U$ factors as $U\subset S=C(L)$ . Now, using \Cref{7GBVGBA} we have $\Unzip C(Z)=\Unzip_{S}C(Z)=\R_{\geq0}\times\Unzip_L Z$ and so 
+    Using \Cref{7GBVGBA} we have $\Unzip C(Z)=\Unzip_{S}C(Z)=\R_{\geq0}\times\Unzip_L Z$ and so 
     \begin{align*}
         \Unzip C(Z)|_{U}&=\Link_{C(L)}C(Z)|_{C^{<1}(L)}\\
         &=\{0\}\times \Unzip_L Z\cup_{\{0\}\times\Link_LZ}[0,1)\times\Link_L Z\\
@@ -341,10 +341,111 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
         \pi^{-1}\overline{U}=\pi^{-1}C^{\leq 1}(U)=\{0\}\times\Unzip_LZ\cup[0,1]\times\Link_LZ 
     \]
     and consequently 
-    \[
+    \begin{equation}\label{QX54WZB}
         \pi^{-1}\partial\overline{U}=\pi^{-1}\{1\}\times L=\{1\}\times\Link_L Z,
-    \]
+    \end{equation}
     proving the first claim. The collar is immediate.
+\end{proof}
+
+\begin{example}
+    
+\end{example}
+
+\begin{lemma}\label{FBLD2TE}
+    Let $\R^n$ be equipped with a riemannian metric, and let $c\in\{0,\dots,n\}$. Then for any convex disk $D\subset\R^n$ about the origin the intersections
+    \begin{enumerate}
+        \item $D\cap (\R^{n-c}\times(\R^{c}\smallsetminus\R^{c}_{\geq0}))$
+        \item $D \cap (\R^{n-c}\times\R^{c}_{>0})$
+    \end{enumerate}
+    are disks.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+
+\begin{proposition}
+    Let $L=S_Z$ and let $I=J^+\colon \R_{\geq0}\times\Link_{C(L)}C(Z)\hookrightarrow\Unzip_{C(L)}C(Z)$ be the collar induced, according to \Cref{O6BEXS3}, by a collar $J\colon\R_{\geq0}\times\Link_L(Z)\hookrightarrow \Unzip_L(Z)$. Let $U$ be as in \Cref{V6RIX5L}, and let 
+    \[
+        p\in I(\{1\}\times\partial\overline{\pi^{-1}U}).
+    \]
+    Then:
+    \begin{enumerate} 
+        \item There is a diffeomorphism 
+        \[
+            \R_{>1}\times J(\R_{>0}\times\Link_LZ)\cap I([0,1]\times\overline{\pi^{-1}U})\cong (1,2]\times J((0,1]\times\Link_LZ)
+        \]
+        of smooth manifolds with corners.
+        \item There exists a convex disk $D\subset\Unzip_{C(L)}C(Z)^\circ$ about $p$ such that $D\cap I([0,1)\times\pi^{-1}U)$ is a disk. 
+        % \item There exists a chart neighbourhood $V\subset\Unzip_{C(L)}C(Z)^\circ$ of $p$ which is diffeomorphic to $\R_{>0}\times J(\R_{>0}\times W)$ where $W\subset\Link_L(Z)$ is the boundary of a chart neighbourhood in $\Unzip_LZ$.
+        % \item There exists a homeomorphism 
+        % \[
+        %     \Psi\colon\R^2\times\Link_LZ\to \R_{>1}\times J(\R_{>0}\times\Link_LZ)
+        % \]
+        % such that 
+        % \[
+        %     \R_{>1}\times J(\R_{>0}\times\Link_LZ)\cap I([0,1]\times\overline{\pi^{-1}U})=\Psi(\R_{\leq0}^2\times\Link_LZ).
+        % \]
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    From the proof of \Cref{V6RIX5L} we recall that
+    \(
+        \overline{\pi^{-1}U}=\{0\}\times\Unzip_LZ\cup_{\{0\}\times\Link_LZ}[0,1]\times\Link_LZ.
+    \)
+    By \Cref{DYQ422D} we have $I=\alpha_J\circ\phi$, and observe that 
+    \begin{align*}
+        \phi([0,1]\times\overline{\pi^{-1}U})&= A'\cup B'\\
+        &\coloneqq\bigcup_{t\in[0,1]}(X\subset X^{+t})\cup\{(t,q)\in X^{+(t+s)} : t,s\in[0,1]\}.
+    \end{align*}
+    Thus $I([0,1]\times\overline{\pi^{-1}U})=A\cup B\subset\Unzip_{C(L)}C(Z)=\R_{\geq0}\times\Unzip_LZ$ where $A=\alpha_J(A')$, $B=\alpha_J(B')$. We have 
+    \begin{align*}
+        &A=\{(r,x)\in\R_{\geq0}\times\Unzip_LZ : r\in[0,1],\ x\in \Unzip_LZ\smallsetminus J([0,r)\times\Link_LZ\}\\
+        &B=\{(t+s,J(t,q))\in\R_{\geq0}\times\Unzip_LZ : t,s\in[0,1]\}
+    \end{align*}
+    and hence
+    \[
+        \R_{>1}\times J(\R_{>0}\times\Link_LZ)\cap(A\cup B)=\{(t+s,J(t,q)) : t\in(0,1],\ s\in[0,1],\ t+s>1\}
+    \]
+    as the intersection with $A$ is empty.
+
+    Consider now the diffeomorphism 
+    \begin{align*}
+    \psi=\rho\circ\begin{pmatrix}
+        1 & 1\\ 
+        0 & 1
+    \end{pmatrix}\circ\rho^{-1}\colon\R_{>1}\times\R_{>0}&\to\R_{>1}\times\R_{>0},\\
+     (x,y)&\mapsto ((x-1)y+1,y)
+    \end{align*} 
+    where $\rho\colon\R^2\to\R_{>1}\times\R_{>0}$, $(x,y)\mapsto(e^x+1,e^y)$. Now $\psi$ fixes $(2,1)$ and satisfies 
+    \[
+        \psi((1,2]\times(0,1])=\{(t+s,t) : t\in(0,1],\ s\in[0,1],\ t+s>1\}.
+    \] 
+    Putting 
+    \[
+        \Psi=\id_{\R_{>1}}\times J\circ\psi\times\id_{\Link_LZ}\colon\R_{>1}\times\R_{>0}\times\Link_LZ\to\R_{>1}\times J(\R_{>0}\times\Link_LZ)
+    \] 
+    we obtain the map
+    \begin{align*}
+        (1,2]\times J((0,1]\times\Link_LZ)&\xrightarrow{\cong}(1,2]\times(0,1]\times\Link_LZ\\
+        &\xrightarrow{\Psi|}\R_{>1}\times J(\R_{>0}\times\Link_LZ)\cap I([0,1]\times\overline{\pi^{-1}U}).
+    \end{align*}
+    The first map, which is a homeomorphism, is tautologically a diffeomorphism of smooth manifolds with corners with respect to the induced smooth structure on its target. With respect to the latter, $\Psi$ is a diffeomorphism as well. Hence the composition is a diffeomorphism. In particular, we obtain the restricted diffeomorphism
+    \[
+        (1,2)\times J((0,1)\times\Link_LZ)\cong\R_{>1}\times J(\R_{>0}\times\Link_LZ)\cap C_{U}.
+    \]
+    of smooth manifolds without boundary.
+
+    Finally, consider $p=I(1,(1,q))=(2,J(1,q))$ where $q\in\Link_LZ$ (recall \eqref{QX54WZB}). Let $\R^{n-c}\times\R^{c}_{\geq0}\cong W\subset\Unzip_LZ$ be a chart neighbourhood of $q$. Without loss of generality we may assume $c=n$ for simplicity. Up to diffeomorphism we may write the restriction of the collar of $\Link_LZ$ as $J\colon\R_{\geq0}\times\partial\R^c_{\geq0})\hookrightarrow \R^c_{\geq0}$, given by the flow along the vector field $\sum_{1\leq i\leq c}\partial_i$ where $\{\partial_i\}$ is the standard basis of $\Tangent_0\R^c_{\geq0}$ (recall \Cref{O6BEXS3}). We now observe the diffeomorphism 
+    \[
+        J((0,1]\times\partial \R^{c}_{\geq0})=\R^c_{>0}\smallsetminus\left(\begin{pmatrix}
+        1 \\ \vdots \\ 1
+        \end{pmatrix}
+        +\R^c_{\geq0}\right)
+        \cong\R^c\smallsetminus\R^c_{>0}
+    \]
+    of smooth manifolds with corners.
+    Consequently we have $(1,2]\times J((0,1]\times\partial\R^c_{\geq0})\cong\R^{c+1}\smallsetminus\R^{c+1}_{>0}$. These diffeomorphisms restrict to $J((0,1)\times \partial\R^c_{\geq0})\cong\R^c\smallsetminus\R^c_{\geq0}$ and so $(1,2)\times J((0,1)\times\partial\R^c_{\geq0})\cong \R^{c+1}\smallsetminus\R^{c+1}_{\geq0}$. Hence, the intersection of any convex disk $D\subset\R_{>1}\times J(\R_{>0}\times W)$ centred at $(2,J(1,q))=p$ with $I([0,1)\times\pi^{-1}U)$ is a disk by the first statement of \Cref{FBLD2TE}.
 \end{proof}
 
 \begin{example}
