@@ -119,6 +119,7 @@ giveninits=true
 \newcommand{\evv}{\mathrm{ev}}  
 \DeclareMathOperator{\Unzip}{Unzip}
 \DeclareMathOperator{\Link}{Link}
+\DeclareMathOperator{\Span}{span}
 
 \numberwithin{equation}{section}
 
@@ -352,7 +353,7 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
 \end{example}
 
 \begin{lemma}\label{FBLD2TE}
-    Let $\R^n$ be equipped with a riemannian metric, and let $c\in\{0,\dots,n\}$. Then for any convex disk $D\subset\R^n$ about the origin the intersections
+    Let $\R^n$ be equipped with a riemannian metric, and let $c\in\{0,\dots,n\}$. Then for all geodesic disks $D\subset\R^n$ about the origin the intersections
     \begin{enumerate}
         \item $D\cap (\R^{n-c}\times(\R^{c}\smallsetminus\R^{c}_{\geq0}))$
         \item $D \cap (\R^{n-c}\times\R^{c}_{>0})$
@@ -360,7 +361,7 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
     are disks.
 \end{lemma}
 \begin{proof}
-    
+    Let us suppose $n=c$ for simplicity. For $r>0$, recall the diffeomorphism $[0,r)\to[0,\infty)$, $x\mapsto\frac{x}{r-x}$. In the same way, $\rho_r\colon B_r\to\R^n$, $v\mapsto \frac{d(0,v)}{r-d(0,v)}v$ is a diffeomorphism from the disk $B_r=\{x:\R^n : d(0,x)<r\}$ of radius $r$ about the origin to all of $\R^n$, where $d$ is the metric associated with the given riemannian metric. Now we need only note that $\rho_r$ restricts to diffeomorphisms $B_r\cap\R^n_{>0}\to\R^n{>0}$ and $B_r\cap(\R^n\smallsetminus\R^n_{\geq0})\to\R^n\smallsetminus\R^n_{\geq0}$, and that both targets are disks.
 \end{proof}
 
 
