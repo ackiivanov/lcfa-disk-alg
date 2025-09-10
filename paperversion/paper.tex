@@ -120,6 +120,8 @@ giveninits=true
 \DeclareMathOperator{\Unzip}{Unzip}
 \DeclareMathOperator{\Link}{Link}
 \DeclareMathOperator{\Span}{span}
+\newcommand{\opp}{{\mathrm{op}}}
+
 
 \numberwithin{equation}{section}
 
@@ -194,8 +196,15 @@ giveninits=true
 
 
 \begin{definition}
-    $S_X\subset X$.
+    Let $X$ be a CSS. Its \emph{singular locus} $S_X=\bigcup_{k>0} X_k\subset X$ consists of all points in $X$ which have strictly positive depth.
 \end{definition}
+
+\begin{lemma}
+    For every CSS $X$, the inclusion $S_X\hookrightarrow X$ is a proper constructible embedding of conically smooth spaces.
+\end{lemma}
+\begin{proof}
+    Let $X\to P$ be the stratification of $X$ and let $X\to P\to\mbb{P}=\mbb{Z}^{\opp}\times\mbb{Z}^{\opp}$ be its depth-dimension stratification \cite[Lemma 2.4.10]{ayala2017local}. The inclusion $\mbb{Z}_{>0}^{\opp}\subset\mbb{Z}^\opp$ (where in the subscript $>$ refers to the ordinary ordering and not to its opposite) is a full subcategory inclusion and is thus consecutive \cite[Definition 2.3.1]{ayala2017local}, hence so is $\mbb{P}_{+}=\mbb{Z}_{>0}^\opp\times\mbb{Z}^\opp\hookrightarrow\mbb{P}$. Since consecutive poset maps are stable under pullbacks, $\mbb{P}_{+}\times_{\mbb{P}}P\hookrightarrow P$ is likewise consecutive, proving that the inclusion $S_X=X|_{\mbb{P}_+\times_{\mbb{P}}P}\hookrightarrow X$ is a constructible map of conically smooth spaces \cite[Lemma 3.4.5, Example 3.4.7]{ayala2017local}. Finally, as $\mbb{Z}_{>0}^{\opp}\subset\mbb{Z}^\opp$ is downward-closed, $S_X$ is closed in $X$, so (since CSSs are Hausdorff) the inclusion map is proper.
+\end{proof}
 
 \begin{proposition}\label{7GBVGBA}
     $S_X\subset X$ proper constructible bundle with $\Unzip_{S_X}(X)\cong\Unzip(X)$ and $\Link_{S_X}(X)=\partial\Unzip(X)$.
