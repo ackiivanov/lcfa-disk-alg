@@ -121,6 +121,8 @@ giveninits=true
 \DeclareMathOperator{\Link}{Link}
 \DeclareMathOperator{\Span}{span}
 \newcommand{\opp}{{\mathrm{op}}}
+\DeclareMathOperator{\depth}{depth}
+
 
 
 \numberwithin{equation}{section}
@@ -199,16 +201,22 @@ giveninits=true
     Let $X$ be a CSS. Its \emph{singular locus} $S_X=\bigcup_{k>0} X_k\subset X$ consists of all points in $X$ which have strictly positive depth.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{8W651JS}
     For every CSS $X$, the inclusion $S_X\hookrightarrow X$ is a proper constructible embedding of conically smooth spaces.
 \end{lemma}
 \begin{proof}
     Let $X\to P$ be the stratification of $X$ and let $X\to P\to\mbb{P}=\mbb{Z}^{\opp}\times\mbb{Z}^{\opp}$ be its depth-dimension stratification \cite[Lemma 2.4.10]{ayala2017local}. The inclusion $\mbb{Z}_{>0}^{\opp}\subset\mbb{Z}^\opp$ (where in the subscript $>$ refers to the ordinary ordering and not to its opposite) is a full subcategory inclusion and is thus consecutive \cite[Definition 2.3.1]{ayala2017local}, hence so is $\mbb{P}_{+}=\mbb{Z}_{>0}^\opp\times\mbb{Z}^\opp\hookrightarrow\mbb{P}$. Since consecutive poset maps are stable under pullbacks, $\mbb{P}_{+}\times_{\mbb{P}}P\hookrightarrow P$ is likewise consecutive, proving that the inclusion $S_X=X|_{\mbb{P}_+\times_{\mbb{P}}P}\hookrightarrow X$ is a constructible map of conically smooth spaces \cite[Lemma 3.4.5, Example 3.4.7]{ayala2017local}. Finally, as $\mbb{Z}_{>0}^{\opp}\subset\mbb{Z}^\opp$ is downward-closed, $S_X$ is closed in $X$, so (since CSSs are Hausdorff) the inclusion map is proper.
 \end{proof}
 
+By virtue of \Cref{8W651JS} we may apply unzip $X$ along $S_X$ according to \cite[Proposition 7.3.10]{ayala2017local}.
+
 \begin{proposition}\label{7GBVGBA}
-    $S_X\subset X$ proper constructible bundle with $\Unzip_{S_X}(X)\cong\Unzip(X)$ and $\Link_{S_X}(X)=\partial\Unzip(X)$.
+    The unzip of $X$ is its unzip along its singular locus. That is, $\Unzip(X)\cong\Unzip_{S_X}(X)$ and consequently $\partial\Unzip(X)\cong\Link_{S_X}(X)$.
 \end{proposition}
+\begin{proof}
+    If $\depth(X)=0$ the statement holds trivially, so let us suppose that $\depth(X)\leq n\geq1$ and that the statement holds for all CSSs $Y$ with $\depth(Y)\leq n-1$.
+    The problem is local, so, suppressing euclidean factors for simplicity, let $X=C(Z)$ be a conically smooth basic. By \cite[Lemma 7.3.5, (5) and (6)]{ayala2017local} and by the inductive hypothesis we have $\Unzip(C(Z))=\R_{\geq0}\times\Unzip(Z)=\R_{\geq0}\times\Unzip_{S_Z}(Z)$, as $Z$ has strictly lower depth. On the other hand, since $S_{C(Z)}=C(S_Z)$ by inspection, we have $\Unzip_{S_{C(Z)}}C(Z)=\Unzip_{C(S_Z)}C(Z)=\R_{\geq0}\times\Unzip_{S_Z}(Z)$ by construction (cf.\ the proof of \cite[Proposition 7.3.10]{ayala2017local}), proving $\Unzip(C(Z))=\Unzip_{S_{C(Z)}}(C(Z))$.
+\end{proof}
 
 
 \begin{lemma}\label{DNFREG0}
