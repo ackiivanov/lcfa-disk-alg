@@ -2,7 +2,11 @@
 
 % from preamble ->
 
-\usepackage[ngerman,french,british]{babel} % clashes with q.uiver/tikzcd
+% \usepackage{geometry}
+% \geometry{textwidth=14cm, textheight=21.3cm, marginratio={4:4,4:4}}
+
+
+\usepackage[ngerman,french,british]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsthm}
@@ -219,9 +223,9 @@ By virtue of \Cref{8W651JS} we may apply unzip $X$ along $S_X$ according to \cit
 \end{proof}
 
 
-\begin{lemma}\label{DNFREG0}
-    {\color{gray}Locally finite good cover on $S_X$. (?)} {\bf unnecessary - second-countability implies more than paracompactness - see [Lee, Smooth, Thm 1.15]}
-\end{lemma}
+% \begin{lemma}\label{DNFREG0}
+%     {\color{gray}Locally finite good cover on $S_X$. (?)} {\bf unnecessary - second-countability implies more than paracompactness - see [Lee, Smooth, Thm 1.15]}
+% \end{lemma}
 
 \begin{lemma}\label{K52SWOM}
     Let $X$ be a smooth manifold with corners. Then for every boundary collar $I\colon \R_{\geq0}\times \partial X\hookrightarrow X$ there exists a homeomorphism
@@ -322,7 +326,7 @@ By virtue of \Cref{8W651JS} we may apply unzip $X$ along $S_X$ according to \cit
 In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{<1}(Z)=\ast\amalg_{\{0\}\times Z}[0,1)\times Z$.
 
 \begin{definition}
-    We say an embedded basic $\phi\colon \R^k\times C(Z)\hookrightarrow X$ in a conically smooth space $X$ is \emph{extendable} if there exists an embedding $\widehat{\phi}\colon\R^n\times C(Z)\hookrightarrow X$ such that $\phi$ factors as $\phi\colon\R^{k}\times C(Z)\to \mbb{D}^n\times C^{<1}(Z)\hookrightarrow \R^n\times C^{<1}(Z)\xhookrightarrow{\widehat{\phi}}X$ where the first map is the isomorphism given by the cartesian product of the isomorphisms $\R^n\to\mbb{D}^n$, $x\mapsto \frac{x}{|x|+1}$ and $C(Z)\to C^{<1}(Z)$, $(t,z)\mapsto (\frac{t}{t+1},z)$. 
+    We say an embedded basic $\phi\colon \R^k\times C(Z)\hookrightarrow X$ in a conically smooth space $X$ is \emph{extendable} if there exists an embedding $\widehat{\phi}\colon\R^k\times C(Z)\hookrightarrow X$ such that $\phi$ factors as $\phi\colon\R^{k}\times C(Z)\to \mbb{D}^k\times C^{<1}(Z)\hookrightarrow \R^k\times C^{<1}(Z)\xhookrightarrow{\widehat{\phi}}X$ where the first map is the isomorphism given by the cartesian product of the isomorphisms $\R^k\to\mbb{D}^k$, $x\mapsto \frac{x}{|x|+1}$ and $C(Z)\to C^{<1}(Z)$, $(t,z)\mapsto (\frac{t}{t+1},z)$. 
 \end{definition}
 
 \begin{definition}
@@ -378,11 +382,15 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
     are disks.
 \end{lemma}
 \begin{proof}
-    Let us suppose $n=c$ for simplicity. For $r>0$, recall the diffeomorphism $[0,r)\to[0,\infty)$, $x\mapsto\frac{x}{r-x}$. In the same way, $\rho_r\colon B_r\to\R^n$, $v\mapsto \frac{d(0,v)}{r-d(0,v)}v$ is a diffeomorphism from the disk $B_r=\{x\in\R^n : d(0,x)<r\}$ of radius $r$ about the origin to all of $\R^n$, where $d$ is the metric associated with the given riemannian metric. Now we need only note that $\rho_r$ restricts to diffeomorphisms $B_r\cap\R^n_{>0}\to\R^n_{>0}$ and $B_r\cap(\R^n\smallsetminus\R^n_{\geq0})\to\R^n\smallsetminus\R^n_{\geq0}$, and that both targets are disks.
+    Let us suppose $n=c$ for simplicity. The map $\rho_r\colon B_r\to\R^n$, $v\mapsto \frac{d(0,v)}{r-d(0,v)}v$ is a diffeomorphism from the geodesic disk $B_r=\{x\in\R^n : d(0,x)<r\}$ of radius $r$ about the origin to all of $\R^n$, where $d$ is the metric associated with the given riemannian metric. Now we need only note that $\rho_r$ restricts to diffeomorphisms $B_r\cap\R^n_{>0}\to\R^n_{>0}$ and $B_r\cap(\R^n\smallsetminus\R^n_{\geq0})\to\R^n\smallsetminus\R^n_{\geq0}$, and that both targets are disks.
 \end{proof}
 
+\begin{lemma}
+    Version of \Cref{FBLD2TE} for star-shaped (to apply to intersections of convex disks later) using Whitney approximation for functions!
+\end{lemma}
 
-\begin{proposition}
+
+\begin{proposition}\label{DEA068T}
     Let $L=S_Z$ and let $I=J^+\colon \R_{\geq0}\times\Link_{C(L)}C(Z)\hookrightarrow\Unzip_{C(L)}C(Z)$ be the collar induced, according to \Cref{O6BEXS3}, by a collar $J\colon\R_{\geq0}\times\Link_L(Z)\hookrightarrow \Unzip_L(Z)$. Let $U$ be as in \Cref{V6RIX5L}, and let 
     \[
         p\in I(\{1\}\times\partial\overline{\pi^{-1}U}).
@@ -477,6 +485,109 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
 
 \section{Good covers}
 
+\begin{theorem}
+    Every conically smooth space admits a good cover.
+\end{theorem}
+
+\begin{proof}
+    Let $n\geq0$ denote the depth of $X$. If $n=0$ then $X$ is smooth and we are done, so suppose $n\geq1$. \Cref{7GBVGBA} gives that $\Unzip(X)\cong\Unzip_{S}(X)$ and that $\partial=\partial\Unzip(X)\cong\Link_S(X)$ where $S=S_X\subset X$ is the union of the depth-$k$ strata of $X$ for all $k\geq1$. We obtain the pullback-pushout diagram 
+    \[
+    \begin{tikzcd}
+        \partial\ar[r,hook]\ar[d,two heads,"{\pi}"] & \Unzip(X)\ar[d,two heads]\\
+        S\ar[r,hook] & X
+    \end{tikzcd}
+    \] 
+    where every map is a proper constructible bundle. Moreover, $\Unzip(X)$ is a smooth manifold with corners. We equip its interior with a riemannian metric. Note that $S\subset X$ being closed in a compact space is compact, hence so is $\partial$.
+    As in (the proof of) \cite[Proposition 8.2.5]{ayala2017local} there is a conically smooth collar 
+    \[
+        I\colon \R_{\geq0}\times\partial\hookrightarrow \Unzip
+    \]
+    which is a refinement onto its open image. Further, since $\mrm{depth}(S)<\mrm{depth}(X)$ we may choose by induction a locally finite good cover $\mcal{U}$ on $S$. By \Cref{2978BNV} we may assume that $\mcal{U}=\langle\mbb{U}\rangle$ where $\mbb{U}$ is a cover of $S$ by extendable basics.
+
+    We will write 
+    \(
+        C_{A,B}=I(A\times\pi^{-1}B)
+    \)
+    where $A\subseteq \R_{\geq0}$ and $B\subset S$ are subsets, and set 
+    \(
+        C_U=C_{[0,1),U}.
+    \)
+
+    \subsection*{Step A}
+    Consider the cover 
+    \[
+        \mcal{C}=\{C_U : U\in\mcal{U}\}
+    \]
+    of $C_{[0,1),S}$, an open neighbourhood of $\partial$ in $\Unzip$, and the cover $\mcal{I}$ of $\Unzip\smallsetminus C_{[0,1],S}$ consisting of all convex disks therein. Since $C_{U}\cap C_{V}=C_{U\cap V}$ and $\mcal{U}$ is good, $\mcal{C}$ is closed under finite intersections. We will adjoin to $\mcal{C}\cup\mcal{I}$ an open cover $\mcal{D}$ of $C_{\{1\},S}=\Unzip\smallsetminus \bigcup\mcal{C}\cup\bigcup\mcal{I}$ consisting of convex disks whose intersections with members of $\mcal{C}$ are (not necessarily convex) disks and is itself closed under finite intersections, thus constructing a cover of $\Unzip$ which consists of the $C_U$ and disks in the interior $\Unzip^\circ$ and is closed under finite intersections. 
+
+    Let us first observe that such a cover induces a good cover $X$ upon passing from $\Unzip$ to $X$. We claim that 
+    \[
+        \widehat{C_{U}}=U\amalg_{\pi^{-1}U}C_{U}\subset X
+    \]
+    is a basic for each $U\in\mcal{U}$. To see this, suppose, by ignoring euclidean factors without loss of generality, that $U\cong C(L)\subset C(Z)\subset X$, induced by an inclusion $L\subset Z$ where $L=S_Z$. Then we have that 
+    \begin{multline*}
+        \widehat{C_U}\cong C(L)\amalg_{\Link_{C(L)}(C(Z))}\R_{\geq0}\times\Link_{C(L)}(C(Z))\\
+        \hookrightarrow C(L)\amalg_{\Link_{C(L)}(C(Z))}\Unzip_{C(L)}(C(Z))
+    \end{multline*} 
+    is an isomorphism since the collar $\R_{\geq0}\times\Link_{C(L)}(C(Z))\hookrightarrow \Unzip_{C(L)}(C(Z))$ is an isomorphism by \Cref{DGSR46V}. But 
+    \[
+        C(L)\amalg_{\Link_{C(L)}(C(Z))}\Unzip_{C(L)}(C(Z))\cong C(Z)
+    \]
+    by the unzip square of $C(Z)$, showing that 
+    \[
+        \widehat{C_{C(L)}}\cong C(Z)
+    \]
+    is a basic. We conclude that 
+    \[
+        \widehat{\mcal{C}}=\{\widehat{C_U} : U\in\mcal{U}\}
+    \]
+    is an open cover of $S$ by basics. It is closed under finite intersections since so is $\mcal{C}$. The cover consisting of $\mcal{D}$ and $\mcal{I}$ and the resulting finite intersections with $\widehat{\mcal{C}}$ descends on $X$ to a cover, contained within the depth-$0$ stratum $X_0$ (cf.\ the last statement of \cite[Proposition 7.3.10]{ayala2017local}), consisting of disks and is closed under finite intersections. 
+
+    \subsection*{Step B} It remains to construct the cover $\mcal{D}$ of $C_{\{1\},S}$ with the desired properties. Let $p\in C_{\{1\},S}$ and let 
+    \[
+        k(p)=\#\{U\in \mcal{U} : p\in\partial \overline{C_{\{1\},U}}\}\geq0
+    \]
+    where 
+    \[
+        \partial\overline{C_{\{1\},U}}=\partial C_{\{1\},\overline{U}}=C_{\{1\},\partial\overline{U}}.
+    \]
+    We will write $\overline{p}\in\partial$ for the image of $p$ under the projection $\partial^i\overline{C_{<1,S}}=C_{\{1\},S}\to \{1\}\times\partial\to\partial$ given by $I^{-1}$. We will also write $\overline{p}=\pi(\overline{p})\in S$ by abuse. Let $c\colon\Unzip\to \langle m \rangle$ denote the corner stratification of $\Unzip$ so that around $\overline{p}$ there is a chart $\phi\colon\R^{n-|c(p)|}\times\R_{\geq0}^{|c(p)|}\hookrightarrow \Unzip$ with restriction $\phi|_{\partial}\colon\partial(\R^{n-|c(p)|}\times\R_{\geq0}^{|c(p)|})=\R^{n-|c(p)|}\times\partial\R_{\geq0}^{|c(p)|}\hookrightarrow \partial$. Using $I$, we obtain an open neighbourhood 
+    \[
+        I|_{>0}\circ\phi|_{\partial}\colon (0,\infty)\times\R^{n-|c(p)|}\times\partial\R_{\geq0}^{|c(p)|}\hookrightarrow \Unzip^\circ
+    \]
+    such that $p\in I\circ\phi|_{\partial}(\{1\}\times\partial\R_{\geq0}^n)$. Let us put 
+    \[
+        W=W_\phi=\mrm{Im}(I|_{>0}\circ\phi|_{\partial})
+    \] 
+    and note the diffeomorphism $W\cong\R^n$. 
+
+    \subsection*{Step C} Suppose now that $k(p)=0$. By the local finitude of $\mcal{U}$ we may pick a member $U'_p\in\mcal{U}$ which contains $\overline{p}$ and intersect only finitely many members of $\mcal{U}$ non-trivially. This yields
+    \[
+        U''_p=\bigcap_{\overline{p}\in U}U\cap U'_p\in \mcal{U},
+    \]
+    which satisfies $p\in C_{\{1\},U_p}$. Next, consider
+    \[
+        V_p=\bigcup_{\substack{V\in\mcal{U},\\\overline{p}\notin \overline{V},\\ V\cap U''_p\neq\emptyset}} \overline{V}.
+    \]
+    and put 
+    \[
+        U_p=U''_p\smallsetminus V_p.
+    \]
+    Since $V_p$ is likewise a finite union it is closed and thus $U_p$ is an open neighbourhood of $\overline{p}$ within $S$ (which need not be in $\mcal{U}$). We may now pick the chart $\phi$ above small enough such that $\phi|_{\partial}$ factors through $\pi^{-1}U_{p}\subset\partial$ and so $W\cap U_{p}=\mrm{Im}(I|_{(0,1)}\circ\phi|_{\partial})$. We may now pick a convex disk $D$ about $p$ with $D\subset W$, ensuring $D\cap C_{U_{p}}=D\cap\mrm{Im}(I|_{(0,1)}\circ\phi|_{\partial})$, and so 
+    \[
+        D\cap C_{U_{p}}\cong\R^{n-|c(p)|}\times(\R^{|c(p)|}\smallsetminus\R_{\geq0}^{|c(p)|})\cong\R^n
+    \]
+    is a disk by \Cref{FBLD2TE}. For each $U\in\mcal{U}$ with $D\cap C_U\neq\emptyset$ we have $D\cap C_U=D\cap C_{U_p}$ by construction, so $D\cap C_U$ is a disk for every $U\in\mcal{U}$ if it is not empty.
+
+    \subsection*{Step D} Suppose now that $k(p)>0$, and let $U\in\mcal{U}$ be such that $p\in\partial\overline{C_{\{1\},U}}$. Suppose first that $U\in\mbb{U}$. Since $U$ is extendable, \Cref{DEA068T} gives that every geodesic disk $D$ about $p$ contained within a small-enough coordinate neighbourhood $M_U$ satisfies $D\cap C_U$. Consequently, every geodesic disk $D$ about $p$ with 
+    \[
+        D\subset\bigcap_{\substack{U\in\mbb{U}\\ p\in\partial\overline{C_{\{1\},U}}}} M_U,
+    \]
+    the intersection being finite by local finitude, satisfies $D\cap C_U=D\cap M_U$ for every $U\in\mcal{U}$ with $p\in\partial\overline{C_{\{1\},U}}$.
+\end{proof}
+
+\iffalse 
+
 \begin{definition}
     Let $X$ be a CSS. A \emph{good cover} of $X$ is an open cover $\mcal{U}$ of $X$ consisting of basics whose finite intersections are also in $\mcal{U}$.
 \end{definition}
@@ -539,6 +650,7 @@ In the following, $\mbb{D}^n\subset\R^n$ denotes the unit open $n$-disk and $C^{
 
 \section{A proof of...}
 
+\fi
 
 \printbibliography
 
