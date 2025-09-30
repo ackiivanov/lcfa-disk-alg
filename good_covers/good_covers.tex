@@ -1,0 +1,314 @@
+% Run only with XeLaTeX!
+%---------------------------------------------------------------------
+%	FORMATING AND TYPESETTING
+%---------------------------------------------------------------------
+
+% Set document class
+\documentclass[12pt,a4paper]{article}
+
+% Option to change margin size
+\usepackage[margin=2cm]{geometry}
+
+% Font and encoding settings
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc} not necessary with xelatex?
+\usepackage{yfonts} % germanic fonts (fraktur...)
+%\defaultfontfeatures{Ligatures=TeX} %??
+
+% Footnotes
+\usepackage[stable]{footmisc}
+
+% Indentation and spacing
+\usepackage{indentfirst} % indentation
+\usepackage{enumitem}[leftmargin=0pt] % spacing
+\setlist{nosep}
+
+% Multi column environment
+\usepackage{multicol}
+
+% Formating of titles
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+{\normalfont\small\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]
+{\normalfont\small\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]
+{\normalfont\small\bfseries}{\thesubparagraph}{1em}{}
+\usepackage[titletoc]{appendix}
+
+% Math typesetting packages
+\usepackage{amsmath, amssymb, amsthm, mathtools, commath}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % makes \mathbb{1} work and changes font of mathbb
+\usepackage[mathscr]{euscript} % euler script font
+\usepackage{tikz-cd} % tikz commutative diagrams
+\usepackage{thmtools, thm-restate} % theorem tools, especially restatable
+
+\AtBeginDocument{\renewcommand\setminus{\smallsetminus}} % \setminus doesn't work in unicode-math 
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	GRAPHICS
+%---------------------------------------------------------------------
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{pdfpages} % for inserting pdf pages
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%---------------------------------------------------------------------
+
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\renewcommand*{\bibfont}{\small}
+\addbibresource{text.bib}
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	HYPERLINKS
+%---------------------------------------------------------------------
+
+% Define the colors
+\usepackage{xcolor}
+\definecolor{brown}{HTML}{CD853F}
+\definecolor{blue}{HTML}{4169E1}
+\definecolor{green}{HTML}{2E8B57}
+
+% Setup options for hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true, linkcolor=black, breaklinks=true,
+linktoc=all, bookmarksnumbered=true,
+urlcolor=brown, linkcolor=blue, citecolor=green, % Link colors
+}
+
+% Referencing package
+\usepackage{cleveref}
+\crefname{section}{\S\!}{\S\S\!}
+\Crefname{section}{\S\!}{\S\S\!}
+
+
+%---------------------------------------------------------------------
+%	THEOREM STYLES
+%---------------------------------------------------------------------
+
+% Define a dummy counter to keep count for all sub-environments
+\newcounter{counter} \numberwithin{counter}{section}
+
+% Define theorem styles here based on the definition style
+\theoremstyle{definition}
+\newtheorem{definition}[counter]{Definition}
+\newtheorem{construction}[counter]{Construction}
+\newtheorem{observation}[counter]{Observation}
+
+% Define theorem styles here based on the plain style
+\theoremstyle{plain} 
+\newtheorem{theorem}[counter]{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[counter]{Corollary}
+\newtheorem{lemma}[counter]{Lemma}
+\newtheorem{proposition}[counter]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{conjecture}[counter]{Conjecture}
+
+
+% Define theorem styles here based on the remark style
+\theoremstyle{remark}
+\newtheorem{example}[counter]{Example}
+\newtheorem{remark}[counter]{Remark}
+
+
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%	NEW COMMANDS
+%---------------------------------------------------------------------
+
+% general target category
+\newcommand{\catC}{\mathscr{C}}
+
+% categories of factorization algebras
+\newcommand{\falg}{\mathscr{F} \mathsf{Alg}}
+\newcommand{\lcfa}{\mathscr{F} \mathsf{Alg}^{\mathsf{lc}}}
+
+% category of manifolds
+\newcommand{\mfld}[1][s]{%
+    \ifx r#1\mathsf{Mfld}\else
+    \ifx s#1\mathscr{M} \mathsf{fld}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of disks
+\newcommand{\disk}[1][s]{%
+    \ifx r#1\mathsf{Disk}\else
+    \ifx s#1\mathscr{D} \mathsf{isk}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of opens
+\newcommand{\opens}[1][s]{%
+    \ifx r#1\mathsf{Opns}\else
+    \ifx s#1\mathscr{O} \mathsf{pns}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+% category of cosheaves
+\newcommand{\csheaves}[1][n]{%
+    \ifx n#1 \mathsf{c} \mathscr{S} \mathsf{hv}\else
+    \mathsf{c} \mathscr{S} \mathsf{hv}^{\mathsf{#1}}
+    \fi
+}
+
+% category of infinity categories
+\newcommand{\cat}{\mathscr{C} \mathsf{at}_{\infty}}
+
+% template for category of algebras
+\newcommand{\alg}[1]{\mathscr{A} \mathsf{lg}_{#1}}
+
+% template for category of locally constant algebras
+\newcommand{\lcalg}[1]{\mathscr{A} \mathsf{lg}^{\mathsf{lc}}_{#1}}
+
+% half-open interval
+\newcommand{\hoint}{\mathbb{R}_{\geq 0}}
+
+% Cech complex
+\newcommand{\cech}{\check{\mathsf{C}}}
+
+% Category of basics
+\newcommand{\bsc}{\mathscr{B} \mathsf{sc}}
+\newcommand{\bstr}{\mathscr{B}}
+
+% Open cone
+\newcommand{\cone}[1][n]{%
+    \ifx b#1\overline{\mathsf{C}}\else
+    \ifx n#1\mathsf{C}\else
+    \mathrm{Illegal~option}%
+    \fi\fi
+}
+
+\newcommand{\lrangle}[1]{\langle #1 \rangle}
+
+%---------------------------------------------------------------------
+
+\usepackage{subfiles}
+
+\setcounter{section}{-1}
+
+\begin{document}
+
+% Set title, author and date
+\title{\sc Good Covers of Stratified Spaces}
+\author{Aleksandar Ivanov, Ödül Tetik}
+\date{}
+\maketitle
+
+\tableofcontents
+
+\section{Theorem}
+
+\begin{theorem}
+    Every stratified manifold has a good cover.
+\end{theorem}
+
+\subsection{Riemannian Metrics}
+
+We do not claim that this is the most general structure that deserves the name `Riemannian metric' on a stratified space. This is why we opt to add the adjective `tame' to the name. Whatever that most general definition of a Riemannian metric is it should certainly include, as an example, the structure that we consider here. For the purposes of defining good covers this restricted structure is enough.
+
+\begin{remark}
+    Recall that, by ......., every stratum of a stratified manifold is a smooth manifold. Furthermore, by ......., every stratum has a tubular neighborhood in the stratified manifold that is characterized by the link.
+\end{remark}
+
+
+As a preliminary, we consider the construction of a Riemannian metric on a stratified manifold of depth 1. The general construction, that we will describe in ......, proceeds by induction on this case.
+
+
+\begin{definition}
+    Let $M$ be a stratified manifold of depth 1, so that $M_0$ is its lower stratum, $M_1$ is its higher one, and the link is $M_0 \twoheadleftarrow{\pi} L \xhookrightarrow{\iota} M_1$. A \emph{tame Riemannian metric} $g$ on $M$ is prescribed by Riemannian metrics $g_0$ and $g_1$ on the respective strata such that under the canonical isomorphism
+    %
+    \begin{equation}
+        \mathsf{T}L \cong \iota^*\mathsf{T}M_1 \oplus \mathsf{T}M_0 \oplus \underbar{\mathbb{R}}
+    \end{equation}
+    %
+    the pullback metric $\iota^* g_1$ on the link decomposes as
+    %
+    \begin{equation}
+        (r^2 g_1, g_0, dr^2).
+    \end{equation}
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{definition}\label{def:Riem_met_on_strat}
+    A tame Riemannian metric on a stratified manifold is ... 
+\end{definition}
+
+
+\begin{example}
+    If a stratified manifold $M$ is such that it has an underlying smooth manifold $\bar{M}$, like in the case of stratified manifolds created through a filtration of closed subsets, then a Riemannian metric $g_{\bar{M}}$ on $\bar{M}$ provides the data of a tame Riemannian metric on the stratified manifold $M$, as in definition \Cref{def:Riem_met_on_strat}. Namely, .......
+\end{example}
+
+
+
+
+\begin{definition}
+    Let $\gamma: [0,1] \xrightarrow{} M$ be a curve in the stratified manifold $M \xrightarrow{} P$, and let $M$ be equipped with a tame Riemannian metric. The length of $\gamma$ is defined to be
+    %
+    \begin{equation}
+        \mathrm{len}_{g}(\gamma) := \sum_{p \in P} \mathrm{len}_{g_p} (\gamma|_{M_p}),
+    \end{equation}
+    %
+    the sum of the lengths in each stratum. If the metric is clear from context we will drop the subscript notation.
+\end{definition}
+
+
+\begin{lemma}\label{lem:length_space}
+    Let $(M,g)$ be a stratified manifold with a tame Riemannian metric. Then $M$ can be made into a length space, by equipping it with the intrinsic length metric $d_g$, so that the distance between two points is the infimum of the lengths of admissible curves joining them.
+\end{lemma}
+
+
+\begin{proposition}
+    Let $(M, g)$ be a connected stratified manifold with a tame Riemannian metric. Then every two points of $M$ can be connected by a minimizing curve.
+\end{proposition}
+
+
+\begin{proof}
+    By \Cref{lem:length_space}, $(M,d_g)$ is a length space, where $d_g$ is the intrinsic metric generated by the tame Riemannian metric $g$. By virtue of being a stratified manifold it is also a locally compact topological space. Then using the Hopf--Rinow--Cohn-Vossen theorem ....... for a locally compact length space, and its immediate corollaries, we know that what we need to show is that every closed and bounded subset of $M$ is compact.........
+\end{proof}
+
+
+
+
+
+
+
+
+\end{document}
